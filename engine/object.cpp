@@ -1,21 +1,33 @@
 #include "object.h"
 
-Object::Object()
+int Object::id_counter = 0;
+
+Object::Object(const std::string& name_, const std::string& type_)
+	: id(++id_counter), name(name_), type(type_)
 {
 }
 
-void Object::render()
+int Object::getID() const 
 {
+	return id;
 }
 
-void *Object::getType()
+const std::string& Object::getName() const 
 {
+	return name;
 }
 
-void Object::setType(void *type)
-{
+const std::string& Object::getType() const 
+{ 
+	return type; 
 }
 
-int Object::generateID()
-{
+
+void Object::setName(const std::string& newName) {
+	name = newName;
+}
+
+void Object::setType(const std::string& newType) 
+{ 
+	type = newType; 
 }
