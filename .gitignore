@@ -30,6 +30,9 @@ engine/obj/
 *.vcxproj.filters
 *.vcxproj.user
 
+# Vscode
+.vscode
+
 # Dependency files
 *.d
 
