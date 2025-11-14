@@ -5,23 +5,70 @@
  * @author	Achille Peternier (C) SUPSI [achille.peternier@supsi.ch] << change this to your group members
  */
 
-
-
 //////////////
 // #INCLUDE //
 //////////////
 
-   // Library header:
-   #include "engine.h"
+// Library header:
+#include "engine.h"
+#include "definitions.h"
 
-   // C/C++:
-   #include <iostream>
-
-
+// C/C++:
+#include <iostream>
 
 //////////
 // MAIN //
 //////////
+
+// callbacks
+void keyboardCallback(unsigned char key, int mouseX, int mouseY)
+{
+
+   // example, actual behaviour yet to be defined
+   switch (key)
+   {
+   case ' ':;
+      break;
+   case 'a':;
+      break;
+   case 'b':;
+      break;
+   case 'c':;
+      break;
+   case 'r':
+      //   colorR = rand() % 256;
+      //   colorG = rand() % 256;
+      //   colorB = rand() % 256;
+      break;
+   default:;
+      break;
+   }
+}
+
+void specialCallback(unsigned char key, int mouseX, int mouseY)
+{
+
+   std::cout << "[key pressed]" << std::endl;
+
+   switch (key)
+   {
+   case ENG_KEY_UP:
+      ;
+      break;
+
+   case ENG_KEY_DOWN:
+      ;
+      break;
+
+   case ENG_KEY_LEFT:
+      ;
+      break;
+
+   case ENG_KEY_RIGHT:
+      ;
+      break;
+   }
+}
 
 /**
  * Application entry point.
@@ -37,7 +84,13 @@ int main(int argc, char *argv[])
 
    // Init engine:
    Eng::Base &eng = Eng::Base::getInstance();
-   eng.init();
+   eng.init("My application", 500, 500, argc, argv);
+   eng.setKeyboardCallback(keyboardCallback);
+
+   // test components
+   eng.testGLM();
+   eng.drawSolidSphere(10,10,10);
+   // eng.testObjectGeneration();
 
    // Release engine:
    eng.free();
