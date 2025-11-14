@@ -13,8 +13,13 @@
 //////////////
 
    // C/C++:         
-   #include <memory> 
+   #include <memory>
 
+   // graphics
+   #include <glm/glm.hpp>
+   #include <glm/gtc/matrix_transform.hpp>
+   #include <glm/gtc/type_ptr.hpp>
+   #include <GL/freeglut.h>
 
 
 /////////////
@@ -86,8 +91,35 @@ public: //
    static Base &getInstance();
 
    // Init/free:
-   bool init();
-   bool free();   
+   bool init(std::string windowName, int width, int height, int argc, char *argv[]);
+   bool free();
+
+   // start
+   void run();
+
+   // test methods
+   void testGLM();
+   void testObjectGeneration();
+
+   // Create basic shapes
+   void drawSolidCube(float side);
+   void drawSolidTorus(float outerRadius, float innerRadius, GLint side, GLint rings);
+   void drawSolidSphere(float radius, GLint slices, GLint stacks);
+   void drawSolidTeapot(float side);
+
+   // callbacks
+   void displayCallback();
+   void reshapeCallback(int width, int height);
+   void setKeyboardCallback(void (*callback)(unsigned char, int, int));
+   void setSpecialCallback(void (*callback)(unsigned char, int, int));
+
+   // window & buffer management
+   void clearWindow();
+   void swapBuffer();
+
+   // window id
+   void setWindowId(int i);
+   int getWindowId();
 
 
 ///////////
@@ -100,6 +132,9 @@ private: //
 
    // Const/dest:
    Base();
+
+   // window ID
+   int windowId;
 };
 
 }; // end of namespace Eng::
