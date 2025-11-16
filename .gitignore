@@ -29,6 +29,7 @@ engine/obj/
 # Visual Studio files
 *.vcxproj.filters
 *.vcxproj.user
+.vs/
 
 # Vscode
 .vscode
