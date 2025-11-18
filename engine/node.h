@@ -5,7 +5,7 @@
  * Node eredita da Object e gestisce la relazione padre-figlio, la trasformazione locale e globale,
  * e fornisce i metodi per la ricerca ricorsiva e la renderizzazione dei nodi.
  */
-#pragma one
+#pragma once
 #include "object.h"
 #include <glm/glm.hpp>
 #include <vector>
