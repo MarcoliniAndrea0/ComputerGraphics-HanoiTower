@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="engine.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="node.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="object.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="engine.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="node.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="object.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{00beb1a0-96ed-49d0-9b28-fc2c9fd24dda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header">
+      <UniqueIdentifier>{433ec144-6b94-44a0-9d29-11c9905c45ed}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

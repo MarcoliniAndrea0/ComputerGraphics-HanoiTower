@@ -27,7 +27,6 @@ engine/obj/
 *.depend
 
 # Visual Studio files
-*.vcxproj.filters
 *.vcxproj.user
 .vs/
 
