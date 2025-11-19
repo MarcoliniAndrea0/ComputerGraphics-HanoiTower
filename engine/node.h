@@ -66,15 +66,15 @@ public:
     
     /**
      * @brief Restituisce la matrice di trasformazione locale.
-     * @return Puntatore alla matrice locale.
+     * @return La matrice locale.
      */
-    glm::mat4* getLocalMatrix();
+    glm::mat4 getLocalMatrix();
     
     /**
      * @brief Restituisce la matrice di trasformazione globale.
-     * @return Puntatore alla matrice globale.
+     * @return La matrice globale.
      */
-    glm::mat4* getWorldMatrix();
+    glm::mat4 getWorldMatrix();
     
     /**
      * @brief Ricerca ricorsivamente un nodo per nome in tutta la sotto-gerarchia.
