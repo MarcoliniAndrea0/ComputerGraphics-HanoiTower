@@ -10,6 +10,24 @@
     <ClCompile Include="object.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="camera.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="light.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="list.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="mesh.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="material.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="texture.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h">
@@ -19,6 +37,24 @@
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="object.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="camera.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="light.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="list.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="material.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="mesh.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="texture.h">
       <Filter>Header</Filter>
     </ClInclude>
   </ItemGroup>
