@@ -5,7 +5,7 @@
  * Questa classe fornisce generazione automatica di ID univoci, gestione di nome e tipo,
  * e un metodo virtuale puro render da implementare nelle classi derivate.
  */
-#pragma one
+#pragma once
 
 #include <string>
 

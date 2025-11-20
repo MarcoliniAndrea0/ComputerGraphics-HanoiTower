@@ -7,6 +7,8 @@
  */
 #include "node.h"
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 
 /**
  * @brief Costruttore della classe Node. Inizializza le matrici a identità e il parent a nullptr.
@@ -75,21 +77,21 @@ void Node::removeChild(int a)
 }
 
 /**
- * @brief Restituisce un puntatore alla matrice locale.
- * @return Puntatore a glm::mat4 locale.
+ * @brief Restituisce la matrice locale.
+ * @return glm::mat4 locale.
  */
-glm::mat4 *Node::getLocalMatrix()
+glm::mat4 Node::getLocalMatrix()
 {
-    return localMatrix;
+    return localMatrix; // TODO: Usare glm pointer
 }
 
 /**
- * @brief Restituisce un puntatore alla matrice globale.
- * @return Puntatore a glm::mat4 globale.
+ * @brief Restituisce la matrice globale.
+ * @return glm::mat4 globale.
  */
-glm::mat4 *Node::getWorldMatrix()
+glm::mat4 Node::getWorldMatrix()
 {
-    return worldMatrix;
+    return worldMatrix;  // TODO: Usare glm pointer
 }
 
 /**
