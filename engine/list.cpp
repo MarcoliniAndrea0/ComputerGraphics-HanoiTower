@@ -10,7 +10,7 @@ List::List()
 
 List::~List()
 {
-	clear;
+	clear();
 }
 
 void List::add(Node* node, const glm::mat4& matrix) {

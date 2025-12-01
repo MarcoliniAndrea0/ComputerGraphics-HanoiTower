@@ -16,7 +16,8 @@
 
 // C/C++:
 #include <iostream>
-#include <source_location>
+//#include <source_location>
+#include <ctime>
 
 
 
@@ -50,10 +51,12 @@ struct Eng::Base::Reserved
 /**
  * Constructor.
  */
-ENG_API Eng::Base::Base() : reserved(std::make_unique<Eng::Base::Reserved>())
+ENG_API Eng::Base::Base() //: reserved(std::make_unique<Eng::Base::Reserved>())
+    : reserved(std::unique_ptr<Eng::Base::Reserved>(new Eng::Base::Reserved()))
 {
 #ifdef _DEBUG
-   std::cout << "[+] " << std::source_location::current().function_name() << " invoked" << std::endl;
+   //std::cout << "[+] " << std::source_location::current().function_name() << " invoked" << std::endl;
+    std::cout << "[+] Engine Base Constructor invoked" << std::endl;
 #endif
 }
 
@@ -65,7 +68,8 @@ ENG_API Eng::Base::Base() : reserved(std::make_unique<Eng::Base::Reserved>())
 ENG_API Eng::Base::~Base()
 {
 #ifdef _DEBUG
-   std::cout << "[-] " << std::source_location::current().function_name() << " invoked" << std::endl;
+   //std::cout << "[-] " << std::source_location::current().function_name() << " invoked" << std::endl;
+    std::cout << "[-] Engine Base Destructor invoked" << std::endl;
 #endif
 }
 
