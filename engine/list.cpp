@@ -19,6 +19,8 @@ List::~List()
 
 void List::add(Node* node, const glm::mat4& matrix)
 {
+	if (!node) return;
+
 	RenderNode element;
 	element.node = node;
 	element.trans = matrix;
