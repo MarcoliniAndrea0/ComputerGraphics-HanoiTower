@@ -1,15 +1,11 @@
 #include "list.h"
-#include "object.h"
 #include "engine.h"
-#include "light.h"
+#include <algorithm> 
 #include <iostream>
-#include <gl/GL.h>
-#include <glm/gtc/type_ptr.hpp>
 
 List::List()
 {
-	m_objects.reserve(100);
-	m_lights.reserve(100);
+	m_renderList.reserve(100);
 }
 
 List::~List()
@@ -17,35 +13,32 @@ List::~List()
 	clear;
 }
 
-void List::add(Node* node, const glm::mat4& matrix)
-{
+void List::add(Node* node, const glm::mat4& matrix) {
 	if (!node) return;
-
-	RenderNode element;
-	element.node = node;
-	element.trans = matrix;
-
-	//TODO LIGHT params
-
-	m_objects.push_back(element);
+	
+	m_renderList.push_back({ node, matrix });
 }
 
 void List::render()
 {
-	//Renderizza luci per primo
-	for (const auto& element : m_lights)
-	{
-		glPushMatrix();
-		glMultMatrixf(glm::value_ptr(element.trans));
+	// 1. ORDINAMENTO (Sorting)
+	std::sort(m_renderList.begin(), m_renderList.end(), [](const RenderNode& a, const RenderNode& b)
+		{
+			// Cerca "Light" nel tipo. Se lo trova, find restituisce una posizione valida (!= npos)
+			bool aIsLight = (a.node->getType().find("Light") != std::string::npos);
+			bool bIsLight = (b.node->getType().find("Light") != std::string::npos);
+			// Regola: se A è luce e B no, A viene prima (true).
+			if (aIsLight && !bIsLight) return true;
 
-		element.node->render();
+			// Se B è luce e A no, B viene prima (quindi A non viene prima -> false).
+			if (!aIsLight && bIsLight) return false;
 
-		glPopMatrix();
-	}
+			// Se sono entrambi luci o entrambi mesh, l'ordine non importa (return false)
+			return false;
+		});
 
-	//Renderizza Mesh
-	for (const auto& element : m_objects)
-	{
+	// 2. RENDERING
+	for (const auto& element : m_renderList) {
 		glPushMatrix();
 		glMultMatrixf(glm::value_ptr(element.trans));
 
@@ -57,6 +50,5 @@ void List::render()
 
 void List::clear()
 {
-	m_lights.clear();
-	m_objects.clear();
+	m_renderList.clear();
 }

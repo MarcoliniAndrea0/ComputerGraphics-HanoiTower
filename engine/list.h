@@ -1,11 +1,13 @@
 #pragma once
-#include <glm/ext/matrix_float4x4.hpp>
+
+#include <vector>
+#include <glm/glm.hpp>
 #include "node.h"
 
 #ifndef LIST_H
 #define LIST_H
 
-class Light;
+
 
 struct RenderNode
 {
@@ -26,8 +28,7 @@ public:
 	void clear();
 
 private: 
-	std::vector<RenderNode> m_lights;
-	std::vector<RenderNode> m_objects;
+	std::vector<RenderNode> m_renderList;
 };
 
 #endif // !LIST_H
