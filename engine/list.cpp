@@ -5,7 +5,7 @@
 
 List::List()
 {
-	m_renderList.reserve(100);
+	renderList.reserve(100);
 }
 
 List::~List()
@@ -16,13 +16,13 @@ List::~List()
 void List::add(Node* node, const glm::mat4& matrix) {
 	if (!node) return;
 	
-	m_renderList.push_back({ node, matrix });
+	renderList.push_back({ node, matrix });
 }
 
 void List::render()
 {
 	// 1. ORDINAMENTO (Sorting)
-	std::sort(m_renderList.begin(), m_renderList.end(), [](const RenderNode& a, const RenderNode& b)
+	std::sort(renderList.begin(), renderList.end(), [](const RenderNode& a, const RenderNode& b)
 		{
 			// Cerca "Light" nel tipo. Se lo trova, find restituisce una posizione valida (!= npos)
 			bool aIsLight = (a.node->getType().find("Light") != std::string::npos);
@@ -38,7 +38,7 @@ void List::render()
 		});
 
 	// 2. RENDERING
-	for (const auto& element : m_renderList) {
+	for (const auto& element : renderList) {
 		glPushMatrix();
 		glMultMatrixf(glm::value_ptr(element.trans));
 
@@ -50,5 +50,5 @@ void List::render()
 
 void List::clear()
 {
-	m_renderList.clear();
+	renderList.clear();
 }

@@ -28,7 +28,7 @@ public:
 	void clear();
 
 private: 
-	std::vector<RenderNode> m_renderList;
+	std::vector<RenderNode> renderList;
 };
 
 #endif // !LIST_H
