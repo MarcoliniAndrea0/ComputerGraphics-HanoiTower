@@ -13,7 +13,7 @@
  // IMPORTANTE: Definire prima di includere le estensioni GTX
 #define GLM_ENABLE_EXPERIMENTAL
 
-#include "node.h"
+#include "../node.h"
 #include <iostream>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/string_cast.hpp>
