@@ -31,14 +31,14 @@ void Material::render()
     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, m_shininess);
 
     // Gestione Texture
-    /*
+    
     if (m_texture) {
         glEnable(GL_TEXTURE_2D);
         m_texture->render(); // Assumendo che Texture abbia un metodo render() o bind()
     } else {
         glDisable(GL_TEXTURE_2D);
     }
-    */
+    
 }
 
 // --- Implementazione Setters ---
