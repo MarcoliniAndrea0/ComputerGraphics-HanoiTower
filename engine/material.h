@@ -7,6 +7,8 @@
 #include <glm/glm.hpp>
 #include "object.h"
 
+class Texture;
+
 class Material : public Object
 {
 public:
