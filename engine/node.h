@@ -8,9 +8,11 @@
 #pragma once
 #include "object.h"
 #include "engine.h"
+#include "material.h"
 #include <glm/glm.hpp>
 #include <vector>
 #include <string>
+
 
 
 /**
@@ -84,9 +86,21 @@ public:
      */
     Node* findByName(const std::string s);
 
+    void setMaterial(Material* m) 
+    { 
+        this->material = m; 
+    }
+
+    Material* getMaterial()
+    {
+        return this->material;
+    }
+
+
 private:
     glm::mat4 localMatrix;              // Matrice di trasformazione locale
     glm::mat4 worldMatrix;              // Matrice di trasformazione globale
     std::vector<Node*> child_nodes;     // Vettore di figli
     Node* parent;                       // Puntatore al nodo genitore
+    Material* material = nullptr;
 };
