@@ -37,7 +37,7 @@ public:
     /**
      * @brief Esegue la renderizzazione ricorsiva di questo nodo e di tutti i figli.
      */
-    virtual void render() override;
+    virtual void render(const glm::mat4& mat) override;
 
     /**
      * @brief Restituisce il puntatore al nodo genitore.
@@ -85,7 +85,6 @@ public:
 
 private:
     glm::mat4 localMatrix;              // Matrice di trasformazione locale
-    glm::mat4 worldMatrix;              // Matrice di trasformazione globale
     std::vector<Node*> child_nodes;     // Vettore di figli
     Node* parent;                       // Puntatore al nodo genitore
 };

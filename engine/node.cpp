@@ -18,7 +18,6 @@
 Node::Node(const std::string& name, const std::string& type)
     : Object(name, type),
     localMatrix(glm::mat4(1.0f)),
-    worldMatrix(glm::mat4(1.0f)),
     parent(nullptr)
 {
 }
@@ -26,11 +25,11 @@ Node::Node(const std::string& name, const std::string& type)
 /**
  * @brief Render ricorsivo: richiama render su tutti i figli del nodo corrente.
  */
-void Node::render()
+void Node::render(const glm::mat4& mat)
 {
     for (Node* child : child_nodes)
     {
-        if (child) child->render();
+        if (child) child->render(mat);
     }
 }
 
@@ -85,14 +84,6 @@ glm::mat4 Node::getLocalMatrix()
     return localMatrix; // TODO: Usare glm pointer
 }
 
-/**
- * @brief Restituisce la matrice globale.
- * @return glm::mat4 globale.
- */
-glm::mat4 Node::getWorldMatrix()
-{
-    return worldMatrix;  // TODO: Usare glm pointer
-}
 
 /**
  * @brief Ricerca ricorsivamente il nodo con il nome fornito tra il nodo e i suoi figli.

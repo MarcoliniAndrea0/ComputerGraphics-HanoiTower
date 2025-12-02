@@ -8,6 +8,8 @@
 #pragma once
 
 #include <string>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
  /**
   * @class Object
@@ -29,7 +31,7 @@ public:
      * @param type Identificatore del tipo (di default stringa vuota).
      */
     Object(const std::string& name = "", const std::string& type = "");
-    
+
     /**
      * @brief Distruttore virtuale.
      */
@@ -39,24 +41,24 @@ public:
      * @brief Metodo virtuale puro per renderizzare l'oggetto.
      * Deve essere implementato dalle classi derivate.
      */
-    virtual void render() = 0;
+    virtual void render(const glm::mat4& mat) = 0;
 
-        ////////////////
-        ///  GETTER  ///
-        ////////////////
+    ////////////////
+    ///  GETTER  ///
+    ////////////////
 
-    /**
-     * @brief Restituisce l'ID univoco di questa istanza di Object.
-     * @return Identificatore intero univoco.
-     */
+/**
+ * @brief Restituisce l'ID univoco di questa istanza di Object.
+ * @return Identificatore intero univoco.
+ */
     int getID() const;
-    
+
     /**
      * @brief Restituisce il nome dell'oggetto.
      * @return Riferimento alla stringa del nome.
      */
     const std::string& getName() const;
-    
+
     /**
      * @brief Restituisce il tipo dell'oggetto.
      * @return Riferimento alla stringa del tipo.
@@ -64,16 +66,16 @@ public:
     const std::string& getType() const;
 
 
-        ////////////////
-        ///  SETTER  ///
-        ////////////////
+    ////////////////
+    ///  SETTER  ///
+    ////////////////
 
-    /**
-     * @brief Imposta un nuovo nome per l'oggetto.
-     * @param newName Stringa da assegnare come nuovo nome.
-     */
+/**
+ * @brief Imposta un nuovo nome per l'oggetto.
+ * @param newName Stringa da assegnare come nuovo nome.
+ */
     void setName(const std::string& newName);
-    
+
     /**
      * @brief Imposta l'identificatore di tipo per l'oggetto.
      * @param newType Stringa che definisce il nuovo tipo.
