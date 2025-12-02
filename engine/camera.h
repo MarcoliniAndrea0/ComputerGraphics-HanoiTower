@@ -1,9 +1,10 @@
 #pragma once
 
 #include "node.h"
+#include "engine.h"
 #include <glm/glm.hpp>
 
-class Camera : public Node
+class ENG_API Camera : public Node
 {
 public:
     Camera(const std::string& name);

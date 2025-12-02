@@ -1,8 +1,9 @@
 #pragma once
 
 #include "camera.h"
+#include "engine.h"
 
-class PerspectiveCamera : public Camera
+class ENG_API PerspectiveCamera : public Camera
 {
 public:
     PerspectiveCamera(const std::string& name, float fov, float aspect, float nearPlane, float farPlane);

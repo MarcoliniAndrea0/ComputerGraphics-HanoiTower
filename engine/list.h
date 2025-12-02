@@ -3,6 +3,7 @@
 #include <vector>
 #include <glm/glm.hpp>
 #include "node.h"
+#include "engine.h"
 
 #ifndef LIST_H
 #define LIST_H
@@ -15,7 +16,7 @@ struct RenderNode
 	glm::mat4 trans;
 };
 
-class List
+class ENG_API List
 {
 public:
 	List();

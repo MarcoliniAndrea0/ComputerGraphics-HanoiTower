@@ -1,4 +1,5 @@
-#include "Material.h"
+#include "material.h"
+//#include "texture.h"
 #include "engine.h"
 #include <iostream>
 
@@ -8,17 +9,19 @@ Material::Material(const std::string& name, const glm::vec4& emission, const glm
     m_ambient(ambient),
     m_diffuse(diffuse),
     m_specular(specular),
-    m_shininess(shininess),
-    m_texture(nullptr)
+    m_shininess(shininess)
+    //m_texture(nullptr)
 {
 }
 
 Material::~Material() {
     // Se il materiale possiede una texture, la distrugge per liberare memoria.
+    /*
     if (m_texture != nullptr) {
-        // delete m_texture; // <--- SCOMMENTARE quando avrai la classe Texture
+        delete m_texture;
         m_texture = nullptr;
     }
+    */
 }
 
 void Material::render()
@@ -31,13 +34,15 @@ void Material::render()
     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, m_shininess);
 
     // Gestione Texture
-    
-    if (m_texture) {
+    /*
+    if (m_texture != nullptr) {
         glEnable(GL_TEXTURE_2D);
-        m_texture->render(); // Assumendo che Texture abbia un metodo render() o bind()
-    } else {
+        m_texture->render();
+    }
+    else {
         glDisable(GL_TEXTURE_2D);
     }
+    */
     
 }
 

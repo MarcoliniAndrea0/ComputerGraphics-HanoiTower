@@ -6,10 +6,11 @@
 #include <string>
 #include <glm/glm.hpp>
 #include "object.h"
+#include "engine.h"
 
-class Texture;
+//class Texture;
 
-class Material : public Object
+class ENG_API Material : public Object
 {
 public:
     Material(const std::string& name,
@@ -29,7 +30,7 @@ public:
     void setDiffuse(const glm::vec4& color);
     void setSpecular(const glm::vec4& color);
     void setShininess(float shininess);
-    void setTexture(Texture* texture);
+    //void setTexture(Texture* texture);
 
     // --- Getters ---
     glm::vec4 getEmission() const;
@@ -37,7 +38,7 @@ public:
     glm::vec4 getDiffuse() const;
     glm::vec4 getSpecular() const;
     float getShininess() const;
-    Texture* getTexture() const;
+    //Texture* getTexture() const;
 
 private:
     glm::vec4 m_emission;
@@ -46,7 +47,7 @@ private:
     glm::vec4 m_specular;
     float m_shininess;
 
-    Texture* m_texture;
+    //Texture* m_texture;
 };
 
 #endif // MATERIAL_H

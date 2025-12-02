@@ -1,9 +1,10 @@
 #pragma once
 
 #include "node.h"
+#include "engine.h"
 #include <glm/glm.hpp>
 
-class Light : public Node
+class ENG_API Light : public Node
 {
 public:
     Light(const std::string& name, const std::string& type);

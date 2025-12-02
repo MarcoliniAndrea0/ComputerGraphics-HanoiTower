@@ -25,9 +25,6 @@
     <ClCompile Include="material.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="texture.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="directionalLight.cpp" />
     <ClCompile Include="pointLight.cpp" />
     <ClCompile Include="prospectiveCamera.cpp" />
@@ -56,9 +53,6 @@
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="mesh.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="texture.h">
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="directionalLight.h" />

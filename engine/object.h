@@ -8,6 +8,7 @@
 #pragma once
 
 #include <string>
+#include "engine.h"
 
  /**
   * @class Object
@@ -20,7 +21,7 @@
   *
   * La classe gestisce l'assegnazione automatica dell'ID tramite un contatore statico privato.
   */
-class Object
+class ENG_API Object
 {
 public:
     /**
