@@ -50,7 +50,7 @@
       <PreprocessorDefinitions>_DEBUG;ENGINE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>..\dependencies\glm\include; ..\dependencies\freeglut\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\dependencies\glm\include; ..\dependencies\freeglut\include; ..\dependencies\freeimage</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -67,7 +67,7 @@
       <PreprocessorDefinitions>NDEBUG;ENGINE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>..\dependencies\glm\include; ..\dependencies\freeglut\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\dependencies\glm\include; ..\dependencies\freeglut\include; ..\dependencies\freeimage</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -79,6 +79,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="camera.cpp" />
+    <ClCompile Include="directionalLight.cpp" />
     <ClCompile Include="engine.cpp" />
     <ClCompile Include="light.cpp" />
     <ClCompile Include="list.cpp" />
@@ -86,10 +87,14 @@
     <ClCompile Include="mesh.cpp" />
     <ClCompile Include="node.cpp" />
     <ClCompile Include="object.cpp" />
+    <ClCompile Include="pointLight.cpp" />
+    <ClCompile Include="prospectiveCamera.cpp" />
+    <ClCompile Include="spotLight.cpp" />
     <ClCompile Include="texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h" />
+    <ClInclude Include="directionalLight.h" />
     <ClInclude Include="engine.h" />
     <ClInclude Include="light.h" />
     <ClInclude Include="list.h" />
@@ -97,6 +102,9 @@
     <ClInclude Include="mesh.h" />
     <ClInclude Include="node.h" />
     <ClInclude Include="object.h" />
+    <ClInclude Include="pointLight.h" />
+    <ClInclude Include="prospectiveCamera.h" />
+    <ClInclude Include="spotLight.h" />
     <ClInclude Include="texture.h" />
   </ItemGroup>
   <ItemGroup>
