@@ -25,12 +25,20 @@ void Mesh::removeVertices(int i)
 
 void Mesh::render(const glm::mat4& mat)
 {
-	//int vertexCount = 0;
 	// Set model matrix as current OpenGL matrix:
 	glLoadMatrixf(glm::value_ptr(mat));
 
-	for (const singleVertex& v : vertices) {
-		//glNormal3f( (glm::vec3) v.normalVector);
+	for (int x = 0; x < vertices.size();x+=3) {
+	
+		glBegin(GL_TRIANGLES);
+
+		glNormal3fv(glm::value_ptr(vertices.at(x).normalVector));
+		
+		glVertex3fv(glm::value_ptr(vertices.at(x).vertex));
+		glVertex3fv(glm::value_ptr(vertices.at(x+1).vertex));
+		glVertex3fv(glm::value_ptr(vertices.at(x+2).vertex));
+
+		glEnd();
 		
 	}
 
