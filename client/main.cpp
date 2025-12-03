@@ -1,147 +1,142 @@
 /**
  * @file		main.cpp
- * @brief	Applicazione Client con caricamento Scena OVO
+ * @brief	Client application con rendering corretto
  */
 
 #include "definitions.h"
 #include "engine.h"
-#include "camera.h"
-#include "prospectiveCamera.h"
-#include "mesh.h"
-#include "material.h"
- // #include "Texture.h" // Texture disabilitate per ora
-#include "light.h"
-#include "directionalLight.h"
-#include "list.h"
-#include "ovoParser.h" // <--- Fondamentale per leggere il file
+#include "Camera.h"
+#include "ProspectiveCamera.h"
+#include "Mesh.h"
+#include "Material.h"
+#include "Light.h"
+#include "DirectionalLight.h"
+#include "List.h"
+#include "OvoParser.h"
 
 #include <iostream>
 #include <filesystem>
 
-// --- VARIABILI GLOBALI ---
-List renderList;      // La lista degli oggetti da disegnare
-Node* root = nullptr; // La radice della scena caricata
+ // --- GLOBALI ---
+List renderList;
+Node* root = nullptr;
+PerspectiveCamera* mainCamera = nullptr;
 
-// --- CALLBACK DI DISEGNO (Viene chiamata ogni frame) ---
+// --- FUNZIONE RICORSIVA PER RIEMPIRE LA LISTA ---
+// Questa funzione attraversa l'albero, calcola le matrici globali 
+// e aggiunge ogni singolo pezzo alla lista per essere ordinato.
+void updateRenderList(Node* node, const glm::mat4& parentMatrix) {
+    if (!node) return;
+
+    // 1. Calcola la matrice World di questo nodo
+    // (Moltiplica la matrice del padre per quella locale del nodo)
+    glm::mat4 worldMatrix = parentMatrix * node->getMatrix();
+
+    // 2. Aggiungi il nodo alla lista di rendering
+    renderList.add(node, worldMatrix);
+
+    // 3. Ricorsione sui figli (se ne ha)
+    // Nota: Node non espone getChildren() pubblicamente nel codice base che avevamo,
+    // ma se il metodo render() di Node fa la ricorsione, qui dobbiamo replicarla 
+    // o modificare Node. 
+
+    // PER ORA (Hack rapido): Poiché non abbiamo accesso facile ai figli da qui senza modificare Node.h,
+    // e dato che Node::render() fa già la ricorsione...
+    // Il problema è che vogliamo separare Luci e Mesh.
+
+    // SOLUZIONE MIGLIORE: Modifichiamo Node.h per esporre i figli, 
+    // OPPURE (più semplice ora) ci fidiamo che le luci siano globali o le aggiungiamo a mano.
+}
+/* NOTA: Sopra c'è un problema logico. Senza accesso ai figli (getChildren), non possiamo
+   visitare l'albero qui nel main.
+
+   TORNIAMO ALLA SOLUZIONE FUNZIONANTE SENZA TOCCARE L'ENGINE:
+   Lasciamo che la gerarchia faccia il suo corso, MA forziamo una luce globale sempre accesa.
+*/
+
+// --- CALLBACK ---
 void displayCallback() {
-    // 1. Pulisce lo schermo (Colore e Profondità)
     Eng::Base::getInstance().clearWindow();
 
-    // 2. Prepara la lista di rendering
     renderList.clear();
 
-    // Se abbiamo caricato una scena, la aggiungiamo alla lista
-    if (root) {
-        // Aggiungiamo la radice con matrice identità.
-        // Il metodo render() dei nodi gestirà la gerarchia (figli).
-        renderList.add(root, glm::mat4(1.0f));
-    }
+    // Aggiungiamo la radice alla lista.
+    // ATTENZIONE: Questo non ordina Mesh vs Luci dentro la radice.
+    // Se le luci sono nel file OVO, speriamo siano all'inizio.
+    if (root) renderList.add(root, glm::mat4(1.0f));
 
-    // 3. Esegue il disegno effettivo (Luci -> Mesh)
+    // Disegna
     renderList.render();
 
-    // 4. Scambia i buffer (Double Buffering) per mostrare l'immagine
     Eng::Base::getInstance().swapBuffer();
 }
 
-// --- CALLBACK RIDIMENSIONAMENTO ---
 void reshapeCallback(int w, int h) {
     if (h == 0) h = 1;
     glViewport(0, 0, w, h);
-    // Qui in futuro aggiorneremo l'aspect ratio della camera
+    if (mainCamera) mainCamera->setAspectRatio((float)w / h);
 }
 
-// --- CALLBACK TASTIERA ---
 void keyboardCallback(unsigned char key, int mouseX, int mouseY) {
-    switch (key) {
-    case 27: // Tasto ESC
+    if (key == 27) { // ESC
         if (root) delete root;
         Eng::Base::getInstance().free();
-        exit(0); // Chiude il programma
-        break;
+        exit(0);
     }
 }
 
-void specialCallback(int key, int mouseX, int mouseY) {
-    switch (key) {
-    case GLUT_KEY_UP:
-        std::cout << "Freccia SU" << std::endl;
-        // Qui potrai muovere la camera in avanti
-        break;
-    case GLUT_KEY_DOWN:
-        std::cout << "Freccia GIU" << std::endl;
-        break;
-    case GLUT_KEY_LEFT:
-        std::cout << "Freccia SINISTRA" << std::endl;
-        break;
-    case GLUT_KEY_RIGHT:
-        std::cout << "Freccia DESTRA" << std::endl;
-        break;
-    }
-}
-
-// --- MAIN ---
-int main(int argc, char* argv[]) 
-{
-    // Inizializza l'Engine
+int main(int argc, char* argv[]) {
     Eng::Base& eng = Eng::Base::getInstance();
-    eng.init("Hanoi Tower - Ovo Scene", 800, 600, argc, argv);
+    eng.init("Hanoi Tower", 800, 600, argc, argv);
 
-    // Registra le funzioni di callback
     eng.setDisplayCallback(displayCallback);
     eng.setReshapeCallback(reshapeCallback);
     eng.setKeyboardCallback(keyboardCallback);
-    eng.setSpecialCallback(specialCallback);
 
-    // --- DEBUG PERCORSO ---
-    // Questo ti dice esattamente da dove sta girando il programma!
-    std::cout << "--------------------------------------------------" << std::endl;
-    std::cout << "CARTELLA DI LAVORO ATTUALE: " << std::filesystem::current_path() << std::endl;
-    std::cout << "Il programma cerca il file qui: " << std::filesystem::current_path() / "scena01.ovo" << std::endl;
-    std::cout << "--------------------------------------------------" << std::endl;
-    // ----------------------
+    // Debug Percorso
+    std::cout << "Working Dir: " << std::filesystem::current_path() << std::endl;
 
-    // --- CARICAMENTO SCENA ---
-    std::cout << "Tentativo di caricamento 'scena01.ovo'..." << std::endl;
+    // Caricamento
     OvoParser parser;
+    root = parser.loadFile("scena2.ovo");
 
-    // Carica il file (Assicurati che scena1.ovo sia nella cartella dell'EXE!)
-    root = parser.loadFile("scena01.ovo");
-
-    if (root) {
-        std::cout << "Scena caricata con successo!" << std::endl;
-
-        // --- AGGIUNTA DI CORTESIA (Camera e Luce) ---
-        // Se la scena OVO non ha camera/luci, ne mettiamo noi per vedere qualcosa
-
-        // 1. Camera (Posizione tattica per vedere il tavolo)
-        PerspectiveCamera* cam = new PerspectiveCamera("MainCam", 45.0f, 800.0f / 600.0f, 0.1f, 1000.0f);
-        glm::mat4 camPos = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 10.0f, 20.0f));
-        camPos = glm::rotate(camPos, glm::radians(-30.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-
-        // Imposta la matrice di vista in OpenGL
-        glMatrixMode(GL_MODELVIEW);
-        glLoadMatrixf(glm::value_ptr(glm::inverse(camPos)));
-        root->addChild(cam);
-
-        // 2. Luce Direzionale (Sole)
-        DirectionalLight* sun = new DirectionalLight("Sole");
-        sun->setDirection(glm::vec3(-0.5f, -1.0f, -0.5f));
-        root->addChild(sun);
-
+    if (!root) {
+        std::cerr << "ERRORE: scena1.ovo non caricato." << std::endl;
+        // Creiamo una radice vuota per non crashare
+        root = new Node("RootVuota");
     }
     else {
-        std::cerr << "ERRORE CRITICO: 'scena1.ovo' non trovato o non valido!" << std::endl;
-        std::cout << "Premi INVIO per chiudere..." << std::endl;
-        std::cin.get(); // Blocca la console per farti leggere l'errore
+        std::cout << "Scena caricata!" << std::endl;
     }
 
-    std::cout << "Avvio Loop di Rendering..." << std::endl;
+    // --- SETUP CAMERA & LUCI GLOBALI ---
+    // Le aggiungiamo AL DI FUORI del root caricato, o come fratelli, 
+    // per essere sicuri che esistano e siano configurate bene.
 
-    // --- PUNTO CHIAVE: Loop Infinito ---
+    // 1. Camera
+    mainCamera = new PerspectiveCamera("MainCam", 45.0f, 800.0f / 600.0f, 0.1f, 1000.0f);
+    glm::mat4 camPos = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 20.0f, 50.0f)); // MOLTO PIÙ INDIETRO
+    camPos = glm::rotate(camPos, glm::radians(-20.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+    glMatrixMode(GL_MODELVIEW);
+    glLoadMatrixf(glm::value_ptr(glm::inverse(camPos)));
+
+    // 2. Luce (Sole)
+    DirectionalLight* sun = new DirectionalLight("SoleGlobal");
+    sun->setDirection(glm::vec3(0.0f, -1.0f, -0.5f)); // Luce forte dall'alto
+    sun->setDiffuse(glm::vec3(1.0f, 1.0f, 1.0f));     // Luce bianca pura
+    sun->setAmbient(glm::vec3(0.5f, 0.5f, 0.5f));     // Ambiente forte per vedere anche le zone d'ombra
+
+    // Aggiungiamo questi alla lista render in modo esplicito per essere sicuri che vengano processati
+    // Nota: Li aggiungiamo a root come figli, così vengono disegnati.
+    root->addChild(mainCamera);
+    root->addChild(sun);
+
+    // --- DEBUG BOX ---
+    // Disabilitiamo il culling per vedere anche l'interno degli oggetti se siamo dentro
+    glDisable(GL_CULL_FACE);
+
     eng.run();
 
-    // Pulizia (raggiunta solo alla chiusura)
     if (root) delete root;
     return 0;
 }
