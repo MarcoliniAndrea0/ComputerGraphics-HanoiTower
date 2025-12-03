@@ -109,3 +109,11 @@ Node *Node::findByName(std::string s)
     }
     return nullptr;
 }
+
+void Node::setMatrix(const glm::mat4& matrix) {
+    this->localMatrix = matrix;
+}
+
+glm::mat4 Node::getMatrix() const {
+    return this->localMatrix;
+}

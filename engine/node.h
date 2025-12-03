@@ -96,6 +96,9 @@ public:
         return this->material;
     }
 
+    // --- AGGIUNTA PER OVO PARSER ---
+    void setMatrix(const glm::mat4& matrix);
+    glm::mat4 getMatrix() const;
 
 private:
     glm::mat4 localMatrix;              // Matrice di trasformazione locale

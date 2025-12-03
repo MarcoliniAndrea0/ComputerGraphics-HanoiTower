@@ -14,40 +14,38 @@
 
    // C/C++:         
    #include <memory>
+   #include <string>
 
    // graphics
    #include <glm/glm.hpp>
    #include <glm/gtc/matrix_transform.hpp>
    #include <glm/gtc/type_ptr.hpp>
    #include <GL/freeglut.h>
-   #include <string>
+   
 
 
 /////////////
 // VERSION //
 /////////////
 
-   // Generic info:
+// Generic info:
 #ifdef _DEBUG
-   #define LIB_NAME      "My Graphics Engine v0.1a (debug)"   ///< Library credits
+#define LIB_NAME      "My Graphics Engine v0.1a (debug)"
 #else
-   #define LIB_NAME      "My Graphics Engine v0.1a"   ///< Library credits
+#define LIB_NAME      "My Graphics Engine v0.1a"
 #endif
-   #define LIB_VERSION   10                           ///< Library version (divide by 10)
+#define LIB_VERSION   10                         ///< Library version (divide by 10)
 
-   // Export API:
+// Export API:
 #ifdef _WINDOWS
-   // Specifies i/o linkage (VC++ spec):
-   #ifdef ENGINE_EXPORTS
-      #define ENG_API __declspec(dllexport)
-   #else
-      #define ENG_API __declspec(dllimport)
-   #endif      
-
-   // Get rid of annoying warnings:
-   #pragma warning(disable : 4251) 
-#else // Under linux
-   #define ENG_API
+#ifdef ENGINE_EXPORTS
+#define ENG_API __declspec(dllexport)
+#else
+#define ENG_API __declspec(dllimport)
+#endif      
+#pragma warning(disable : 4251) 
+#else 
+#define ENG_API
 #endif
 
 
@@ -81,55 +79,43 @@ class ENG_API Base final
 public: //
 //////////	      
 
-   // Const/dest:
-   Base(Base const &) = delete;
-   ~Base();
+	Base(Base const&) = delete;
+	~Base();
+	void operator=(Base const&) = delete;
 
-   // Operators:
-   void operator=(Base const &) = delete;
+	static Base& getInstance();
 
-   // Singleton:
-   static Base &getInstance();
+	bool init(std::string windowName, int width, int height, int argc, char* argv[]);
+	bool free();
+	void run();
 
-   // Init/free:
-   bool init(std::string windowName, int width, int height, int argc, char *argv[]);
-   bool free();
+	// --- Metodi di Test ---
+	void testGLM();
+	void testObjectGeneration();
+	void drawSolidCube(float side);
+	void drawSolidTorus(float outerRadius, float innerRadius, GLint side, GLint rings);
+	void drawSolidSphere(float radius, GLint slices, GLint stacks);
+	void drawSolidTeapot(float side);
 
-   // start
-   void run();
+	// --- Callbacks (Proxy per FreeGLUT) ---
+	// Questi sono fondamentali per far funzionare FreeGLUT statico
+	void setDisplayCallback(void (*callback)(void));
+	void setReshapeCallback(void (*callback)(int, int));
+	void setKeyboardCallback(void (*callback)(unsigned char, int, int));
+	void setSpecialCallback(void (*callback)(int, int, int));
 
-   // test methods
-   void testGLM();
-   void testObjectGeneration();
-
-   // Create basic shapes
-   void drawSolidCube(float side);
-   void drawSolidTorus(float outerRadius, float innerRadius, GLint side, GLint rings);
-   void drawSolidSphere(float radius, GLint slices, GLint stacks);
-   void drawSolidTeapot(float side);
-
-   // callbacks
-   void displayCallback();
-   void reshapeCallback(int width, int height);
-   void setKeyboardCallback(void (*callback)(unsigned char, int, int));
-   void setSpecialCallback(void (*callback)(unsigned char, int, int));
-
-   // window & buffer management
-   void clearWindow();
-   void swapBuffer();
-
-   // window id
-   void setWindowId(int i);
-   int getWindowId();
-
-
+	// Window & Buffer
+	void clearWindow();
+	void swapBuffer();
+	void setWindowId(int i);
+	int getWindowId();
 ///////////
 private: //
 ///////////	
 
    // Reserved:
-   struct Reserved;
-   std::unique_ptr<Reserved> reserved;
+	struct Reserved;
+	std::unique_ptr<Reserved> reserved;
 
    // Const/dest:
    Base();

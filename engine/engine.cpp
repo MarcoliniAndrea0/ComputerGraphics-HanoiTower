@@ -14,9 +14,9 @@
 // Main include:
 #include "engine.h"
 
-// C/C++:
+
 #include <iostream>
-#include <source_location>
+#include <ctime> // Per time()
 
 
 
@@ -24,222 +24,152 @@
 // RESERVED STRUCTURES //
 /////////////////////////
 
-/**
- * @brief Base class reserved structure (using PIMPL/Bridge design pattern https://en.wikipedia.org/wiki/Opaque_pointer).
- */
-struct Eng::Base::Reserved
-{
-   // Flags:
-   bool initFlag;
+// Usiamo il namespace per definire la struct in modo pulito
+namespace Eng {
 
-   /**
-    * Constructor.
-    */
-   Reserved() : initFlag{false}
-   {
-   }
-};
+    // Definizione della struct Reserved (PIMPL)
+    struct Base::Reserved
+    {
+        bool initFlag;
+        Reserved() : initFlag(false) {}
+    };
 
-
-
-////////////////////////
-// BODY OF CLASS Base //
-////////////////////////
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/**
- * Constructor.
- */
-ENG_API Eng::Base::Base() : reserved(std::make_unique<Eng::Base::Reserved>())
-{
+    // --- Costruttore ---
+    Base::Base()
+        // FIX COMPATIBILITÀ: Usiamo new invece di make_unique
+        : reserved(std::unique_ptr<Base::Reserved>(new Base::Reserved()))
+    {
 #ifdef _DEBUG
-   std::cout << "[+] " << std::source_location::current().function_name() << " invoked" << std::endl;
+        std::cout << "[+] Engine Base Constructor invoked" << std::endl;
 #endif
-}
+    }
 
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/**
- * Destructor.
- */
-ENG_API Eng::Base::~Base()
-{
+    // --- Distruttore ---
+    Base::~Base()
+    {
 #ifdef _DEBUG
-   std::cout << "[-] " << std::source_location::current().function_name() << " invoked" << std::endl;
+        std::cout << "[-] Engine Base Destructor invoked" << std::endl;
 #endif
-}
+    }
 
+    // --- Singleton ---
+    Base& Base::getInstance()
+    {
+        static Base instance;
+        return instance;
+    }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/**
- * Gets a reference to the (unique) singleton instance.
- * @return reference to singleton instance
- */
-Eng::Base ENG_API &Eng::Base::getInstance()
-{
-   static Base instance;
-   return instance;
-}
+    // --- Inizializzazione ---
+    bool Base::init(std::string windowName, int width, int height, int argc, char* argv[])
+    {
+        if (reserved->initFlag)
+        {
+            std::cout << "ERROR: engine already initialized" << std::endl;
+            return false;
+        }
 
+        srand((unsigned int)time(NULL));
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/**
- * Init internal components.
- * @return TF
- */
-bool ENG_API Eng::Base::init(std::string windowName, int width, int height, int argc, char *argv[])
-{
-   // Already initialized?
-   if (reserved->initFlag)
-   {
-      std::cout << "ERROR: engine already initialized" << std::endl;
-      return false;
-   }
+        glutInit(&argc, argv);
 
-   // init random (if needed)
-   srand(time(NULL));
+        int screen_width = glutGet(GLUT_SCREEN_WIDTH);
+        int screen_height = glutGet(GLUT_SCREEN_HEIGHT);
 
-   // FreeGLUT can parse command-line params, in case:
-   glutInit(&argc, argv);
+        int window_x = (screen_width - width) / 2;
+        int window_y = (screen_height - height) / 2;
+        glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
+        glutInitWindowPosition(window_x, window_y);
+        glutInitWindowSize(width, height);
 
-   int screen_width = glutGet(GLUT_SCREEN_WIDTH);
-   int screen_height = glutGet(GLUT_SCREEN_HEIGHT);
+        glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_GLUTMAINLOOP_RETURNS);
 
-   // Calculate centered position
-   int window_x = (screen_width - width) / 2;
-   int window_y = (screen_height - height) / 2;
-   glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
-   glutInitWindowPosition(window_x, window_y);
-   glutInitWindowSize(width, height);
+        setWindowId(glutCreateWindow((const char*)&windowName));
 
-   // Set some optional flags:
-   glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE,
-                 GLUT_ACTION_GLUTMAINLOOP_RETURNS);
+        glEnable(GL_DEPTH_TEST);
+        glFrontFace(GL_CCW);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        glEnable(GL_CULL_FACE);
+        glCullFace(GL_BACK);
+        glEnable(GL_NORMALIZE);
+        glLightModelf(GL_LIGHT_MODEL_LOCAL_VIEWER, 1.0f);
+        glEnable(GL_LIGHTING);
+        glEnable(GL_LIGHT0);
 
-   // Create the window with a specific title:
-   setWindowId(glutCreateWindow((const char*)&windowName));
+        GLint maxNrOfLights;
+        glGetIntegerv(GL_MAX_LIGHTS, &maxNrOfLights);
 
-   // z buffer
-   glEnable(GL_DEPTH_TEST);
+        std::cout << "[>] " << LIB_NAME << " initialized" << std::endl;
+        reserved->initFlag = true;
+        return true;
+    }
 
-   // render vertices counterclockwise
-   glFrontFace(GL_CCW);
-   glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    bool Base::free()
+    {
+        if (!reserved->initFlag)
+        {
+            std::cout << "ERROR: engine not initialized" << std::endl;
+            return false;
+        }
+        std::cout << "[<] " << LIB_NAME << " deinitialized" << std::endl;
+        reserved->initFlag = false;
+        return true;
+    }
 
-   // back face culling
-   glEnable(GL_CULL_FACE);
-   glCullFace(GL_BACK);
+    void Base::run() {
+        glutMainLoop();
+    }
 
-   // normal vector normalization
-   glEnable(GL_NORMALIZE);
+    // --- Gestione Callbacks (PROXY) ---
+    void Base::setDisplayCallback(void (*callback)(void)) {
+        glutDisplayFunc(callback);
+    }
 
-   // enable lighting
-   glLightModelf(GL_LIGHT_MODEL_LOCAL_VIEWER, 1.0f);
-   glEnable(GL_LIGHTING);
-   glEnable(GL_LIGHT0);
+    void Base::setReshapeCallback(void (*callback)(int, int)) {
+        glutReshapeFunc(callback);
+    }
 
-   // get max no. of lights
-   GLint maxNrOfLights;
-   glGetIntegerv(GL_MAX_LIGHTS, &maxNrOfLights);
+    void Base::setKeyboardCallback(void (*callback)(unsigned char, int, int)) {
+        glutKeyboardFunc(callback);
+        glutPostWindowRedisplay(windowId);
+    }
 
-   // The OpenGL context is now initialized...
+    void Base::setSpecialCallback(void (*callback)(int, int, int)) {
+        glutSpecialFunc(callback);
+        glutPostWindowRedisplay(windowId);
+    }
 
-   // Set callback functions:
-   //glutDisplayFunc(displayCallback);
-   //glutReshapeFunc(reshapeCallback);
+    // --- Altri Metodi ---
+    int Base::getWindowId() { return this->windowId; }
+    void Base::setWindowId(int id) { this->windowId = id; }
 
-   // Done:
-   std::cout << "[>] " << LIB_NAME << " initialized" << std::endl;
-   reserved->initFlag = true;
-   return true;
-}
+    void Base::clearWindow() {
+        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    }
 
-void ENG_API Eng::Base::run() {
-   glutMainLoop();
-}
+    void Base::swapBuffer() {
+        glutSwapBuffers();
+    }
 
-int ENG_API Eng::Base::getWindowId()
-{
-   return this->windowId;
-}
+    void Base::drawSolidCube(float size) { glutSolidCube(size); }
+    void Base::drawSolidSphere(float radius, GLint slices, GLint stacks) { glutSolidSphere(radius, slices, stacks); }
+    void Base::drawSolidTorus(float outerRadius, float innerRadius, GLint side, GLint rings) { glutSolidTorus(outerRadius, innerRadius, side, rings); }
+    void Base::drawSolidTeapot(float size) { glutSolidTeapot(size); }
 
-void ENG_API Eng::Base::setWindowId(int id)
-{
-   this->windowId = id;
-}
+    void Base::testGLM() {
+        glm::mat4 translation = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 10));
+        std::cout << "GLM OK" << std::endl;
+    }
 
-void ENG_API Eng::Base::displayCallback()
-{
-   //clearWindow();
-}
+    void Base::testObjectGeneration() {
+        std::cout << "graphics generation OK" << std::endl;
+    }
 
-void ENG_API Eng::Base::setKeyboardCallback(void (*callback)(unsigned char, int, int))
-{
-   glutKeyboardFunc(callback);
-   glutPostWindowRedisplay(windowId);
-}
-
-void ENG_API Eng::Base::setSpecialCallback(void (*callback)(unsigned char, int, int))
-{
-   glutKeyboardFunc(callback);
-   glutPostWindowRedisplay(windowId);
-}
-
-
-void ENG_API Eng::Base::reshapeCallback(int width, int height)
-{
-   // temporary code, to be changed with actual camera information
-    std::cout << "[reshape func invoked]" << std::endl;
-
-    glViewport(0, 0, width, height);
-    glMatrixMode(GL_PROJECTION);
-    glm::mat4 projection = glm::perspective(
-        glm::radians(45.0f), (float)width / (float)height, 1.0f, 1000.0f);
-
-    glLoadMatrixf(glm::value_ptr(projection));
-    glMatrixMode(GL_MODELVIEW);
-}
-
-/**
- * Clears the buffer
- */
-void ENG_API Eng::Base::clearWindow()
-{
-   glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-}
-
-/**
- * Swaps the buffers
- */
-void ENG_API Eng::Base::swapBuffer()
-{
-   glutSwapBuffers();
-}
-
-void ENG_API Eng::Base::drawSolidCube(float size)
-{
-   glutSolidCube(size);
-}
-
-void ENG_API Eng::Base::drawSolidSphere(float radius, GLint slices, GLint stacks)
-{
-   glutSolidSphere(radius, slices, stacks);
-}
-
-void ENG_API Eng::Base::drawSolidTorus(float outerRadius, float innerRadius, GLint side, GLint rings)
-{
-   glutSolidTorus(outerRadius, innerRadius, side, rings);
-}
-
-void ENG_API Eng::Base::drawSolidTeapot(float size)
-{
-   glutSolidTeapot(size);
 }
 
 /**
  * Test GLM functionality
- */
+ 
 void ENG_API Eng::Base::testGLM()
 {
    glm::mat4 translation = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 10));
@@ -263,7 +193,7 @@ void ENG_API Eng::Base::testObjectGeneration()
 /**
  * Free internal components.
  * @return TF
- */
+ *
 bool ENG_API Eng::Base::free()
 {
    // Not initialized?
@@ -280,3 +210,4 @@ bool ENG_API Eng::Base::free()
    reserved->initFlag = false;
    return true;
 }
+*/

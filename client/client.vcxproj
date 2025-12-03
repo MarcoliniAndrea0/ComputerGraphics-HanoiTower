@@ -85,6 +85,9 @@
   <ItemGroup>
     <ClInclude Include="definitions.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="x64\Debug\scena1.ovo" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
