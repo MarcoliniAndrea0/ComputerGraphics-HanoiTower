@@ -28,6 +28,18 @@
     <ClCompile Include="texture.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="directionalLight.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="pointLight.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="prospectiveCamera.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="spotLight.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h">
@@ -55,6 +67,18 @@
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="texture.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="directionalLight.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="pointLight.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="prospectiveCamera.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="spotLight.h">
       <Filter>Header</Filter>
     </ClInclude>
   </ItemGroup>
