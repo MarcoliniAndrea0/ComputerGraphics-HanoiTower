@@ -1,8 +1,8 @@
 /**
- * @file		main.cpp
- * @brief	Client application con rendering corretto
+ * @file main.cpp
+ * @brief Visualizzatore Stanza (Scena 2)
  */
-
+#define _CRT_SECURE_NO_WARNINGS
 #include "definitions.h"
 #include "engine.h"
 #include "Camera.h"
@@ -10,133 +10,133 @@
 #include "Mesh.h"
 #include "Material.h"
 #include "Light.h"
-#include "DirectionalLight.h"
+#include "PointLight.h" 
 #include "List.h"
 #include "OvoParser.h"
 
 #include <iostream>
-#include <filesystem>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
- // --- GLOBALI ---
+ // Globals
 List renderList;
 Node* root = nullptr;
-PerspectiveCamera* mainCamera = nullptr;
+PerspectiveCamera* activeCamera = nullptr;
+PointLight* roomLight = nullptr;
 
-// --- FUNZIONE RICORSIVA PER RIEMPIRE LA LISTA ---
-// Questa funzione attraversa l'albero, calcola le matrici globali 
-// e aggiunge ogni singolo pezzo alla lista per essere ordinato.
-void updateRenderList(Node* node, const glm::mat4& parentMatrix) {
-    if (!node) return;
+// Trova la camera nel grafo (ricorsiva)
+Node* findFirstCamera(Node* node) {
+    if (!node) return nullptr;
+    if (node->getName().find("Camera") != std::string::npos) return node;
 
-    // 1. Calcola la matrice World di questo nodo
-    // (Moltiplica la matrice del padre per quella locale del nodo)
-    glm::mat4 worldMatrix = parentMatrix * node->getMatrix();
-
-    // 2. Aggiungi il nodo alla lista di rendering
-    renderList.add(node, worldMatrix);
-
-    // 3. Ricorsione sui figli (se ne ha)
-    // Nota: Node non espone getChildren() pubblicamente nel codice base che avevamo,
-    // ma se il metodo render() di Node fa la ricorsione, qui dobbiamo replicarla 
-    // o modificare Node. 
-
-    // PER ORA (Hack rapido): Poiché non abbiamo accesso facile ai figli da qui senza modificare Node.h,
-    // e dato che Node::render() fa già la ricorsione...
-    // Il problema è che vogliamo separare Luci e Mesh.
-
-    // SOLUZIONE MIGLIORE: Modifichiamo Node.h per esporre i figli, 
-    // OPPURE (più semplice ora) ci fidiamo che le luci siano globali o le aggiungiamo a mano.
+    // Iterazione manuale sui figli
+    int i = 0;
+    while (Node* child = node->getChild(i++)) {
+        Node* res = findFirstCamera(child);
+        if (res) return res;
+    }
+    return nullptr;
 }
-/* NOTA: Sopra c'è un problema logico. Senza accesso ai figli (getChildren), non possiamo
-   visitare l'albero qui nel main.
 
-   TORNIAMO ALLA SOLUZIONE FUNZIONANTE SENZA TOCCARE L'ENGINE:
-   Lasciamo che la gerarchia faccia il suo corso, MA forziamo una luce globale sempre accesa.
-*/
-
-// --- CALLBACK ---
 void displayCallback() {
+    // 1. SFONDO BLU (Così capiamo se il rendering funziona)
+    std::cout << "Render Frame..." << std::endl; // DEBUG: Controlla se lo stampa a ciclo continuo
+
+    glClearColor(0.2f, 0.3f, 0.5f, 1.0f); // Blu
     Eng::Base::getInstance().clearWindow();
+
+    // 2. STATO OPENGL
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_LIGHTING); // Luci accese per vedere le pareti 3D
+    glEnable(GL_LIGHT0);   // Luce fissa camera
+    glEnable(GL_NORMALIZE); // Importante per le normali scalate
 
     renderList.clear();
 
-    // Aggiungiamo la radice alla lista.
-    // ATTENZIONE: Questo non ordina Mesh vs Luci dentro la radice.
-    // Se le luci sono nel file OVO, speriamo siano all'inizio.
+    // 3. AGGIUNTA CAMERA
+    if (activeCamera) renderList.add(activeCamera, glm::mat4(1.0f));
+
+    // 4. LUCE STANZA (La aggiungiamo manuale per sicurezza)
+    if (roomLight) renderList.add(roomLight, glm::mat4(1.0f));
+
+    // 5. SCENA
     if (root) renderList.add(root, glm::mat4(1.0f));
 
-    // Disegna
     renderList.render();
-
     Eng::Base::getInstance().swapBuffer();
 }
 
 void reshapeCallback(int w, int h) {
     if (h == 0) h = 1;
     glViewport(0, 0, w, h);
-    if (mainCamera) mainCamera->setAspectRatio((float)w / h);
+    if (activeCamera) activeCamera->setAspectRatio((float)w / h);
 }
 
 void keyboardCallback(unsigned char key, int mouseX, int mouseY) {
     if (key == 27) { // ESC
         if (root) delete root;
+        if (activeCamera) delete activeCamera;
+        if (roomLight) delete roomLight;
         Eng::Base::getInstance().free();
         exit(0);
+    }
+
+    // Movimento camera WASD
+    if (activeCamera) {
+        float speed = 10.0f; // Veloce perché la stanza potrebbe essere grande
+        glm::mat4 mat = activeCamera->getMatrix();
+
+        if (key == 'w') mat = glm::translate(mat, glm::vec3(0, 0, -speed));
+        if (key == 's') mat = glm::translate(mat, glm::vec3(0, 0, speed));
+        if (key == 'a') mat = glm::translate(mat, glm::vec3(-speed, 0, 0));
+        if (key == 'd') mat = glm::translate(mat, glm::vec3(speed, 0, 0));
+        if (key == 'q') mat = glm::translate(mat, glm::vec3(0, speed, 0));
+        if (key == 'e') mat = glm::translate(mat, glm::vec3(0, -speed, 0));
+
+        activeCamera->setMatrix(mat);
     }
 }
 
 int main(int argc, char* argv[]) {
     Eng::Base& eng = Eng::Base::getInstance();
-    eng.init("Hanoi Tower", 800, 600, argc, argv);
+    eng.init("Room Viewer", 1024, 768, argc, argv);
 
     eng.setDisplayCallback(displayCallback);
     eng.setReshapeCallback(reshapeCallback);
     eng.setKeyboardCallback(keyboardCallback);
 
-    // Debug Percorso
-    std::cout << "Working Dir: " << std::filesystem::current_path() << std::endl;
-
-    // Caricamento
+    // --- CARICAMENTO ---
     OvoParser parser;
+    std::cout << "[MAIN] Caricamento scena2.ovo (Stanza)..." << std::endl;
     root = parser.loadFile("scena2.ovo");
 
-    if (!root) {
-        std::cerr << "ERRORE: scena1.ovo non caricato." << std::endl;
-        // Creiamo una radice vuota per non crashare
-        root = new Node("RootVuota");
+    if (!root) root = new Node("Dummy");
+
+    // --- CAMERA ---
+    activeCamera = new PerspectiveCamera("MainCam", 60.0f, 1.33f, 0.1f, 10000.0f);
+    Node* sceneCam = findFirstCamera(root);
+
+    if (sceneCam) {
+        std::cout << "[MAIN] Camera trovata nel file: " << sceneCam->getName() << std::endl;
+        activeCamera->setMatrix(sceneCam->getMatrix());
     }
     else {
-        std::cout << "Scena caricata!" << std::endl;
+        std::cout << "[MAIN] Camera non trovata. Uso default panoramico." << std::endl;
+        // Posizione "Dall'alto" per vedere il pavimento
+        glm::mat4 pos = glm::translate(glm::mat4(1.0f), glm::vec3(0, 200, 200));
+        pos = glm::rotate(pos, glm::radians(-45.0f), glm::vec3(1, 0, 0));
+        activeCamera->setMatrix(pos);
     }
 
-    // --- SETUP CAMERA & LUCI GLOBALI ---
-    // Le aggiungiamo AL DI FUORI del root caricato, o come fratelli, 
-    // per essere sicuri che esistano e siano configurate bene.
-
-    // 1. Camera
-    mainCamera = new PerspectiveCamera("MainCam", 45.0f, 800.0f / 600.0f, 0.1f, 1000.0f);
-    glm::mat4 camPos = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 20.0f, 50.0f)); // MOLTO PIÙ INDIETRO
-    camPos = glm::rotate(camPos, glm::radians(-20.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-    glMatrixMode(GL_MODELVIEW);
-    glLoadMatrixf(glm::value_ptr(glm::inverse(camPos)));
-
-    // 2. Luce (Sole)
-    DirectionalLight* sun = new DirectionalLight("SoleGlobal");
-    sun->setDirection(glm::vec3(0.0f, -1.0f, -0.5f)); // Luce forte dall'alto
-    sun->setDiffuse(glm::vec3(1.0f, 1.0f, 1.0f));     // Luce bianca pura
-    sun->setAmbient(glm::vec3(0.5f, 0.5f, 0.5f));     // Ambiente forte per vedere anche le zone d'ombra
-
-    // Aggiungiamo questi alla lista render in modo esplicito per essere sicuri che vengano processati
-    // Nota: Li aggiungiamo a root come figli, così vengono disegnati.
-    root->addChild(mainCamera);
-    root->addChild(sun);
-
-    // --- DEBUG BOX ---
-    // Disabilitiamo il culling per vedere anche l'interno degli oggetti se siamo dentro
-    glDisable(GL_CULL_FACE);
+    // --- LUCE EXTRA ---
+    // Aggiungiamo una luce al centro della scena per illuminare i muri
+    roomLight = new PointLight("LightBulb");
+    roomLight->setPosition(glm::vec3(0, 100, 0)); // In alto al centro
+    roomLight->setDiffuse(glm::vec3(1.0f, 1.0f, 0.8f)); // Luce calda
+    roomLight->setLinearAttenuation(0.005f); // Attenuazione lenta
+    roomLight->setMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(0, 100, 0)));
 
     eng.run();
-
-    if (root) delete root;
     return 0;
 }

@@ -1,8 +1,9 @@
 #pragma once
 
 #include "light.h"
+#include "engine.h"
 
-class PointLight : public Light
+class ENG_API PointLight : public Light
 {
 public:
     PointLight(const std::string& name, const std::string& type = "PointLight");
