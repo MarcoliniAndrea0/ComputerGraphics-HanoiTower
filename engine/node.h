@@ -7,6 +7,7 @@
  */
 #pragma once
 #include "object.h"
+#include "engine.h"
 #include <glm/glm.hpp>
 #include <vector>
 #include <string>
@@ -19,7 +20,7 @@
  * Permette la gestione della gerarchia tra nodi, le trasformazioni con matrici locali e globali,
  * e la ricerca ricorsiva per nome.
  */
-class Node : public Object
+class ENG_API Node : public Object
 {
 public:
     /**

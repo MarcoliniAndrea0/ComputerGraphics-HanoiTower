@@ -13,6 +13,12 @@
 #include "engine.h"
 #include "definitions.h"
 
+//#include "texture.h"
+#include "material.h"
+#include "light.h"
+#include "directionalLight.h"
+#include "prospectiveCamera.h"
+
 // C/C++:
 #include <iostream>
 
@@ -85,6 +91,12 @@ int main(int argc, char *argv[])
    // Init engine:
    Eng::Base &eng = Eng::Base::getInstance();
    eng.init("My application", 500, 500, argc, argv);
+
+   //Texture* myTex = new Texture("TestTex", "test.jpg"); // Sostituisci col nome del tuo file
+   Material* myMat = new Material("TestMat");
+   //myMat->setTexture(myTex);
+   myMat->setDiffuse(glm::vec4(1.0f)); // Bianco per far risaltare la texture
+
    eng.setKeyboardCallback(keyboardCallback);
 
    // test components
