@@ -1,30 +1,54 @@
 #pragma once
 
-#include "light.h"
+#include "Common.h"
+#include "Light.h"
 
-class PointLight : public Light
+/**
+ * @file PointLight.h
+ * @brief Dichiarazione della classe PointLight.
+ *
+ * La classe `PointLight` rappresenta una sorgente di luce che emette luce in tutte le direzioni
+ * da una posizione specifica, con un effetto visibile fino a una distanza definita dal raggio.
+ */
+
+ /**
+  * @class PointLight
+  * @brief Rappresenta una luce puntiforme.
+  *
+  * Una `PointLight` emette luce in tutte le direzioni da una posizione specifica
+  * ed è utilizzata per simulare sorgenti di luce come una lampadina o una candela.
+  *
+  * La luce puntiforme ha un effetto visibile fino a una certa distanza, definita dal raggio.
+  * Oltre questa distanza, la luce si attenua gradualmente.
+  */
+class LIB_API PointLight : public Light
 {
 public:
-    PointLight(const std::string& name, const std::string& type = "PointLight");
+    /**
+     * @brief Costruttore di default.
+     *
+     * Inizializza una `PointLight` con un raggio predefinito di `1.0f`.
+     */
+    PointLight();
+
     virtual ~PointLight() = default;
 
-    void render() override;
+    /**
+     * @brief Imposta il raggio della luce puntiforme.
+     *
+     * @param newRadius La distanza massima di influenza della luce.
+     */
+    void setRadius(const float newRadius);
 
-    // Setters
-    void setPosition(const glm::vec3& pos);
-    void setConstantAttenuation(float v);
-    void setLinearAttenuation(float v);
-    void setQuadraticAttenuation(float v);
+    /**
+     * @brief Renderizza la luce puntiforme.
+     *
+     * Configura i parametri della luce puntiforme in OpenGL per la scena corrente.
+     *
+     * @param viewMatrix La matrice di visualizzazione da utilizzare.
+     */
+    void render(const glm::mat4 viewMatrix) const override;
 
-    // Getters
-    glm::vec3 getPosition() const;
-    float getConstantAttenuation() const;
-    float getLinearAttenuation() const;
-    float getQuadraticAttenuation() const;
-
-protected:
-    glm::vec3 m_position;
-    float m_constAtt;
-    float m_linAtt;
-    float m_quadAtt;
+private:
+    float _radius; ///< Distanza massima di influenza della luce.
 };

@@ -1,75 +1,98 @@
+#include "Object.h"
+
+#include <sstream>
+
+int Object::nextId = 0;
+
 /**
- * @file object.cpp
- * @brief Implementazione della classe base Object.
+ * @brief Costruttore della classe Object.
+ * @param type Il tipo dell'oggetto.
  *
- * Inizializza il contatore statico degli ID e implementa i metodi accessori
- * per nome, tipo e ID. Il costruttore inizializza l'ID e le variabili membro.
- * Il metodo render è virtuale puro e non è implementato qui.
+ * Il costruttore assegna automaticamente un ID univoco all'oggetto e imposta
+ * il nome dell'oggetto nel formato "[<id>]".
  */
-#include "object.h"
-
-int Object::id_counter = 0;
-
-/**
- * @brief Costruisce un oggetto Object con nome e tipo opzionali.
- * Assegna automaticamente un ID univoco.
- * @param name Nome descrittivo (di default stringa vuota).
- * @param type Identificatore del tipo (di default stringa vuota).
- */
-Object::Object(const std::string& name_, const std::string& type_)
-	: id(++id_counter), name(name_), type(type_)
+Object::Object(const std::string type)
+    : _type(type)
 {
+    this->_id = Object::nextId++;
+
+    std::stringstream stream;
+    stream << '[' << this->getId() << ']';
+    this->_name = stream.str();
 }
 
-	////////////////
-	///  GETTER  ///
-	////////////////
-
 /**
- * @brief Restituisce l'ID univoco di questa istanza di Object.
- * @return Identificatore intero univoco.
+ * @brief Distruttore della classe `Object`.
  */
-int Object::getID() const 
+Object::~Object()
 {
-	return id;
+    nextId--;
 }
 
+
+///// Getter
+
 /**
- * @brief Restituisce il nome dell'oggetto.
- * @return Riferimento alla stringa del nome.
+ * @brief Restituisce l'ID univoco assegnato a questo oggetto.
+ *
+ * Questo metodo restituisce l'ID che viene auto-generato per l'oggetto
+ * al momento della sua creazione. L'ID identifica
+ * in modo univoco ogni istanza della classe `Object`.
+ *
+ * @return L'ID dell'oggetto.
  */
-const std::string& Object::getName() const 
+int LIB_API Object::getId() const
 {
-	return name;
+    return this->_id;
 }
 
 /**
- * @brief Restituisce il tipo dell'oggetto.
- * @return Riferimento alla stringa del tipo.
+ * @brief Restituisce il nome di questo oggetto.
+ *
+ * @return Il nome dell'oggetto come stringa.
  */
-const std::string& Object::getType() const 
-{ 
-	return type; 
-}
-
-	////////////////
-	///  SETTER  ///
-	////////////////
-
-
-/**
- * @brief Imposta un nuovo nome per l'oggetto.
- * @param newName Stringa da assegnare come nuovo nome.
- */
-void Object::setName(const std::string& newName) {
-	name = newName;
+std::string LIB_API Object::getName() const
+{
+    return this->_name;
 }
 
 /**
- * @brief Imposta il tipo identificatore per l'oggetto.
- * @param newType Stringa che definisce il nuovo tipo.
+ * @brief Restituisce il tipo di questo oggetto.
+ *
+ * @return Il tipo dell'oggetto come stringa.
  */
-void Object::setType(const std::string& newType) 
-{ 
-	type = newType; 
+const std::string LIB_API Object::getType() const {
+    return _type;
+}
+
+////// Setter
+
+/**
+ * @brief Imposta un nuovo nome per questo oggetto.
+ *
+ * @param newName Il nuovo nome da assegnare all'oggetto.
+ */
+void LIB_API Object::setName(const std::string newName)
+{
+    this->_name = newName;
+}
+
+/**
+ * @brief Imposta un nuovo tipo per questo oggetto.
+ *
+ * @param type Il nuovo tipo da assegnare all'oggetto.
+ */
+void LIB_API Object::setType(const std::string& type) {
+    this->_type = type;
+}
+
+///// Other
+
+/**
+ * @brief Resetta il generatore di ID a zero.
+ *
+ * Questo metodo ripristina il contatore degli ID a zero.
+ */
+void LIB_API Object::resetIdGenerator() {
+    nextId = 0;
 }

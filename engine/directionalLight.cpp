@@ -1,41 +1,67 @@
-#include "directionalLight.h"
-#include "engine.h"
+#include "DirectionalLight.h"
 
-DirectionalLight::DirectionalLight(const std::string& name)
-    : Light(name, "DirectionalLight")
+#include <GL/freeglut.h>
+#include <glm/gtc/type_ptr.hpp>
+
+/**
+ * @brief Costruttore della classe DirectionalLight.
+ *
+ * Crea una nuova istanza di `DirectionalLight` con i seguenti parametri di default:
+ * - Direzione: (0.0f, 1.0f, 0.0f) (Verso l'alto).
+ *
+ * Nota: La direzione predefinita indica che la luce è orientata verso l'alto lungo l'asse Y,
+ * simulando l'effetto di una luce proveniente dall'alto, come il sole.
+ */
+DirectionalLight::DirectionalLight()
+    : Light{ "DirectionalLight" }
 {
-    // Default: luce che viene dall'alto (asse Y)
-    m_direction = glm::vec3(0.0f, 1.0f, 0.0f);
+    this->setDirection(glm::vec3(0.0f, 1.0f, 0.0f));
 }
 
-void DirectionalLight::setDirection(const glm::vec3& direction) {
-    m_direction = direction;
+/**
+ * @brief Modifica la direzione verso cui la luce viene puntata.
+ *
+ * @param newDirection Il nuovo vettore di direzione per la luce.
+ */
+void LIB_API DirectionalLight::setDirection(const glm::vec3 newDirection)
+{
+    this->_direction = newDirection;
 }
 
-glm::vec3 DirectionalLight::getDirection() const {
-    return m_direction;
-}
+/**
+ * @brief Renderizza la luce direzionale.
+ *
+ * Questa funzione viene chiamata automaticamente da MyEngine e non deve essere invocata manualmente.
+ *
+ * @param viewMatrix La matrice di vista da utilizzare per il rendering.
+ *
+ * Dettagli:
+ * - Abilita la sorgente di luce specificata dall'ID della luce.
+ * - Imposta la posizione della luce come un vettore 4D, dove il valore `w = 0.0f` indica una luce direzionale.
+ * - Imposta i colori ambientale, diffuso e speculare della luce.
+ */
+void LIB_API DirectionalLight::render(const glm::mat4 viewMatrix) const
+{
+    // Chiama il metodo della classe base `Node` per gestire il rendering di base.
+    Node::render(viewMatrix);
 
-void DirectionalLight::render() {
-    int lightNum = getLightNumber();
+    // Abilita la luce corrente in OpenGL.
+    glEnable(GL_LIGHT0 + this->_lightId);
 
-    
-    glEnable(lightNum);
+    // Posizione della luce: la componente w = 0.0f indica una luce direzionale.
+    const glm::vec4 lightPosition(_direction, 0.0f);
 
-    // Imposta i colori
-    glm::vec4 ambient4(m_ambient, 1.0f);
-    glm::vec4 diffuse4(m_diffuse, 1.0f);
-    glm::vec4 specular4(m_specular, 1.0f);
+    // Colori ambientale, diffuso e speculare della luce.
+    const glm::vec4 ambient(this->_ambientColor, 1.0f);
+    const glm::vec4 diffuse(this->_diffuseColor, 1.0f);
+    const glm::vec4 specular(this->_specularColor, 1.0f);
 
-    glLightfv(lightNum, GL_AMBIENT, glm::value_ptr(ambient4));
-    glLightfv(lightNum, GL_DIFFUSE, glm::value_ptr(diffuse4));
-    glLightfv(lightNum, GL_SPECULAR, glm::value_ptr(specular4));
+    // Ottiene l'ID della luce corrente.
+    const int currentLight = Light::getCurrentLight(this->_lightId);
 
-    // Imposta la posizione/direzione
-    // Importante: w = 0.0f indica che è una luce direzionale!
-    // Nota: OpenGL trasformerà questo vettore con la matrice ModelView corrente.
-    // Poiché la RenderList ha già applicato le trasformazioni del nodo, 
-    // possiamo passare la direzione locale.
-    glm::vec4 pos(m_direction, 0.0f);
-    glLightfv(lightNum, GL_POSITION, glm::value_ptr(pos));
+    // Configura le proprietà della luce in OpenGL.
+    glLightfv(currentLight, GL_POSITION, glm::value_ptr(lightPosition));
+    glLightfv(currentLight, GL_AMBIENT, glm::value_ptr(ambient));
+    glLightfv(currentLight, GL_DIFFUSE, glm::value_ptr(diffuse));
+    glLightfv(currentLight, GL_SPECULAR, glm::value_ptr(specular));
 }

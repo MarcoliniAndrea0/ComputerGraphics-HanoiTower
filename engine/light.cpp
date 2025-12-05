@@ -1,65 +1,113 @@
-#include "light.h"
-#include "engine.h"
+#include "Light.h"
+
+#include <GL/freeglut.h>
 #include <iostream>
 
+// Tiene traccia del prossimo ID da assegnare a una nuova luce.
 int Light::nextLightId = 0;
 
-Light::Light(const std::string& name, const std::string& type)
-    : Node(name, type)
+/**
+ * @brief Costruttore della classe `Light`.
+ * @param type Il tipo di luce (es. "PointLight", "SpotLight").
+ */
+Light::Light(const std::string& type)
+    : Node{ type }
 {
-    // Assegna un ID univoco
-    m_lightId = nextLightId++;
+    this->setPriority(1);
 
-    // Verifica limite luci OpenGL
-    int maxLights;
-    glGetIntegerv(GL_MAX_LIGHTS, &maxLights);
+    int maxNumberOfLights;
+    glGetIntegerv(GL_MAX_LIGHTS, &maxNumberOfLights);
 
-    if (m_lightId >= maxLights) {
-        std::cerr << "[WARNING] Numero massimo di luci OpenGL superato!" << std::endl;
+    this->_lightId = Light::nextLightId;
+    std::cout << "This light: " << this->_lightId << std::endl;
+
+    if (this->_lightId >= maxNumberOfLights)
+    {
+        WARNING("Maximum number of lights exceeded: (" << maxNumberOfLights << ").");
+        return;
     }
 
-    // Colori di default (bianco)
-    m_ambient = glm::vec3(0.0f);
-    m_diffuse = glm::vec3(1.0f);
-    m_specular = glm::vec3(1.0f);
+    this->setAmbientColor(glm::vec3(0.0f, 0.0f, 0.0f));
+    this->setDiffuseColor(glm::vec3(1.0f, 1.0f, 1.0f));
+    this->setSpecularColor(glm::vec3(1.0f, 1.0f, 1.0f));
+
+    Light::nextLightId++;
 }
 
-Light::~Light() {
-    if (m_lightId == nextLightId - 1) {
-        nextLightId--;
-    }
-}
-
-int Light::getLightNumber() const {
-    return GL_LIGHT0 + m_lightId;
-}
-
-glm::vec3 Light::getAmbient() const 
+/**
+ * @brief Distruttore della classe `Light`.
+ */
+Light::~Light()
 {
-    return m_ambient; 
+    nextLightId--;
 }
 
-glm::vec3 Light::getDiffuse() const 
-{ 
-    return m_diffuse; 
+// Getter
+
+/**
+ * @brief Restituisce il numero della luce OpenGL associato all'ID.
+ * @param lightId L'ID della luce.
+ * @return Il numero della luce OpenGL.
+ */
+int LIB_API Light::getCurrentLight(const int lightId) const
+{
+    return GL_LIGHT0 + lightId;
 }
 
-glm::vec3 Light::getSpecular() const 
-{ 
-    return m_specular; 
+/**
+ * @brief Restituisce il colore ambientale della luce.
+ */
+glm::vec3 LIB_API Light::getAmbientColor() const
+{
+    return _ambientColor;
 }
 
-void Light::setAmbient(const glm::vec3& color) 
-{ 
-    m_ambient = color; 
+/**
+ * @brief Restituisce il colore diffuso della luce.
+ */
+glm::vec3 LIB_API Light::getDiffuseColor() const
+{
+    return _diffuseColor;
 }
 
-void Light::setDiffuse(const glm::vec3& color) 
-{ 
-    m_diffuse = color; 
+/**
+ * @brief Restituisce il colore speculare della luce.
+ */
+glm::vec3 LIB_API Light::getSpecularColor() const
+{
+    return _specularColor;
 }
 
-void Light::setSpecular(const glm::vec3& color) 
-{ 
-    m_specular = color; 
+// Setter
+
+/**
+ * @brief Imposta il colore ambientale della luce.
+ */
+void LIB_API Light::setAmbientColor(const glm::vec3 newColor)
+{
+    this->_ambientColor = newColor;
+}
+
+/**
+ * @brief Imposta il colore diffuso della luce.
+ */
+void LIB_API Light::setDiffuseColor(const glm::vec3 newColor)
+{
+    this->_diffuseColor = newColor;
+}
+
+/**
+ * @brief Imposta il colore speculare della luce.
+ */
+void LIB_API Light::setSpecularColor(const glm::vec3 newColor)
+{
+    this->_specularColor = newColor;
+}
+
+/**
+ * @brief Resetta il contatore degli ID delle luci.
+ */
+void LIB_API Light::resetNextLightId()
+{
+    Light::nextLightId = 0;
 }

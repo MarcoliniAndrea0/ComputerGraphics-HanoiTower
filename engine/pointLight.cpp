@@ -1,84 +1,77 @@
-#include "pointLight.h"
-#include "engine.h"
+#include "PointLight.h"
 
-PointLight::PointLight(const std::string& name, const std::string& type)
-    : Light(name, type)
+#include <GL/freeglut.h>
+#include <glm/gtc/type_ptr.hpp>
+
+/**
+ * @brief Costruttore della classe PointLight.
+ *
+ * Crea una nuova istanza di PointLight con i seguenti parametri di default:
+ * - Raggio: `1.0f`.
+ *
+ * La luce puntiforme emette luce in tutte le direzioni da una posizione specifica con
+ * un effetto visibile fino a una distanza definita dal raggio.
+ */
+PointLight::PointLight()
+    : Light{ "PointLight" }
 {
-    // Default: posizione all'origine locale (0,0,0)
-    m_position = glm::vec3(0.0f, 0.0f, 0.0f);
-
-    // Default attenuazione: Nessuna (luce infinita) -> Costante=1, altre=0
-    m_constAtt = 1.0f;
-    m_linAtt = 0.0f;
-    m_quadAtt = 0.0f;
+    this->setRadius(5.0f);
 }
 
-void PointLight::render() {
-    int id = getLightNumber();
-    glEnable(id);
+///// Setter
 
-    // Colori (dalla classe base Light)
-    glm::vec4 ambient4(m_ambient, 1.0f);
-    glm::vec4 diffuse4(m_diffuse, 1.0f);
-    glm::vec4 specular4(m_specular, 1.0f);
-
-    glLightfv(id, GL_AMBIENT, glm::value_ptr(ambient4));
-    glLightfv(id, GL_DIFFUSE, glm::value_ptr(diffuse4));
-    glLightfv(id, GL_SPECULAR, glm::value_ptr(specular4));
-
-    // Posizione
-    // w = 1.0f -> Posizione puntiforme
-    // Nota: Viene trasformata dalla ModelView Matrix corrente (quindi segue il nodo)
-    glm::vec4 pos4(m_position, 1.0f);
-    glLightfv(id, GL_POSITION, glm::value_ptr(pos4));
-
-    // Attenuazione
-    glLightf(id, GL_CONSTANT_ATTENUATION, m_constAtt);
-    glLightf(id, GL_LINEAR_ATTENUATION, m_linAtt);
-    glLightf(id, GL_QUADRATIC_ATTENUATION, m_quadAtt);
-
-    // Reset Spot (nel caso questa luce ID fosse usata come spot prima)
-    // 180 gradi = omnidirezionale
-    glLightf(id, GL_SPOT_CUTOFF, 180.0f);
-}
-
-void PointLight::setPosition(const glm::vec3& pos) 
+/**
+ * @brief Imposta il raggio della luce `PointLight`.
+ *
+ * Il raggio determina la distanza massima fino alla quale la luce ha effetto.
+ * Un raggio maggiore aumenta l'area illuminata dalla luce.
+ *
+ * @param newRadius Il nuovo raggio della luce `PointLight`.
+ */
+void LIB_API PointLight::setRadius(const float newRadius)
 {
-    m_position = pos;
+    this->_radius = newRadius;
 }
 
-void PointLight::setConstantAttenuation(float v) 
-{ 
-    m_constAtt = v;
-}
+///// Render PointLight
 
-void PointLight::setLinearAttenuation(float v)
-{ 
-    m_linAtt = v; 
-}
-
-void PointLight::setQuadraticAttenuation(float v)
-{ 
-    m_quadAtt = v;
-}
-
-
-glm::vec3 PointLight::getPosition() const
+/**
+ * @brief Renderizza la luce puntiforme.
+ *
+ * Questa funzione configura i parametri della luce puntiforme in OpenGL,
+ * inclusa la posizione e i colori della luce. Viene chiamata automaticamente da MyEngine.
+ *
+ * @param viewMatrix La matrice di visualizzazione da utilizzare per renderizzare questo oggetto.
+ */
+void LIB_API PointLight::render(const glm::mat4 viewMatrix) const
 {
-    return m_position;
-}
+    Node::render(viewMatrix);
 
-float PointLight::getConstantAttenuation() const 
-{
-    return m_constAtt; 
-}
+    // Abilita la sorgente di luce specificata dall'ID corrente.
+    glEnable(GL_LIGHT0 + this->_lightId);
 
-float PointLight::getLinearAttenuation() const 
-{
-    return m_linAtt; 
-}
+    // Definisce la posizione della luce come (0.0f, 0.0f, 0.0f, 1.0f),
+    // che indica una luce puntiforme.
+    const glm::vec4 lightPosition(0.0f, 0.0f, 0.0f, 1.0f);
 
-float PointLight::getQuadraticAttenuation() const 
-{ 
-    return m_quadAtt; 
+    const glm::vec4 ambient(this->_ambientColor, 1.0f);
+    const glm::vec4 diffuse(this->_diffuseColor, 1.0f);
+    const glm::vec4 specular(this->_specularColor, 1.0f);
+
+    // Valore speciale per indicare una luce puntiforme.
+    float cutoff = 180.0f;
+
+    // Calcola l'attenuazione costante della luce in base al raggio.
+    const float constantAttenuation = 1.0f / this->_radius;
+
+    // Ottiene l'identificatore della luce corrente.
+    const int currentLight = Light::getCurrentLight(this->_lightId);
+
+    // Configura i parametri della luce in OpenGL.
+    glLightfv(currentLight, GL_POSITION, glm::value_ptr(lightPosition));
+    glLightfv(currentLight, GL_AMBIENT, glm::value_ptr(ambient));
+    glLightfv(currentLight, GL_DIFFUSE, glm::value_ptr(diffuse));
+    glLightfv(currentLight, GL_SPECULAR, glm::value_ptr(specular));
+    glLightfv(currentLight, GL_SPOT_CUTOFF, &cutoff);
+    glLightf(currentLight, GL_CONSTANT_ATTENUATION, constantAttenuation);
 }

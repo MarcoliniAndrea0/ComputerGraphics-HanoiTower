@@ -1,120 +1,79 @@
-#include "material.h"
-//#include "texture.h"
-#include "engine.h"
-#include <iostream>
+#include "Material.h"
+#include <GL/freeglut.h>
+#include <glm/gtc/type_ptr.hpp>
 
-Material::Material(const std::string& name, const glm::vec4& emission, const glm::vec4& ambient, const glm::vec4& diffuse, const glm::vec4& specular, float shininess)
-    : Object(name, "Material"), // Inizializza la classe base Object
-    m_emission(emission),
-    m_ambient(ambient),
-    m_diffuse(diffuse),
-    m_specular(specular),
-    m_shininess(shininess)
-    //m_texture(nullptr)
+/**
+ * @brief Costruttore di default per la classe `Material`.
+ *
+ * Crea una nuova istanza di `Material` con i seguenti parametri di default:
+ * - Colore di emissione: (0.0f, 0.0f, 0.0f)
+ * - Colore ambientale: (0.75f, 0.75f, 0.75f)
+ * - Colore diffuso: (0.75f, 0.75f, 0.75f)
+ * - Colore speculare: (0.75f, 0.75f, 0.75f)
+ * - Lucentezza: 64.0f
+ * - Valore alpha: 1.0f
+ * - Texture: Nessuna texture applicata.
+ */
+Material::Material()
+    : Object("Material")
 {
+    this->setEmissionColor(glm::vec3(0.0f, 0.0f, 0.0f));
+    this->setAmbientColor(glm::vec3(0.75f, 0.75f, 0.75f));
+    this->setDiffuseColor(glm::vec3(0.75f, 0.75f, 0.75f));
+    this->setSpecularColor(glm::vec3(0.75f, 0.75f, 0.75f));
+    this->setShininess(64.0f);
+    this->setAlpha(1.0f);
+    this->setTexture(nullptr);
 }
 
-Material::~Material() {
-    // Se il materiale possiede una texture, la distrugge per liberare memoria.
-    /*
-    if (m_texture != nullptr) {
-        delete m_texture;
-        m_texture = nullptr;
+// Getter
+
+glm::vec3 LIB_API Material::getEmissionColor() const {
+    return _emissionColor;
+}
+
+// Setter
+
+void LIB_API Material::setEmissionColor(const glm::vec3 newColor) {
+    this->_emissionColor = newColor;
+}
+
+void LIB_API Material::setAmbientColor(const glm::vec3 newColor) {
+    this->_ambientColor = newColor;
+}
+
+void LIB_API Material::setDiffuseColor(const glm::vec3 newColor) {
+    this->_diffuseColor = newColor;
+}
+
+void LIB_API Material::setSpecularColor(const glm::vec3 newColor) {
+    this->_specularColor = newColor;
+}
+
+void LIB_API Material::setShininess(const float newShininess) {
+    this->_shininess = newShininess;
+}
+
+void LIB_API Material::setAlpha(const float newAlpha) {
+    this->_alpha = newAlpha;
+}
+
+void LIB_API Material::setTexture(const std::shared_ptr<Texture> newTexture) {
+    this->_texture = newTexture;
+}
+
+// Render Material
+
+void LIB_API Material::render(const glm::mat4 viewMatrix) const {
+    glDisable(GL_TEXTURE_2D);
+
+    glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, glm::value_ptr(this->_emissionColor));
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, glm::value_ptr(this->_ambientColor));
+    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, glm::value_ptr(this->_diffuseColor));
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, glm::value_ptr(this->_specularColor));
+    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, this->_shininess);
+
+    if (this->_texture != nullptr) {
+        this->_texture->render(viewMatrix);
     }
-    */
 }
-
-void Material::render()
-{
-    // Imposta i parametri del materiale in OpenGL per entrambe le facce (Front & Back)
-    glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, glm::value_ptr(m_emission));
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, glm::value_ptr(m_ambient));
-    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, glm::value_ptr(m_diffuse));
-    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, glm::value_ptr(m_specular));
-    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, m_shininess);
-
-    // Gestione Texture
-    /*
-    if (m_texture != nullptr) {
-        glEnable(GL_TEXTURE_2D);
-        m_texture->render();
-    }
-    else {
-        glDisable(GL_TEXTURE_2D);
-    }
-    */
-    
-}
-
-// --- Implementazione Setters ---
-
-void Material::setEmission(const glm::vec4& color) 
-{ 
-    m_emission = color; 
-}
-
-void Material::setAmbient(const glm::vec4& color)
-{ 
-    m_ambient = color; 
-}
-
-void Material::setDiffuse(const glm::vec4& color)
-{ 
-    m_diffuse = color; 
-}
-
-void Material::setSpecular(const glm::vec4& color) 
-{ 
-    m_specular = color; 
-}
-
-void Material::setShininess(float shininess) 
-{
-    // OpenGL accetta valori tra 0 e 128
-    if (shininess < 0.0f) m_shininess = 0.0f;
-    else if (shininess > 128.0f) m_shininess = 128.0f;
-    else m_shininess = shininess;
-}
-/*
-void Material::setTexture(Texture* texture)
-{ 
-    if (m_texture != nullptr && m_texture != texture) {
-        delete m_texture;
-    }
-    m_texture = texture; 
-}
-*/
-
-// --- Implementazione Getters ---
-
-glm::vec4 Material::getEmission() const 
-{ 
-    return m_emission; 
-}
-
-glm::vec4 Material::getAmbient() const 
-{ 
-    return m_ambient; 
-}
-
-glm::vec4 Material::getDiffuse() const 
-{ 
-    return m_diffuse; 
-}
-
-glm::vec4 Material::getSpecular() const 
-{ 
-    return m_specular; 
-}
-
-float Material::getShininess() const 
-{ 
-    return m_shininess; 
-}
-
-/*
-Texture* Material::getTexture() const 
-{ 
-    return m_texture; 
-}
-*/
