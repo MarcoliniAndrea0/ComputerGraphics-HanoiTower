@@ -35,9 +35,9 @@ OBJDIR_RELEASE = obj/Release
 DEP_RELEASE = 
 OUT_RELEASE = bin/Release/client
 
-OBJ_DEBUG = $(OBJDIR_DEBUG)/main.o
+OBJ_DEBUG = $(OBJDIR_DEBUG)/main.o $(OBJDIR_DEBUG)/hanoi.o
 
-OBJ_RELEASE = $(OBJDIR_RELEASE)/main.o
+OBJ_RELEASE = $(OBJDIR_RELEASE)/main.o $(OBJDIR_RELEASE)/hanoi.o
 
 all: debug release
 
@@ -57,6 +57,9 @@ out_debug: before_debug $(OBJ_DEBUG) $(DEP_DEBUG)
 $(OBJDIR_DEBUG)/main.o: main.cpp
 	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c main.cpp -o $(OBJDIR_DEBUG)/main.o
 
+$(OBJDIR_DEBUG)/hanoi.o: hanoi.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c hanoi.cpp -o $(OBJDIR_DEBUG)/hanoi.o
+
 clean_debug: 
 	rm -f $(OBJ_DEBUG) $(OUT_DEBUG)
 	rm -rf bin/Debug
@@ -75,6 +78,9 @@ out_release: before_release $(OBJ_RELEASE) $(DEP_RELEASE)
 
 $(OBJDIR_RELEASE)/main.o: main.cpp
 	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c main.cpp -o $(OBJDIR_RELEASE)/main.o
+
+$(OBJDIR_RELEASE)/hanoi.o: hanoi.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c hanoi.cpp -o $(OBJDIR_RELEASE)/hanoi.o
 
 clean_release: 
 	rm -f $(OBJ_RELEASE) $(OUT_RELEASE)
