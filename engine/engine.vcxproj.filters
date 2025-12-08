@@ -1,96 +1,117 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="tests">
+      <UniqueIdentifier>{ec953cd2-5b45-4561-b645-8621b406e462}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="engine.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="node.cpp">
-      <Filter>Source</Filter>
+    <ClCompile Include="Object.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="object.cpp">
-      <Filter>Source</Filter>
+    <ClCompile Include="Node.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="camera.cpp">
-      <Filter>Source</Filter>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="light.cpp">
-      <Filter>Source</Filter>
+    <ClCompile Include="Material.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="list.cpp">
-      <Filter>Source</Filter>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mesh.cpp">
-      <Filter>Source</Filter>
+    <ClCompile Include="MeshData.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="material.cpp">
-      <Filter>Source</Filter>
+    <ClCompile Include="List.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="texture.cpp">
-      <Filter>Source</Filter>
+    <ClCompile Include="Light.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="directionalLight.cpp">
-      <Filter>Source</Filter>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="pointLight.cpp">
-      <Filter>Source</Filter>
+    <ClCompile Include="OvoParser.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="prospectiveCamera.cpp">
-      <Filter>Source</Filter>
+    <ClCompile Include="DirectionalLight.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="spotLight.cpp">
-      <Filter>Source</Filter>
+    <ClCompile Include="PointLight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SpotLight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PerspectiveCamera.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h">
-      <Filter>Header</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="node.h">
-      <Filter>Header</Filter>
+    <ClInclude Include="Object.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="object.h">
-      <Filter>Header</Filter>
+    <ClInclude Include="Node.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="camera.h">
-      <Filter>Header</Filter>
+    <ClInclude Include="Common.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="light.h">
-      <Filter>Header</Filter>
+    <ClInclude Include="Mesh.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="list.h">
-      <Filter>Header</Filter>
+    <ClInclude Include="Material.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="material.h">
-      <Filter>Header</Filter>
+    <ClInclude Include="Texture.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="mesh.h">
-      <Filter>Header</Filter>
+    <ClInclude Include="MeshData.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="texture.h">
-      <Filter>Header</Filter>
+    <ClInclude Include="List.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="directionalLight.h">
-      <Filter>Header</Filter>
+    <ClInclude Include="Light.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="pointLight.h">
-      <Filter>Header</Filter>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="prospectiveCamera.h">
-      <Filter>Header</Filter>
+    <ClInclude Include="OvoParser.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="spotLight.h">
-      <Filter>Header</Filter>
+    <ClInclude Include="DirectionalLight.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Makefile" />
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="Source">
-      <UniqueIdentifier>{00beb1a0-96ed-49d0-9b28-fc2c9fd24dda}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header">
-      <UniqueIdentifier>{433ec144-6b94-44a0-9d29-11c9905c45ed}</UniqueIdentifier>
-    </Filter>
+    <ClInclude Include="PointLight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpotLight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PerspectiveCamera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

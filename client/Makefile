@@ -7,9 +7,11 @@ INC = -I../engine
 CFLAGS = -Wall -std=c++20 -fexceptions
 RCFLAGS = 
 RESINC = 
-LIBDIR = 
-LIB = -lengine
-LDFLAGS = 
+LIBDIR = -L../dependencies/freeimage/lib/x64/Release
+LIB = -lengine -lGL -lGLU -lFreeImage
+
+LDFLAGS = -Wl,-rpath='$$ORIGIN/../../engine/bin/Debug' \
+          -Wl,-rpath='$$ORIGIN/../../dependencies/freeimage/lib/x64/Release'
 
 INC_DEBUG = $(INC)
 CFLAGS_DEBUG = $(CFLAGS) -g -D_DEBUG
@@ -28,7 +30,7 @@ RESINC_RELEASE = $(RESINC)
 RCFLAGS_RELEASE = $(RCFLAGS)
 LIBDIR_RELEASE = $(LIBDIR) -L../engine/bin/Release
 LIB_RELEASE = $(LIB)
-LDFLAGS_RELEASE = $(LDFLAGS) -s
+LDFLAGS_RELEASE = $(LDFLAGS) -s -Wl,-rpath='$$ORIGIN/../../engine/bin/Release'
 OBJDIR_RELEASE = obj/Release
 DEP_RELEASE = 
 OUT_RELEASE = bin/Release/client

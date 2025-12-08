@@ -1,82 +1,83 @@
-CXX = g++
-AR = ar
-LD = g++
-WINDRES = windres
+# output: shared library (.so) and an executable to run tests
 
-INC = -I../dependencies/glm/include -I../dependencies/freeglut/include
-CFLAGS = -Wall -std=c++20 -fPIC -m64 -fexceptions
-RCFLAGS = 
-RESINC = 
-LIBDIR = 
-LIB = 
-LDFLAGS = -m64
+BASE_NAME := engine
+TARGET := lib$(BASE_NAME).so
 
-INC_DEBUG = $(INC)
-CFLAGS_DEBUG = $(CFLAGS) -g -D_DEBUG
-RESINC_DEBUG = $(RESINC)
-RCFLAGS_DEBUG = $(RCFLAGS)
-LIBDIR_DEBUG = $(LIBDIR)
-LIB_DEBUG = $(LIB)
-LDFLAGS_DEBUG = $(LDFLAGS)
-OBJDIR_DEBUG = obj/Debug
-DEP_DEBUG = 
-OUT_DEBUG = bin/Debug/libengine.so
+# Directories
+BIN_DIR_DEBUG := bin/Debug
+BIN_DIR_RELEASE := bin/Release
+OBJ_DIR_DEBUG := obj/Debug
+OBJ_DIR_RELEASE := obj/Release
 
-INC_RELEASE = $(INC)
-CFLAGS_RELEASE = $(CFLAGS) -O2
-RESINC_RELEASE = $(RESINC)
-RCFLAGS_RELEASE = $(RCFLAGS)
-LIBDIR_RELEASE = $(LIBDIR)
-LIB_RELEASE = $(LIB)
-LDFLAGS_RELEASE = $(LDFLAGS) -s
-OBJDIR_RELEASE = obj/Release
-DEP_RELEASE = 
-OUT_RELEASE = bin/Release/libengine.so
+# Source files
+MAIN_SRC_FILES := $(wildcard *.cpp)
+MAIN_OBJ_FILES_DEBUG := $(MAIN_SRC_FILES:%.cpp=$(OBJ_DIR_DEBUG)/%.o)
+MAIN_OBJ_FILES_RELEASE := $(MAIN_SRC_FILES:%.cpp=$(OBJ_DIR_RELEASE)/%.o)
 
-OBJ_DEBUG = $(OBJDIR_DEBUG)/engine.o
+TESTS_RUNNER := $(BASE_NAME)-tests-runner
+TEST_SRC_FILES := $(wildcard tests/*_test.cpp)
+TEST_OBJ_FILES := $(TEST_SRC_FILES:.cpp=.o)
+DEPENDENCIES_DIR := ../dependencies
 
-OBJ_RELEASE = $(OBJDIR_RELEASE)/engine.o
+# Compiler and flags
+CXX := g++
+INCLUDES := -I$(DEPENDENCIES_DIR)/freeglut/include \
+            -I$(DEPENDENCIES_DIR)/freeimage/include \
+            -I$(DEPENDENCIES_DIR)/glm/include
 
+# Debug flags
+CXX_FLAGS_DEBUG := -c -fPIC -std=c++20 -g -D_DEBUG $(INCLUDES)
+LD_FLAGS_DEBUG := -shared
+
+# Release flags
+CXX_FLAGS_RELEASE := -c -fPIC -std=c++20 -O2 $(INCLUDES)
+LD_FLAGS_RELEASE := -shared
+
+# Library paths
+LIB_PATHS := -L$(DEPENDENCIES_DIR)/freeglut/lib/x64/Release \
+             -L$(DEPENDENCIES_DIR)/freeimage/lib/x64/Release
+LIBS := -lglut -lGL -lGLU -lFreeImage
+
+# Default target
 all: debug release
 
-clean: clean_debug clean_release
+# Debug build
+debug: $(BIN_DIR_DEBUG)/$(TARGET)
 
-before_debug: 
-	test -d bin/Debug || mkdir -p bin/Debug
-	test -d $(OBJDIR_DEBUG) || mkdir -p $(OBJDIR_DEBUG)
+$(BIN_DIR_DEBUG)/$(TARGET): $(MAIN_OBJ_FILES_DEBUG)
+	@mkdir -p $(BIN_DIR_DEBUG)
+	$(CXX) $(LD_FLAGS_DEBUG) $(LIB_PATHS) -o $@ $(MAIN_OBJ_FILES_DEBUG) $(LIBS)
+	@echo "Debug $(TARGET) build done!"
 
-after_debug: 
+# Release build
+release: $(BIN_DIR_RELEASE)/$(TARGET)
 
-debug: before_debug out_debug after_debug
+$(BIN_DIR_RELEASE)/$(TARGET): $(MAIN_OBJ_FILES_RELEASE)
+	@mkdir -p $(BIN_DIR_RELEASE)
+	$(CXX) $(LD_FLAGS_RELEASE) $(LIB_PATHS) -o $@ $(MAIN_OBJ_FILES_RELEASE) $(LIBS)
+	@echo "Release $(TARGET) build done!"
 
-out_debug: before_debug $(OBJ_DEBUG) $(DEP_DEBUG)
-	$(LD) -shared $(LIBDIR_DEBUG) $(OBJ_DEBUG)  -o $(OUT_DEBUG) $(LDFLAGS_DEBUG) $(LIB_DEBUG)
+# Debug object files
+$(OBJ_DIR_DEBUG)/%.o: %.cpp
+	@mkdir -p $(OBJ_DIR_DEBUG)
+	$(CXX) $(CXX_FLAGS_DEBUG) -o $@ $<
 
-$(OBJDIR_DEBUG)/engine.o: engine.cpp
-	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c engine.cpp -o $(OBJDIR_DEBUG)/engine.o
+# Release object files
+$(OBJ_DIR_RELEASE)/%.o: %.cpp
+	@mkdir -p $(OBJ_DIR_RELEASE)
+	$(CXX) $(CXX_FLAGS_RELEASE) -o $@ $<
 
-clean_debug: 
-	rm -f $(OBJ_DEBUG) $(OUT_DEBUG)
-	rm -rf bin/Debug
-	rm -rf $(OBJDIR_DEBUG)
+# Clean
+clean:
+	@rm -rf bin/ obj/
+	@rm -f $(TESTS_RUNNER) $(TEST_OBJ_FILES)
+	@echo "Cleaned build directories"
 
-before_release: 
-	test -d bin/Release || mkdir -p bin/Release
-	test -d $(OBJDIR_RELEASE) || mkdir -p $(OBJDIR_RELEASE)
+# Install (optional)
+install: $(BIN_DIR_RELEASE)/$(TARGET)
+	@echo "Installing $(TARGET) to system..."
+	# Add installation commands here
+	@echo "Install done!"
 
-after_release: 
-
-release: before_release out_release after_release
-
-out_release: before_release $(OBJ_RELEASE) $(DEP_RELEASE)
-	$(LD) -shared $(LIBDIR_RELEASE) $(OBJ_RELEASE)  -o $(OUT_RELEASE) $(LDFLAGS_RELEASE) $(LIB_RELEASE)
-
-$(OBJDIR_RELEASE)/engine.o: engine.cpp
-	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c engine.cpp -o $(OBJDIR_RELEASE)/engine.o
-
-clean_release: 
-	rm -f $(OBJ_RELEASE) $(OUT_RELEASE)
-	rm -rf bin/Release
-	rm -rf $(OBJDIR_RELEASE)
-
-.PHONY: before_debug after_debug clean_debug before_release after_release clean_release
+# Phony targets
+.PHONY: all debug release clean install

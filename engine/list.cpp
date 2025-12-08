@@ -1,54 +1,68 @@
 #include "list.h"
-#include "engine.h"
-#include <algorithm> 
-#include <iostream>
+#include "node.h"
+#include <algorithm>
 
-List::List()
-{
-	renderList.reserve(100);
+// Getter
+
+/**
+ * @brief Restituisce una referenza alla lista degli oggetti da renderizzare.
+ * @return Una referenza a `std::vector<std::pair<std::shared_ptr<Node>, glm::mat4>>`.
+ */
+LIB_API std::vector<std::pair<std::shared_ptr<Node>, glm::mat4>>& List::getListRendering() {
+    return _listRendering;
 }
 
-List::~List()
-{
-	clear();
+// Setter
+
+/**
+ * @brief Imposta la lista degli oggetti da renderizzare.
+ * @param newListRendering Il nuovo vettore contenente nodi e matrici di trasformazione.
+ */
+void LIB_API List::setListRendering(std::vector<std::pair<std::shared_ptr<Node>, glm::mat4>> newListRendering) {
+    _listRendering = newListRendering;
 }
 
-void List::add(Node* node, const glm::mat4& matrix) {
-	if (!node) return;
-	
-	renderList.push_back({ node, matrix });
+/**
+ * @brief Genera una lista di nodi e le loro matrici di trasformazione globale per il rendering.
+ * @param sceneRoot Il nodo radice della scena.
+ * @param parentWorldMatrix La matrice di trasformazione globale del nodo padre.
+ * @return Un vettore di coppie contenente nodi e matrici di trasformazione globale.
+ */
+std::vector<std::pair<std::shared_ptr<Node>, glm::mat4>> LIB_API List::pass(const std::shared_ptr<Node> sceneRoot, const glm::mat4 parentWorldMatrix) {
+    std::vector<std::pair<std::shared_ptr<Node>, glm::mat4>> renderListPass;
+
+    // Aggiunge il nodo corrente con la sua matrice di trasformazione globale.
+    renderListPass.push_back(std::make_pair(sceneRoot, parentWorldMatrix * sceneRoot->getLocalMatrix()));
+
+    // Itera sui figli del nodo radice e costruisce ricorsivamente la lista.
+    for (const auto& child : sceneRoot->getChildren()) {
+        auto childRenderList = List::pass(child, parentWorldMatrix * sceneRoot->getLocalMatrix());
+        renderListPass.insert(renderListPass.end(), childRenderList.begin(), childRenderList.end());
+    }
+
+    return renderListPass;
 }
 
-void List::render()
-{
-	// 1. ORDINAMENTO (Sorting)
-	std::sort(renderList.begin(), renderList.end(), [](const RenderNode& a, const RenderNode& b)
-		{
-			// Cerca "Light" nel tipo. Se lo trova, find restituisce una posizione valida (!= npos)
-			bool aIsLight = (a.node->getType().find("Light") != std::string::npos);
-			bool bIsLight = (b.node->getType().find("Light") != std::string::npos);
-			// Regola: se A è luce e B no, A viene prima (true).
-			if (aIsLight && !bIsLight) return true;
-
-			// Se B è luce e A no, B viene prima (quindi A non viene prima -> false).
-			if (!aIsLight && bIsLight) return false;
-
-			// Se sono entrambi luci o entrambi mesh, l'ordine non importa (return false)
-			return false;
-		});
-
-	// 2. RENDERING
-	for (const auto& element : renderList) {
-		glPushMatrix();
-		glMultMatrixf(glm::value_ptr(element.trans));
-
-		element.node->render();
-
-		glPopMatrix();
-	}
+/**
+ * @brief Riordina la lista degli oggetti da renderizzare in base alla prioritï¿½.
+ */
+void List::sortListRendering() {
+    std::sort(_listRendering.begin(), _listRendering.end(),
+        [](const std::pair<std::shared_ptr<Node>, glm::mat4> a, const std::pair<std::shared_ptr<Node>, glm::mat4> b) {
+            return a.first->getPriority() > b.first->getPriority();
+        });
 }
 
-void List::clear()
-{
-	renderList.clear();
+/**
+ * @brief Renderizza tutti gli oggetti nella lista di rendering.
+ * @param inversaCamera La matrice inversa della camera.
+ */
+void LIB_API List::render(const glm::mat4 inversaCamera) const {
+    glm::mat4 viewMatrix(1.0f);
+
+    // Per ogni elemento della lista, calcola la matrice di vista e renderizza il nodo.
+    for (const auto& node : _listRendering) {
+        viewMatrix = inversaCamera * node.second;
+        node.first->render(viewMatrix);
+    }
 }

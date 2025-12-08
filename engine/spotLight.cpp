@@ -1,56 +1,119 @@
 #include "spotLight.h"
-#include "engine.h"
 
-SpotLight::SpotLight(const std::string& name)
-    : PointLight(name, "SpotLight")
+#include <GL/freeglut.h>
+#include "glm/ext.hpp"
+
+/**
+ * @brief Costruttore della classe `SpotLight`.
+ *
+ * Crea una nuova istanza di `SpotLight` con i seguenti parametri di default:
+ *
+ * - Direzione: `(0.0f, 1.0f, 0.0f)` (verso l'alto).
+ * - Angolo di cutoff: `45.0f` gradi, definisce la larghezza del cono.
+ * - Esponente: `8.0f`, influenza la concentrazione della luce nel cono.
+ * - Raggio: `1.0f`, determina la distanza alla quale la luce ha effetto.
+ */
+SpotLight::SpotLight()
+    : Light{ "SpotLight" }
 {
-    // Default: Punta verso il basso, cono di 45 gradi
-    m_direction = glm::vec3(0.0f, -1.0f, 0.0f);
-    m_cutoff = 45.0f;
-    m_exponent = 20.0f;
+    this->setDirection(glm::vec3(0.0f, 1.0f, 0.0f));
+    this->setCutoff(45.0f);
+    this->setExponent(8.0f);
+    this->setRadius(1.0f);
 }
 
-void SpotLight::render() {
-    // Chiamiamo il render del padre per impostare Posizione, Colori e Attenuazione
-    PointLight::render();
+///// Setter
 
-    int id = getLightNumber();
-
-    // Impostiamo i parametri specifici Spot
-    glm::vec4 dir4(m_direction, 0.0f); // w=0 direzione
-    glLightfv(id, GL_SPOT_DIRECTION, glm::value_ptr(dir4));
-
-    glLightf(id, GL_SPOT_CUTOFF, m_cutoff);
-    glLightf(id, GL_SPOT_EXPONENT, m_exponent);
+/**
+ * @brief Imposta l'angolo di cutoff per questa `SpotLight`.
+ *
+ * L'angolo di cutoff determina la larghezza del cono di luce.
+ *
+ * @param newCutoff Il nuovo valore di cutoff (in gradi) per questa luce spot.
+ */
+void LIB_API SpotLight::setCutoff(const float newCutoff)
+{
+    this->_cutoff = newCutoff;
 }
 
-void SpotLight::setDirection(const glm::vec3& dir) 
+/**
+ * @brief Imposta il raggio della `SpotLight`.
+ *
+ * Questo valore definisce la distanza alla quale la luce ha effetto.
+ *
+ * @param newRadius Il nuovo raggio per questa luce spot.
+ */
+void LIB_API SpotLight::setRadius(const float newRadius)
 {
-    m_direction = dir; 
+    this->_radius = newRadius;
 }
 
-void SpotLight::setCutoff(float degrees) 
+/**
+ * @brief Imposta l'esponente della `SpotLight`.
+ *
+ * L'esponente controlla la concentrazione della luce nel cono.
+ * Un valore pi� alto rende il cono di luce pi� stretto e concentrato.
+ *
+ * @param newExponent Il nuovo esponente per questa `SpotLight`.
+ */
+void LIB_API SpotLight::setExponent(const float newExponent)
 {
-    m_cutoff = degrees; 
+    this->_exponent = newExponent;
 }
 
-void SpotLight::setExponent(float exp) 
+/**
+ * @brief Cambia la direzione verso cui la luce viene puntata.
+ *
+ * La direzione specifica il vettore verso cui � orientato il cono di luce.
+ *
+ * @param newDirection La nuova direzione della luce.
+ */
+void LIB_API SpotLight::setDirection(const glm::vec3 newDirection)
 {
-    m_exponent = exp; 
+    this->_direction = newDirection;
 }
 
+///// Render spotLight
 
-glm::vec3 SpotLight::getDirection() const 
+/**
+ * @brief Renderizza la luce spot.
+ *
+ * Questa funzione configura i parametri della luce spot in OpenGL,
+ * incluse la posizione, la direzione e i colori della luce.
+ *
+ * @param viewMatrix La matrice di vista da utilizzare per il rendering di questo oggetto.
+ */
+void LIB_API SpotLight::render(const glm::mat4 viewMatrix) const
 {
-    return m_direction; 
-}
+    Node::render(viewMatrix);
 
-float SpotLight::getCutoff() const 
-{
-    return m_cutoff;
-}
+    // Abilita la sorgente di luce specificata dall'ID corrente.
+    glEnable(GL_LIGHT0 + this->_lightId);
 
-float SpotLight::getExponent() const 
-{
-    return m_exponent; 
+    // Posizione della luce nel sistema di coordinate della scena.
+    const glm::vec4 lightPosition(this->_direction, 1.0f);
+
+    // Direzione del cono di luce.
+    const glm::vec3 lightDirection(0.0f, -0.1f, 0.0f);
+
+    // Colori della luce.
+    const glm::vec4 ambient(this->_ambientColor, 1.0f);
+    const glm::vec4 diffuse(this->_diffuseColor, 1.0f);
+    const glm::vec4 specular(this->_specularColor, 1.0f);
+
+    // Calcolo dell'attenuazione in base al raggio.
+    const float constantAttenuation = 1.0f / (this->_radius / 100);
+
+    // Ottiene l'identificatore della luce corrente.
+    const int currentLight = Light::getCurrentLight(this->_lightId);
+
+    // Configura i parametri della luce in OpenGL.
+    glLightfv(currentLight, GL_POSITION, glm::value_ptr(lightPosition));
+    glLightfv(currentLight, GL_SPOT_DIRECTION, glm::value_ptr(lightDirection));
+    glLightfv(currentLight, GL_AMBIENT, glm::value_ptr(ambient));
+    glLightfv(currentLight, GL_DIFFUSE, glm::value_ptr(diffuse));
+    glLightfv(currentLight, GL_SPECULAR, glm::value_ptr(specular));
+    glLightfv(currentLight, GL_SPOT_CUTOFF, &this->_cutoff);
+    glLightf(currentLight, GL_CONSTANT_ATTENUATION, constantAttenuation);
+    glLightf(currentLight, GL_SPOT_EXPONENT, this->_exponent);
 }
