@@ -20,6 +20,11 @@ client/obj/
 engine/bin/
 engine/obj/
 
+x64
+client/x64/
+engine/x64/
+
+
 # IDE/Editor files
 *.layout
 *.workspace.layout
