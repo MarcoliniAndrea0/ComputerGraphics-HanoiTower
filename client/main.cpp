@@ -53,6 +53,23 @@ int main(int argc, char *argv[])
         
         // Set background color
         Engine::setBackGround(0.1f, 0.1f, 0.15f); // Dark blue background
+
+        std::shared_ptr<Node> scenePtr = OVOParser::fromFile("./client/scena1.ovo");
+        Engine::setScene(scenePtr);
+
+        std::shared_ptr<PerspectiveCamera> camera =  std::make_shared<PerspectiveCamera>();
+        camera->setName("Main");
+        camera->setActive(true);
+        camera->setBaseMatrix(glm::mat4(1.0f));
+        camera->setFarClipping(1000.0f);
+        camera->setNearClipping(1.0f);
+        camera->setFov(60.0f);
+        camera->setWindowSize(16, 9);
+        //camera->setPosition(glm::vec3(-0.3f,-0.532f,1.5f));
+        camera->setPosition(glm::vec3(0.245f,-1.585f,1.608f));
+        camera->setRotation(glm::vec3(0.0f));
+        
+        Engine::setActiveCamera(camera);
         
         // Initialize Hanoi game
         HanoiGame::init();

@@ -5,6 +5,8 @@
 
 #include <sstream>
 
+#include "OvoParser.h"
+#include "PerspectiveCamera.h"
 #include "camera.h"
 #include "Common.h"
 #include "material.h"
