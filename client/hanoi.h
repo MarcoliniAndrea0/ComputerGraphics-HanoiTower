@@ -73,6 +73,10 @@ public:
      * @brief Auto-solve the puzzle (for testing)
      */
     static void autoSolve();
+
+    
+    static void init(std::shared_ptr<Node> sceneRoot);
+
     
 private:
     // Game constants

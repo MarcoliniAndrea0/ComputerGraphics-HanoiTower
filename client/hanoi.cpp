@@ -1,8 +1,10 @@
 #include "hanoi.h"
 #include <iostream>
 
+static std::shared_ptr<Node> sceneRoot = nullptr;
+
 // Initialize static constants
-const int HanoiGame::NUM_DISKS = 7;
+const int HanoiGame::NUM_DISKS = 4;
 const int HanoiGame::NUM_TOWERS = 3;
 const float HanoiGame::DISK_HEIGHT = 0.3f;
 const float HanoiGame::DISK_RADIUS_BASE = 0.2f;
@@ -32,6 +34,11 @@ int HanoiGame::moveCount = 0;
 int HanoiGame::minMovesRequired = 0;
 float HanoiGame::animationTime = 0.0f;
 
+void HanoiGame::init(std::shared_ptr<Node> root) {
+    sceneRoot = root;
+    init(); // Call original init
+}
+
 void HanoiGame::init() {
     std::cout << "Initializing Tower of Hanoi game..." << std::endl;
     
@@ -55,20 +62,33 @@ void HanoiGame::init() {
 }
 
 void HanoiGame::createTowers() {
-    for (int i = 0; i < NUM_TOWERS; i++) {
-        Tower tower;
-        tower.position = glm::vec3(i * TOWER_SPACING - TOWER_SPACING, 0.0f, 0.0f);
-        tower.name = "Tower_" + std::to_string(i);
+    for (int i = 0; i < NUM_DISKS; i++) {
+        Disk disk;
+        disk.size = NUM_DISKS - i; // Largest disk first (size 7), smallest last (size 1)
+        disk.currentTower = 0; // All disks start on first tower
+        disk.baseColor = DISK_COLORS[i];
+        disk.name = "Disk_" + std::to_string(disk.size);
         
-        // Create tower node
-        tower.node = std::make_shared<Node>(tower.name);
-        // When the scene is ready we will add add mesh and set position based on the scene structure
+        // Create disk node
+        disk.node = std::make_shared<Node>(disk.name);
         
-        towers.push_back(tower);
-        std::cout << "Created tower: " << tower.name 
-                  << " at position: " << tower.position.x << ", " 
-                  << tower.position.y << ", " << tower.position.z << std::endl;
+        // ADD TO SCENE
+        if (sceneRoot) {
+            sceneRoot->addChild(disk.node);
+        }
+        
+        disks.push_back(disk);
+        
+        // Add disk to first tower
+        towers[0].diskIndices.push_back(i);
+        
+        std::cout << "Created disk: " << disk.name 
+                  << " with color: " << disk.baseColor.r << ", "
+                  << disk.baseColor.g << ", " << disk.baseColor.b << std::endl;
     }
+    
+    // Update initial positions
+    updateDiskPositions();
 }
 
 void HanoiGame::createDisks() {

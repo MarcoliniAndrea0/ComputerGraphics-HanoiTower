@@ -59,20 +59,22 @@ int main(int argc, char *argv[])
 
         std::shared_ptr<PerspectiveCamera> camera =  std::make_shared<PerspectiveCamera>();
         camera->setName("Main");
-        camera->setActive(true);
         camera->setBaseMatrix(glm::mat4(1.0f));
         camera->setFarClipping(1000.0f);
-        camera->setNearClipping(1.0f);
+        camera->setNearClipping(0.1f);
         camera->setFov(60.0f);
-        camera->setWindowSize(16, 9);
+        camera->setWindowSize(windowWidth, windowHeight);
         //camera->setPosition(glm::vec3(-0.3f,-0.532f,1.5f));
         camera->setPosition(glm::vec3(0.245f,-1.585f,1.608f));
-        camera->setRotation(glm::vec3(0.0f));
+        camera->setRotation(glm::vec3(-25.0f,0.0f,0.0f));
+
+        scenePtr->addChild(camera);
+        camera->setActive(true);
         
         Engine::setActiveCamera(camera);
         
         // Initialize Hanoi game
-        HanoiGame::init();
+        HanoiGame::init(scenePtr);
         
         std::cout << "\n=== Tower of Hanoi ===" << std::endl;
         std::cout << "Controls:" << std::endl;
