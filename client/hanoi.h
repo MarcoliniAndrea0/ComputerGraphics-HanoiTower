@@ -133,6 +133,4 @@ private:
     static float animationTime;
     static const float ANIMATION_DURATION;
     
-    // Disk colors
-    static const glm::vec3 DISK_COLORS[7];
 };

@@ -70,7 +70,6 @@ int main(int argc, char *argv[])
 
         scenePtr->addChild(camera);
         camera->setActive(true);
-        
         Engine::setActiveCamera(camera);
         
         // Initialize Hanoi game

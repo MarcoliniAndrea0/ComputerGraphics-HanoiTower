@@ -7,23 +7,13 @@ static std::shared_ptr<Node> sceneRoot = nullptr;
 const int HanoiGame::NUM_DISKS = 4;
 const int HanoiGame::NUM_TOWERS = 3;
 const float HanoiGame::DISK_HEIGHT = 0.3f;
-const float HanoiGame::DISK_RADIUS_BASE = 0.2f;
-const float HanoiGame::DISK_RADIUS_INCREMENT = 0.15f;
+// const float HanoiGame::DISK_RADIUS_BASE = 0.2f;
+// const float HanoiGame::DISK_RADIUS_INCREMENT = 0.15f;
 const float HanoiGame::TOWER_HEIGHT = 3.0f;
-const float HanoiGame::TOWER_RADIUS = 0.1f;
-const float HanoiGame::TOWER_SPACING = 3.0f;
-const float HanoiGame::ANIMATION_DURATION = 0.5f;
+// const float HanoiGame::TOWER_RADIUS = 0.1f;
+// const float HanoiGame::TOWER_SPACING = 3.0f;
+// const float HanoiGame::ANIMATION_DURATION = 0.5f;
 
-// Disk colors (RGB)
-const glm::vec3 HanoiGame::DISK_COLORS[7] = {
-    glm::vec3(1.0f, 0.0f, 0.0f),    // Red
-    glm::vec3(1.0f, 0.5f, 0.0f),    // Orange
-    glm::vec3(1.0f, 1.0f, 0.0f),    // Yellow
-    glm::vec3(0.0f, 1.0f, 0.0f),    // Green
-    glm::vec3(0.0f, 1.0f, 1.0f),    // Cyan
-    glm::vec3(0.0f, 0.0f, 1.0f),    // Blue
-    glm::vec3(0.8f, 0.0f, 1.0f)     // Purple
-};
 
 // Initialize static variables
 HanoiGame::GameState HanoiGame::gameState = GameState::IDLE;
@@ -55,7 +45,7 @@ void HanoiGame::init() {
     
     // Create game elements
     createTowers();
-    createDisks();
+    //createDisks();
     
     std::cout << "Tower of Hanoi initialized. Minimum moves required: " 
               << minMovesRequired << std::endl;
@@ -64,23 +54,24 @@ void HanoiGame::init() {
 void HanoiGame::createTowers() {
     for (int i = 0; i < NUM_DISKS; i++) {
         Disk disk;
-        disk.size = NUM_DISKS - i; // Largest disk first (size 7), smallest last (size 1)
+        disk.size = NUM_DISKS - i; // Largest disk first (size 4), smallest last (size 1)
         disk.currentTower = 0; // All disks start on first tower
-        disk.baseColor = DISK_COLORS[i];
         disk.name = "Disk_" + std::to_string(disk.size);
         
         // Create disk node
         disk.node = std::make_shared<Node>(disk.name);
-        
-        // ADD TO SCENE
+        std::cout << "LINE63" << std::endl;
         if (sceneRoot) {
             sceneRoot->addChild(disk.node);
         }
+        std::cout << "LINE67" << std::endl;
         
         disks.push_back(disk);
+        std::cout << "LINE70" << std::endl;
         
         // Add disk to first tower
         towers[0].diskIndices.push_back(i);
+        std::cout << "LINE74" << std::endl;
         
         std::cout << "Created disk: " << disk.name 
                   << " with color: " << disk.baseColor.r << ", "
@@ -96,7 +87,6 @@ void HanoiGame::createDisks() {
         Disk disk;
         disk.size = NUM_DISKS - i; // Largest disk first (size 7), smallest last (size 1)
         disk.currentTower = 0; // All disks start on first tower
-        disk.baseColor = DISK_COLORS[i];
         disk.name = "Disk_" + std::to_string(disk.size);
         
         // Create disk node
@@ -270,7 +260,7 @@ void HanoiGame::updateDiskPositions() {
             auto& disk = disks[diskIdx];
             glm::vec3 targetPosition = tower.position + glm::vec3(0.0f, currentHeight, 0.0f);
             
-            // disk.node->setPosition(targetPosition);
+            disk.node->setPosition(targetPosition);
             
             currentHeight += DISK_HEIGHT;
         }
