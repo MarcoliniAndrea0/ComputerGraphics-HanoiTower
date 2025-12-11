@@ -1,21 +1,13 @@
 #include "hanoi.h"
 #include <iostream>
+#include <algorithm> // per std::find
 
-static std::shared_ptr<Node> sceneRoot = nullptr;
-
-// Initialize static constants
-const int HanoiGame::NUM_DISKS = 4;
+// Costanti
+const int HanoiGame::NUM_DISKS = 7;
 const int HanoiGame::NUM_TOWERS = 3;
-const float HanoiGame::DISK_HEIGHT = 0.3f;
-// const float HanoiGame::DISK_RADIUS_BASE = 0.2f;
-// const float HanoiGame::DISK_RADIUS_INCREMENT = 0.15f;
-const float HanoiGame::TOWER_HEIGHT = 3.0f;
-// const float HanoiGame::TOWER_RADIUS = 0.1f;
-// const float HanoiGame::TOWER_SPACING = 3.0f;
-// const float HanoiGame::ANIMATION_DURATION = 0.5f;
+const float HanoiGame::DISK_HEIGHT = 8.0f;
 
-
-// Initialize static variables
+// Variabili statiche
 HanoiGame::GameState HanoiGame::gameState = GameState::IDLE;
 std::vector<HanoiGame::Disk> HanoiGame::disks;
 std::vector<HanoiGame::Tower> HanoiGame::towers;
@@ -23,156 +15,251 @@ int HanoiGame::selectedDiskIndex = -1;
 int HanoiGame::moveCount = 0;
 int HanoiGame::minMovesRequired = 0;
 float HanoiGame::animationTime = 0.0f;
+std::shared_ptr<Node> HanoiGame::sceneRoot = nullptr;
+std::stack<HanoiGame::MoveAction> HanoiGame::undoStack;
+std::stack<HanoiGame::MoveAction> HanoiGame::redoStack;
 
-void HanoiGame::init(std::shared_ptr<Node> root) {
-    sceneRoot = root;
-    init(); // Call original init
+// Helper ricorsivo per trovare un nodo
+std::shared_ptr<Node> HanoiGame::findNode(std::shared_ptr<Node> root, const std::string& name) {
+    if (!root) return nullptr;
+    if (root->getName() == name) return root;
+
+    for (auto& child : root->getChildren()) {
+        auto result = findNode(child, name);
+        if (result) return result;
+    }
+    return nullptr;
 }
 
-void HanoiGame::init() {
-    std::cout << "Initializing Tower of Hanoi game..." << std::endl;
-    
-    // Reset game state
+void HanoiGame::init(std::shared_ptr<Node> rootNode) {
+    std::cout << "Inizializzazione gioco Torre di Hanoi..." << std::endl;
+
+    sceneRoot = rootNode; // Salviamo il root per il reset
     gameState = GameState::IDLE;
     selectedDiskIndex = -1;
     moveCount = 0;
-    minMovesRequired = (1 << NUM_DISKS) - 1; // 2^n - 1
-    animationTime = 0.0f;
-    
-    // Clear existing containers
+    minMovesRequired = (1 << NUM_DISKS) - 1;
+
     disks.clear();
     towers.clear();
-    
-    // Create game elements
-    createTowers();
-    //createDisks();
-    
-    std::cout << "Tower of Hanoi initialized. Minimum moves required: " 
-              << minMovesRequired << std::endl;
+
+    loadGameObjects(rootNode);
+    updateDiskPositions(); // Posiziona visivamente i dischi
 }
 
-void HanoiGame::createTowers() {
-    for (int i = 0; i < NUM_DISKS; i++) {
-        Disk disk;
-        disk.size = NUM_DISKS - i; // Largest disk first (size 4), smallest last (size 1)
-        disk.currentTower = 0; // All disks start on first tower
-        disk.name = "Disk_" + std::to_string(disk.size);
-        
-        // Create disk node
-        disk.node = std::make_shared<Node>(disk.name);
-        std::cout << "LINE63" << std::endl;
-        if (sceneRoot) {
-            sceneRoot->addChild(disk.node);
+void HanoiGame::loadGameObjects(std::shared_ptr<Node> rootNode) {
+    // --- 1. TROVIAMO L'ANCORA (IL DISCO 1) ---
+    // Usiamo il disco più grande come punto di riferimento per tutto il gioco
+    glm::vec3 anchorPos = glm::vec3(0.0f);
+    bool foundAnchor = false;
+
+    // Cerchiamo Disk_1
+    auto anchorDisk = findNode(rootNode, "Disk_1");
+    if (anchorDisk) {
+        anchorPos = anchorDisk->getPosition();
+        foundAnchor = true;
+        std::cout << "DEBUG: ANCORA TROVATA (Disk_1) a: "
+            << anchorPos.x << ", " << anchorPos.y << ", " << anchorPos.z << std::endl;
+    }
+    else {
+        std::cerr << "ERRORE CRITICO: Disk_1 non trovato! Uso (0,0,0)" << std::endl;
+    }
+
+    // --- 2. CREIAMO LE TORRI ---
+    float spacing = 300.0f;
+
+    for (int i = 1; i <= NUM_TOWERS; i++) {
+        Tower tower;
+        tower.name = "Tower_" + std::to_string(i);
+        tower.node = findNode(rootNode, tower.name);
+
+        if (tower.node) {
+            // Calcoliamo la posizione LOGICA dove andranno i dischi
+            glm::vec3 logicPos = anchorPos;
+
+            logicPos.z += (i - 1) * spacing;
+
+            tower.position = logicPos;
+
+            std::cout << "Logica " << tower.name << " impostata a " << logicPos.x << std::endl;
+            tower.diskIndices.clear();
         }
-        std::cout << "LINE67" << std::endl;
-        
-        disks.push_back(disk);
-        std::cout << "LINE70" << std::endl;
-        
-        // Add disk to first tower
-        towers[0].diskIndices.push_back(i);
-        std::cout << "LINE74" << std::endl;
-        
-        std::cout << "Created disk: " << disk.name 
-                  << " with color: " << disk.baseColor.r << ", "
-                  << disk.baseColor.g << ", " << disk.baseColor.b << std::endl;
+        towers.push_back(tower);
     }
-    
-    // Update initial positions
-    updateDiskPositions();
-}
 
-void HanoiGame::createDisks() {
-    for (int i = 0; i < NUM_DISKS; i++) {
+    // --- 3. CARICHIAMO I DISCHI ---
+    for (int i = 1; i <= NUM_DISKS; i++) {
         Disk disk;
-        disk.size = NUM_DISKS - i; // Largest disk first (size 7), smallest last (size 1)
-        disk.currentTower = 0; // All disks start on first tower
-        disk.name = "Disk_" + std::to_string(disk.size);
-        
-        // Create disk node
-        disk.node = std::make_shared<Node>(disk.name);
-        // Note: You'll need to add mesh and set position based on your scene structure
-        
+        disk.size = i;
+        disk.name = "Disk_" + std::to_string(i);
+        disk.currentTower = 0;
+
+        disk.node = findNode(rootNode, disk.name);
+
+        if (!disk.node) std::cerr << "ERRORE: " << disk.name << " mancante" << std::endl;
+
         disks.push_back(disk);
-        
-        // Add disk to first tower
-        towers[0].diskIndices.push_back(i);
-        
-        std::cout << "Created disk: " << disk.name 
-                  << " with color: " << disk.baseColor.r << ", "
-                  << disk.baseColor.g << ", " << disk.baseColor.b << std::endl;
+        towers[0].diskIndices.push_back(i - 1);
     }
-    
-    // Update initial positions
+
+    // Allineiamo tutto
     updateDiskPositions();
 }
 
 void HanoiGame::reset() {
-    std::cout << "Resetting Tower of Hanoi game..." << std::endl;
-    init();
+    if (sceneRoot) {
+        init(sceneRoot);
+        Engine::setScreenText("Resetting Tower of Hanoi game...");
+    }
 }
 
+/*
 void HanoiGame::handleClick(int mouseX, int mouseY) {
-    if (gameState == GameState::GAME_WON) {
-        std::cout << "Game already won! Press 'R' to restart." << std::endl;
-        return;
-    }
-    
-    // Get clicked node
+    if (gameState == GameState::GAME_WON) return;
+
     auto clickedNode = Engine::getNodeByClick(mouseX, mouseY);
-    if (!clickedNode) {
-        std::cout << "No disk or tower clicked" << std::endl;
-        return;
-    }
-    
-    std::string nodeName = clickedNode->getName();
-    std::cout << "Clicked on: " << nodeName << std::endl;
-    
-    // Check if a disk was clicked
-    if (nodeName.find("Disk_") == 0) {
-        int diskIndex = findDiskIndex(nodeName);
-        
-        if (diskIndex == -1) {
-            std::cout << "Disk not found!" << std::endl;
-            return;
+    if (!clickedNode) return;
+
+    std::string name = clickedNode->getName();
+
+    // --- FASE 1: SELEZIONE DEL DISCO ---
+    if (gameState == GameState::IDLE) {
+        // Cerca se abbiamo cliccato un disco
+        int diskIdx = findDiskIndex(name);
+
+        // Se abbiamo cliccato una torre, vediamo se ha dischi e selezioniamo l'ultimo
+        if (diskIdx == -1) {
+            int towerIdx = findTowerIndex(name);
+            if (towerIdx != -1 && !towers[towerIdx].diskIndices.empty()) {
+                diskIdx = towers[towerIdx].diskIndices.back();
+            }
         }
-        
-        if (gameState == GameState::IDLE) {
-            // First click - select disk
-            selectedDiskIndex = diskIndex;
-            gameState = GameState::DISK_SELECTED;
-            
-            std::cout << "Selected disk size " << disks[selectedDiskIndex].size << std::endl;
-            Engine::setScreenText("Selected disk " + std::to_string(disks[selectedDiskIndex].size) + 
-                                 " - Click target tower");
-        }
-        else if (gameState == GameState::DISK_SELECTED) {
-            // Second click on another disk - select new disk
-            selectedDiskIndex = diskIndex;
-            std::cout << "Selected disk size " << disks[selectedDiskIndex].size << std::endl;
-            Engine::setScreenText("Selected disk " + std::to_string(disks[selectedDiskIndex].size) + 
-                                 " - Click target tower");
+
+        if (diskIdx != -1) {
+            // Controlla se il disco è in cima alla sua torre (regola fondamentale)
+            int currentTowerIdx = disks[diskIdx].currentTower;
+            if (towers[currentTowerIdx].diskIndices.back() == diskIdx) {
+                selectedDiskIndex = diskIdx;
+                gameState = GameState::DISK_SELECTED;
+                std::cout << "Selezionato: " << disks[diskIdx].name << std::endl;
+                updateDiskPositions(); // Per applicare l'effetto "sollevamento"
+            }
+            else {
+                std::cout << "Puoi muovere solo il disco in cima alla pila!" << std::endl;
+            }
         }
     }
-    // Check if a tower was clicked
-    else if (nodeName.find("Tower_") == 0 && gameState == GameState::DISK_SELECTED) {
-        int targetTower = findTowerIndex(nodeName);
-        
-        if (targetTower == -1) {
-            std::cout << "Tower not found!" << std::endl;
+    // --- FASE 2: SPOSTAMENTO ---
+    else if (gameState == GameState::DISK_SELECTED) {
+        // Abbiamo un disco in mano, dove lo mettiamo?
+        int targetTowerIdx = findTowerIndex(name);
+
+        // Se clicchiamo un disco, troviamo a quale torre appartiene
+        if (targetTowerIdx == -1) {
+            int clickedDiskIdx = findDiskIndex(name);
+            if (clickedDiskIdx != -1) {
+                targetTowerIdx = disks[clickedDiskIdx].currentTower;
+            }
+        }
+
+        // Se abbiamo trovato una torre valida
+        if (targetTowerIdx != -1) {
+            if (performMove(selectedDiskIndex, targetTowerIdx)) {
+                // Mossa riuscita
+                selectedDiskIndex = -1;
+                gameState = GameState::IDLE;
+            }
+            else {
+                // Mossa invalida, deseleziona
+                std::cout << "Mossa Annullata." << std::endl;
+                selectedDiskIndex = -1;
+                gameState = GameState::IDLE;
+                updateDiskPositions();
+            }
+        }
+        else {
+            // Cliccato nel vuoto o oggetto invalido, deseleziona
+            selectedDiskIndex = -1;
+            gameState = GameState::IDLE;
+            updateDiskPositions();
+        }
+    }
+}
+*/
+/*
+void HanoiGame::handleClick(int mouseX, int mouseY) {
+    if (gameState == GameState::GAME_WON) return;
+
+    auto clickedNode = Engine::getNodeByClick(mouseX, mouseY);
+    if (!clickedNode) return;
+
+    std::string name = clickedNode->getName();
+
+    // Troviamo quale torre è coinvolta nel click
+    int towerIdx = findTowerIndex(name);
+
+    // Se non abbiamo cliccato direttamente una torre, controlliamo se è un disco
+    if (towerIdx == -1) {
+        int clickedDiskIdx = findDiskIndex(name);
+        if (clickedDiskIdx != -1) {
+            // Se clicco un disco, ottengo la torre su cui si trova
+            towerIdx = disks[clickedDiskIdx].currentTower;
+        }
+    }
+
+    // Se abbiamo identificato una torre valida, usiamo la logica unificata
+    if (towerIdx != -1) {
+        processTowerInput(towerIdx);
+    }
+    else {
+        // Cliccato nel nulla -> Deseleziona se necessario
+        if (gameState == GameState::DISK_SELECTED) {
+            selectedDiskIndex = -1;
+            gameState = GameState::IDLE;
+            updateDiskPositions();
+        }
+    }
+}
+*/
+void HanoiGame::processTowerInput(int towerIdx) {
+    if (towerIdx < 0 || towerIdx >= NUM_TOWERS) return;
+
+    // FASE 1: Selezionare un disco dalla torre indicata
+    if (gameState == GameState::IDLE) {
+        if (towers[towerIdx].diskIndices.empty()) {
+            std::cout << "La torre " << (towerIdx + 1) << " e' vuota!" << std::endl;
             return;
         }
-        
-        std::cout << "Attempting to move disk to tower " << targetTower << std::endl;
-        
-        // Attempt to move the selected disk
-        if (performMove(selectedDiskIndex, targetTower)) {
-            // Move successful, reset selection
+
+        // Seleziona il disco in cima
+        int diskIdx = towers[towerIdx].diskIndices.back();
+        selectedDiskIndex = diskIdx;
+        gameState = GameState::DISK_SELECTED;
+
+        std::cout << "Selezionato: " << disks[diskIdx].name << " dalla Torre " << (towerIdx + 1) << std::endl;
+        updateDiskPositions(); // Solleva il disco
+    }
+    // FASE 2: Spostare il disco selezionato nella torre indicata
+    else if (gameState == GameState::DISK_SELECTED) {
+        // Se proviamo a rimetterlo nella stessa torre, deselezioniamo (annulla)
+        if (disks[selectedDiskIndex].currentTower == towerIdx) {
+            std::cout << "Deselezionato." << std::endl;
+            selectedDiskIndex = -1;
+            gameState = GameState::IDLE;
+            updateDiskPositions(); // Riabbassa il disco
+            return;
+        }
+
+        // Tentativo di movimento
+        if (performMove(selectedDiskIndex, towerIdx)) {
+            // Mossa OK
             selectedDiskIndex = -1;
             gameState = GameState::IDLE;
         }
         else {
-            Engine::setScreenText("Invalid move! Try again");
+            // Mossa non valida
+            std::cout << "Mossa non valida!" << std::endl;
+            // Rimane selezionato per provare un'altra torre, oppure puoi deselezionare qui
         }
     }
 }
@@ -187,6 +274,15 @@ void HanoiGame::handleKey(unsigned char key) {
         case 'H':
             showHelp();
             break;
+        case '1':
+            processTowerInput(0); // Torre 1 (indice 0)
+            break;
+        case '2':
+            processTowerInput(1); // Torre 2 (indice 1)
+            break;
+        case '3':
+            processTowerInput(2); // Torre 3 (indice 2)
+            break;
     }
 }
 
@@ -199,11 +295,13 @@ std::string HanoiGame::getStatus() {
            "/" + std::to_string(minMovesRequired);
 }
 
-void HanoiGame::update(float deltaTime) {
+void HanoiGame::update(/*float deltaTime*/) {
+    /*
     if (animationTime > 0) {
         animationTime -= deltaTime;
         // Update animation state here if needed
     }
+    */
 }
 
 bool HanoiGame::isGameWon() {
@@ -229,7 +327,7 @@ void HanoiGame::showHelp() {
     std::cout << "- Click a disk to select it" << std::endl;
     std::cout << "- Click a tower to move selected disk there" << std::endl;
     std::cout << "- R: Reset game" << std::endl;
-    std::cout << "- H: Show this help" << std::endl;
+    std::cout << "- P: Show this help" << std::endl;
     std::cout << "- ESC: Exit game" << std::endl;
     std::cout << "Minimum moves required: " << minMovesRequired << std::endl;
     std::cout << "=================================" << std::endl;
@@ -241,56 +339,59 @@ void HanoiGame::showHelp() {
 // Private helper methods
 
 void HanoiGame::updateDiskPositions() {
-    // Clear all tower disk indices
-    for (auto& tower : towers) {
-        tower.diskIndices.clear();
-    }
-    
-    // Rebuild tower disk indices
-    for (int i = 0; i < disks.size(); i++) {
-        towers[disks[i].currentTower].diskIndices.push_back(i);
-    }
-    
-    // Update visual positions
     for (int towerIdx = 0; towerIdx < NUM_TOWERS; towerIdx++) {
         auto& tower = towers[towerIdx];
-        float currentHeight = 0.0f;
-        
+
+        // Altezza di partenza: la posizione Y della torre + un piccolo offset se necessario
+        float currentY = tower.position.y;
+
+        // Iteriamo sui dischi di questa torre
         for (int diskIdx : tower.diskIndices) {
             auto& disk = disks[diskIdx];
-            glm::vec3 targetPosition = tower.position + glm::vec3(0.0f, currentHeight, 0.0f);
-            
-            disk.node->setPosition(targetPosition);
-            
-            currentHeight += DISK_HEIGHT;
+
+            if (disk.node) {
+                // Calcoliamo la nuova posizione assoluta
+                // Manteniamo X e Z della torre, cambiamo solo Y
+                glm::vec3 newPos = glm::vec3(tower.position.x, currentY, tower.position.z);
+
+                // Se c'è un disco selezionato (in aria), lo alziamo visivamente
+                if (gameState == GameState::DISK_SELECTED && selectedDiskIndex == diskIdx) {
+                    newPos.y += 100.0f; // Solleva il disco selezionato di 100 unità
+                }
+
+                disk.node->setPosition(newPos);
+            }
+
+            // Incrementiamo l'altezza per il prossimo disco
+            currentY += DISK_HEIGHT;
         }
     }
 }
 
 bool HanoiGame::isValidMove(int diskIndex, int targetTower) {
-    if (diskIndex < 0 || diskIndex >= disks.size()) return false;
-    if (targetTower < 0 || targetTower >= NUM_TOWERS) return false;
-    
-    Disk& disk = disks[diskIndex];
-    
-    // Can't move to the same tower
-    if (disk.currentTower == targetTower) return false;
-    
-    // Check if disk is on top of its tower
-    auto& sourceTower = towers[disk.currentTower];
-    if (sourceTower.diskIndices.empty() || 
-        sourceTower.diskIndices.back() != diskIndex) {
+    if (diskIndex == -1) return false;
+
+    Disk& movingDisk = disks[diskIndex];
+    Tower& destTower = towers[targetTower];
+
+    // Non muovere sulla stessa torre
+    if (movingDisk.currentTower == targetTower) return false;
+
+    // Se la torre è vuota, ok
+    if (destTower.diskIndices.empty()) return true;
+
+    // Controllo dimensione
+    int topDiskIndex = destTower.diskIndices.back();
+    Disk& topDisk = disks[topDiskIndex];
+
+    // TUA REGOLA: Disk_7 (Piccolo) può stare su Disk_1 (Grande).
+    // Quindi: MovingDisk (es. 7) deve essere > TopDisk (es. 1)
+    if (movingDisk.size < topDisk.size) {
+        std::cout << "Mossa non valida! Non puoi mettere un disco piu' grande (es. Disk_1) su uno piu' piccolo (es. Disk_7)" << std::endl;
         return false;
     }
-    
-    // Check if target tower is empty or has a larger disk on top
-    auto& targetTowerObj = towers[targetTower];
-    if (targetTowerObj.diskIndices.empty()) {
-        return true;
-    }
-    
-    int topDiskIndex = targetTowerObj.diskIndices.back();
-    return disks[topDiskIndex].size > disk.size;
+
+    return true;
 }
 
 bool HanoiGame::performMove(int diskIndex, int targetTower) {
@@ -300,6 +401,18 @@ bool HanoiGame::performMove(int diskIndex, int targetTower) {
     }
     
     Disk& disk = disks[diskIndex];
+    int sourceTowerIdx = disk.currentTower;
+    // Se il giocatore fa una nuova mossa, il futuro (redo) non esiste più
+    while (!redoStack.empty()) {
+        redoStack.pop();
+    }
+
+    // Registriamo l'azione corrente nello stack Undo
+    MoveAction action;
+    action.diskIndex = diskIndex;
+    action.sourceTowerIdx = sourceTowerIdx;
+    action.destTowerIdx = targetTower;
+    undoStack.push(action);
     
     // Remove from source tower
     auto& sourceTower = towers[disk.currentTower];
@@ -342,6 +455,65 @@ void HanoiGame::checkWinCondition() {
     }
 }
 
+void HanoiGame::undo() {
+    if (undoStack.empty()) {
+        std::cout << "Niente da annullare!" << std::endl;
+        return;
+    }
+
+    MoveAction lastMove = undoStack.top();
+    undoStack.pop();
+
+    // Logica inversa manuale (senza chiamare performMove per non incasinare lo stack)
+    Disk& disk = disks[lastMove.diskIndex];
+
+    // Rimuovi dalla torre attuale (che era la destinazione)
+    towers[lastMove.destTowerIdx].diskIndices.pop_back();
+
+    // Rimetti nella torre originale (sorgente)
+    towers[lastMove.sourceTowerIdx].diskIndices.push_back(lastMove.diskIndex);
+    disk.currentTower = lastMove.sourceTowerIdx;
+
+    // Aggiungi alla redo stack
+    redoStack.push(lastMove);
+
+    moveCount--;
+    updateDiskPositions();
+    Engine::setScreenText(getStatus());
+}
+
+void HanoiGame::redo() {
+    if (redoStack.empty()) {
+        std::cout << "Niente da ripristinare (Redo stack vuoto)!" << std::endl;
+        return;
+    }
+
+    MoveAction nextMove = redoStack.top();
+    redoStack.pop();
+
+    // Logica di ripristino della mossa
+    Disk& disk = disks[nextMove.diskIndex];
+
+    // 1. Rimuovi dalla torre sorgente (dove è tornato dopo l'undo)
+    towers[nextMove.sourceTowerIdx].diskIndices.pop_back();
+
+    // 2. Aggiungi alla torre destinazione (dove era andato in origine)
+    towers[nextMove.destTowerIdx].diskIndices.push_back(nextMove.diskIndex);
+
+    // 3. Aggiorna il riferimento della torre nel disco
+    disk.currentTower = nextMove.destTowerIdx;
+
+    // Aggiungi nuovamente alla undo stack (così si può annullare di nuovo)
+    undoStack.push(nextMove);
+
+    moveCount++;
+    std::cout << "Redo: sposta " << disk.name << " su Torre " << (nextMove.destTowerIdx + 1) << std::endl;
+
+    updateDiskPositions();
+    Engine::setScreenText(getStatus());
+}
+
+/*
 int HanoiGame::findDiskIndex(const std::string& diskName) {
     for (int i = 0; i < disks.size(); i++) {
         if (disks[i].name == diskName) {
@@ -350,7 +522,8 @@ int HanoiGame::findDiskIndex(const std::string& diskName) {
     }
     return -1;
 }
-
+*/
+/*
 int HanoiGame::findTowerIndex(const std::string& towerName) {
     for (int i = 0; i < towers.size(); i++) {
         if (towers[i].name == towerName) {
@@ -359,3 +532,4 @@ int HanoiGame::findTowerIndex(const std::string& towerName) {
     }
     return -1;
 }
+*/
