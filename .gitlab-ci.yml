@@ -22,7 +22,7 @@ engine:
     - 'cd engine'
   script:
     - 'make clean'      # Clean the build environment
-    - 'make engine'     # Compile all engine components (.o) and link libengine.so
+    - 'make build_engine'     # Compile all engine components (.o) and link libengine.so
     - 'make test'       # Compile and link test runner and run all tests (test runner returns -1 if any tests failed)
   after_script:
     - 'cd ..'
@@ -41,7 +41,7 @@ client:
     - 'cd client'
   script:
     - 'make clean'      # Clean the build environment
-    - 'make client'     # Compile all client components (.o) and link client
+    - 'make build_client'     # Compile all client components (.o) and link client
   after_script:
     - 'cd ..'
   artifacts:
