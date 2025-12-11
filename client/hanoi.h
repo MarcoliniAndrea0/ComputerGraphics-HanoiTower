@@ -4,6 +4,7 @@
 #include "node.h"
 #include <memory>
 #include <vector>
+#include <stack>
 #include <glm/glm.hpp>
 
 /**
@@ -73,6 +74,9 @@ public:
      * @brief Auto-solve the puzzle (for testing)
      */
     static void autoSolve();
+
+    static void undo();
+    static void redo();
     
 private:
     // Game constants
@@ -103,6 +107,12 @@ private:
         glm::vec3 position; // Posizione della base della torre
         std::string name;
     };
+
+    struct MoveAction {
+        int diskIndex;
+        int sourceTowerIdx;
+        int destTowerIdx;
+    };
     
     // Private methods
     static void loadGameObjects(std::shared_ptr<Node> rootNode);
@@ -128,6 +138,10 @@ private:
     static int minMovesRequired;
     static float animationTime;
     
+    //gestiscono il ripristina mossa/annulla mossa
+    static std::stack<MoveAction> undoStack;
+    static std::stack<MoveAction> redoStack;
+
     // Teniamo traccia del rootNode per i reset
     static std::shared_ptr<Node> sceneRoot;
 };
