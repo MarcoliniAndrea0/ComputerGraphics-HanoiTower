@@ -111,6 +111,7 @@ void HanoiGame::reset() {
     }
 }
 
+/*
 void HanoiGame::handleClick(int mouseX, int mouseY) {
     if (gameState == GameState::GAME_WON) return;
 
@@ -182,73 +183,84 @@ void HanoiGame::handleClick(int mouseX, int mouseY) {
         }
     }
 }
-
+*/
 /*
 void HanoiGame::handleClick(int mouseX, int mouseY) {
-    if (gameState == GameState::GAME_WON) {
-        std::cout << "Game already won! Press 'R' to restart." << std::endl;
-        return;
-    }
-    
-    // Get clicked node
+    if (gameState == GameState::GAME_WON) return;
+
     auto clickedNode = Engine::getNodeByClick(mouseX, mouseY);
-    if (!clickedNode) {
-        std::cout << "No disk or tower clicked" << std::endl;
-        return;
-    }
-    
-    std::string nodeName = clickedNode->getName();
-    std::cout << "Clicked on: " << nodeName << std::endl;
-    
-    // Check if a disk was clicked
-    if (nodeName.find("Disk_") == 0) {
-        int diskIndex = findDiskIndex(nodeName);
-        
-        if (diskIndex == -1) {
-            std::cout << "Disk not found!" << std::endl;
-            return;
-        }
-        
-        if (gameState == GameState::IDLE) {
-            // First click - select disk
-            selectedDiskIndex = diskIndex;
-            gameState = GameState::DISK_SELECTED;
-            
-            std::cout << "Selected disk size " << disks[selectedDiskIndex].size << std::endl;
-            Engine::setScreenText("Selected disk " + std::to_string(disks[selectedDiskIndex].size) + 
-                                 " - Click target tower");
-        }
-        else if (gameState == GameState::DISK_SELECTED) {
-            // Second click on another disk - select new disk
-            selectedDiskIndex = diskIndex;
-            std::cout << "Selected disk size " << disks[selectedDiskIndex].size << std::endl;
-            Engine::setScreenText("Selected disk " + std::to_string(disks[selectedDiskIndex].size) + 
-                                 " - Click target tower");
+    if (!clickedNode) return;
+
+    std::string name = clickedNode->getName();
+
+    // Troviamo quale torre è coinvolta nel click
+    int towerIdx = findTowerIndex(name);
+
+    // Se non abbiamo cliccato direttamente una torre, controlliamo se è un disco
+    if (towerIdx == -1) {
+        int clickedDiskIdx = findDiskIndex(name);
+        if (clickedDiskIdx != -1) {
+            // Se clicco un disco, ottengo la torre su cui si trova
+            towerIdx = disks[clickedDiskIdx].currentTower;
         }
     }
-    // Check if a tower was clicked
-    else if (nodeName.find("Tower_") == 0 && gameState == GameState::DISK_SELECTED) {
-        int targetTower = findTowerIndex(nodeName);
-        
-        if (targetTower == -1) {
-            std::cout << "Tower not found!" << std::endl;
-            return;
-        }
-        
-        std::cout << "Attempting to move disk to tower " << targetTower << std::endl;
-        
-        // Attempt to move the selected disk
-        if (performMove(selectedDiskIndex, targetTower)) {
-            // Move successful, reset selection
+
+    // Se abbiamo identificato una torre valida, usiamo la logica unificata
+    if (towerIdx != -1) {
+        processTowerInput(towerIdx);
+    }
+    else {
+        // Cliccato nel nulla -> Deseleziona se necessario
+        if (gameState == GameState::DISK_SELECTED) {
             selectedDiskIndex = -1;
             gameState = GameState::IDLE;
-        }
-        else {
-            Engine::setScreenText("Invalid move! Try again");
+            updateDiskPositions();
         }
     }
 }
 */
+void HanoiGame::processTowerInput(int towerIdx) {
+    if (towerIdx < 0 || towerIdx >= NUM_TOWERS) return;
+
+    // FASE 1: Selezionare un disco dalla torre indicata
+    if (gameState == GameState::IDLE) {
+        if (towers[towerIdx].diskIndices.empty()) {
+            std::cout << "La torre " << (towerIdx + 1) << " e' vuota!" << std::endl;
+            return;
+        }
+
+        // Seleziona il disco in cima
+        int diskIdx = towers[towerIdx].diskIndices.back();
+        selectedDiskIndex = diskIdx;
+        gameState = GameState::DISK_SELECTED;
+
+        std::cout << "Selezionato: " << disks[diskIdx].name << " dalla Torre " << (towerIdx + 1) << std::endl;
+        updateDiskPositions(); // Solleva il disco
+    }
+    // FASE 2: Spostare il disco selezionato nella torre indicata
+    else if (gameState == GameState::DISK_SELECTED) {
+        // Se proviamo a rimetterlo nella stessa torre, deselezioniamo (annulla)
+        if (disks[selectedDiskIndex].currentTower == towerIdx) {
+            std::cout << "Deselezionato." << std::endl;
+            selectedDiskIndex = -1;
+            gameState = GameState::IDLE;
+            updateDiskPositions(); // Riabbassa il disco
+            return;
+        }
+
+        // Tentativo di movimento
+        if (performMove(selectedDiskIndex, towerIdx)) {
+            // Mossa OK
+            selectedDiskIndex = -1;
+            gameState = GameState::IDLE;
+        }
+        else {
+            // Mossa non valida
+            std::cout << "Mossa non valida!" << std::endl;
+            // Rimane selezionato per provare un'altra torre, oppure puoi deselezionare qui
+        }
+    }
+}
 
 void HanoiGame::handleKey(unsigned char key) {
     switch (key) {
@@ -259,6 +271,15 @@ void HanoiGame::handleKey(unsigned char key) {
         case 'h':
         case 'H':
             showHelp();
+            break;
+        case '1':
+            processTowerInput(0); // Torre 1 (indice 0)
+            break;
+        case '2':
+            processTowerInput(1); // Torre 2 (indice 1)
+            break;
+        case '3':
+            processTowerInput(2); // Torre 3 (indice 2)
             break;
     }
 }
@@ -420,6 +441,7 @@ void HanoiGame::checkWinCondition() {
     }
 }
 
+/*
 int HanoiGame::findDiskIndex(const std::string& diskName) {
     for (int i = 0; i < disks.size(); i++) {
         if (disks[i].name == diskName) {
@@ -428,7 +450,8 @@ int HanoiGame::findDiskIndex(const std::string& diskName) {
     }
     return -1;
 }
-
+*/
+/*
 int HanoiGame::findTowerIndex(const std::string& towerName) {
     for (int i = 0; i < towers.size(); i++) {
         if (towers[i].name == towerName) {
@@ -437,3 +460,4 @@ int HanoiGame::findTowerIndex(const std::string& towerName) {
     }
     return -1;
 }
+*/

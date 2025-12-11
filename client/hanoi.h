@@ -26,7 +26,7 @@ public:
      * @param mouseX Mouse X coordinate
      * @param mouseY Mouse Y coordinate
      */
-    static void handleClick(int mouseX, int mouseY);
+    //static void handleClick(int mouseX, int mouseY);
     
     /**
      * @brief Handle keyboard input for game control
@@ -110,8 +110,11 @@ private:
     static bool isValidMove(int diskIndex, int targetTower);
     static bool performMove(int diskIndex, int targetTower);
     static void checkWinCondition();
-    static int findDiskIndex(const std::string& diskName);
-    static int findTowerIndex(const std::string& towerName);
+    //static int findDiskIndex(const std::string& diskName);
+    //static int findTowerIndex(const std::string& towerName);
+
+    // Gestisce la logica di input per una specifica torre (sia da click che da tastiera)
+    static void processTowerInput(int towerIndex);
     
     // Helper per trovare i nodi nella scena
     static std::shared_ptr<Node> findNode(std::shared_ptr<Node> root, const std::string& name);

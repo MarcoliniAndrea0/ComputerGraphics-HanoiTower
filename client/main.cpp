@@ -41,7 +41,7 @@ bool isLightEnabled = false;
 // Rotation speed
 float cameraRotationSpeed = 5.0f;
 
-
+/*
 // --- Callback del Mouse per la logica di gioco ---
 void mouseCallback(int button, int state, int x, int y) {
     // Passa il click sinistro alla logica della Torre di Hanoi
@@ -49,6 +49,7 @@ void mouseCallback(int button, int state, int x, int y) {
         HanoiGame::handleClick(x, y);
     }
 }
+*/
 
 std::string getInstructions()
 {
@@ -66,8 +67,9 @@ std::string getInstructions()
     text << "[u][o] - Move Up/Down\n";
     text << "\n---GAME---\n";
     text << "[p] - Help game\n";
-    text << "[LeftMouseClick] - Select Disk\n";
-    text << "[LeftMouseClick] - Select Tower\n";
+    //text << "[LeftMouseClick] - Select Disk\n";
+    //text << "[LeftMouseClick] - Select Tower\n";
+    text << "[1][2][3] - Select/Move to Tower\n";
     //Engine::setScreenText(text.str());
 
     return text.str();
@@ -249,7 +251,7 @@ int main() {
     // Inizializza il motore con titolo finestra, larghezza e altezza
     Engine::init("Test Scene", 1000, 800);
 
-    Engine::setMouseCallback(mouseCallback);
+    //Engine::setMouseCallback(mouseCallback);
 
     Engine::setKeyboardCallback([](const unsigned char key, const int mouseX, const int mouseY) {
 
@@ -263,6 +265,11 @@ int main() {
         glm::vec3 cameraPosition = freeCamera->getPosition();
 
         switch (key) {
+        case '1':
+        case '2':
+        case '3':
+            HanoiGame::handleKey(key);
+            break;
         case 'r': // Tasto 'r' per resettare la scena
             resetScene(); //resetta anche HanoiGame
             break;
