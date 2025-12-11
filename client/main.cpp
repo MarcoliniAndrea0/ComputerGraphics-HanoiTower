@@ -70,6 +70,8 @@ std::string getInstructions()
     //text << "[LeftMouseClick] - Select Disk\n";
     //text << "[LeftMouseClick] - Select Tower\n";
     text << "[1][2][3] - Select/Move to Tower\n";
+    text << "[v] - Undo\n";
+    text << "[b] - Redo\n";
     //Engine::setScreenText(text.str());
 
     return text.str();
@@ -301,9 +303,13 @@ int main() {
             rotation.x += cameraRotationSpeed;
             break;
         case 'e': // Freccia sinistra
+            rotation.z = 0;
+            rotation.x = 0;
             rotation.y -= cameraRotationSpeed;
             break;
         case 'q': // Freccia destra
+            rotation.z = 0;
+            rotation.x = 0;
             rotation.y += cameraRotationSpeed;
             break;
         case 'i': // LUCE SPOT Avanti (-Z)
@@ -323,6 +329,12 @@ int main() {
             break;
         case 'o': // LUCE SPOT Giù (-Y)
             moveLight(glm::vec3(0.0f, -1.0f, 0.0f));
+            break;
+        case 'v': // Undo:
+            HanoiGame::undo();
+            break;
+        case 'b': // Redo
+            HanoiGame::redo();
             break;
         case 27: // ESC per uscire
             Engine::stop();

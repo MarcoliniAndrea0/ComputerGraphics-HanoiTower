@@ -16,6 +16,8 @@ int HanoiGame::moveCount = 0;
 int HanoiGame::minMovesRequired = 0;
 float HanoiGame::animationTime = 0.0f;
 std::shared_ptr<Node> HanoiGame::sceneRoot = nullptr;
+std::stack<HanoiGame::MoveAction> HanoiGame::undoStack;
+std::stack<HanoiGame::MoveAction> HanoiGame::redoStack;
 
 // Helper ricorsivo per trovare un nodo
 std::shared_ptr<Node> HanoiGame::findNode(std::shared_ptr<Node> root, const std::string& name) {
@@ -399,6 +401,18 @@ bool HanoiGame::performMove(int diskIndex, int targetTower) {
     }
     
     Disk& disk = disks[diskIndex];
+    int sourceTowerIdx = disk.currentTower;
+    // Se il giocatore fa una nuova mossa, il futuro (redo) non esiste più
+    while (!redoStack.empty()) {
+        redoStack.pop();
+    }
+
+    // Registriamo l'azione corrente nello stack Undo
+    MoveAction action;
+    action.diskIndex = diskIndex;
+    action.sourceTowerIdx = sourceTowerIdx;
+    action.destTowerIdx = targetTower;
+    undoStack.push(action);
     
     // Remove from source tower
     auto& sourceTower = towers[disk.currentTower];
@@ -439,6 +453,64 @@ void HanoiGame::checkWinCondition() {
             std::cout << "PERFECT SCORE! You solved it in the minimum number of moves!" << std::endl;
         }
     }
+}
+
+void HanoiGame::undo() {
+    if (undoStack.empty()) {
+        std::cout << "Niente da annullare!" << std::endl;
+        return;
+    }
+
+    MoveAction lastMove = undoStack.top();
+    undoStack.pop();
+
+    // Logica inversa manuale (senza chiamare performMove per non incasinare lo stack)
+    Disk& disk = disks[lastMove.diskIndex];
+
+    // Rimuovi dalla torre attuale (che era la destinazione)
+    towers[lastMove.destTowerIdx].diskIndices.pop_back();
+
+    // Rimetti nella torre originale (sorgente)
+    towers[lastMove.sourceTowerIdx].diskIndices.push_back(lastMove.diskIndex);
+    disk.currentTower = lastMove.sourceTowerIdx;
+
+    // Aggiungi alla redo stack
+    redoStack.push(lastMove);
+
+    moveCount--;
+    updateDiskPositions();
+    Engine::setScreenText(getStatus());
+}
+
+void HanoiGame::redo() {
+    if (redoStack.empty()) {
+        std::cout << "Niente da ripristinare (Redo stack vuoto)!" << std::endl;
+        return;
+    }
+
+    MoveAction nextMove = redoStack.top();
+    redoStack.pop();
+
+    // Logica di ripristino della mossa
+    Disk& disk = disks[nextMove.diskIndex];
+
+    // 1. Rimuovi dalla torre sorgente (dove è tornato dopo l'undo)
+    towers[nextMove.sourceTowerIdx].diskIndices.pop_back();
+
+    // 2. Aggiungi alla torre destinazione (dove era andato in origine)
+    towers[nextMove.destTowerIdx].diskIndices.push_back(nextMove.diskIndex);
+
+    // 3. Aggiorna il riferimento della torre nel disco
+    disk.currentTower = nextMove.destTowerIdx;
+
+    // Aggiungi nuovamente alla undo stack (così si può annullare di nuovo)
+    undoStack.push(nextMove);
+
+    moveCount++;
+    std::cout << "Redo: sposta " << disk.name << " su Torre " << (nextMove.destTowerIdx + 1) << std::endl;
+
+    updateDiskPositions();
+    Engine::setScreenText(getStatus());
 }
 
 /*
