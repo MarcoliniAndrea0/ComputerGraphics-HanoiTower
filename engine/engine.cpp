@@ -305,12 +305,6 @@ void LIB_API Engine::render()
 
     Engine::activeCamera->setWindowSize(Engine::windowWidth, Engine::windowHeight);
 
-    // ----------------------------// ----------------------------// ----------------------------
-    // Imposta la matrice di proiezione chiamando il render della camera
-    // Si passa una matrice identità perché la View Matrix viene gestita dopo
-    Engine::activeCamera->render(glm::mat4(1.0f));
-    // ----------------------------// ----------------------------// ----------------------------
-
     int maxNrOfLights;
     // Ottiene il numero massimo di luci che OpenGL pu    gestire.
     glGetIntegerv(GL_MAX_LIGHTS, &maxNrOfLights);

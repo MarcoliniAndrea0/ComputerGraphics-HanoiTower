@@ -1,6 +1,7 @@
 #pragma once
 
 #include "engine.h"
+#include "node.h"
 #include <memory>
 #include <vector>
 #include <glm/glm.hpp>
@@ -14,8 +15,7 @@ public:
     /**
      * @brief Initialize the game
      */
-    static void init();
-    
+    static void init(std::shared_ptr<Node> rootNode);
     /**
      * @brief Reset the game to initial state
      */
@@ -44,7 +44,7 @@ public:
      * @brief Update game animation
      * @param deltaTime Time since last update
      */
-    static void update(float deltaTime);
+    static void update(/*float deltaTime*/);
     
     /**
      * @brief Check if game is won
@@ -79,11 +79,6 @@ private:
     static const int NUM_DISKS;
     static const int NUM_TOWERS;
     static const float DISK_HEIGHT;
-    static const float DISK_RADIUS_BASE;
-    static const float DISK_RADIUS_INCREMENT;
-    static const float TOWER_HEIGHT;
-    static const float TOWER_RADIUS;
-    static const float TOWER_SPACING;
     
     // Game state
     enum class GameState {
@@ -94,24 +89,23 @@ private:
     
     // Disk structure
     struct Disk {
-        std::shared_ptr<Node> node;
-        int size;  // 1 (smallest) to 7 (largest)
+        std::shared_ptr<Node> node; // Puntatore al nodo visuale reale
+        int size;  // 1 (piccolo) a 7 (grande)
         int currentTower;
-        glm::vec3 baseColor;
         std::string name;
+        glm::vec3 originalPosition; // Per il reset
     };
     
     // Tower structure
     struct Tower {
-        std::shared_ptr<Node> node;
-        std::vector<int> diskIndices; // indices of disks on this tower (top is last)
-        glm::vec3 position;
+        std::shared_ptr<Node> node; // Puntatore al nodo visuale reale
+        std::vector<int> diskIndices;
+        glm::vec3 position; // Posizione della base della torre
         std::string name;
     };
     
     // Private methods
-    static void createTowers();
-    static void createDisks();
+    static void loadGameObjects(std::shared_ptr<Node> rootNode);
     static void updateDiskPositions();
     static bool isValidMove(int diskIndex, int targetTower);
     static bool performMove(int diskIndex, int targetTower);
@@ -119,6 +113,9 @@ private:
     static int findDiskIndex(const std::string& diskName);
     static int findTowerIndex(const std::string& towerName);
     
+    // Helper per trovare i nodi nella scena
+    static std::shared_ptr<Node> findNode(std::shared_ptr<Node> root, const std::string& name);
+
     // Static game variables
     static GameState gameState;
     static std::vector<Disk> disks;
@@ -127,8 +124,7 @@ private:
     static int moveCount;
     static int minMovesRequired;
     static float animationTime;
-    static const float ANIMATION_DURATION;
     
-    // Disk colors
-    static const glm::vec3 DISK_COLORS[7];
+    // Teniamo traccia del rootNode per i reset
+    static std::shared_ptr<Node> sceneRoot;
 };

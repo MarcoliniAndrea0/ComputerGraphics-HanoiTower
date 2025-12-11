@@ -2,11 +2,13 @@
 #include <memory>
 #include <engine.h>
 #include <Node.h>
+#include "hanoi.h"
 #include <PerspectiveCamera.h>
 #include <OvoParser.h>
 #include <PointLight.h>
 #include <Material.h>
-#include <algorithm> 
+#include <algorithm>
+//#include <GL/freeglut.h>
 
 
 namespace Constants {
@@ -19,6 +21,10 @@ namespace Constants {
     constexpr inline int KEYBOARD_KEY_ENTER = 13;
 }
 
+// Variabili globali per la gestione della scena e del tempo
+std::shared_ptr<Node> rootNode = nullptr;
+int lastTime = 0;
+
 // Camera reference
 std::shared_ptr<PerspectiveCamera> whiteCamera;
 
@@ -28,14 +34,23 @@ std::shared_ptr<PerspectiveCamera> currentActiveCamera = whiteCamera;
 
 
 // Movement speed
-float cameraSpeed = 15.0f;
+float cameraSpeed = 150.0f;
 float lightSpeed = 5.0f;
 bool isLightEnabled = false;
 
 // Rotation speed
 float cameraRotationSpeed = 5.0f;
 
-void textOverlay()
+
+// --- Callback del Mouse per la logica di gioco ---
+void mouseCallback(int button, int state, int x, int y) {
+    // Passa il click sinistro alla logica della Torre di Hanoi
+    if (button == Constants::MOUSE_LEFT_BUTTON && state == Constants::MOUSE_DOWN) {
+        HanoiGame::handleClick(x, y);
+    }
+}
+
+std::string getInstructions()
 {
     std::stringstream text;
     text << "---ENVIRONMENT COMMANDS---\n";
@@ -49,7 +64,14 @@ void textOverlay()
     text << "[i][k] - Move Forward/Back\n";
     text << "[j][h] - Move Left/Right\n";
     text << "[u][o] - Move Up/Down\n";
-    Engine::setScreenText(text.str());
+    text << "\n---GAME---\n";
+    text << "[p] - Help game\n";
+    text << "[LeftMouseClick] - Select Disk\n";
+    text << "[LeftMouseClick] - Select Tower\n";
+    //Engine::setScreenText(text.str());
+
+    return text.str();
+
 }
 
 
@@ -93,6 +115,9 @@ void resetScene() {
     if (ovoScene) {
         scene->addChild(ovoScene);
         std::cout << "[Info] Scene successfully reset." << std::endl;
+        //Reinizializza la logica della Torre di Hanoi
+        HanoiGame::init(scene);
+        HanoiGame::showHelp();
     }
     else {
         std::cerr << "[Error] Unable to reload OVO file." << std::endl;
@@ -224,8 +249,7 @@ int main() {
     // Inizializza il motore con titolo finestra, larghezza e altezza
     Engine::init("Test Scene", 1000, 800);
 
-    textOverlay();
-
+    Engine::setMouseCallback(mouseCallback);
 
     Engine::setKeyboardCallback([](const unsigned char key, const int mouseX, const int mouseY) {
 
@@ -240,7 +264,10 @@ int main() {
 
         switch (key) {
         case 'r': // Tasto 'r' per resettare la scena
-            resetScene();
+            resetScene(); //resetta anche HanoiGame
+            break;
+        case 'p': // Help gioco
+            HanoiGame::showHelp();
             break;
         case 'c':
             nextCamera();
@@ -262,11 +289,9 @@ int main() {
             break;
         case 'x': // Freccia su
             rotation.x -= cameraRotationSpeed;
-            if (rotation.x < -89.0f) rotation.x = -89.0f; // Limita il pitch
             break;
         case 'y': // Freccia giù
             rotation.x += cameraRotationSpeed;
-            if (rotation.x > 89.0f) rotation.x = 89.0f; // Limita il pitch
             break;
         case 'e': // Freccia sinistra
             rotation.y -= cameraRotationSpeed;
@@ -317,17 +342,43 @@ int main() {
     std::shared_ptr<Node> ovoScene = OVOParser::fromFile("./scena1.ovo");
     if (ovoScene) {
         scene->addChild(ovoScene);
+
+        //Inizializza logica di gioco
+        //Viene passata le scena perché i dischi sono i Disk_n sono dentro il .ovo
+        HanoiGame::init(scene);
+        HanoiGame::showHelp();
     }
     else {
         std::cerr << "[Error] Unable to load OVO file." << std::endl;
     }
 
     std::shared_ptr<Node> spotlightNode = Engine::findObjectByName("Spot001");
-    std::shared_ptr<SpotLight> spotlight = std::dynamic_pointer_cast<SpotLight>(spotlightNode);
-    spotlight->setRadius(0);
+    if (spotlightNode) {
+        std::shared_ptr<SpotLight> spotlight = std::dynamic_pointer_cast<SpotLight>(spotlightNode);
+        if (spotlight) spotlight->setRadius(0);
+    }
+
+    // Inizializza tempo
+    //lastTime = glutGet(GLUT_ELAPSED_TIME);
+
+    // Salva le istruzioni in una stringa fissa per non ricrearla ogni frame
+    std::string staticInstructions = getInstructions();
 
     // Esegui il ciclo principale del motore finché non viene chiuso
     while (Engine::isRunning()) {
+
+        // Calcolo Delta Time
+        /*
+        int currentTime = glutGet(GLUT_ELAPSED_TIME);
+        float deltaTime = (currentTime - lastTime) / 1000.0f;
+        lastTime = currentTime;
+        */
+        // Aggiorna logica gioco (animazioni)
+        HanoiGame::update(/*deltaTime*/);
+
+        std::string fullText = staticInstructions + "\n---STATUS---\n" + HanoiGame::getStatus();
+        Engine::setScreenText(fullText);
+
         Engine::update();       // Gestisce eventi e callback
         Engine::clearScreen();  // Pulisce lo schermo per il nuovo frame
         Engine::render();    // Renderizza la scena
