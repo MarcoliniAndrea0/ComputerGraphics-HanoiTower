@@ -252,7 +252,7 @@ int main() {
     Engine::init("Test Scene", 1000, 800);
 
     //Engine::setMouseCallback(mouseCallback);
-
+    
     Engine::setKeyboardCallback([](const unsigned char key, const int mouseX, const int mouseY) {
 
         glm::mat4 globalTransform = Engine::getGlobalTransform(freeCamera);
@@ -301,9 +301,13 @@ int main() {
             rotation.x += cameraRotationSpeed;
             break;
         case 'e': // Freccia sinistra
+            rotation.z = 0;
+            rotation.x = 0;
             rotation.y -= cameraRotationSpeed;
             break;
         case 'q': // Freccia destra
+            rotation.z = 0;
+            rotation.x = 0;
             rotation.y += cameraRotationSpeed;
             break;
         case 'i': // LUCE SPOT Avanti (-Z)
