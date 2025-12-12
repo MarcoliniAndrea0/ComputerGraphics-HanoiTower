@@ -35,7 +35,7 @@ std::shared_ptr<PerspectiveCamera> currentActiveCamera = whiteCamera;
 
 // Movement speed
 float cameraSpeed = 150.0f;
-float lightSpeed = 5.0f;
+float lightSpeed = 500.0f;
 bool isLightEnabled = false;
 
 // Rotation speed
@@ -130,30 +130,30 @@ void resetScene() {
 
 void switchLight()
 {
-    // 1. Trova il nodo della luce/lampada
+    // Trova il nodo della Spotlight
     std::shared_ptr<Node> objectNode = Engine::findObjectByName("Spot001");
 
     if (objectNode) {
+
         // Cast ai tipi specifici
         std::shared_ptr<SpotLight> spotlight = std::dynamic_pointer_cast<SpotLight>(objectNode);
         std::shared_ptr<Mesh> lampMesh = std::dynamic_pointer_cast<Mesh>(objectNode);
 
         // Variabili statiche per salvare lo stato della luce
         // Salviamo Diffuse e Specular perché sono quelle che illuminano la scena
-        static glm::vec3 savedDiffuse = glm::vec3(1.0f);
-        static glm::vec3 savedSpecular = glm::vec3(1.0f);
-        static float savedRadius = 200.0f; // Salviamo anche il raggio originale
-        static bool hasSavedState = false;
+        static glm::vec3 savedDiffuseSpot = glm::vec3(1.0f);
+        static glm::vec3 savedSpecularSpot = glm::vec3(1.0f);
+        static float savedRadiusSpot = 200.0f; // Salviamo anche il raggio originale
+        static bool hasSavedStateSpot = false;
+
 
         if (spotlight) {
 
             // Salva lo stato originale solo la prima volta (quando è sicuramente accesa)
-            if (!hasSavedState && isLightEnabled) {
-                savedDiffuse = spotlight->getDiffuseColor();   // Metodo corretto da light.h
-                savedSpecular = spotlight->getSpecularColor(); // Metodo corretto da light.h
-                // Nota: non c'è getRadius() pubblico in SpotLight.h che vedo, quindi assumiamo 200 o lo hardcodiamo
-                // Se hai aggiunto getRadius() nel .h, usa quello. Altrimenti usa il valore noto (es. 200).
-                hasSavedState = true;
+            if (!hasSavedStateSpot && isLightEnabled) {
+                savedDiffuseSpot = spotlight->getDiffuseColor();
+                savedSpecularSpot = spotlight->getSpecularColor();
+                hasSavedStateSpot = true;
             }
 
             if (isLightEnabled) {
@@ -184,13 +184,15 @@ void switchLight()
                 // --- ACCENSIONE ---
 
                 // 1. Ripristina i colori salvati
-                spotlight->setDiffuseColor(savedDiffuse);
-                spotlight->setSpecularColor(savedSpecular);
+                spotlight->setDiffuseColor(savedDiffuseSpot);
+                spotlight->setSpecularColor(savedSpecularSpot);
                 // L'ambientale della luce spesso è basso o nullo, ripristina un valore basso o quello salvato se lo gestisci
                 spotlight->setAmbientColor(glm::vec3(0.1f));
 
                 // 2. Ripristina il raggio
-                spotlight->setRadius(savedRadius);
+                spotlight->setRadius(savedRadiusSpot);
+
+                /*
 
                 // 3. Feedback visivo sulla lampadina
                 if (lampMesh) {
@@ -198,8 +200,10 @@ void switchLight()
                     lampMesh->getMaterial()->setDiffuseColor(glm::vec3(1.0f, 1.0f, 1.0f));
 
                     // La lampadina "brilla" di nuovo (simula la luce che esce dalla mesh stessa)
-                    lampMesh->getMaterial()->setEmissionColor(savedDiffuse);
+                    lampMesh->getMaterial()->setEmissionColor(savedDiffuseSpot);
                 }
+
+                */
 
                 isLightEnabled = true;
                 std::cout << "[Info] Spotlight ACCESA." << std::endl;
@@ -231,18 +235,22 @@ void nextCamera() {
 
 void moveLight(glm::vec3 direction)
 {
-    // Trova il nodo della luce
-    std::shared_ptr<Node> spotlightNode = Engine::findObjectByName("Spot001");
+    // Trova il nodo della Omnilight
+    std::shared_ptr<Node> pointlightNode = Engine::findObjectByName("Omni001");
 
-    if (spotlightNode) {
+    std::cout << "local: " << glm::to_string(pointlightNode->getPosition()) << "\n";
+    std::cout << "global: " << glm::to_string(Engine::getGlobalPosition(pointlightNode)) << "\n";
+
+
+    if (pointlightNode) {
         // Ottieni la posizione corrente
-        glm::vec3 currentPos = spotlightNode->getPosition();
+        glm::vec3 currentPos = pointlightNode->getPosition();
 
         // Calcola la nuova posizione
         glm::vec3 newPos = currentPos + (direction * lightSpeed);
 
         // Applica la nuova posizione
-        spotlightNode->setPosition(newPos);
+        pointlightNode->setPosition(newPos);
 
         // Debug log
         std::cout << "[Info] Light Pos: " << newPos.x << ", " << newPos.y << ", " << newPos.z << std::endl;
@@ -312,16 +320,16 @@ int main() {
             rotation.x = 0;
             rotation.y += cameraRotationSpeed;
             break;
-        case 'i': // LUCE SPOT Avanti (-Z)
+        case 'j': // LUCE SPOT Avanti (-Z) 
             moveLight(glm::vec3(0.0f, 0.0f, -1.0f));
             break;
-        case 'k': // LUCE SPOT Indietro (+Z)
+        case 'h': // LUCE SPOT Indietro (+Z) 
             moveLight(glm::vec3(0.0f, 0.0f, 1.0f));
             break;
-        case 'j': // LUCE SPOT Sinistra (-X)
+        case 'i': // LUCE SPOT Sinistra (-X) 
             moveLight(glm::vec3(-1.0f, 0.0f, 0.0f));
             break;
-        case 'h': // LUCE SPOT Destra (+X)
+        case 'k': // LUCE SPOT Destra (+X) 
             moveLight(glm::vec3(1.0f, 0.0f, 0.0f));
             break;
         case 'u': // LUCE SPOT Su (+Y)
@@ -371,11 +379,8 @@ int main() {
         std::cerr << "[Error] Unable to load OVO file." << std::endl;
     }
 
-    std::shared_ptr<Node> spotlightNode = Engine::findObjectByName("Spot001");
-    if (spotlightNode) {
-        std::shared_ptr<SpotLight> spotlight = std::dynamic_pointer_cast<SpotLight>(spotlightNode);
-        if (spotlight) spotlight->setRadius(0);
-    }
+    
+
 
     // Inizializza tempo
     //lastTime = glutGet(GLUT_ELAPSED_TIME);
