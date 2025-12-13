@@ -36,7 +36,7 @@ std::shared_ptr<PerspectiveCamera> currentActiveCamera = whiteCamera;
 // Movement speed
 float cameraSpeed = 150.0f;
 float lightSpeed = 500.0f;
-bool isLightEnabled = false;
+bool isLightEnabled = true;
 
 // Rotation speed
 float cameraRotationSpeed = 5.0f;
@@ -133,16 +133,21 @@ void switchLight()
     // Trova il nodo della Spotlight
     std::shared_ptr<Node> objectNode = Engine::findObjectByName("Spot001");
 
+    std::shared_ptr<Node> objectNodeLampadina = Engine::findObjectByName("lampadina");
+
     if (objectNode) {
 
         // Cast ai tipi specifici
         std::shared_ptr<SpotLight> spotlight = std::dynamic_pointer_cast<SpotLight>(objectNode);
-        std::shared_ptr<Mesh> lampMesh = std::dynamic_pointer_cast<Mesh>(objectNode);
+        std::shared_ptr<Mesh> meshLampadina = std::dynamic_pointer_cast<Mesh>(objectNodeLampadina);
 
         // Variabili statiche per salvare lo stato della luce
         // Salviamo Diffuse e Specular perché sono quelle che illuminano la scena
         static glm::vec3 savedDiffuseSpot = glm::vec3(1.0f);
         static glm::vec3 savedSpecularSpot = glm::vec3(1.0f);
+        static glm::vec3 savedAmbientColor = glm::vec3(1.0f);
+        static glm::vec3 savedEmissionLampadina = glm::vec3(1.0f);
+
         static float savedRadiusSpot = 200.0f; // Salviamo anche il raggio originale
         static bool hasSavedStateSpot = false;
 
@@ -152,29 +157,26 @@ void switchLight()
             // Salva lo stato originale solo la prima volta (quando è sicuramente accesa)
             if (!hasSavedStateSpot && isLightEnabled) {
                 savedDiffuseSpot = spotlight->getDiffuseColor();
-                savedSpecularSpot = spotlight->getSpecularColor();
+                savedSpecularSpot = spotlight->getSpecularColor(); 
+                savedAmbientColor = spotlight->getAmbientColor();
+
+                savedEmissionLampadina = meshLampadina->getMaterial()->getEmissionColor();
                 hasSavedStateSpot = true;
             }
 
             if (isLightEnabled) {
                 // --- SPEGNIMENTO ---
 
-                // 1. Spegni la luce impostando i colori a nero (vec3(0.0f))
+                
                 spotlight->setDiffuseColor(glm::vec3(0.0f));
                 spotlight->setSpecularColor(glm::vec3(0.0f));
-                spotlight->setAmbientColor(glm::vec3(0.0f)); // Spegniamo anche l'ambiente per sicurezza
+                spotlight->setAmbientColor(glm::vec3(0.0f));
 
-                // 2. Raggio a 0
                 spotlight->setRadius(0.0f);
 
                 // 3. Feedback visivo sulla lampadina (Mesh)
-                if (lampMesh) {
-                    // Nota: I metodi set...Color in material.h prendono glm::vec3, non vec4!
-                    lampMesh->getMaterial()->setAmbientColor(glm::vec3(0.1f, 0.1f, 0.1f));
-                    lampMesh->getMaterial()->setDiffuseColor(glm::vec3(0.0f, 0.0f, 0.0f));
-
-                    // CORREZIONE QUI: Usa setEmissionColor
-                    lampMesh->getMaterial()->setEmissionColor(glm::vec3(0.0f, 0.0f, 0.0f));
+                if (meshLampadina) {
+                    meshLampadina->getMaterial()->setEmissionColor(glm::vec3(0.0f, 0.0f, 0.0f));
                 }
 
                 isLightEnabled = false;
@@ -183,27 +185,16 @@ void switchLight()
             else {
                 // --- ACCENSIONE ---
 
-                // 1. Ripristina i colori salvati
                 spotlight->setDiffuseColor(savedDiffuseSpot);
                 spotlight->setSpecularColor(savedSpecularSpot);
-                // L'ambientale della luce spesso è basso o nullo, ripristina un valore basso o quello salvato se lo gestisci
-                spotlight->setAmbientColor(glm::vec3(0.1f));
+                spotlight->setAmbientColor(savedAmbientColor);
 
-                // 2. Ripristina il raggio
                 spotlight->setRadius(savedRadiusSpot);
 
-                /*
-
                 // 3. Feedback visivo sulla lampadina
-                if (lampMesh) {
-                    lampMesh->getMaterial()->setAmbientColor(glm::vec3(1.0f, 1.0f, 1.0f)); // Colore lampada spenta ma visibile
-                    lampMesh->getMaterial()->setDiffuseColor(glm::vec3(1.0f, 1.0f, 1.0f));
-
-                    // La lampadina "brilla" di nuovo (simula la luce che esce dalla mesh stessa)
-                    lampMesh->getMaterial()->setEmissionColor(savedDiffuseSpot);
+                if (meshLampadina) {
+                    meshLampadina->getMaterial()->setEmissionColor(savedEmissionLampadina);
                 }
-
-                */
 
                 isLightEnabled = true;
                 std::cout << "[Info] Spotlight ACCESA." << std::endl;
@@ -237,20 +228,25 @@ void moveLight(glm::vec3 direction)
 {
     // Trova il nodo della Omnilight
     std::shared_ptr<Node> pointlightNode = Engine::findObjectByName("Omni001");
+    // Trova il nodo della sfera luminosa associata alla luce
+    std::shared_ptr<Node> sphere1 = Engine::findObjectByName("Sphere001");
+
 
     std::cout << "local: " << glm::to_string(pointlightNode->getPosition()) << "\n";
     std::cout << "global: " << glm::to_string(Engine::getGlobalPosition(pointlightNode)) << "\n";
 
 
-    if (pointlightNode) {
+    if (pointlightNode && sphere1) {
         // Ottieni la posizione corrente
         glm::vec3 currentPos = pointlightNode->getPosition();
+        glm::vec3 currentPosSphere = sphere1->getPosition();
 
         // Calcola la nuova posizione
         glm::vec3 newPos = currentPos + (direction * lightSpeed);
-
+        glm::vec3 newPosSphere = currentPosSphere + (direction * lightSpeed);
         // Applica la nuova posizione
         pointlightNode->setPosition(newPos);
+        sphere1->setPosition(newPosSphere);
 
         // Debug log
         std::cout << "[Info] Light Pos: " << newPos.x << ", " << newPos.y << ", " << newPos.z << std::endl;
@@ -273,6 +269,13 @@ int main() {
         glm::vec3 cameraUp = glm::normalize(glm::vec3(globalTransform[1]));    // Y
 
         glm::vec3 cameraPosition = freeCamera->getPosition();
+
+        //Posiziona la pointLight dentro la sfera luminosa
+        std::shared_ptr<Node> pointlightNode = Engine::findObjectByName("Omni001");
+        std::shared_ptr<Node> sphere1 = Engine::findObjectByName("Sphere001");
+        sphere1->setPosition(pointlightNode->getPosition());
+
+
 
         switch (key) {
         case '1':
