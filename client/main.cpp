@@ -8,18 +8,9 @@
 #include <PointLight.h>
 #include <Material.h>
 #include <algorithm>
-//#include <GL/freeglut.h>
+#include "definitions.h"
 
 
-namespace Constants {
-    constexpr inline int MOUSE_LEFT_BUTTON = 0;
-    constexpr inline int MOUSE_DOWN = 0;
-    constexpr inline int KEYBOARD_KEY_UP = 101;
-    constexpr inline int KEYBOARD_KEY_DOWN = 103;
-    constexpr inline int KEYBOARD_KEY_LEFT = 100;
-    constexpr inline int KEYBOARD_KEY_RIGHT = 102;
-    constexpr inline int KEYBOARD_KEY_ENTER = 13;
-}
 
 // Variabili globali per la gestione della scena e del tempo
 std::shared_ptr<Node> rootNode = nullptr;
@@ -61,6 +52,7 @@ std::string getInstructions()
     text << "Free camera commands:\n";
     text << "   [w][a][s][d] - Move camera\n";
     text << "   [q][e][y][x] - Rotate camera\n";
+    text << "      [,][.]    - Up/Down\n";
     text << "\n---LIGHT CONTROL---\n";
     text << "[i][k] - Move Forward/Back\n";
     text << "[j][h] - Move Left/Right\n";
@@ -77,7 +69,6 @@ std::string getInstructions()
     return text.str();
 
 }
-
 
 
 void intializeAndSetCameras(std::shared_ptr<Node> scene)
@@ -253,6 +244,46 @@ void moveLight(glm::vec3 direction)
     }
 }
 
+void moveCamera(char direction) {
+
+    glm::mat4 globalTransform = Engine::getGlobalTransform(freeCamera);
+    // Estrai i vettori front, right e up dalla matrice globale
+    glm::vec3 cameraFront = glm::normalize(glm::vec3(globalTransform[2])); // Z
+    glm::vec3 cameraRight = glm::normalize(glm::vec3(globalTransform[0])); // X
+    glm::vec3 cameraUp = glm::normalize(glm::vec3(globalTransform[1]));    // Y
+
+    // Ottieni la posizione corrente
+    glm::vec3 cameraPosition = freeCamera->getPosition();
+
+    switch (direction)
+    {
+    case 'f':
+        cameraPosition -= cameraFront * cameraSpeed;
+        break;
+    case 'b':
+        cameraPosition += cameraFront * cameraSpeed;
+        break;
+    case 'l':
+        cameraPosition -= cameraRight * cameraSpeed;
+        break;
+    case 'r':
+        cameraPosition += cameraRight * cameraSpeed;
+        break;
+    case 'u':
+        cameraPosition = cameraPosition + (glm::vec3(0.0f,1.0f,0.0f) * cameraSpeed);
+        break;
+    case 'd':
+        cameraPosition = cameraPosition + (glm::vec3(0.0f, -1.0f, 0.0f) * cameraSpeed);
+        break;
+    default:
+        break;
+    }      
+
+        // Aggiorna la posizione della camera
+        freeCamera->setPosition(cameraPosition);
+}
+
+
 int main() {
     // Inizializza il motore con titolo finestra, larghezza e altezza
     Engine::init("Test Scene", 1000, 800);
@@ -261,12 +292,7 @@ int main() {
     
     Engine::setKeyboardCallback([](const unsigned char key, const int mouseX, const int mouseY) {
 
-        glm::mat4 globalTransform = Engine::getGlobalTransform(freeCamera);
-        glm::vec3 rotation = freeCamera->getRotation();
-        // Estrai i vettori front, right e up dalla matrice globale
-        glm::vec3 cameraFront = glm::normalize(glm::vec3(globalTransform[2])); // Z
-        glm::vec3 cameraRight = glm::normalize(glm::vec3(globalTransform[0])); // X
-        glm::vec3 cameraUp = glm::normalize(glm::vec3(globalTransform[1]));    // Y
+        glm::vec3 rotation = freeCamera->getRotation();        
 
         glm::vec3 cameraPosition = freeCamera->getPosition();
 
@@ -274,8 +300,6 @@ int main() {
         std::shared_ptr<Node> pointlightNode = Engine::findObjectByName("Omni001");
         std::shared_ptr<Node> sphere1 = Engine::findObjectByName("Sphere001");
         sphere1->setPosition(pointlightNode->getPosition());
-
-
 
         switch (key) {
         case '1':
@@ -296,16 +320,22 @@ int main() {
             switchLight();
             break;
         case 'w': // Muove la camera in avanti
-            cameraPosition -= cameraFront * cameraSpeed;
+            moveCamera('f');
             break;
         case 's': // Muove la camera indietro
-            cameraPosition += cameraFront * cameraSpeed;
+            moveCamera('b');
             break;
         case 'a': // Muove la camera a sinistra
-            cameraPosition -= cameraRight * cameraSpeed;
+            moveCamera('l');
             break;
         case 'd': // Muove la camera a destra
-            cameraPosition += cameraRight * cameraSpeed;
+            moveCamera('r');
+            break;
+        case ',': // Muove la camera in alto
+            moveCamera('u');
+            break;
+        case '.': // Muove la camera in basso,
+            moveCamera('d');
             break;
         case 'x': // Freccia su
             rotation.x -= cameraRotationSpeed;
@@ -353,9 +383,6 @@ int main() {
         }
 
         freeCamera->setRotation(rotation);
-
-        // Aggiorna la posizione della camera
-        freeCamera->setPosition(cameraPosition);
 
         });
 
