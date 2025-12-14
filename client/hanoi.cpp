@@ -274,13 +274,13 @@ void HanoiGame::handleKey(unsigned char key) {
         case 'H':
             showHelp();
             break;
-        case '1':
+        case '3':
             processTowerInput(0); // Torre 1 (indice 0)
             break;
         case '2':
             processTowerInput(1); // Torre 2 (indice 1)
             break;
-        case '3':
+        case '1':
             processTowerInput(2); // Torre 3 (indice 2)
             break;
     }
