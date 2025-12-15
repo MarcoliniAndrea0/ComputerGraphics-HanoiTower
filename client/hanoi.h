@@ -83,6 +83,8 @@ private:
     static const int NUM_DISKS;
     static const int NUM_TOWERS;
     static const float DISK_HEIGHT;
+    static const float TOWER_DISTANCE;
+    static const float DISK_SPACING;
     
     // Game state
     enum class GameState {
