@@ -8,18 +8,9 @@
 #include <PointLight.h>
 #include <Material.h>
 #include <algorithm>
-//#include <GL/freeglut.h>
+#include "definitions.h"
 
 
-namespace Constants {
-    constexpr inline int MOUSE_LEFT_BUTTON = 0;
-    constexpr inline int MOUSE_DOWN = 0;
-    constexpr inline int KEYBOARD_KEY_UP = 101;
-    constexpr inline int KEYBOARD_KEY_DOWN = 103;
-    constexpr inline int KEYBOARD_KEY_LEFT = 100;
-    constexpr inline int KEYBOARD_KEY_RIGHT = 102;
-    constexpr inline int KEYBOARD_KEY_ENTER = 13;
-}
 
 // Variabili globali per la gestione della scena e del tempo
 std::shared_ptr<Node> rootNode = nullptr;
@@ -35,8 +26,8 @@ std::shared_ptr<PerspectiveCamera> currentActiveCamera = whiteCamera;
 
 // Movement speed
 float cameraSpeed = 150.0f;
-float lightSpeed = 5.0f;
-bool isLightEnabled = false;
+float lightSpeed = 500.0f;
+bool isLightEnabled = true;
 
 // Rotation speed
 float cameraRotationSpeed = 5.0f;
@@ -61,6 +52,7 @@ std::string getInstructions()
     text << "Free camera commands:\n";
     text << "   [w][a][s][d] - Move camera\n";
     text << "   [q][e][y][x] - Rotate camera\n";
+    text << "      [,][.]    - Up/Down\n";
     text << "\n---LIGHT CONTROL---\n";
     text << "[i][k] - Move Forward/Back\n";
     text << "[j][h] - Move Left/Right\n";
@@ -77,7 +69,6 @@ std::string getInstructions()
     return text.str();
 
 }
-
 
 
 void intializeAndSetCameras(std::shared_ptr<Node> scene)
@@ -130,51 +121,53 @@ void resetScene() {
 
 void switchLight()
 {
-    // 1. Trova il nodo della luce/lampada
+    // Trova il nodo della Spotlight
     std::shared_ptr<Node> objectNode = Engine::findObjectByName("Spot001");
 
+    std::shared_ptr<Node> objectNodeLampadina = Engine::findObjectByName("lampadina");
+
     if (objectNode) {
+
         // Cast ai tipi specifici
         std::shared_ptr<SpotLight> spotlight = std::dynamic_pointer_cast<SpotLight>(objectNode);
-        std::shared_ptr<Mesh> lampMesh = std::dynamic_pointer_cast<Mesh>(objectNode);
+        std::shared_ptr<Mesh> meshLampadina = std::dynamic_pointer_cast<Mesh>(objectNodeLampadina);
 
         // Variabili statiche per salvare lo stato della luce
         // Salviamo Diffuse e Specular perché sono quelle che illuminano la scena
-        static glm::vec3 savedDiffuse = glm::vec3(1.0f);
-        static glm::vec3 savedSpecular = glm::vec3(1.0f);
-        static float savedRadius = 200.0f; // Salviamo anche il raggio originale
-        static bool hasSavedState = false;
+        static glm::vec3 savedDiffuseSpot = glm::vec3(1.0f);
+        static glm::vec3 savedSpecularSpot = glm::vec3(1.0f);
+        static glm::vec3 savedAmbientColor = glm::vec3(1.0f);
+        static glm::vec3 savedEmissionLampadina = glm::vec3(1.0f);
+
+        static float savedRadiusSpot = 200.0f; // Salviamo anche il raggio originale
+        static bool hasSavedStateSpot = false;
+
 
         if (spotlight) {
 
             // Salva lo stato originale solo la prima volta (quando è sicuramente accesa)
-            if (!hasSavedState && isLightEnabled) {
-                savedDiffuse = spotlight->getDiffuseColor();   // Metodo corretto da light.h
-                savedSpecular = spotlight->getSpecularColor(); // Metodo corretto da light.h
-                // Nota: non c'è getRadius() pubblico in SpotLight.h che vedo, quindi assumiamo 200 o lo hardcodiamo
-                // Se hai aggiunto getRadius() nel .h, usa quello. Altrimenti usa il valore noto (es. 200).
-                hasSavedState = true;
+            if (!hasSavedStateSpot && isLightEnabled) {
+                savedDiffuseSpot = spotlight->getDiffuseColor();
+                savedSpecularSpot = spotlight->getSpecularColor(); 
+                savedAmbientColor = spotlight->getAmbientColor();
+
+                savedEmissionLampadina = meshLampadina->getMaterial()->getEmissionColor();
+                hasSavedStateSpot = true;
             }
 
             if (isLightEnabled) {
                 // --- SPEGNIMENTO ---
 
-                // 1. Spegni la luce impostando i colori a nero (vec3(0.0f))
+                
                 spotlight->setDiffuseColor(glm::vec3(0.0f));
                 spotlight->setSpecularColor(glm::vec3(0.0f));
-                spotlight->setAmbientColor(glm::vec3(0.0f)); // Spegniamo anche l'ambiente per sicurezza
+                spotlight->setAmbientColor(glm::vec3(0.0f));
 
-                // 2. Raggio a 0
                 spotlight->setRadius(0.0f);
 
                 // 3. Feedback visivo sulla lampadina (Mesh)
-                if (lampMesh) {
-                    // Nota: I metodi set...Color in material.h prendono glm::vec3, non vec4!
-                    lampMesh->getMaterial()->setAmbientColor(glm::vec3(0.1f, 0.1f, 0.1f));
-                    lampMesh->getMaterial()->setDiffuseColor(glm::vec3(0.0f, 0.0f, 0.0f));
-
-                    // CORREZIONE QUI: Usa setEmissionColor
-                    lampMesh->getMaterial()->setEmissionColor(glm::vec3(0.0f, 0.0f, 0.0f));
+                if (meshLampadina) {
+                    meshLampadina->getMaterial()->setEmissionColor(glm::vec3(0.0f, 0.0f, 0.0f));
                 }
 
                 isLightEnabled = false;
@@ -183,22 +176,15 @@ void switchLight()
             else {
                 // --- ACCENSIONE ---
 
-                // 1. Ripristina i colori salvati
-                spotlight->setDiffuseColor(savedDiffuse);
-                spotlight->setSpecularColor(savedSpecular);
-                // L'ambientale della luce spesso è basso o nullo, ripristina un valore basso o quello salvato se lo gestisci
-                spotlight->setAmbientColor(glm::vec3(0.1f));
+                spotlight->setDiffuseColor(savedDiffuseSpot);
+                spotlight->setSpecularColor(savedSpecularSpot);
+                spotlight->setAmbientColor(savedAmbientColor);
 
-                // 2. Ripristina il raggio
-                spotlight->setRadius(savedRadius);
+                spotlight->setRadius(savedRadiusSpot);
 
                 // 3. Feedback visivo sulla lampadina
-                if (lampMesh) {
-                    lampMesh->getMaterial()->setAmbientColor(glm::vec3(1.0f, 1.0f, 1.0f)); // Colore lampada spenta ma visibile
-                    lampMesh->getMaterial()->setDiffuseColor(glm::vec3(1.0f, 1.0f, 1.0f));
-
-                    // La lampadina "brilla" di nuovo (simula la luce che esce dalla mesh stessa)
-                    lampMesh->getMaterial()->setEmissionColor(savedDiffuse);
+                if (meshLampadina) {
+                    meshLampadina->getMaterial()->setEmissionColor(savedEmissionLampadina);
                 }
 
                 isLightEnabled = true;
@@ -231,23 +217,72 @@ void nextCamera() {
 
 void moveLight(glm::vec3 direction)
 {
-    // Trova il nodo della luce
-    std::shared_ptr<Node> spotlightNode = Engine::findObjectByName("Spot001");
+    // Trova il nodo della Omnilight
+    std::shared_ptr<Node> pointlightNode = Engine::findObjectByName("Omni001");
+    // Trova il nodo della sfera luminosa associata alla luce
+    std::shared_ptr<Node> sphere1 = Engine::findObjectByName("Sphere001");
 
-    if (spotlightNode) {
+
+    std::cout << "local: " << glm::to_string(pointlightNode->getPosition()) << "\n";
+    std::cout << "global: " << glm::to_string(Engine::getGlobalPosition(pointlightNode)) << "\n";
+
+
+    if (pointlightNode && sphere1) {
         // Ottieni la posizione corrente
-        glm::vec3 currentPos = spotlightNode->getPosition();
+        glm::vec3 currentPos = pointlightNode->getPosition();
+        glm::vec3 currentPosSphere = sphere1->getPosition();
 
         // Calcola la nuova posizione
         glm::vec3 newPos = currentPos + (direction * lightSpeed);
-
+        glm::vec3 newPosSphere = currentPosSphere + (direction * lightSpeed);
         // Applica la nuova posizione
-        spotlightNode->setPosition(newPos);
+        pointlightNode->setPosition(newPos);
+        sphere1->setPosition(newPosSphere);
 
         // Debug log
         std::cout << "[Info] Light Pos: " << newPos.x << ", " << newPos.y << ", " << newPos.z << std::endl;
     }
 }
+
+void moveCamera(char direction) {
+
+    glm::mat4 globalTransform = Engine::getGlobalTransform(freeCamera);
+    // Estrai i vettori front, right e up dalla matrice globale
+    glm::vec3 cameraFront = glm::normalize(glm::vec3(globalTransform[2])); // Z
+    glm::vec3 cameraRight = glm::normalize(glm::vec3(globalTransform[0])); // X
+    glm::vec3 cameraUp = glm::normalize(glm::vec3(globalTransform[1]));    // Y
+
+    // Ottieni la posizione corrente
+    glm::vec3 cameraPosition = freeCamera->getPosition();
+
+    switch (direction)
+    {
+    case 'f': //f = farward 
+        cameraPosition -= cameraFront * cameraSpeed;
+        break;
+    case 'b': //b = backward
+        cameraPosition += cameraFront * cameraSpeed;
+        break;
+    case 'l': //l = left
+        cameraPosition -= cameraRight * cameraSpeed;
+        break;
+    case 'r': //r = right
+        cameraPosition += cameraRight * cameraSpeed;
+        break;
+    case 'u': // u = up
+        cameraPosition = cameraPosition + (glm::vec3(0.0f,1.0f,0.0f) * cameraSpeed);
+        break;
+    case 'd': // d = down
+        cameraPosition = cameraPosition + (glm::vec3(0.0f, -1.0f, 0.0f) * cameraSpeed);
+        break;
+    default:
+        break;
+    }      
+
+        // Aggiorna la posizione della camera
+        freeCamera->setPosition(cameraPosition);
+}
+
 
 int main() {
     // Inizializza il motore con titolo finestra, larghezza e altezza
@@ -257,14 +292,14 @@ int main() {
     
     Engine::setKeyboardCallback([](const unsigned char key, const int mouseX, const int mouseY) {
 
-        glm::mat4 globalTransform = Engine::getGlobalTransform(freeCamera);
-        glm::vec3 rotation = freeCamera->getRotation();
-        // Estrai i vettori front, right e up dalla matrice globale
-        glm::vec3 cameraFront = glm::normalize(glm::vec3(globalTransform[2])); // Z
-        glm::vec3 cameraRight = glm::normalize(glm::vec3(globalTransform[0])); // X
-        glm::vec3 cameraUp = glm::normalize(glm::vec3(globalTransform[1]));    // Y
+        glm::vec3 rotation = freeCamera->getRotation();        
 
         glm::vec3 cameraPosition = freeCamera->getPosition();
+
+        //Posiziona la pointLight dentro la sfera luminosa
+        std::shared_ptr<Node> pointlightNode = Engine::findObjectByName("Omni001");
+        std::shared_ptr<Node> sphere1 = Engine::findObjectByName("Sphere001");
+        sphere1->setPosition(pointlightNode->getPosition());
 
         switch (key) {
         case '1':
@@ -285,16 +320,22 @@ int main() {
             switchLight();
             break;
         case 'w': // Muove la camera in avanti
-            cameraPosition -= cameraFront * cameraSpeed;
+            moveCamera('f');
             break;
         case 's': // Muove la camera indietro
-            cameraPosition += cameraFront * cameraSpeed;
+            moveCamera('b');
             break;
         case 'a': // Muove la camera a sinistra
-            cameraPosition -= cameraRight * cameraSpeed;
+            moveCamera('l');
             break;
         case 'd': // Muove la camera a destra
-            cameraPosition += cameraRight * cameraSpeed;
+            moveCamera('r');
+            break;
+        case ',': // Muove la camera in alto
+            moveCamera('u');
+            break;
+        case '.': // Muove la camera in basso,
+            moveCamera('d');
             break;
         case 'x': // Freccia su
             rotation.x -= cameraRotationSpeed;
@@ -312,16 +353,16 @@ int main() {
             rotation.x = 0;
             rotation.y += cameraRotationSpeed;
             break;
-        case 'i': // LUCE SPOT Avanti (-Z)
+        case 'j': // LUCE SPOT Avanti (-Z) 
             moveLight(glm::vec3(0.0f, 0.0f, -1.0f));
             break;
-        case 'k': // LUCE SPOT Indietro (+Z)
+        case 'h': // LUCE SPOT Indietro (+Z) 
             moveLight(glm::vec3(0.0f, 0.0f, 1.0f));
             break;
-        case 'j': // LUCE SPOT Sinistra (-X)
+        case 'i': // LUCE SPOT Sinistra (-X) 
             moveLight(glm::vec3(-1.0f, 0.0f, 0.0f));
             break;
-        case 'h': // LUCE SPOT Destra (+X)
+        case 'k': // LUCE SPOT Destra (+X) 
             moveLight(glm::vec3(1.0f, 0.0f, 0.0f));
             break;
         case 'u': // LUCE SPOT Su (+Y)
@@ -342,9 +383,6 @@ int main() {
         }
 
         freeCamera->setRotation(rotation);
-
-        // Aggiorna la posizione della camera
-        freeCamera->setPosition(cameraPosition);
 
         });
 
@@ -371,11 +409,8 @@ int main() {
         std::cerr << "[Error] Unable to load OVO file." << std::endl;
     }
 
-    std::shared_ptr<Node> spotlightNode = Engine::findObjectByName("Spot001");
-    if (spotlightNode) {
-        std::shared_ptr<SpotLight> spotlight = std::dynamic_pointer_cast<SpotLight>(spotlightNode);
-        if (spotlight) spotlight->setRadius(0);
-    }
+    
+
 
     // Inizializza tempo
     //lastTime = glutGet(GLUT_ELAPSED_TIME);

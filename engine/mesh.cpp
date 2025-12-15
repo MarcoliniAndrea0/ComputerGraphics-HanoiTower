@@ -127,49 +127,27 @@ void LIB_API Mesh::render(const glm::mat4 viewMatrix) const
 
             glEnd();
         }
-        if (getName().find("Pawn") != std::string::npos)
-        {
-            // Trasforma la mesh per appiattirla rispetto all'asse Y.
-            glScalef(1.0f, 0.01f, 1.0f); // Schiaccia lungo l'asse Y.
+        // Logica ombre per i dischi della Torre di Hanoi (Disk_1 ... Disk_7)
 
-            // Trasla la mesh verso il piano e leggermente in diagonale rispetto agli assi X e Z.
-            glTranslatef(0.02f, -4.5f, -0.02f); // Modifica i valori per regolare la posizione dell'ombra.
-        }
-        else if (getName().find("Bishop") != std::string::npos)
+        if (getName().find("Disk_") != std::string::npos)
         {
-            glScalef(1.0f, 0.01f, 1.0f); // Schiaccia lungo l'asse Y.
+            // Ottieni l'altezza corrente del disco (assumendo che getPosition() restituisca la pos locale/globale corretta)
+            float currentY = this->getPosition().y;
 
-            // Trasla la mesh verso il piano e leggermente in diagonale rispetto agli assi X e Z.
-            glTranslatef(0.02f, -6.7f, -0.02f); // Modifica i valori per regolare la posizione dell'ombra.
-        }
-        else if (getName().find("King") != std::string::npos)
-        {
-            glScalef(1.0f, 0.01f, 1.0f); // Schiaccia lungo l'asse Y.
+            // Altezza approssimativa della base 'Fillet8' o del piano di gioco.
+            // Regola questo valore se l'ombra appare troppo alta o penetra nel pavimento.
+            // Se Disk_1 è appoggiato a Y=0, metti un valore appena superiore (es. 0.1f) per evitare z-fighting.
+            float floorY = 5520.0f;
 
-            // Trasla la mesh verso il piano e leggermente in diagonale rispetto agli assi X e Z.
-            glTranslatef(0.02f, -9.7f, -0.02f); // Modifica i valori per regolare la posizione dell'ombra.
-        }
-        else if (getName().find("Queen") != std::string::npos)
-        {
-            glScalef(1.0f, 0.01f, 1.0f); // Schiaccia lungo l'asse Y.
+            // Trasla l'ombra verso il basso fino a raggiungere il livello della base.
+            // La traslazione avviene nel sistema di riferimento dell'oggetto, quindi spostiamo
+            // l'ombra di una quantità opposta all'altezza del disco rispetto al pavimento.
+            glTranslatef(0.0f, -(currentY - floorY), 0.0f);
 
-            // Trasla la mesh verso il piano e leggermente in diagonale rispetto agli assi X e Z.
-            glTranslatef(0.02f, -8.7f, -0.02f); // Modifica i valori per regolare la posizione dell'ombra.
+            // Schiaccia la mesh sull'asse Y per renderla piatta
+            glScalef(1.0f, 0.0f, 1.0f);  
         }
-        else if (getName().find("Rook") != std::string::npos)
-        {
-            glScalef(1.0f, 0.01f, 1.0f); // Schiaccia lungo l'asse Y.
 
-            // Trasla la mesh verso il piano e leggermente in diagonale rispetto agli assi X e Z.
-            glTranslatef(0.02f, -7.7f, -0.02f); // Modifica i valori per regolare la posizione dell'ombra.
-        }
-        else if (getName().find("Knight") != std::string::npos)
-        {
-            glScalef(1.0f, 0.01f, 1.0f); // Schiaccia lungo l'asse Y.
-
-            // Trasla la mesh verso il piano e leggermente in diagonale rispetto agli assi X e Z.
-            glTranslatef(0.02f, -4.7f, -0.02f); // Modifica i valori per regolare la posizione dell'ombra.
-        }
         // Duplica la mesh per creare l'effetto ombra.
         glPushMatrix();
 

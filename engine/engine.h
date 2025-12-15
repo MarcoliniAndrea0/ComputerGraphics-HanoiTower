@@ -15,43 +15,97 @@
 
 /**
  * @class Engine
- * @brief La classe principale del motore grafico.
+ * @brief La classe principale (Singleton statico) del motore grafico.
  *
- * Gestisce l'inizializzazione del motore, la gestione delle finestre, il rendering,
- * e la gestione della scena e delle camere.
- * Necessita di una chiamata a `init` per inizializzare il motore prima dell'uso
- * e `quit` per liberare le risorse al termine.
+ * Questa classe gestisce l'intero ciclo di vita dell'applicazione grafica.
+ * Essendo puramente statica, funge da punto di accesso globale per:
+ * - L'inizializzazione del contesto OpenGL e GLUT.
+ * - La gestione del grafo della scena (Scene Graph).
+ * - La gestione della camera attiva e delle interazioni (Input).
+ * - Il ciclo di rendering (Game Loop).
+ *
+ * @author [Gruppo6]
+ * @version 1.0
  */
 class LIB_API Engine
 {
 public:
 
+    // ========================================================================
+    // CICLO DI VITA E INIZIALIZZAZIONE
+    // ========================================================================
+
     /**
-     * @brief Inizializza il motore grafico.
-     * @param windowTitle Titolo della finestra.
-     * @param windowWidth Larghezza della finestra.
-     * @param windowHeight Altezza della finestra.
+     * @brief Inizializza il motore grafico e crea la finestra principale.
+     *
+     * Configura le librerie sottostanti (FreeGLUT, FreeImage), imposta le callback
+     * di sistema e prepara il contesto OpenGL (Depth Test, Lighting, Culling).
+     *
+     * @warning Questo metodo deve essere chiamato prima di qualsiasi altra funzione dell'Engine.
+     *
+     * @param windowTitle Il titolo da assegnare alla finestra.
+     * @param windowWidth La larghezza iniziale della finestra in pixel.
+     * @param windowHeight L'altezza iniziale della finestra in pixel.
      */
     static void init(const std::string windowTitle, const int windowWidth, const int windowHeight);
 
-    // Getter
+    /**
+     * @brief Avvia il ciclo principale del motore o verifica se è in esecuzione.
+     * @return `true` se il motore è inizializzato e in esecuzione, altrimenti `false`.
+     */
+    static bool isRunning();
 
     /**
-     * @brief Restituisce la telecamera attiva.
-     * @return Puntatore condiviso alla telecamera attiva.
+     * @brief Esegue il rendering di un singolo frame della scena.
+     *
+     * Questa funzione viene chiamata automaticamente dal ciclo GLUT, ma può
+     * essere invocata manualmente per forzare un ridisegno.
+     */
+    static void render();
+
+    /**
+     * @brief Aggiorna la logica del motore (fisica, animazioni, input).
+     *
+     * Da chiamare all'interno della `idle` function o del timer loop.
+     */
+    static void update();
+
+    /**
+     * @brief Interrompe il ciclo di rendering.
+     *
+     * Ferma il loop ma non distrugge il contesto o la finestra.
+     */
+    static void stop();
+
+    /**
+     * @brief Termina l'esecuzione del motore e libera le risorse.
+     *
+     * Chiude la finestra, pulisce la memoria della scena e termina il programma.
+     */
+    static void quit();
+
+    // ========================================================================
+    // GETTERS
+    // ========================================================================
+
+    /**
+     * @brief Restituisce la telecamera attualmente attiva.
+     * @return Puntatore condiviso (std::shared_ptr) alla telecamera attiva.
      */
     static std::shared_ptr<Camera> getActiveCamera();
 
     /**
-     * @brief Restituisce la scena attuale.
-     * @return Puntatore condiviso alla scena.
+     * @brief Restituisce la radice della scena attuale.
+     * @return Puntatore condiviso (std::shared_ptr) al nodo radice della scena.
      */
     static std::shared_ptr<Node> getScene();
 
-    // Setter
+    // ========================================================================
+    // SETTERS
+    // ========================================================================
 
     /**
-     * @brief Imposta il colore di sfondo.
+     * @brief Imposta il colore di sfondo della finestra (Clear Color).
      * @param red Componente rossa (0.0 - 1.0).
      * @param green Componente verde (0.0 - 1.0).
      * @param blue Componente blu (0.0 - 1.0).
@@ -59,164 +113,173 @@ public:
     static void setBackGround(const float red, const float green, const float blue);
 
     /**
-     * @brief Imposta la scena corrente.
-     * @param newScene Puntatore condiviso alla nuova scena.
+     * @brief Sostituisce la scena corrente con una nuova.
+     * @param newScene Puntatore condiviso al nodo radice della nuova scena.
      */
     static void setScene(const std::shared_ptr<Node> newScene);
 
     /**
-     * @brief Imposta la telecamera attiva.
-     * @param newActiveCamera Puntatore condiviso alla nuova telecamera attiva.
+     * @brief Imposta la telecamera attiva per il rendering.
+     * @param newActiveCamera Puntatore condiviso alla nuova telecamera.
      */
     static void setActiveCamera(const std::shared_ptr<Camera> newActiveCamera);
 
     /**
-     * @brief Imposta il testo da visualizzare sullo schermo.
-     * @param newText Testo da visualizzare.
+     * @brief Imposta una stringa di testo da visualizzare in overlay sullo schermo.
+     * @param newText Il testo da visualizzare.
      */
     static void setScreenText(const std::string newText);
 
-    // Set Callback
+    // ========================================================================
+    // CALLBACKS DI INPUT
+    // ========================================================================
 
     /**
-     * @brief Imposta la funzione di callback per la tastiera.
-     * @param newKeyboardCallback Funzione di callback per la tastiera.
+     * @brief Imposta la funzione di callback per la gestione della tastiera (tasti ASCII).
+     * @param newKeyboardCallback Puntatore a funzione: void func(unsigned char key, int mouseX, int mouseY).
      */
     static void setKeyboardCallback(void (*newKeyboardCallback) (const unsigned char key, const int mouseX, const int mouseY));
 
     /**
-     * @brief Imposta la funzione di callback per il lampeggiamento.
-     * @param callback Funzione di callback per il lampeggiamento.
+     * @brief Imposta la funzione di callback per gestire un effetto di lampeggiamento personalizzato.
+     * @param callback Puntatore a funzione void func().
      */
     static void setBlinkingCallback(void (*callback)());
 
     /**
-     * @brief Imposta la funzione di callback per il mouse.
-     * @param newMouseCallback Funzione di callback per il mouse.
+     * @brief Imposta la funzione di callback per la gestione dei click del mouse.
+     * @param newMouseCallback Puntatore a funzione: void func(int button, int state, int mouseX, int mouseY).
      */
     static void setMouseCallback(void(*newMouseCallback)(int button, int state, int mouseX, int mouseY));
 
     /**
-     * @brief Imposta la funzione di callback per i tasti speciali.
-     * @param newSpecialCallback Funzione di callback per i tasti speciali.
+     * @brief Imposta la funzione di callback per i tasti speciali (frecce, F1-F12, ecc.).
+     * @param newSpecialCallback Puntatore a funzione: void func(int key, int mouseX, int mouseY).
      */
     static void setMethodSpecialCallback(void(*newSpecialCallback) (int key, int mouseX, int mouseY));
 
-    // Funzioni di stato e rendering
+    // ========================================================================
+    // UTILITY DI RENDERING
+    // ========================================================================
 
     /**
-     * @brief Verifica se il motore e' in esecuzione.
-     * @return `true` se il motore e' in esecuzione, altrimenti `false`.
-     */
-    static bool isRunning();
-
-    /**
-     * @brief Esegue il rendering della scena.
-     */
-    static void render();
-
-    /**
-     * @brief Funzione di callback per il timer.
-     * @param value Valore associato al timer.
+     * @brief Funzione interna di callback per il timer di FreeGLUT.
+     * Gestisce il framerate e richiama l'aggiornamento.
+     * @param value Valore intero passato dal timer precedente.
      */
     static void timerCallback(int value);
 
     /**
-     * @brief Aggiorna lo stato del motore.
-     */
-    static void update();
-
-    /**
-     * @brief Pulisce lo schermo.
+     * @brief Pulisce i buffer dello schermo (Colore e Profondità).
      */
     static void clearScreen();
 
     /**
-     * @brief Scambia i buffer per il rendering.
+     * @brief Scambia i buffer anteriore e posteriore (Double Buffering).
+     * Da chiamare alla fine del rendering del frame.
      */
     static void swapBuffers();
 
-    /**
-     * @brief Ferma l'esecuzione del motore.
-     */
-    static void stop();
+    // ========================================================================
+    // GESTIONE OGGETTI (SCENE GRAPH)
+    // ========================================================================
 
     /**
-     * @brief Termina l'esecuzione del motore e libera le risorse.
-     */
-    static void quit();
-
-    // Funzioni per la gestione degli oggetti
-
-    /**
-     * @brief Trova un oggetto nella scena tramite il nome.
+     * @brief Cerca un oggetto nella scena tramite il suo nome.
      * @param nameToFind Nome dell'oggetto da cercare.
-     * @return Puntatore condiviso all'oggetto trovato, o `nullptr` se non trovato.
+     * @return Puntatore condiviso all'oggetto se trovato, `nullptr` altrimenti.
      */
     static std::shared_ptr<Node> findObjectByName(const std::string nameToFind);
 
     /**
-     * @brief Trova un oggetto nella scena tramite l'ID.
-     * @param idToFind ID dell'oggetto da cercare.
-     * @return Puntatore condiviso all'oggetto trovato, o `nullptr` se non trovato.
+     * @brief Cerca un oggetto nella scena tramite il suo ID univoco.
+     * @param idToFind ID numerico dell'oggetto.
+     * @return Puntatore condiviso all'oggetto se trovato, `nullptr` altrimenti.
      */
     static std::shared_ptr<Node> findObjectByID(int idToFind);
 
     /**
-     * @brief Ottiene il nodo selezionato tramite un click.
-     * @param mouseX Coordinata X del mouse.
-     * @param mouseY Coordinata Y del mouse.
-     * @return Puntatore condiviso al nodo selezionato.
+     * @brief Esegue il "Picking": trova il nodo visualizzato alle coordinate del mouse.
+     * Utilizza un rendering con codifica colore per identificare l'oggetto.
+     *
+     * @param mouseX Coordinata X del mouse nella finestra.
+     * @param mouseY Coordinata Y del mouse nella finestra.
+     * @return Puntatore condiviso al nodo selezionato, o `nullptr` se si clicca sullo sfondo.
      */
     static std::shared_ptr<Node> getNodeByClick(int mouseX, int mouseY);
 
     /**
-     * @brief Rimuove un oggetto dalla scena.
-     * @param nodeToRemove Puntatore condiviso all'oggetto da rimuovere.
-     * @param root Radice della scena.
-     * @return `true` se l'oggetto e' stato rimosso, altrimenti `false`.
+     * @brief Rimuove ricorsivamente un oggetto da un sotto-albero specifico.
+     * @param nodeToRemove L'oggetto da rimuovere.
+     * @param root Il nodo radice da cui iniziare la ricerca.
+     * @return `true` se l'oggetto è stato trovato e rimosso, `false` altrimenti.
      */
     static bool removeObject(const std::shared_ptr<Node>& nodeToRemove, const std::shared_ptr<Node>& root);
 
     /**
-     * @brief Rimuove un oggetto dalla scena.
-     * @param nodeToRemove Puntatore condiviso all'oggetto da rimuovere.
-     * @return `true` se l'oggetto e' stato rimosso, altrimenti `false`.
+     * @brief Rimuove un oggetto cercandolo nell'intera scena corrente.
+     * @param nodeToRemove L'oggetto da rimuovere.
+     * @return `true` se l'oggetto è stato rimosso, `false` altrimenti.
      */
     static bool removeObject(const std::shared_ptr<Node>& nodeToRemove);
 
     /**
-     * @brief Rimuove tutti gli oggetti dalla scena.
+     * @brief Rimuove tutti gli oggetti dalla scena corrente, lasciando la radice vuota.
      */
     static void removeAllObjects();
+
+    /**
+     * @brief Calcola la matrice di trasformazione globale (World Matrix) di un nodo.
+     * Risale la gerarchia dei padri moltiplicando le matrici locali.
+     *
+     * @param node Il nodo di cui calcolare la trasformazione.
+     * @return Matrice 4x4 glm::mat4 risultante.
+     */
     static glm::mat4 getGlobalTransform(const std::shared_ptr<Node>& node);
+
+    /**
+     * @brief Calcola la posizione globale (World Position) di un nodo nello spazio 3D.
+     * Estrae la posizione dalla matrice di trasformazione globale.
+     *
+     * @param node Il nodo di cui calcolare la posizione.
+     * @return Vettore 3D glm::vec3 contenente le coordinate (x, y, z).
+     */
     static glm::vec3 getGlobalPosition(const std::shared_ptr<Node>& node);
 
 private:
 
     /**
-     * @brief Funzione di callback per il ridimensionamento della finestra.
-     * @param width Nuova larghezza della finestra.
-     * @param height Nuova altezza della finestra.
+     * @brief Callback interna per gestire il ridimensionamento della finestra.
+     * Aggiorna il viewport OpenGL e la projection matrix della camera.
+     * @param width Nuova larghezza.
+     * @param height Nuova altezza.
      */
     static void resizeCallback(const int width, const int height);
 
-    static void (*blinkingCallback)(); ///< Funzione di callback per il lampeggiamento.
-
+    // Helper ricorsivi privati per la ricerca
     static std::shared_ptr<Node> findObjectByName(const std::string nameToFind, const std::shared_ptr<Node> root);
     static std::shared_ptr<Node> findObjectByID(int idToFind, const std::shared_ptr<Node> root);
 
-    static bool isInitializedFlag; ///< Flag che indica se il motore e' stato inizializzato.
-    static bool isRunningFlag; ///< Flag che indica se il motore e' in esecuzione.
-    static int windowId;  ///< ID della finestra.
+    // Puntatori a funzione per le callback
+    static void (*blinkingCallback)(); ///< Funzione di callback per il lampeggiamento.
 
-    static int windowWidth; ///< Larghezza della finestra.
-    static int windowHeight; ///< Altezza della finestra.
+    // Stato del motore
+    static bool isInitializedFlag;  ///< True se init() è stato chiamato con successo.
+    static bool isRunningFlag;      ///< True se il loop principale è attivo.
+    static int windowId;            ///< Handle della finestra GLUT.
 
-    static std::shared_ptr<Node> scene; ///< Puntatore alla scena.
-    static std::shared_ptr<Camera> activeCamera;  ///< Puntatore alla telecamera attiva.
-    static std::shared_ptr<Material> shadowMaterial; ///< Puntatore al materiale per le ombre.
-    static std::string screenText; ///< Testo da visualizzare sullo schermo.
-    static int frames; ///< Contatore di frames
-    static float fps; ///< Frames al secondo
+    // Dimensioni finestra
+    static int windowWidth;
+    static int windowHeight;
+
+    // Risorse condivise
+    static std::shared_ptr<Node> scene;             ///< Radice del Scene Graph.
+    static std::shared_ptr<Camera> activeCamera;    ///< Camera usata per il rendering.
+    static std::shared_ptr<Material> shadowMaterial;///< Materiale di default per le ombre.
+
+
+    // UI e Statistiche
+    static std::string screenText;  ///< Testo overlay.
+    static int frames;              ///< Contatore frame per calcolo FPS.
+    static float fps;               ///< Valore FPS corrente.
 };
