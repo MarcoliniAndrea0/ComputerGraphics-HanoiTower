@@ -1,16 +1,9 @@
 #include <iostream>
 #include <memory>
-#include <engine.h>
-#include <Node.h>
+#include "engine.h"
 #include "hanoi.h"
-#include <PerspectiveCamera.h>
-#include <OvoParser.h>
-#include <PointLight.h>
-#include <Material.h>
-#include <algorithm>
+#include "OvoParser.h"
 #include "definitions.h"
-
-
 
 // Variabili globali per la gestione della scena e del tempo
 std::shared_ptr<Node> rootNode = nullptr;
@@ -133,7 +126,7 @@ void switchLight()
         std::shared_ptr<Mesh> meshLampadina = std::dynamic_pointer_cast<Mesh>(objectNodeLampadina);
 
         // Variabili statiche per salvare lo stato della luce
-        // Salviamo Diffuse e Specular perché sono quelle che illuminano la scena
+        // Salviamo Diffuse e Specular perchï¿½ sono quelle che illuminano la scena
         static glm::vec3 savedDiffuseSpot = glm::vec3(1.0f);
         static glm::vec3 savedSpecularSpot = glm::vec3(1.0f);
         static glm::vec3 savedAmbientColor = glm::vec3(1.0f);
@@ -145,7 +138,7 @@ void switchLight()
 
         if (spotlight) {
 
-            // Salva lo stato originale solo la prima volta (quando è sicuramente accesa)
+            // Salva lo stato originale solo la prima volta (quando ï¿½ sicuramente accesa)
             if (!hasSavedStateSpot && isLightEnabled) {
                 savedDiffuseSpot = spotlight->getDiffuseColor();
                 savedSpecularSpot = spotlight->getSpecularColor(); 
@@ -192,7 +185,7 @@ void switchLight()
             }
         }
         else {
-            std::cerr << "[Error] L'oggetto 'Spot001' non è una SpotLight." << std::endl;
+            std::cerr << "[Error] L'oggetto 'Spot001' non ï¿½ una SpotLight." << std::endl;
         }
     }
     else {
@@ -340,7 +333,7 @@ int main() {
         case 'x': // Freccia su
             rotation.x -= cameraRotationSpeed;
             break;
-        case 'y': // Freccia giù
+        case 'y': // Freccia giï¿½
             rotation.x += cameraRotationSpeed;
             break;
         case 'e': // Freccia sinistra
@@ -368,7 +361,7 @@ int main() {
         case 'u': // LUCE SPOT Su (+Y)
             moveLight(glm::vec3(0.0f, 1.0f, 0.0f));
             break;
-        case 'o': // LUCE SPOT Giù (-Y)
+        case 'o': // LUCE SPOT Giï¿½ (-Y)
             moveLight(glm::vec3(0.0f, -1.0f, 0.0f));
             break;
         case 'v': // Undo:
@@ -401,7 +394,7 @@ int main() {
         scene->addChild(ovoScene);
 
         //Inizializza logica di gioco
-        //Viene passata le scena perché i dischi sono i Disk_n sono dentro il .ovo
+        //Viene passata le scena perchï¿½ i dischi sono i Disk_n sono dentro il .ovo
         HanoiGame::init(scene);
         HanoiGame::showHelp();
     }
@@ -418,7 +411,7 @@ int main() {
     // Salva le istruzioni in una stringa fissa per non ricrearla ogni frame
     std::string staticInstructions = getInstructions();
 
-    // Esegui il ciclo principale del motore finché non viene chiuso
+    // Esegui il ciclo principale del motore finchï¿½ non viene chiuso
     while (Engine::isRunning()) {
 
         // Calcolo Delta Time

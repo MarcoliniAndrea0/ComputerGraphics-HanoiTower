@@ -414,7 +414,7 @@ void LIB_API Engine::timerCallback(int value)
     if (timeCallback == 20) {
         Engine::fps = Engine::frames;
         Engine::frames = 0;
-        std::cout << "fps: " << Engine::fps << std::endl;
+        //std::cout << "fps: " << Engine::fps << std::endl;
         timeCallback = 0;
     }
 

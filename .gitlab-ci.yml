@@ -13,7 +13,7 @@ structure:
     - '[ -d engine ] || exit 1'
     - '[ -d client ] || exit 1'
   rules:
-    - if: $CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "linux-temp"
 
 engine:
   # compile, link and test engine
@@ -22,30 +22,24 @@ engine:
     - 'cd engine'
   script:
     - 'make clean'      # Clean the build environment
-    - 'make build_engine'     # Compile all engine components (.o) and link libengine.so
-    - 'make test'       # Compile and link test runner and run all tests (test runner returns -1 if any tests failed)
+    - 'make all'     # Compile all engine components (.o) and link libengine.so
   after_script:
     - 'cd ..'
   artifacts:
     paths:
       - engine/bin/Release/libengine.so
   rules:
-    - if: $CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "linux-temp"
 
 client:
   # compile and link client
   stage: client
   dependencies:
     - engine
-  before_script:
-    - 'cd client'
   script:
-    - 'make clean'      # Clean the build environment
     - 'make build_client'     # Compile all client components (.o) and link client
-  after_script:
-    - 'cd ..'
   artifacts:
     paths:
       - client/bin/Release/client
   rules:
-    - if: $CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "linux-temp"

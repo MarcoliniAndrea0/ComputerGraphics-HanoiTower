@@ -12,6 +12,7 @@
 #include "material.h"
 #include "list.h"
 #include "mesh.h"
+#include "node.h"
 
 /**
  * @class Engine
@@ -50,15 +51,15 @@ public:
     static void init(const std::string windowTitle, const int windowWidth, const int windowHeight);
 
     /**
-     * @brief Avvia il ciclo principale del motore o verifica se è in esecuzione.
-     * @return `true` se il motore è inizializzato e in esecuzione, altrimenti `false`.
+     * @brief Avvia il ciclo principale del motore o verifica se ï¿½ in esecuzione.
+     * @return `true` se il motore ï¿½ inizializzato e in esecuzione, altrimenti `false`.
      */
     static bool isRunning();
 
     /**
      * @brief Esegue il rendering di un singolo frame della scena.
      *
-     * Questa funzione viene chiamata automaticamente dal ciclo GLUT, ma può
+     * Questa funzione viene chiamata automaticamente dal ciclo GLUT, ma puï¿½
      * essere invocata manualmente per forzare un ridisegno.
      */
     static void render();
@@ -170,7 +171,7 @@ public:
     static void timerCallback(int value);
 
     /**
-     * @brief Pulisce i buffer dello schermo (Colore e Profondità).
+     * @brief Pulisce i buffer dello schermo (Colore e Profonditï¿½).
      */
     static void clearScreen();
 
@@ -212,14 +213,14 @@ public:
      * @brief Rimuove ricorsivamente un oggetto da un sotto-albero specifico.
      * @param nodeToRemove L'oggetto da rimuovere.
      * @param root Il nodo radice da cui iniziare la ricerca.
-     * @return `true` se l'oggetto è stato trovato e rimosso, `false` altrimenti.
+     * @return `true` se l'oggetto ï¿½ stato trovato e rimosso, `false` altrimenti.
      */
     static bool removeObject(const std::shared_ptr<Node>& nodeToRemove, const std::shared_ptr<Node>& root);
 
     /**
      * @brief Rimuove un oggetto cercandolo nell'intera scena corrente.
      * @param nodeToRemove L'oggetto da rimuovere.
-     * @return `true` se l'oggetto è stato rimosso, `false` altrimenti.
+     * @return `true` se l'oggetto ï¿½ stato rimosso, `false` altrimenti.
      */
     static bool removeObject(const std::shared_ptr<Node>& nodeToRemove);
 
@@ -264,8 +265,8 @@ private:
     static void (*blinkingCallback)(); ///< Funzione di callback per il lampeggiamento.
 
     // Stato del motore
-    static bool isInitializedFlag;  ///< True se init() è stato chiamato con successo.
-    static bool isRunningFlag;      ///< True se il loop principale è attivo.
+    static bool isInitializedFlag;  ///< True se init() ï¿½ stato chiamato con successo.
+    static bool isRunningFlag;      ///< True se il loop principale ï¿½ attivo.
     static int windowId;            ///< Handle della finestra GLUT.
 
     // Dimensioni finestra
