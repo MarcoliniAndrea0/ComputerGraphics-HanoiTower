@@ -1,0 +1,135 @@
+\doxysection{engine.\+h}
+\hypertarget{engine_8h_source}{}\label{engine_8h_source}\index{engine/engine.h@{engine/engine.h}}
+\mbox{\hyperlink{engine_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ LIB\_NAME\ \ \ \ \ \ "{}Engine"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ LIB\_VERSION\ \ \ 10}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{OvoParser_8h}{OvoParser.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{PerspectiveCamera_8h}{PerspectiveCamera.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{camera_8h}{camera.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Common_8h}{Common.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{material_8h}{material.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{list_8h}{list.h}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mesh_8h}{mesh.h}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{node_8h}{node.h}}"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\_API}}\ \mbox{\hyperlink{classEngine}{Engine}}}
+\DoxyCodeLine{00032\ \{}
+\DoxyCodeLine{00033\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ CICLO\ DI\ VITA\ E\ INIZIALIZZAZIONE}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEngine_ad3013f725bbe836836877f7b2a14d6c1}{init}}(\textcolor{keyword}{const}\ std::string\ windowTitle,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ windowWidth,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ windowHeight);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classEngine_a949c9fb1ca964cfcc9d29ed553c559ff}{isRunning}}();}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEngine_ab48f7c79b39ed583b0568c381d444944}{render}}();}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEngine_afe172a61e10e2e38f828c97e331daefc}{update}}();}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEngine_a67db714e6bda9c5e3bc560b983143598}{stop}}();}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEngine_a5202cfb0deae87327c54c235243a3fd6}{quit}}();}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{comment}{//\ GETTERS}}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<Camera>\ \mbox{\hyperlink{classEngine_ae370d328d86197fa84c088ab271c8c17}{getActiveCamera}}();}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<Node>\ \mbox{\hyperlink{classEngine_a2f60b6338f650e9f9cde562c64a2592b}{getScene}}();}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{comment}{//\ SETTERS}}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEngine_acc17944b94331d52121cb0fd75ada84e}{setBackGround}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ red,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ green,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ blue);}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEngine_a0f3d3559d072c83beed37f9c75403d03}{setScene}}(\textcolor{keyword}{const}\ std::shared\_ptr<Node>\ newScene);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEngine_aa00f90454156172df8def33d3be470c3}{setActiveCamera}}(\textcolor{keyword}{const}\ std::shared\_ptr<Camera>\ newActiveCamera);}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEngine_a3354b8e3d6e72203beded7d8bd819026}{setScreenText}}(\textcolor{keyword}{const}\ std::string\ newText);}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{comment}{//\ CALLBACKS\ DI\ INPUT}}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEngine_afbaf390ada2c495b872ec4a4dcce2a82}{setKeyboardCallback}}(\textcolor{keywordtype}{void}\ (*newKeyboardCallback)\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ key,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ mouseX,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ mouseY));}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEngine_aa1cf69eaf2a9bb1ca61dbe262e8ffd39}{setBlinkingCallback}}(\textcolor{keywordtype}{void}\ (*callback)());}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEngine_a9a12abe06cb8b0da35b30c073a3461d1}{setMouseCallback}}(\textcolor{keywordtype}{void}(*newMouseCallback)(\textcolor{keywordtype}{int}\ button,\ \textcolor{keywordtype}{int}\ state,\ \textcolor{keywordtype}{int}\ mouseX,\ \textcolor{keywordtype}{int}\ mouseY));}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEngine_a9da3185d98e3c2fcb790aba6c49222cc}{setMethodSpecialCallback}}(\textcolor{keywordtype}{void}(*newSpecialCallback)\ (\textcolor{keywordtype}{int}\ key,\ \textcolor{keywordtype}{int}\ mouseX,\ \textcolor{keywordtype}{int}\ mouseY));}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{comment}{//\ UTILITY\ DI\ RENDERING}}
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEngine_a5388718ae566ad3c3ad6ffbe0b6107b6}{timerCallback}}(\textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEngine_ae180999064cb19346c3eadc6a6738e0d}{clearScreen}}();}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEngine_a0544e301002dd8af6958796fee18430e}{swapBuffers}}();}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{comment}{//\ GESTIONE\ OGGETTI\ (SCENE\ GRAPH)}}
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<Node>\ \mbox{\hyperlink{classEngine_a71b757d2d64e7e86b7ba539ff4a6d6df}{findObjectByName}}(\textcolor{keyword}{const}\ std::string\ nameToFind);}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00200\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<Node>\ \mbox{\hyperlink{classEngine_af7bd2d827bcd03f05e7b7e0ec0541ed0}{findObjectByID}}(\textcolor{keywordtype}{int}\ idToFind);}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<Node>\ \mbox{\hyperlink{classEngine_a6dd9ae23179fc54b106b06cd15b50635}{getNodeByClick}}(\textcolor{keywordtype}{int}\ mouseX,\ \textcolor{keywordtype}{int}\ mouseY);}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00218\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classEngine_a65351525feb7ffe4f21e02856100cb3a}{removeObject}}(\textcolor{keyword}{const}\ std::shared\_ptr<Node>\&\ nodeToRemove,\ \textcolor{keyword}{const}\ std::shared\_ptr<Node>\&\ root);}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classEngine_a65351525feb7ffe4f21e02856100cb3a}{removeObject}}(\textcolor{keyword}{const}\ std::shared\_ptr<Node>\&\ nodeToRemove);}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEngine_ae2a81d325f6b102601504304b7ef55f8}{removeAllObjects}}();}
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00239\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm::mat4}}\ \mbox{\hyperlink{classEngine_a4353ea2f334e679452d92ba3c03e47f0}{getGlobalTransform}}(\textcolor{keyword}{const}\ std::shared\_ptr<Node>\&\ node);}
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00248\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm::vec3}}\ \mbox{\hyperlink{classEngine_a7b4a498044f77c4a6628ee378e4f095c}{getGlobalPosition}}(\textcolor{keyword}{const}\ std::shared\_ptr<Node>\&\ node);}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00250\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ resizeCallback(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ height);}
+\DoxyCodeLine{00259\ }
+\DoxyCodeLine{00260\ \ \ \ \ \textcolor{comment}{//\ Helper\ ricorsivi\ privati\ per\ la\ ricerca}}
+\DoxyCodeLine{00261\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<Node>\ \mbox{\hyperlink{classEngine_a71b757d2d64e7e86b7ba539ff4a6d6df}{findObjectByName}}(\textcolor{keyword}{const}\ std::string\ nameToFind,\ \textcolor{keyword}{const}\ std::shared\_ptr<Node>\ root);}
+\DoxyCodeLine{00262\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<Node>\ \mbox{\hyperlink{classEngine_af7bd2d827bcd03f05e7b7e0ec0541ed0}{findObjectByID}}(\textcolor{keywordtype}{int}\ idToFind,\ \textcolor{keyword}{const}\ std::shared\_ptr<Node>\ root);}
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00264\ \ \ \ \ \textcolor{comment}{//\ Puntatori\ a\ funzione\ per\ le\ callback}}
+\DoxyCodeLine{00265\ \ \ \ \ \textcolor{keyword}{static}\ void\ (*blinkingCallback)();\ }
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00267\ \ \ \ \ \textcolor{comment}{//\ Stato\ del\ motore}}
+\DoxyCodeLine{00268\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ isInitializedFlag;\ \ }
+\DoxyCodeLine{00269\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ isRunningFlag;\ \ \ \ \ \ }
+\DoxyCodeLine{00270\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ windowId;\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00272\ \ \ \ \ \textcolor{comment}{//\ Dimensioni\ finestra}}
+\DoxyCodeLine{00273\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ windowWidth;}
+\DoxyCodeLine{00274\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ windowHeight;}
+\DoxyCodeLine{00275\ }
+\DoxyCodeLine{00276\ \ \ \ \ \textcolor{comment}{//\ Risorse\ condivise}}
+\DoxyCodeLine{00277\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<Node>\ scene;\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00278\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<Camera>\ activeCamera;\ \ \ \ }
+\DoxyCodeLine{00279\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<Material>\ shadowMaterial;}
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00281\ }
+\DoxyCodeLine{00282\ \ \ \ \ \textcolor{comment}{//\ UI\ e\ Statistiche}}
+\DoxyCodeLine{00283\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ screenText;\ \ }
+\DoxyCodeLine{00284\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ frames;\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00285\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ fps;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00286\ \};}
+
+\end{DoxyCode}

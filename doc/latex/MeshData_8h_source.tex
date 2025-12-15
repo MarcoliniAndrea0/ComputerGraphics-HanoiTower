@@ -1,0 +1,46 @@
+\doxysection{Mesh\+Data.\+h}
+\hypertarget{MeshData_8h_source}{}\label{MeshData_8h_source}\index{engine/MeshData.h@{engine/MeshData.h}}
+\mbox{\hyperlink{MeshData_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Common_8h}{Common.h}}"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <tuple>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{glm_8hpp}{glm/glm.hpp}}>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{class\ }\mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\_API}}\ \mbox{\hyperlink{classMeshData}{MeshData}}}
+\DoxyCodeLine{00049\ \{}
+\DoxyCodeLine{00050\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//\ GETTER\ METHODS}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<glm::vec3>\&\ \mbox{\hyperlink{classMeshData_ae00b34c4b34eefdd941f996eb00f4a00}{getVertices}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::tuple<uint32\_t,\ uint32\_t,\ uint32\_t>>\&\ \mbox{\hyperlink{classMeshData_a00af178a96151081a47f683b1a16bd05}{getFaces}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<glm::vec3>\&\ \mbox{\hyperlink{classMeshData_a7e8276389b60d4e98b9d041aee9eafb7}{getNormals}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<glm::vec2>\&\ \mbox{\hyperlink{classMeshData_a8c8a8d54bfcc6763beb8e1980dd482e9}{getUVs}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{comment}{//\ SETTER\ METHODS}}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMeshData_a4db3cb9b6a124cfed107c2c958cc58ac}{set\_mesh\_data}}(}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<glm::vec3>\ new\_vertices,}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::tuple<uint32\_t,\ uint32\_t,\ uint32\_t>>\ new\_faces,}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<glm::vec3>\ new\_normals,}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<glm::vec2>\ new\_uvs);}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00185\ \ \ \ \ std::vector<glm::vec3>\ \_vertices;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00186\ \ \ \ \ std::vector<std::tuple<uint32\_t,\ uint32\_t,\ uint32\_t>>\ \_faces;\ \ }
+\DoxyCodeLine{00187\ \ \ \ \ std::vector<glm::vec3>\ \_normals;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00188\ \ \ \ \ std::vector<glm::vec2>\ \_uvs;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00189\ \};}
+
+\end{DoxyCode}

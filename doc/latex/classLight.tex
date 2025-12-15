@@ -1,0 +1,444 @@
+\doxysection{Light Class Reference}
+\hypertarget{classLight}{}\label{classLight}\index{Light@{Light}}
+
+
+Classe base astratta per l\textquotesingle{}implementazione delle luci nella scena 3D.  
+
+
+
+
+{\ttfamily \#include $<$light.\+h$>$}
+
+Inheritance diagram for Light\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.137255cm]{classLight}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLight_aed628c6207ce1c0eeb8348fa28db64f5}{Light}} (const std\+::string \&type)
+\begin{DoxyCompactList}\small\item\em Costruttore della classe \doxylink{classLight}{Light}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLight_ad0e59fad13bb6cfadc25b2c477e9ddc7}{\texorpdfstring{$\sim$}{\string~}\+Light}} ()
+\begin{DoxyCompactList}\small\item\em Distruttore della classe \doxylink{classLight}{Light}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classLight_a3d07bc6915e198cf43625e626b36da9f}{get\+Current\+Light}} (const int light\+Id) const
+\begin{DoxyCompactList}\small\item\em Restituisce l\textquotesingle{}identificatore Open\+GL della luce. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{classLight_a1a8752a9e2c3a23f13f3c56c16f2dd98}{get\+Ambient\+Color}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce il colore ambientale della luce. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{classLight_a9c02defa4d38e4562d3c3cc21a3f5fd1}{get\+Diffuse\+Color}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce il colore diffuso della luce. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{classLight_a3191cccf5933fdb8057413684dfd7aa7}{get\+Specular\+Color}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce il colore speculare della luce. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLight_a8caf773965d15f4998b94f25cc97af71}{set\+Ambient\+Color}} (const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} new\+Color)
+\begin{DoxyCompactList}\small\item\em Imposta il colore ambientale della luce. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLight_a516bd4aa237ed2578421cec47755a75d}{set\+Diffuse\+Color}} (const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} new\+Color)
+\begin{DoxyCompactList}\small\item\em Imposta il colore diffuso della luce. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLight_a2dd41c014e207b66389efd53f593f9e4}{set\+Specular\+Color}} (const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} new\+Color)
+\begin{DoxyCompactList}\small\item\em Imposta il colore speculare della luce. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNode}{Node}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNode_ad7a34779cad45d997bfd6d3d8043c75f}{Node}} ()
+\begin{DoxyCompactList}\small\item\em Costruttore di default. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classNode_a4cf57077e6f91a2d11d291fd89611c24}{Node}} (std\+::string type)
+\begin{DoxyCompactList}\small\item\em Costruttore parametrico con tipo. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classNode_abce703f211f6a577085b4b8ad68cbb19}{\texorpdfstring{$\sim$}{\string~}\+Node}} ()=default
+\begin{DoxyCompactList}\small\item\em Distruttore virtuale di default. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{classNode_a71b865938f0837226fa09693fe5c5a7b}{get\+Position}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la posizione locale del nodo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{classNode_ae0c77ac36b03dd14ba60e6a6940896bf}{get\+Rotation}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la rotazione locale del nodo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{classNode_a27b296b26b28f83db2f762bdebf45b1e}{get\+Scale}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la scala locale del nodo. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classNode_a2416baf7ba60d0572ce8f2e4ac31452b}{get\+Priority}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la priorità di rendering del nodo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} \mbox{\hyperlink{classNode_a6c12ab3a4d670e40078e9d9c9000ede6}{get\+Local\+Matrix}} () const
+\begin{DoxyCompactList}\small\item\em Calcola e restituisce la matrice di trasformazione locale del nodo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} \mbox{\hyperlink{classNode_a31f8763ea8659b0485ded3cfb0821e05}{get\+Transform}} () const
+\begin{DoxyCompactList}\small\item\em Alias di \doxylink{classNode_a6c12ab3a4d670e40078e9d9c9000ede6}{get\+Local\+Matrix()}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} \mbox{\hyperlink{classNode_a74c1cff684648fcb90fd4197172a5ccd}{get\+World\+Matrix}} (const \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} \&parent\+Matrix=\mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}}(1.\+0f)) const
+\begin{DoxyCompactList}\small\item\em Calcola la matrice di trasformazione globale (world matrix) del nodo. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \mbox{\hyperlink{classNode_a698fcd9fd071b622af7190219deaa167}{get\+Parent}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce un puntatore al nodo padre. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ $>$ \mbox{\hyperlink{classNode_a7775c2f0410dee3c9e5a3bb82b2ec7bf}{get\+Children}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la lista dei nodi figli (versione const). \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ $>$ \& \mbox{\hyperlink{classNode_a285f46ec311658150cf27bdecfb15dd6}{get\+Children}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce un riferimento modificabile alla lista dei nodi figli. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a9c023d00bc503ff6ddba5e4f0bc62df3}{set\+Position}} (const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} new\+Position)
+\begin{DoxyCompactList}\small\item\em Imposta la posizione locale del nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a0791be977d7b7721f70eb501f17009a7}{set\+Rotation}} (const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} new\+Position)
+\begin{DoxyCompactList}\small\item\em Imposta la rotazione locale del nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_ad4140835a781e69e37399ea4a71e4e5d}{set\+Scale}} (const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} new\+Position)
+\begin{DoxyCompactList}\small\item\em Imposta la scala locale del nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a3efd0b06c91356594f8224de9ac56c59}{set\+Base\+Matrix}} (const \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} new\+Base\+Matrix)
+\begin{DoxyCompactList}\small\item\em Imposta la matrice di trasformazione di base del nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_ad7361dd4b1cd6b0e854a815a2d59b1c6}{set\+Priority}} (int p)
+\begin{DoxyCompactList}\small\item\em Imposta la priorità di rendering del nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a61f3a29258c87c5354ff2dcf47a0cdde}{add\+Child}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ new\+Child)
+\begin{DoxyCompactList}\small\item\em Aggiunge un nodo figlio a questo nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a77c02d511582a1ab3e8436eb90c7c5e4}{remove\+All\+Children}} ()
+\begin{DoxyCompactList}\small\item\em Rimuove tutti i nodi figli da questo nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a032504f00a0bcad5fcbddc68f265cafd}{render}} (const \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} view\+Matrix) const override
+\begin{DoxyCompactList}\small\item\em Renderizza il nodo e tutti i suoi figli. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classObject}{Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classObject_afe9eeddd7068a37f62d3276a2fb49864}{Object}} ()=default
+\begin{DoxyCompactList}\small\item\em Costruttore di default. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classObject_a4fd75bb7fe75b569928245bb27fed07c}{Object}} (const std\+::string type)
+\begin{DoxyCompactList}\small\item\em Costruttore parametrico con tipo. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classObject_ae8f5483f459e46687bd01e6f9977afd3}{\texorpdfstring{$\sim$}{\string~}\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Distruttore virtuale. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classObject_a34a0b88c7f929c85ce92107ce7ba2e97}{get\+Id}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce l\textquotesingle{}identificativo univoco dell\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classObject_adf9436214bd361e0b85ac10ef2035916}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce il nome assegnato all\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+const std\+::string \mbox{\hyperlink{classObject_a60159d15921c408e2a8f828053297a13}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce il tipo dell\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classObject_adf1de6aa8f21d9b04eb700fec0700ebf}{set\+Name}} (const std\+::string new\+Name)
+\begin{DoxyCompactList}\small\item\em Assegna un nome leggibile all\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classObject_a89624881fe30113db802b64bfeed517f}{set\+Type}} (const std\+::string \&type)
+\begin{DoxyCompactList}\small\item\em Definisce il tipo/categoria dell\textquotesingle{}oggetto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classLight_a378f8d1d0dd0fab9a116a4b8afb8100d}{reset\+Next\+Light\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Resetta il contatore degli ID delle luci a zero. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classObject}{Object}}}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classObject_a65658e2cbce7cd75f9f0e5716c36082a}{reset\+Id\+Generator}} ()
+\begin{DoxyCompactList}\small\item\em Resetta il contatore statico degli ID a zero. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{classLight_aef2a6aaf68fb97e8cfc7d107e61201d3}{\+\_\+ambient\+Color}}
+\begin{DoxyCompactList}\small\item\em Colore della componente ambientale (0.\+0-\/1.\+0 per canale) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{classLight_a8dc9b9e2dc90773d8dbe9dc837730715}{\+\_\+diffuse\+Color}}
+\begin{DoxyCompactList}\small\item\em Colore della componente diffusa (0.\+0-\/1.\+0 per canale) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{classLight_a044ecea92c9113e0cedd3cef452beae3}{\+\_\+specular\+Color}}
+\begin{DoxyCompactList}\small\item\em Colore della componente speculare (0.\+0-\/1.\+0 per canale) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classLight_a4e559389ee71aeded0a241449c3ca390}{\+\_\+light\+Id}}
+\begin{DoxyCompactList}\small\item\em ID interno della luce (0-\/7 per Open\+GL tradizionale) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{classLight_a2ac3142f14fb8b28a47cc0a34fa6b616}{next\+Light\+Id}} = 0
+\begin{DoxyCompactList}\small\item\em Contatore statico per il prossimo ID luce disponibile. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe base astratta per l\textquotesingle{}implementazione delle luci nella scena 3D. 
+
+La classe \doxylink{classLight}{Light} rappresenta una sorgente di luce generica e serve come classe base per derivare tipi specifici di illuminazione come\+:
+\begin{DoxyItemize}
+\item \doxylink{classDirectionalLight}{Directional\+Light}\+: luce direzionale (es. sole)
+\item \doxylink{classPointLight}{Point\+Light}\+: luce puntiforme (es. lampadina)
+\item \doxylink{classSpotLight}{Spot\+Light}\+: luce spot/conica (es. torcia)
+\end{DoxyItemize}
+
+Caratteristiche principali\+:
+\begin{DoxyItemize}
+\item {\bfseries{Modello di illuminazione di Phong}}\+: Supporta tre componenti di colore\+:
+\begin{DoxyItemize}
+\item Ambientale\+: luce diffusa uniforme
+\item Diffuso\+: luce che dipende dall\textquotesingle{}angolo della superficie
+\item Speculare\+: riflessione brillante sui materiali lucidi
+\end{DoxyItemize}
+\item {\bfseries{Gestione automatica degli ID}}\+: Ogni luce riceve un ID univoco Open\+GL (GL\+\_\+\+LIGHT0, GL\+\_\+\+LIGHT1, ecc.) per essere utilizzata nel rendering. Open\+GL tradizionalmente supporta un massimo di 8 luci simultanee.
+\item {\bfseries{Gerarchia della scena}}\+: Eredita da \doxylink{classNode}{Node}, quindi le luci possono essere posizionate e orientate nella scena come qualsiasi altro oggetto.
+\end{DoxyItemize}
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classNode}{Node} 
+
+\doxylink{classDirectionalLight}{Directional\+Light} 
+
+\doxylink{classPointLight}{Point\+Light} 
+
+\doxylink{classSpotLight}{Spot\+Light} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classLight_aed628c6207ce1c0eeb8348fa28db64f5}\index{Light@{Light}!Light@{Light}}
+\index{Light@{Light}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{Light()}{Light()}}
+{\footnotesize\ttfamily \label{classLight_aed628c6207ce1c0eeb8348fa28db64f5} 
+Light\+::\+Light (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Costruttore della classe \doxylink{classLight}{Light}. 
+
+Costruttore della classe {\ttfamily \doxylink{classLight}{Light}}.
+
+Inizializza una nuova luce con\+:
+\begin{DoxyItemize}
+\item ID univoco Open\+GL assegnato automaticamente (se disponibile)
+\item Colori di default per ambientale, diffuso e speculare
+\item Incremento del contatore statico next\+Light\+Id
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Stringa che identifica il tipo specifico di luce (es. "{}\+Point\+Light"{}, "{}\+Directional\+Light"{}, "{}\+Spot\+Light"{})\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+Se vengono create più di 8 luci (o il limite Open\+GL della GPU), le luci successive non riceveranno un ID valido e non saranno renderizzate correttamente.
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Il tipo di luce (es. "{}\+Point\+Light"{}, "{}\+Spot\+Light"{}). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classLight_ad0e59fad13bb6cfadc25b2c477e9ddc7}\index{Light@{Light}!````~Light@{\texorpdfstring{$\sim$}{\string~}Light}}
+\index{````~Light@{\texorpdfstring{$\sim$}{\string~}Light}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Light()}{\string~Light()}}
+{\footnotesize\ttfamily \label{classLight_ad0e59fad13bb6cfadc25b2c477e9ddc7} 
+Light\+::\texorpdfstring{$\sim$}{\string~}\+Light (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Distruttore della classe \doxylink{classLight}{Light}. 
+
+Distruttore della classe {\ttfamily \doxylink{classLight}{Light}}.
+
+Libera le risorse associate alla luce e decrementa il contatore globale degli ID, permettendo il riutilizzo dello slot Open\+GL.
+
+\begin{DoxyNote}{Note}
+Il decremento del contatore permette di creare nuove luci dopo averne distrutte altre, rimanendo entro il limite Open\+GL. 
+\end{DoxyNote}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLight_a1a8752a9e2c3a23f13f3c56c16f2dd98}\index{Light@{Light}!getAmbientColor@{getAmbientColor}}
+\index{getAmbientColor@{getAmbientColor}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{getAmbientColor()}{getAmbientColor()}}
+{\footnotesize\ttfamily \label{classLight_a1a8752a9e2c3a23f13f3c56c16f2dd98} 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Light\+::get\+Ambient\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Restituisce il colore ambientale della luce. 
+
+La componente ambientale rappresenta la luce diffusa che illumina uniformemente tutti gli oggetti, indipendentemente dalla loro orientazione. Simula la luce riflessa dall\textquotesingle{}ambiente circostante.
+
+\begin{DoxyReturn}{Returns}
+Vettore RGB (valori 0.\+0-\/1.\+0) del colore ambientale 
+\end{DoxyReturn}
+\Hypertarget{classLight_a3d07bc6915e198cf43625e626b36da9f}\index{Light@{Light}!getCurrentLight@{getCurrentLight}}
+\index{getCurrentLight@{getCurrentLight}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{getCurrentLight()}{getCurrentLight()}}
+{\footnotesize\ttfamily \label{classLight_a3d07bc6915e198cf43625e626b36da9f} 
+int \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Light\+::get\+Current\+Light (\begin{DoxyParamCaption}\item[{const int}]{light\+Id}{}\end{DoxyParamCaption}) const}
+
+
+
+Restituisce l\textquotesingle{}identificatore Open\+GL della luce. 
+
+Restituisce il numero della luce Open\+GL associato all\textquotesingle{}ID.
+
+Converte l\textquotesingle{}ID interno della luce nell\textquotesingle{}enumerazione Open\+GL corrispondente (GL\+\_\+\+LIGHT0, GL\+\_\+\+LIGHT1, ..., GL\+\_\+\+LIGHT7).
+
+
+\begin{DoxyParams}{Parameters}
+{\em light\+Id} & L\textquotesingle{}ID interno della luce (0-\/7) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Il valore dell\textquotesingle{}enumerazione Open\+GL (GL\+\_\+\+LIGHT0 + light\+Id)
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Questo metodo è utilizzato internamente dal sistema di rendering per attivare la luce corretta in Open\+GL.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em light\+Id} & L\textquotesingle{}ID della luce. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Il numero della luce Open\+GL. 
+\end{DoxyReturn}
+\Hypertarget{classLight_a9c02defa4d38e4562d3c3cc21a3f5fd1}\index{Light@{Light}!getDiffuseColor@{getDiffuseColor}}
+\index{getDiffuseColor@{getDiffuseColor}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{getDiffuseColor()}{getDiffuseColor()}}
+{\footnotesize\ttfamily \label{classLight_a9c02defa4d38e4562d3c3cc21a3f5fd1} 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Light\+::get\+Diffuse\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Restituisce il colore diffuso della luce. 
+
+La componente diffusa rappresenta la luce diretta che colpisce le superfici. L\textquotesingle{}intensità dipende dall\textquotesingle{}angolo tra la superficie e la direzione della luce (legge del coseno di Lambert).
+
+\begin{DoxyReturn}{Returns}
+Vettore RGB (valori 0.\+0-\/1.\+0) del colore diffuso 
+\end{DoxyReturn}
+\Hypertarget{classLight_a3191cccf5933fdb8057413684dfd7aa7}\index{Light@{Light}!getSpecularColor@{getSpecularColor}}
+\index{getSpecularColor@{getSpecularColor}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{getSpecularColor()}{getSpecularColor()}}
+{\footnotesize\ttfamily \label{classLight_a3191cccf5933fdb8057413684dfd7aa7} 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Light\+::get\+Specular\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Restituisce il colore speculare della luce. 
+
+La componente speculare crea i punti di luce brillanti sui materiali lucidi, simulando i riflessi diretti della sorgente luminosa.
+
+\begin{DoxyReturn}{Returns}
+Vettore RGB (valori 0.\+0-\/1.\+0) del colore speculare 
+\end{DoxyReturn}
+\Hypertarget{classLight_a378f8d1d0dd0fab9a116a4b8afb8100d}\index{Light@{Light}!resetNextLightId@{resetNextLightId}}
+\index{resetNextLightId@{resetNextLightId}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{resetNextLightId()}{resetNextLightId()}}
+{\footnotesize\ttfamily \label{classLight_a378f8d1d0dd0fab9a116a4b8afb8100d} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Light\+::reset\+Next\+Light\+Id (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Resetta il contatore degli ID delle luci a zero. 
+
+Resetta il contatore degli ID delle luci.
+
+Riporta il generatore di ID al suo stato iniziale. Utile quando si vuole ripartire da zero con la gestione delle luci, ad esempio durante il caricamento di una nuova scena.
+
+\begin{DoxyWarning}{Warning}
+Chiamare questo metodo mentre esistono luci attive può causare conflitti di ID. Assicurarsi di rimuovere tutte le luci prima di resettare il contatore.
+\end{DoxyWarning}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Uso\ corretto:}}
+\DoxyCodeLine{scene-\/>removeAllObjects();\ \textcolor{comment}{//\ Rimuove\ tutte\ le\ luci}}
+\DoxyCodeLine{\mbox{\hyperlink{classLight_a378f8d1d0dd0fab9a116a4b8afb8100d}{Light::resetNextLightId}}();\ \textcolor{comment}{//\ Ora\ è\ sicuro\ resettare}}
+
+\end{DoxyCode}
+ \Hypertarget{classLight_a8caf773965d15f4998b94f25cc97af71}\index{Light@{Light}!setAmbientColor@{setAmbientColor}}
+\index{setAmbientColor@{setAmbientColor}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{setAmbientColor()}{setAmbientColor()}}
+{\footnotesize\ttfamily \label{classLight_a8caf773965d15f4998b94f25cc97af71} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Light\+::set\+Ambient\+Color (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}}}]{new\+Color}{}\end{DoxyParamCaption})}
+
+
+
+Imposta il colore ambientale della luce. 
+
+Modifica la componente di illuminazione ambientale. Valori tipici sono colori a bassa intensità (es. 0.\+2, 0.\+2, 0.\+2).
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Color} & Nuovo colore ambientale come vettore RGB (0.\+0-\/1.\+0)\\
+\hline
+\end{DoxyParams}
+Esempio di utilizzo\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{light-\/>setAmbientColor(\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm::vec3}}(0.1f,\ 0.1f,\ 0.1f));\ \textcolor{comment}{//\ Luce\ ambientale\ tenue}}
+
+\end{DoxyCode}
+ \Hypertarget{classLight_a516bd4aa237ed2578421cec47755a75d}\index{Light@{Light}!setDiffuseColor@{setDiffuseColor}}
+\index{setDiffuseColor@{setDiffuseColor}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{setDiffuseColor()}{setDiffuseColor()}}
+{\footnotesize\ttfamily \label{classLight_a516bd4aa237ed2578421cec47755a75d} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Light\+::set\+Diffuse\+Color (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}}}]{new\+Color}{}\end{DoxyParamCaption})}
+
+
+
+Imposta il colore diffuso della luce. 
+
+Modifica la componente di illuminazione diffusa principale. Questo è tipicamente il colore principale e più intenso della luce.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Color} & Nuovo colore diffuso come vettore RGB (0.\+0-\/1.\+0)\\
+\hline
+\end{DoxyParams}
+Esempio di utilizzo\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{light-\/>setDiffuseColor(\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm::vec3}}(1.0f,\ 1.0f,\ 1.0f));\ \textcolor{comment}{//\ Luce\ bianca}}
+\DoxyCodeLine{light-\/>setDiffuseColor(\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm::vec3}}(1.0f,\ 0.8f,\ 0.6f));\ \textcolor{comment}{//\ Luce\ calda}}
+
+\end{DoxyCode}
+ \Hypertarget{classLight_a2dd41c014e207b66389efd53f593f9e4}\index{Light@{Light}!setSpecularColor@{setSpecularColor}}
+\index{setSpecularColor@{setSpecularColor}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{setSpecularColor()}{setSpecularColor()}}
+{\footnotesize\ttfamily \label{classLight_a2dd41c014e207b66389efd53f593f9e4} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Light\+::set\+Specular\+Color (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}}}]{new\+Color}{}\end{DoxyParamCaption})}
+
+
+
+Imposta il colore speculare della luce. 
+
+Modifica la componente dei riflessi brillanti. Solitamente è dello stesso colore della componente diffusa o bianco puro.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Color} & Nuovo colore speculare come vettore RGB (0.\+0-\/1.\+0)\\
+\hline
+\end{DoxyParams}
+Esempio di utilizzo\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{light-\/>setSpecularColor(\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm::vec3}}(1.0f,\ 1.0f,\ 1.0f));\ \textcolor{comment}{//\ Riflessi\ bianchi}}
+
+\end{DoxyCode}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classLight_aef2a6aaf68fb97e8cfc7d107e61201d3}\index{Light@{Light}!\_ambientColor@{\_ambientColor}}
+\index{\_ambientColor@{\_ambientColor}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{\_ambientColor}{\_ambientColor}}
+{\footnotesize\ttfamily \label{classLight_aef2a6aaf68fb97e8cfc7d107e61201d3} 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} Light\+::\+\_\+ambient\+Color\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Colore della componente ambientale (0.\+0-\/1.\+0 per canale) 
+
+\Hypertarget{classLight_a8dc9b9e2dc90773d8dbe9dc837730715}\index{Light@{Light}!\_diffuseColor@{\_diffuseColor}}
+\index{\_diffuseColor@{\_diffuseColor}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{\_diffuseColor}{\_diffuseColor}}
+{\footnotesize\ttfamily \label{classLight_a8dc9b9e2dc90773d8dbe9dc837730715} 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} Light\+::\+\_\+diffuse\+Color\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Colore della componente diffusa (0.\+0-\/1.\+0 per canale) 
+
+\Hypertarget{classLight_a4e559389ee71aeded0a241449c3ca390}\index{Light@{Light}!\_lightId@{\_lightId}}
+\index{\_lightId@{\_lightId}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{\_lightId}{\_lightId}}
+{\footnotesize\ttfamily \label{classLight_a4e559389ee71aeded0a241449c3ca390} 
+int Light\+::\+\_\+light\+Id\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+ID interno della luce (0-\/7 per Open\+GL tradizionale) 
+
+\Hypertarget{classLight_a044ecea92c9113e0cedd3cef452beae3}\index{Light@{Light}!\_specularColor@{\_specularColor}}
+\index{\_specularColor@{\_specularColor}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{\_specularColor}{\_specularColor}}
+{\footnotesize\ttfamily \label{classLight_a044ecea92c9113e0cedd3cef452beae3} 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} Light\+::\+\_\+specular\+Color\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Colore della componente speculare (0.\+0-\/1.\+0 per canale) 
+
+\Hypertarget{classLight_a2ac3142f14fb8b28a47cc0a34fa6b616}\index{Light@{Light}!nextLightId@{nextLightId}}
+\index{nextLightId@{nextLightId}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{nextLightId}{nextLightId}}
+{\footnotesize\ttfamily \label{classLight_a2ac3142f14fb8b28a47cc0a34fa6b616} 
+int Light\+::next\+Light\+Id = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Contatore statico per il prossimo ID luce disponibile. 
+
+Tiene traccia di quante luci sono state create per assegnare ID univoci. Viene incrementato ad ogni creazione e decrementato ad ogni distruzione. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/\mbox{\hyperlink{light_8h}{light.\+h}}\item 
+engine/\mbox{\hyperlink{light_8cpp}{light.\+cpp}}\end{DoxyCompactItemize}

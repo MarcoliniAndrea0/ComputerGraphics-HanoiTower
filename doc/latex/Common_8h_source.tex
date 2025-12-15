@@ -1,0 +1,37 @@
+\doxysection{Common.\+h}
+\hypertarget{Common_8h_source}{}\label{Common_8h_source}\index{engine/Common.h@{engine/Common.h}}
+\mbox{\hyperlink{Common_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#ifdef\ \_WINDOWS}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\ \ \ \ \#ifdef\ SIMPLEDYNLIB\_EXPORTS}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ LIB\_API\ \_\_declspec(dllexport)}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ LIB\_API\ \_\_declspec(dllimport)}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\ \ \ \ \#define\ LIB\_API}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#ifndef\ \_DEBUG}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\ \ \ \ \#define\ \_DEBUG}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#ifdef\ \_DEBUG}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\ \ \ \ \#define\ DEBUG(message)\ \(\backslash\)}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ std::cout\ <<\ "{}[DEBUG]\ "{}\ <<\ message\ <<\ std::endl;}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ DEBUG(message)}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#define\ WARNING(message)\ \(\backslash\)}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\ \ \ \ std::cout\ <<\ "{}[WARNING]\ "{}\ <<\ message\ <<\ std::endl;}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\#define\ ERROR(message)\ \(\backslash\)}}
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\ \ \ \ std::cerr\ <<\ "{}[ERROR]\ "{}\ <<\ message\ <<\ std::endl;}}
+
+\end{DoxyCode}

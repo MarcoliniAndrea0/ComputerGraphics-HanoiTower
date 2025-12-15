@@ -1,0 +1,205 @@
+\doxysection{Perspective\+Camera Class Reference}
+\hypertarget{classPerspectiveCamera}{}\label{classPerspectiveCamera}\index{PerspectiveCamera@{PerspectiveCamera}}
+
+
+Rappresenta una telecamera con proiezione prospettica.  
+
+
+
+
+{\ttfamily \#include $<$Perspective\+Camera.\+h$>$}
+
+Inheritance diagram for Perspective\+Camera\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classPerspectiveCamera}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPerspectiveCamera_acb393f263121c3afbed3aed890546a40}{Perspective\+Camera}} ()
+\begin{DoxyCompactList}\small\item\em Costruttore di default per la {\ttfamily \doxylink{classPerspectiveCamera}{Perspective\+Camera}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classPerspectiveCamera_a8401ffbf4c9583e09aca2eb9485d943c}{\texorpdfstring{$\sim$}{\string~}\+Perspective\+Camera}} ()=default
+\item 
+void \mbox{\hyperlink{classPerspectiveCamera_adc71538738760cee9262508b56cfb68c}{render}} (const \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} view\+Matrix) const override
+\begin{DoxyCompactList}\small\item\em Renderizza la scena utilizzando una proiezione prospettica. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classCamera}{Camera}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCamera_aae8a3fa90dbed46aac9d4eca9c1d3716}{Camera}} (const std\+::string \&type)
+\begin{DoxyCompactList}\small\item\em Costruttore della classe \doxylink{classCamera}{Camera}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classCamera_ad3ed0c5e02c46f73ba92673598e40514}{\texorpdfstring{$\sim$}{\string~}\+Camera}} ()=default
+\begin{DoxyCompactList}\small\item\em Distruttore virtuale di default. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} \mbox{\hyperlink{classCamera_abef7eed1000cc080b7f008dd28986a08}{get\+Inverse\+Matrix}} ()
+\begin{DoxyCompactList}\small\item\em Calcola e restituisce la matrice inversa della telecamera. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classCamera_a1e6f2044fa0777281cce45d573e2eed4}{get\+Fov}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce il campo visivo (Field of View) della telecamera. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classCamera_a0c4ac2970d944d99646848645f4314ca}{get\+Near\+Clipping}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la distanza del piano di clipping vicino (near plane). \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classCamera_acba240bd192598384a534ac79ea010c6}{get\+Far\+Clipping}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la distanza del piano di clipping lontano (far plane). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCamera_a2ed07d4eea1944e454e2c9771e355303}{get\+Window\+Width}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la larghezza della finestra di rendering. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCamera_a509622869d01128eb7f54cac2adb9e43}{get\+Window\+Height}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce l\textquotesingle{}altezza della finestra di rendering. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCamera_a7b529eb6062356a839478c420334f7ea}{is\+Active}} () const
+\begin{DoxyCompactList}\small\item\em Verifica se la telecamera è attualmente attiva. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCamera_a686d30684cb1adb69b2f2aede360a894}{set\+Near\+Clipping}} (const float new\+Near\+Clipping)
+\begin{DoxyCompactList}\small\item\em Imposta la distanza del piano di clipping vicino. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCamera_aa5631f7a06e3da17e0ece55b6462c85a}{set\+Far\+Clipping}} (const float new\+Far\+Clipping)
+\begin{DoxyCompactList}\small\item\em Imposta la distanza del piano di clipping lontano. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCamera_a27678bb555f8005c7bc7e71f93985637}{set\+Window\+Size}} (const int new\+Width, const int new\+Height)
+\begin{DoxyCompactList}\small\item\em Imposta le dimensioni della finestra di rendering della telecamera. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCamera_afec5ea18302f40c54ee5af586cb57a57}{set\+Fov}} (const float new\+Fov)
+\begin{DoxyCompactList}\small\item\em Imposta il campo visivo (FOV) della telecamera. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCamera_adf563498e739cba129ae74be4365d539}{set\+Active}} (const bool new\+Is\+Active)
+\begin{DoxyCompactList}\small\item\em Imposta lo stato attivo della telecamera. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNode}{Node}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNode_ad7a34779cad45d997bfd6d3d8043c75f}{Node}} ()
+\begin{DoxyCompactList}\small\item\em Costruttore di default. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classNode_a4cf57077e6f91a2d11d291fd89611c24}{Node}} (std\+::string type)
+\begin{DoxyCompactList}\small\item\em Costruttore parametrico con tipo. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classNode_abce703f211f6a577085b4b8ad68cbb19}{\texorpdfstring{$\sim$}{\string~}\+Node}} ()=default
+\begin{DoxyCompactList}\small\item\em Distruttore virtuale di default. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{classNode_a71b865938f0837226fa09693fe5c5a7b}{get\+Position}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la posizione locale del nodo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{classNode_ae0c77ac36b03dd14ba60e6a6940896bf}{get\+Rotation}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la rotazione locale del nodo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{classNode_a27b296b26b28f83db2f762bdebf45b1e}{get\+Scale}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la scala locale del nodo. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classNode_a2416baf7ba60d0572ce8f2e4ac31452b}{get\+Priority}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la priorità di rendering del nodo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} \mbox{\hyperlink{classNode_a6c12ab3a4d670e40078e9d9c9000ede6}{get\+Local\+Matrix}} () const
+\begin{DoxyCompactList}\small\item\em Calcola e restituisce la matrice di trasformazione locale del nodo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} \mbox{\hyperlink{classNode_a31f8763ea8659b0485ded3cfb0821e05}{get\+Transform}} () const
+\begin{DoxyCompactList}\small\item\em Alias di \doxylink{classNode_a6c12ab3a4d670e40078e9d9c9000ede6}{get\+Local\+Matrix()}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} \mbox{\hyperlink{classNode_a74c1cff684648fcb90fd4197172a5ccd}{get\+World\+Matrix}} (const \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} \&parent\+Matrix=\mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}}(1.\+0f)) const
+\begin{DoxyCompactList}\small\item\em Calcola la matrice di trasformazione globale (world matrix) del nodo. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \mbox{\hyperlink{classNode_a698fcd9fd071b622af7190219deaa167}{get\+Parent}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce un puntatore al nodo padre. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ $>$ \mbox{\hyperlink{classNode_a7775c2f0410dee3c9e5a3bb82b2ec7bf}{get\+Children}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la lista dei nodi figli (versione const). \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ $>$ \& \mbox{\hyperlink{classNode_a285f46ec311658150cf27bdecfb15dd6}{get\+Children}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce un riferimento modificabile alla lista dei nodi figli. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a9c023d00bc503ff6ddba5e4f0bc62df3}{set\+Position}} (const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} new\+Position)
+\begin{DoxyCompactList}\small\item\em Imposta la posizione locale del nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a0791be977d7b7721f70eb501f17009a7}{set\+Rotation}} (const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} new\+Position)
+\begin{DoxyCompactList}\small\item\em Imposta la rotazione locale del nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_ad4140835a781e69e37399ea4a71e4e5d}{set\+Scale}} (const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} new\+Position)
+\begin{DoxyCompactList}\small\item\em Imposta la scala locale del nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a3efd0b06c91356594f8224de9ac56c59}{set\+Base\+Matrix}} (const \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} new\+Base\+Matrix)
+\begin{DoxyCompactList}\small\item\em Imposta la matrice di trasformazione di base del nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_ad7361dd4b1cd6b0e854a815a2d59b1c6}{set\+Priority}} (int p)
+\begin{DoxyCompactList}\small\item\em Imposta la priorità di rendering del nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a61f3a29258c87c5354ff2dcf47a0cdde}{add\+Child}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ new\+Child)
+\begin{DoxyCompactList}\small\item\em Aggiunge un nodo figlio a questo nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a77c02d511582a1ab3e8436eb90c7c5e4}{remove\+All\+Children}} ()
+\begin{DoxyCompactList}\small\item\em Rimuove tutti i nodi figli da questo nodo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classObject}{Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classObject_afe9eeddd7068a37f62d3276a2fb49864}{Object}} ()=default
+\begin{DoxyCompactList}\small\item\em Costruttore di default. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classObject_a4fd75bb7fe75b569928245bb27fed07c}{Object}} (const std\+::string type)
+\begin{DoxyCompactList}\small\item\em Costruttore parametrico con tipo. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classObject_ae8f5483f459e46687bd01e6f9977afd3}{\texorpdfstring{$\sim$}{\string~}\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Distruttore virtuale. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classObject_a34a0b88c7f929c85ce92107ce7ba2e97}{get\+Id}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce l\textquotesingle{}identificativo univoco dell\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classObject_adf9436214bd361e0b85ac10ef2035916}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce il nome assegnato all\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+const std\+::string \mbox{\hyperlink{classObject_a60159d15921c408e2a8f828053297a13}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce il tipo dell\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classObject_adf1de6aa8f21d9b04eb700fec0700ebf}{set\+Name}} (const std\+::string new\+Name)
+\begin{DoxyCompactList}\small\item\em Assegna un nome leggibile all\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classObject_a89624881fe30113db802b64bfeed517f}{set\+Type}} (const std\+::string \&type)
+\begin{DoxyCompactList}\small\item\em Definisce il tipo/categoria dell\textquotesingle{}oggetto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classObject}{Object}}}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classObject_a65658e2cbce7cd75f9f0e5716c36082a}{reset\+Id\+Generator}} ()
+\begin{DoxyCompactList}\small\item\em Resetta il contatore statico degli ID a zero. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classCamera}{Camera}}}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{classCamera_adbe2dda1c394b5407fe925ea30dc6429}{\+\_\+fov}}
+\begin{DoxyCompactList}\small\item\em Campo visivo (Field of View) in gradi. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classCamera_ab346f3d6c98bfdb8853ff98e9722921d}{\+\_\+near\+Clipping}}
+\begin{DoxyCompactList}\small\item\em Distanza del piano di clipping vicino. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classCamera_a4883a81ac01c9f469f87ecd3f70e496d}{\+\_\+far\+Clipping}}
+\begin{DoxyCompactList}\small\item\em Distanza del piano di clipping lontano. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCamera_abe83163c28b840ec4d9c697d54089314}{\+\_\+window\+Width}}
+\begin{DoxyCompactList}\small\item\em Larghezza della finestra di rendering in pixel. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCamera_a938674b60d6543333774f078b1866b01}{\+\_\+window\+Height}}
+\begin{DoxyCompactList}\small\item\em Altezza della finestra di rendering in pixel. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCamera_a7e738c2af30d2000af930fb0bea3cb2a}{\+\_\+is\+Active}}
+\begin{DoxyCompactList}\small\item\em Flag che indica se questa telecamera è attiva per il rendering. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Rappresenta una telecamera con proiezione prospettica. 
+
+Questa classe estende la classe base {\ttfamily \doxylink{classCamera}{Camera}} per implementare una proiezione prospettica. A differenza della camera ortografica, la camera prospettica simula la percezione visiva degli oggetti, dove gli oggetti lontani appaiono pi{\ucr} piccoli rispetto a quelli vicini, creando un effetto di profondit{\ucr}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classPerspectiveCamera_acb393f263121c3afbed3aed890546a40}\index{PerspectiveCamera@{PerspectiveCamera}!PerspectiveCamera@{PerspectiveCamera}}
+\index{PerspectiveCamera@{PerspectiveCamera}!PerspectiveCamera@{PerspectiveCamera}}
+\doxysubsubsection{\texorpdfstring{PerspectiveCamera()}{PerspectiveCamera()}}
+{\footnotesize\ttfamily \label{classPerspectiveCamera_acb393f263121c3afbed3aed890546a40} 
+Perspective\+Camera\+::\+Perspective\+Camera (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Costruttore di default per la {\ttfamily \doxylink{classPerspectiveCamera}{Perspective\+Camera}}. 
+
+Costruttore della telecamera prospettica.
+
+Inizializza una telecamera prospettica con parametri predefiniti per il campo visivo, il piano di clipping vicino e lontano, e il rapporto d\textquotesingle{}aspetto.
+
+Inizializza una nuova istanza di {\ttfamily \doxylink{classPerspectiveCamera}{Perspective\+Camera}} con i parametri di default. Questa telecamera applica una proiezione prospettica per il rendering della scena. \Hypertarget{classPerspectiveCamera_a8401ffbf4c9583e09aca2eb9485d943c}\index{PerspectiveCamera@{PerspectiveCamera}!````~PerspectiveCamera@{\texorpdfstring{$\sim$}{\string~}PerspectiveCamera}}
+\index{````~PerspectiveCamera@{\texorpdfstring{$\sim$}{\string~}PerspectiveCamera}!PerspectiveCamera@{PerspectiveCamera}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}PerspectiveCamera()}{\string~PerspectiveCamera()}}
+{\footnotesize\ttfamily \label{classPerspectiveCamera_a8401ffbf4c9583e09aca2eb9485d943c} 
+virtual Perspective\+Camera\+::\texorpdfstring{$\sim$}{\string~}\+Perspective\+Camera (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPerspectiveCamera_adc71538738760cee9262508b56cfb68c}\index{PerspectiveCamera@{PerspectiveCamera}!render@{render}}
+\index{render@{render}!PerspectiveCamera@{PerspectiveCamera}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily \label{classPerspectiveCamera_adc71538738760cee9262508b56cfb68c} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Perspective\+Camera\+::render (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}}}]{view\+Matrix}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Renderizza la scena utilizzando una proiezione prospettica. 
+
+Configura una matrice di proiezione prospettica in Open\+GL e applica il rendering con effetto di prospettiva.
+
+
+\begin{DoxyParams}{Parameters}
+{\em view\+Matrix} & La matrice di vista da utilizzare per il rendering.\\
+\hline
+\end{DoxyParams}
+Configura una matrice di proiezione prospettica in Open\+GL e applica il rendering con l\textquotesingle{}effetto di prospettiva. Questa funzione viene chiamata automaticamente da My\+Engine e non deve essere invocata manualmente.
+
+
+\begin{DoxyParams}{Parameters}
+{\em view\+Matrix} & La matrice di vista da utilizzare per il rendering di questo oggetto. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classNode_a032504f00a0bcad5fcbddc68f265cafd}{Node}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/\mbox{\hyperlink{PerspectiveCamera_8h}{Perspective\+Camera.\+h}}\item 
+engine/\mbox{\hyperlink{PerspectiveCamera_8cpp}{Perspective\+Camera.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,191 @@
+\doxysection{Hanoi\+Game Class Reference}
+\hypertarget{classHanoiGame}{}\label{classHanoiGame}\index{HanoiGame@{HanoiGame}}
+
+
+Tower of Hanoi game implementation.  
+
+
+
+
+{\ttfamily \#include $<$hanoi.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classHanoiGame_ab50632670a9027f0e1a961836cd99600}{init}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \mbox{\hyperlink{main_8cpp_aed76e7b685674a06cdc07d2558c053d4}{root\+Node}})
+\begin{DoxyCompactList}\small\item\em Initialize the game. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classHanoiGame_afd3c19568f819c2aae82d1d44a36a925}{reset}} ()
+\begin{DoxyCompactList}\small\item\em Reset the game to initial state. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classHanoiGame_a083a905d7c2c0ec73b8c1c9c1b1d656e}{handle\+Key}} (unsigned char key)
+\begin{DoxyCompactList}\small\item\em Handle mouse click for game interaction. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classHanoiGame_a1a109d38be050a2a8c240dadc2836d6c}{get\+Status}} ()
+\begin{DoxyCompactList}\small\item\em Get the current game status text. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classHanoiGame_a78dd66e6ddd22b2d63e0ed18d9278d09}{update}} ()
+\begin{DoxyCompactList}\small\item\em Update game animation. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classHanoiGame_a347446579da1999f0b40425861cf3318}{is\+Game\+Won}} ()
+\begin{DoxyCompactList}\small\item\em Check if game is won. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{classHanoiGame_a829ed20779405eb528483b4ec5714b9f}{get\+Move\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Get current move count. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{classHanoiGame_a5610a25d2955dc121145b8fd553252d2}{get\+Min\+Moves}} ()
+\begin{DoxyCompactList}\small\item\em Get minimum required moves. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classHanoiGame_ab6d0fa0f417219f67fee038ef14d37d5}{show\+Help}} ()
+\begin{DoxyCompactList}\small\item\em Show game instructions. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classHanoiGame_a65d505c1d72ecbac7bcc1cfb79e9d4ab}{auto\+Solve}} ()
+\begin{DoxyCompactList}\small\item\em Auto-\/solve the puzzle (for testing) \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classHanoiGame_a3fbf2cee687a994a6e5897c0818cecf8}{undo}} ()
+\item 
+static void \mbox{\hyperlink{classHanoiGame_a929d760453ef0f909ebd0a919ddad729}{redo}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Tower of Hanoi game implementation. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classHanoiGame_a65d505c1d72ecbac7bcc1cfb79e9d4ab}\index{HanoiGame@{HanoiGame}!autoSolve@{autoSolve}}
+\index{autoSolve@{autoSolve}!HanoiGame@{HanoiGame}}
+\doxysubsubsection{\texorpdfstring{autoSolve()}{autoSolve()}}
+{\footnotesize\ttfamily \label{classHanoiGame_a65d505c1d72ecbac7bcc1cfb79e9d4ab} 
+static void Hanoi\+Game\+::auto\+Solve (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Auto-\/solve the puzzle (for testing) 
+
+\Hypertarget{classHanoiGame_a5610a25d2955dc121145b8fd553252d2}\index{HanoiGame@{HanoiGame}!getMinMoves@{getMinMoves}}
+\index{getMinMoves@{getMinMoves}!HanoiGame@{HanoiGame}}
+\doxysubsubsection{\texorpdfstring{getMinMoves()}{getMinMoves()}}
+{\footnotesize\ttfamily \label{classHanoiGame_a5610a25d2955dc121145b8fd553252d2} 
+int Hanoi\+Game\+::get\+Min\+Moves (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get minimum required moves. 
+
+\begin{DoxyReturn}{Returns}
+Minimum moves to solve 
+\end{DoxyReturn}
+\Hypertarget{classHanoiGame_a829ed20779405eb528483b4ec5714b9f}\index{HanoiGame@{HanoiGame}!getMoveCount@{getMoveCount}}
+\index{getMoveCount@{getMoveCount}!HanoiGame@{HanoiGame}}
+\doxysubsubsection{\texorpdfstring{getMoveCount()}{getMoveCount()}}
+{\footnotesize\ttfamily \label{classHanoiGame_a829ed20779405eb528483b4ec5714b9f} 
+int Hanoi\+Game\+::get\+Move\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get current move count. 
+
+\begin{DoxyReturn}{Returns}
+Number of moves made 
+\end{DoxyReturn}
+\Hypertarget{classHanoiGame_a1a109d38be050a2a8c240dadc2836d6c}\index{HanoiGame@{HanoiGame}!getStatus@{getStatus}}
+\index{getStatus@{getStatus}!HanoiGame@{HanoiGame}}
+\doxysubsubsection{\texorpdfstring{getStatus()}{getStatus()}}
+{\footnotesize\ttfamily \label{classHanoiGame_a1a109d38be050a2a8c240dadc2836d6c} 
+std\+::string Hanoi\+Game\+::get\+Status (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the current game status text. 
+
+\begin{DoxyReturn}{Returns}
+Status string for display 
+\end{DoxyReturn}
+\Hypertarget{classHanoiGame_a083a905d7c2c0ec73b8c1c9c1b1d656e}\index{HanoiGame@{HanoiGame}!handleKey@{handleKey}}
+\index{handleKey@{handleKey}!HanoiGame@{HanoiGame}}
+\doxysubsubsection{\texorpdfstring{handleKey()}{handleKey()}}
+{\footnotesize\ttfamily \label{classHanoiGame_a083a905d7c2c0ec73b8c1c9c1b1d656e} 
+void Hanoi\+Game\+::handle\+Key (\begin{DoxyParamCaption}\item[{unsigned char}]{key}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Handle mouse click for game interaction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mouseX} & Mouse X coordinate \\
+\hline
+{\em mouseY} & Mouse Y coordinate\\
+\hline
+\end{DoxyParams}
+Handle keyboard input for game control 
+\begin{DoxyParams}{Parameters}
+{\em key} & Key pressed \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classHanoiGame_ab50632670a9027f0e1a961836cd99600}\index{HanoiGame@{HanoiGame}!init@{init}}
+\index{init@{init}!HanoiGame@{HanoiGame}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily \label{classHanoiGame_ab50632670a9027f0e1a961836cd99600} 
+void Hanoi\+Game\+::init (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$}]{root\+Node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Initialize the game. 
+
+\Hypertarget{classHanoiGame_a347446579da1999f0b40425861cf3318}\index{HanoiGame@{HanoiGame}!isGameWon@{isGameWon}}
+\index{isGameWon@{isGameWon}!HanoiGame@{HanoiGame}}
+\doxysubsubsection{\texorpdfstring{isGameWon()}{isGameWon()}}
+{\footnotesize\ttfamily \label{classHanoiGame_a347446579da1999f0b40425861cf3318} 
+bool Hanoi\+Game\+::is\+Game\+Won (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Check if game is won. 
+
+\begin{DoxyReturn}{Returns}
+True if game is won 
+\end{DoxyReturn}
+\Hypertarget{classHanoiGame_a929d760453ef0f909ebd0a919ddad729}\index{HanoiGame@{HanoiGame}!redo@{redo}}
+\index{redo@{redo}!HanoiGame@{HanoiGame}}
+\doxysubsubsection{\texorpdfstring{redo()}{redo()}}
+{\footnotesize\ttfamily \label{classHanoiGame_a929d760453ef0f909ebd0a919ddad729} 
+void Hanoi\+Game\+::redo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classHanoiGame_afd3c19568f819c2aae82d1d44a36a925}\index{HanoiGame@{HanoiGame}!reset@{reset}}
+\index{reset@{reset}!HanoiGame@{HanoiGame}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{classHanoiGame_afd3c19568f819c2aae82d1d44a36a925} 
+void Hanoi\+Game\+::reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Reset the game to initial state. 
+
+\Hypertarget{classHanoiGame_ab6d0fa0f417219f67fee038ef14d37d5}\index{HanoiGame@{HanoiGame}!showHelp@{showHelp}}
+\index{showHelp@{showHelp}!HanoiGame@{HanoiGame}}
+\doxysubsubsection{\texorpdfstring{showHelp()}{showHelp()}}
+{\footnotesize\ttfamily \label{classHanoiGame_ab6d0fa0f417219f67fee038ef14d37d5} 
+void Hanoi\+Game\+::show\+Help (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Show game instructions. 
+
+\Hypertarget{classHanoiGame_a3fbf2cee687a994a6e5897c0818cecf8}\index{HanoiGame@{HanoiGame}!undo@{undo}}
+\index{undo@{undo}!HanoiGame@{HanoiGame}}
+\doxysubsubsection{\texorpdfstring{undo()}{undo()}}
+{\footnotesize\ttfamily \label{classHanoiGame_a3fbf2cee687a994a6e5897c0818cecf8} 
+void Hanoi\+Game\+::undo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classHanoiGame_a78dd66e6ddd22b2d63e0ed18d9278d09}\index{HanoiGame@{HanoiGame}!update@{update}}
+\index{update@{update}!HanoiGame@{HanoiGame}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{classHanoiGame_a78dd66e6ddd22b2d63e0ed18d9278d09} 
+void Hanoi\+Game\+::update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Update game animation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & Time since last update \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+client/\mbox{\hyperlink{hanoi_8h}{hanoi.\+h}}\item 
+client/\mbox{\hyperlink{hanoi_8cpp}{hanoi.\+cpp}}\end{DoxyCompactItemize}

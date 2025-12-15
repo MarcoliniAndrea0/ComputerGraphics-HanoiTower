@@ -1,0 +1,84 @@
+\doxysection{OVOParser Class Reference}
+\hypertarget{classOVOParser}{}\label{classOVOParser}\index{OVOParser@{OVOParser}}
+
+
+Parser per il caricamento di grafi di scena da file OVO.  
+
+
+
+
+{\ttfamily \#include $<$Ovo\+Parser.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \mbox{\hyperlink{classOVOParser_ae74e7ab3c588853392216d32bd7cfc27}{from\+File}} (const std\+::string file\+Path)
+\begin{DoxyCompactList}\small\item\em Carica un grafo di scena da un file OVO. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Parser per il caricamento di grafi di scena da file OVO. 
+
+La classe {\ttfamily \doxylink{classOVOParser}{OVOParser}} fornisce funzionalit{\ucr} per caricare e analizzare i dati delle scene dal formato di file OVO. Converte i dati di questi file in una struttura di grafo di scena composta da nodi, mesh, materiali e luci.\hypertarget{classOVOParser_autotoc_md0}{}\doxysubsubsubsection{\texorpdfstring{Funzionalit{\ucr} principali\+:}{Funzionalit{\ucr} principali\+:}}\label{classOVOParser_autotoc_md0}
+
+\begin{DoxyItemize}
+\item Caricamento di un grafo di scena completo da un file OVO.
+\item Analisi dei chunk di dati corrispondenti a nodi, mesh, materiali e luci.
+\item Estrazione di stringhe dai dati binari.
+\item Gestione di una mappa per evitare duplicazioni dei materiali. 
+\end{DoxyItemize}
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classOVOParser_ae74e7ab3c588853392216d32bd7cfc27}\index{OVOParser@{OVOParser}!fromFile@{fromFile}}
+\index{fromFile@{fromFile}!OVOParser@{OVOParser}}
+\doxysubsubsection{\texorpdfstring{fromFile()}{fromFile()}}
+{\footnotesize\ttfamily \label{classOVOParser_ae74e7ab3c588853392216d32bd7cfc27} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} OVOParser\+::from\+File (\begin{DoxyParamCaption}\item[{const std\+::string}]{file\+Path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Carica un grafo di scena da un file OVO. 
+
+Carica una scena da un file .ovo e restituisce il nodo root della scena.
+
+Questa funzione legge un file {\ttfamily .ovo} specificato dal percorso {\ttfamily file\+Path}, analizza i dati in esso contenuti e costruisce una struttura di grafo di scena composta da nodi, mesh, luci e materiali.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Path} & Il percorso del file {\ttfamily .ovo} da caricare. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un puntatore condiviso al nodo radice della scena caricata.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & Se il file non pu{\ucr} essere aperto o se i dati del file sono corrotti.\\
+\hline
+\end{DoxyExceptions}
+Questo metodo apre un file .ovo specificato dal percorso {\ttfamily file\+Path}, elabora i dati contenuti nel file e costruisce una gerarchia di nodi che rappresenta la scena. I dati vengono letti in chunk, ognuno dei quali rappresenta un diverso tipo di oggetto nella scena (nodi, materiali, luci e mesh). La gerarchia dei nodi viene costruita utilizzando uno stack per gestire i nodi e il loro conteggio di figli rimanenti.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Path} & Il percorso del file .ovo da cui caricare la scena.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Il nodo root della scena costruita.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+La funzione gestisce diversi tipi di chunk\+:
+\begin{DoxyItemize}
+\item Tipo 0\+: Versione del file
+\item Tipo 1\+: \doxylink{classNode}{Node} della scena
+\item Tipo 9\+: Materiale
+\item Tipo 16\+: Luce
+\item Tipo 18\+: \doxylink{classMesh}{Mesh} 
+\end{DoxyItemize}
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/\mbox{\hyperlink{OvoParser_8h}{Ovo\+Parser.\+h}}\item 
+engine/\mbox{\hyperlink{OvoParser_8cpp}{Ovo\+Parser.\+cpp}}\end{DoxyCompactItemize}

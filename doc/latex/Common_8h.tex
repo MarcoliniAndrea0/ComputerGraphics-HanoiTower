@@ -1,0 +1,184 @@
+\doxysection{engine/\+Common.h File Reference}
+\hypertarget{Common_8h}{}\label{Common_8h}\index{engine/Common.h@{engine/Common.h}}
+
+
+Definizioni di macro comuni, utility di debug e gestione dell\textquotesingle{}esportazione DLL.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}}
+\begin{DoxyCompactList}\small\item\em Macro per la gestione dell\textquotesingle{}esportazione e importazione di simboli nelle librerie dinamiche (DLL). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{Common_8h_a152fc5203b90b1cff03b7b78579b8f52}{\+\_\+\+DEBUG}}
+\begin{DoxyCompactList}\small\item\em Assicura che \+\_\+\+DEBUG sia definito se non lo è già. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{Common_8h_ab94a24f0a37b3963eb64f201cebf60a9}{DEBUG}}(message)
+\begin{DoxyCompactList}\small\item\em Stampa un messaggio di debug su standard output con prefisso \mbox{[}DEBUG\mbox{]}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{Common_8h_aaf99b8fcaa4b837f684ea0505ed34487}{WARNING}}(message)
+\begin{DoxyCompactList}\small\item\em Stampa un messaggio di avviso (warning) su standard output con prefisso \mbox{[}WARNING\mbox{]}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{Common_8h_ae225ab718bd4f5e2221129f026d3d8f1}{ERROR}}(message)
+\begin{DoxyCompactList}\small\item\em Stampa un messaggio di errore su standard error (stderr) con prefisso \mbox{[}ERROR\mbox{]}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Definizioni di macro comuni, utility di debug e gestione dell\textquotesingle{}esportazione DLL. 
+
+Questo file header contiene macro e definizioni utilizzate in tutto il progetto, incluse le macro per l\textquotesingle{}esportazione/importazione di simboli DLL su Windows, macro di logging per il debugging e la gestione degli errori.
+
+\begin{DoxyAuthor}{Author}
+Gruppo6 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{Common_8h_a152fc5203b90b1cff03b7b78579b8f52}\index{Common.h@{Common.h}!\_DEBUG@{\_DEBUG}}
+\index{\_DEBUG@{\_DEBUG}!Common.h@{Common.h}}
+\doxysubsubsection{\texorpdfstring{\_DEBUG}{\_DEBUG}}
+{\footnotesize\ttfamily \label{Common_8h_a152fc5203b90b1cff03b7b78579b8f52} 
+\#define \+\_\+\+DEBUG}
+
+
+
+Assicura che \+\_\+\+DEBUG sia definito se non lo è già. 
+
+\begin{DoxyNote}{Note}
+Questa sezione forza la modalità debug se non è stata definita dal compilatore. Può essere commentata per le build di release. 
+\end{DoxyNote}
+\Hypertarget{Common_8h_ab94a24f0a37b3963eb64f201cebf60a9}\index{Common.h@{Common.h}!DEBUG@{DEBUG}}
+\index{DEBUG@{DEBUG}!Common.h@{Common.h}}
+\doxysubsubsection{\texorpdfstring{DEBUG}{DEBUG}}
+{\footnotesize\ttfamily \label{Common_8h_ab94a24f0a37b3963eb64f201cebf60a9} 
+\#define DEBUG(\begin{DoxyParamCaption}\item[{}]{message}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}[DEBUG]\ "{}}\ <<\ message\ <<\ std::endl;}
+
+\end{DoxyCode}
+
+
+Stampa un messaggio di debug su standard output con prefisso \mbox{[}DEBUG\mbox{]}. 
+
+Questa macro è attiva solo quando \+\_\+\+DEBUG è definito. Permette di stampare messaggi di debug durante lo sviluppo senza impattare le performance delle build di release.
+
+La macro supporta qualsiasi tipo di dato che può essere inviato a std\+::cout tramite l\textquotesingle{}operatore \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Il messaggio o la variabile da stampare (supporta stream operator \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<})\\
+\hline
+\end{DoxyParams}
+Esempio di utilizzo\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ x\ =\ 42;}
+\DoxyCodeLine{\mbox{\hyperlink{Common_8h_ab94a24f0a37b3963eb64f201cebf60a9}{DEBUG}}(\textcolor{stringliteral}{"{}Il\ valore\ di\ x\ è: "{}}\ <<\ x);}
+\DoxyCodeLine{\textcolor{comment}{//\ Output:\ [DEBUG]\ Il\ valore\ di\ x\ è: 42}}
+
+\end{DoxyCode}
+
+
+\begin{DoxyNote}{Note}
+In build di release (quando \+\_\+\+DEBUG non è definito), questa macro viene completamente rimossa dal codice dal preprocessore. 
+\end{DoxyNote}
+\Hypertarget{Common_8h_ae225ab718bd4f5e2221129f026d3d8f1}\index{Common.h@{Common.h}!ERROR@{ERROR}}
+\index{ERROR@{ERROR}!Common.h@{Common.h}}
+\doxysubsubsection{\texorpdfstring{ERROR}{ERROR}}
+{\footnotesize\ttfamily \label{Common_8h_ae225ab718bd4f5e2221129f026d3d8f1} 
+\#define ERROR(\begin{DoxyParamCaption}\item[{}]{message}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}[ERROR]\ "{}}\ <<\ message\ <<\ std::endl;}
+
+\end{DoxyCode}
+
+
+Stampa un messaggio di errore su standard error (stderr) con prefisso \mbox{[}ERROR\mbox{]}. 
+
+Questa macro viene utilizzata per segnalare errori gravi che impediscono il normale funzionamento del programma. I messaggi vengono inviati a stderr per distinguerli dall\textquotesingle{}output normale su stdout.
+
+Questa macro è sempre attiva, anche in build di release.
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Il messaggio di errore da stampare\\
+\hline
+\end{DoxyParams}
+Esempio di utilizzo\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{Common_8h_ae225ab718bd4f5e2221129f026d3d8f1}{ERROR}}(\textcolor{stringliteral}{"{}Impossibile\ caricare\ il\ file:\ "{}}\ <<\ filename);}
+\DoxyCodeLine{\textcolor{comment}{//\ Output\ su\ stderr:\ [ERROR]\ Impossibile\ caricare\ il\ file:\ model.obj}}
+
+\end{DoxyCode}
+
+
+\begin{DoxyNote}{Note}
+Dopo aver stampato un messaggio di errore critico, potrebbe essere necessario terminare il programma o gestire l\textquotesingle{}errore in modo appropriato. 
+\end{DoxyNote}
+\Hypertarget{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}\index{Common.h@{Common.h}!LIB\_API@{LIB\_API}}
+\index{LIB\_API@{LIB\_API}!Common.h@{Common.h}}
+\doxysubsubsection{\texorpdfstring{LIB\_API}{LIB\_API}}
+{\footnotesize\ttfamily \label{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d} 
+\#define LIB\+\_\+\+API}
+
+
+
+Macro per la gestione dell\textquotesingle{}esportazione e importazione di simboli nelle librerie dinamiche (DLL). 
+
+Questa macro gestisce automaticamente l\textquotesingle{}esportazione e importazione dei simboli quando si compila una libreria dinamica su Windows\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Su Windows (\+\_\+\+WINDOWS definito)}}\+:
+\begin{DoxyItemize}
+\item Se SIMPLEDYNLIB\+\_\+\+EXPORTS è definito (durante la compilazione della DLL)\+: espande a \+\_\+\+\_\+declspec(dllexport) per esportare i simboli
+\item Altrimenti (durante l\textquotesingle{}uso della DLL)\+: espande a \+\_\+\+\_\+declspec(dllimport) per importare i simboli
+\end{DoxyItemize}
+\item {\bfseries{Su altre piattaforme}} (Linux, mac\+OS)\+: la macro è vuota, poiché questi sistemi gestiscono i simboli delle librerie condivise in modo diverso.
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+Questa macro deve essere usata prima della dichiarazione di ogni classe o funzione che deve essere visibile dall\textquotesingle{}esterno della DLL.
+\end{DoxyNote}
+Esempio di utilizzo\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\_API}}\ MyClass\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ ...}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+ \Hypertarget{Common_8h_aaf99b8fcaa4b837f684ea0505ed34487}\index{Common.h@{Common.h}!WARNING@{WARNING}}
+\index{WARNING@{WARNING}!Common.h@{Common.h}}
+\doxysubsubsection{\texorpdfstring{WARNING}{WARNING}}
+{\footnotesize\ttfamily \label{Common_8h_aaf99b8fcaa4b837f684ea0505ed34487} 
+\#define WARNING(\begin{DoxyParamCaption}\item[{}]{message}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}[WARNING]\ "{}}\ <<\ message\ <<\ std::endl;}
+
+\end{DoxyCode}
+
+
+Stampa un messaggio di avviso (warning) su standard output con prefisso \mbox{[}WARNING\mbox{]}. 
+
+Questa macro viene utilizzata per segnalare situazioni anomale o potenzialmente problematiche che non causano necessariamente un errore critico, ma richiedono attenzione.
+
+A differenza di DEBUG, questa macro è sempre attiva, anche in build di release.
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Il messaggio di avviso da stampare\\
+\hline
+\end{DoxyParams}
+Esempio di utilizzo\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{Common_8h_aaf99b8fcaa4b837f684ea0505ed34487}{WARNING}}(\textcolor{stringliteral}{"{}Texture\ non\ trovata,\ verrà usata\ quella\ di\ default"{}});}
+\DoxyCodeLine{\textcolor{comment}{//\ Output:\ [WARNING]\ Texture\ non\ trovata,\ verrà usata\ quella\ di\ default}}
+
+\end{DoxyCode}
+ 

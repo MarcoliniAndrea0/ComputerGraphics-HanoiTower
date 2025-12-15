@@ -1,0 +1,114 @@
+\doxysubsection{GLM\+\_\+\+GTX\+\_\+pca}
+\hypertarget{group__gtx__pca}{}\label{group__gtx__pca}\index{GLM\_GTX\_pca@{GLM\_GTX\_pca}}
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$\mbox{\hyperlink{namespaceglm_a090a0de2260835bee80e71a702492ed9}{length\+\_\+t}} D, typename T, \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}} Q$>$ }\\\mbox{\hyperlink{setup_8hpp_a4603970cbd724c5d102bbcf17f430047}{GLM\+\_\+\+INLINE}} \mbox{\hyperlink{structglm_1_1mat}{mat}}$<$ D, D, T, Q $>$ \mbox{\hyperlink{group__gtx__pca_ga4290358424d0cb9bcdfc5106f1db557e}{glm\+::compute\+Covariance\+Matrix}} (\mbox{\hyperlink{structglm_1_1vec}{vec}}$<$ D, T, Q $>$ const \texorpdfstring{$\ast$}{*}v, size\+\_\+t n)
+\item 
+{\footnotesize template$<$\mbox{\hyperlink{namespaceglm_a090a0de2260835bee80e71a702492ed9}{length\+\_\+t}} D, typename T, \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}} Q$>$ }\\\mbox{\hyperlink{setup_8hpp_a4603970cbd724c5d102bbcf17f430047}{GLM\+\_\+\+INLINE}} \mbox{\hyperlink{structglm_1_1mat}{mat}}$<$ D, D, T, Q $>$ \mbox{\hyperlink{group__gtx__pca_ga58f3c73142f1a61680ab728eff91ab84}{glm\+::compute\+Covariance\+Matrix}} (\mbox{\hyperlink{structglm_1_1vec}{vec}}$<$ D, T, Q $>$ const \texorpdfstring{$\ast$}{*}v, size\+\_\+t n, \mbox{\hyperlink{structglm_1_1vec}{vec}}$<$ D, T, Q $>$ const \&c)
+\item 
+{\footnotesize template$<$\mbox{\hyperlink{namespaceglm_a090a0de2260835bee80e71a702492ed9}{length\+\_\+t}} D, typename T, \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}} Q, typename I$>$ }\\\mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\+\_\+\+FUNC\+\_\+\+DECL}} \mbox{\hyperlink{structglm_1_1mat}{mat}}$<$ D, D, T, Q $>$ \mbox{\hyperlink{group__gtx__pca_gac6bf50368cd653fe51ef7f804922c88c}{glm\+::compute\+Covariance\+Matrix}} (I const \&b, I const \&\mbox{\hyperlink{group__gtc__constants_ga4b7956eb6e2fbedfc7cf2e46e85c5139}{e}})
+\item 
+{\footnotesize template$<$\mbox{\hyperlink{namespaceglm_a090a0de2260835bee80e71a702492ed9}{length\+\_\+t}} D, typename T, \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}} Q, typename I$>$ }\\\mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\+\_\+\+FUNC\+\_\+\+DECL}} \mbox{\hyperlink{structglm_1_1mat}{mat}}$<$ D, D, T, Q $>$ \mbox{\hyperlink{group__gtx__pca_gac63665338f7b991b9b65534b49855555}{glm\+::compute\+Covariance\+Matrix}} (I const \&b, I const \&\mbox{\hyperlink{group__gtc__constants_ga4b7956eb6e2fbedfc7cf2e46e85c5139}{e}}, \mbox{\hyperlink{structglm_1_1vec}{vec}}$<$ D, T, Q $>$ const \&c)
+\item 
+{\footnotesize template$<$typename T, \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}} Q$>$ }\\\mbox{\hyperlink{setup_8hpp_a364212a7fa4148cd960bd919442c4fc8}{GLM\+\_\+\+FUNC\+\_\+\+DISCARD\+\_\+\+DECL}} void \mbox{\hyperlink{group__gtx__pca_ga3fe570b4abe7eca8afb32896d77394f5}{glm\+::sort\+Eigenvalues}} (\mbox{\hyperlink{structglm_1_1vec}{vec}}$<$ 4, T, Q $>$ \&eigenvalues, \mbox{\hyperlink{structglm_1_1mat}{mat}}$<$ 4, 4, T, Q $>$ \&eigenvectors)
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Include \texorpdfstring{$<$}{<}\doxylink{pca_8hpp}{glm/gtx/pca.\+hpp}\texorpdfstring{$>$}{>} to use the features of this extension.
+
+Implements functions required for fundamental \textquotesingle{}princple component analysis\textquotesingle{} in 2D, 3D, and 4D\+: 1) Computing a covariance matrics from a list of {\itshape relative} position vectors 2) Compute the eigenvalues and eigenvectors of the covariance matrics This is useful, e.\+g., to compute an object-\/aligned bounding box from vertices of an object. \href{https://en.wikipedia.org/wiki/Principal_component_analysis}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+Principal\+\_\+component\+\_\+analysis}}
+
+Example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::vector<glm::dvec3>\ ptData;}
+\DoxyCodeLine{\textcolor{comment}{//\ ...\ fill\ ptData\ with\ some\ point\ data,\ e.g.\ vertices}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{group__core__vector_ga9052c24a5cf69c32e389db34de7e96c7}{glm::dvec3}}\ center\ =\ computeCenter(ptData);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{group__core__matrix_ga750be436fe7436ccb87c6e85bb21024d}{glm::dmat3}}\ covarMat\ =\ \mbox{\hyperlink{group__gtx__pca_ga4290358424d0cb9bcdfc5106f1db557e}{glm::computeCovarianceMatrix}}(ptData.data(),\ ptData.size(),\ center);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{group__core__vector_ga9052c24a5cf69c32e389db34de7e96c7}{glm::dvec3}}\ evals;}
+\DoxyCodeLine{\mbox{\hyperlink{group__core__matrix_ga750be436fe7436ccb87c6e85bb21024d}{glm::dmat3}}\ evecs;}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ evcnt\ =\ \mbox{\hyperlink{namespaceglm_ac83240b521220feb7081eaedb4a1938f}{glm::findEigenvaluesSymReal}}(covarMat,\ evals,\ evecs);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordflow}{if}(evcnt\ !=\ 3)}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ ...\ error\ handling}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{group__gtx__pca_ga3fe570b4abe7eca8afb32896d77394f5}{glm::sortEigenvalues}}(evals,\ evecs);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ ...\ now\ evecs[0]\ points\ in\ the\ direction\ (symmetric)\ of\ the\ largest\ spatial\ distribution\ within\ ptData}}
+
+\end{DoxyCode}
+
+
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group__gtx__pca_gac6bf50368cd653fe51ef7f804922c88c}\index{GLM\_GTX\_pca@{GLM\_GTX\_pca}!computeCovarianceMatrix@{computeCovarianceMatrix}}
+\index{computeCovarianceMatrix@{computeCovarianceMatrix}!GLM\_GTX\_pca@{GLM\_GTX\_pca}}
+\doxysubsubsubsection{\texorpdfstring{computeCovarianceMatrix()}{computeCovarianceMatrix()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{group__gtx__pca_gac6bf50368cd653fe51ef7f804922c88c} 
+template$<$\mbox{\hyperlink{namespaceglm_a090a0de2260835bee80e71a702492ed9}{length\+\_\+t}} D, typename T, \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}} Q, typename I$>$ \\
+\mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\+\_\+\+FUNC\+\_\+\+DECL}} \mbox{\hyperlink{structglm_1_1mat}{mat}}$<$ D, D, T, Q $>$ glm\+::compute\+Covariance\+Matrix (\begin{DoxyParamCaption}\item[{I const \&}]{b}{, }\item[{I const \&}]{e}{}\end{DoxyParamCaption})}
+
+Compute a covariance matrix form a pair of iterators {\ttfamily b} (begin) and {\ttfamily e} (end) of a container with relative coordinates (e.\+g., relative to the center of gravity of the object) Dereferencing an iterator of type I must yield a {\ttfamily vec\&lt;D, T, Qgt;} \Hypertarget{group__gtx__pca_gac63665338f7b991b9b65534b49855555}\index{GLM\_GTX\_pca@{GLM\_GTX\_pca}!computeCovarianceMatrix@{computeCovarianceMatrix}}
+\index{computeCovarianceMatrix@{computeCovarianceMatrix}!GLM\_GTX\_pca@{GLM\_GTX\_pca}}
+\doxysubsubsubsection{\texorpdfstring{computeCovarianceMatrix()}{computeCovarianceMatrix()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{group__gtx__pca_gac63665338f7b991b9b65534b49855555} 
+template$<$\mbox{\hyperlink{namespaceglm_a090a0de2260835bee80e71a702492ed9}{length\+\_\+t}} D, typename T, \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}} Q, typename I$>$ \\
+\mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\+\_\+\+FUNC\+\_\+\+DECL}} \mbox{\hyperlink{structglm_1_1mat}{mat}}$<$ D, D, T, Q $>$ glm\+::compute\+Covariance\+Matrix (\begin{DoxyParamCaption}\item[{I const \&}]{b}{, }\item[{I const \&}]{e}{, }\item[{\mbox{\hyperlink{structglm_1_1vec}{vec}}$<$ D, T, Q $>$ const \&}]{c}{}\end{DoxyParamCaption})}
+
+Compute a covariance matrix form a pair of iterators {\ttfamily b} (begin) and {\ttfamily e} (end) of a container with absolute coordinates and a precomputed center of gravity {\ttfamily c} Dereferencing an iterator of type I must yield a {\ttfamily vec\&lt;D, T, Qgt;} \Hypertarget{group__gtx__pca_ga4290358424d0cb9bcdfc5106f1db557e}\index{GLM\_GTX\_pca@{GLM\_GTX\_pca}!computeCovarianceMatrix@{computeCovarianceMatrix}}
+\index{computeCovarianceMatrix@{computeCovarianceMatrix}!GLM\_GTX\_pca@{GLM\_GTX\_pca}}
+\doxysubsubsubsection{\texorpdfstring{computeCovarianceMatrix()}{computeCovarianceMatrix()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{group__gtx__pca_ga4290358424d0cb9bcdfc5106f1db557e} 
+template$<$\mbox{\hyperlink{namespaceglm_a090a0de2260835bee80e71a702492ed9}{length\+\_\+t}} D, typename T, \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}} Q$>$ \\
+\mbox{\hyperlink{setup_8hpp_a4603970cbd724c5d102bbcf17f430047}{GLM\+\_\+\+INLINE}} \mbox{\hyperlink{structglm_1_1mat}{mat}}$<$ D, D, T, Q $>$ glm\+::compute\+Covariance\+Matrix (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structglm_1_1vec}{vec}}$<$ D, T, Q $>$ const \texorpdfstring{$\ast$}{*}}]{v}{, }\item[{size\+\_\+t}]{n}{}\end{DoxyParamCaption})}
+
+Compute a covariance matrix form an array of relative coordinates {\ttfamily v} (e.\+g., relative to the center of gravity of the object) 
+\begin{DoxyParams}{Parameters}
+{\em v} & Points to a memory holding {\ttfamily n} times vectors \\
+\hline
+{\em n} & Number of points in v \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__gtx__pca_ga58f3c73142f1a61680ab728eff91ab84}\index{GLM\_GTX\_pca@{GLM\_GTX\_pca}!computeCovarianceMatrix@{computeCovarianceMatrix}}
+\index{computeCovarianceMatrix@{computeCovarianceMatrix}!GLM\_GTX\_pca@{GLM\_GTX\_pca}}
+\doxysubsubsubsection{\texorpdfstring{computeCovarianceMatrix()}{computeCovarianceMatrix()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{group__gtx__pca_ga58f3c73142f1a61680ab728eff91ab84} 
+template$<$\mbox{\hyperlink{namespaceglm_a090a0de2260835bee80e71a702492ed9}{length\+\_\+t}} D, typename T, \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}} Q$>$ \\
+\mbox{\hyperlink{setup_8hpp_a4603970cbd724c5d102bbcf17f430047}{GLM\+\_\+\+INLINE}} \mbox{\hyperlink{structglm_1_1mat}{mat}}$<$ D, D, T, Q $>$ glm\+::compute\+Covariance\+Matrix (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structglm_1_1vec}{vec}}$<$ D, T, Q $>$ const \texorpdfstring{$\ast$}{*}}]{v}{, }\item[{size\+\_\+t}]{n}{, }\item[{\mbox{\hyperlink{structglm_1_1vec}{vec}}$<$ D, T, Q $>$ const \&}]{c}{}\end{DoxyParamCaption})}
+
+Compute a covariance matrix form an array of absolute coordinates {\ttfamily v} and a precomputed center of gravity {\ttfamily c} 
+\begin{DoxyParams}{Parameters}
+{\em v} & Points to a memory holding {\ttfamily n} times vectors \\
+\hline
+{\em n} & Number of points in v \\
+\hline
+{\em c} & Precomputed center of gravity \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__gtx__pca_ga3fe570b4abe7eca8afb32896d77394f5}\index{GLM\_GTX\_pca@{GLM\_GTX\_pca}!sortEigenvalues@{sortEigenvalues}}
+\index{sortEigenvalues@{sortEigenvalues}!GLM\_GTX\_pca@{GLM\_GTX\_pca}}
+\doxysubsubsubsection{\texorpdfstring{sortEigenvalues()}{sortEigenvalues()}}
+{\footnotesize\ttfamily \label{group__gtx__pca_ga3fe570b4abe7eca8afb32896d77394f5} 
+template$<$typename T, \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}} Q$>$ \\
+\mbox{\hyperlink{setup_8hpp_a364212a7fa4148cd960bd919442c4fc8}{GLM\+\_\+\+FUNC\+\_\+\+DISCARD\+\_\+\+DECL}} void glm\+::sort\+Eigenvalues (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structglm_1_1vec}{vec}}$<$ 4, T, Q $>$ \&}]{eigenvalues}{, }\item[{\mbox{\hyperlink{structglm_1_1mat}{mat}}$<$ 4, 4, T, Q $>$ \&}]{eigenvectors}{}\end{DoxyParamCaption})}
+
+Assuming the provided covariance matrix {\ttfamily covar\+Mat} is symmetric and real-\/valued, this function find the {\ttfamily D} Eigenvalues of the matrix, and also provides the corresponding Eigenvectors. Note\+: the data in {\ttfamily out\+Eigenvalues} and {\ttfamily out\+Eigenvectors} are in matching order, i.\+e. {\ttfamily out\+Eigenvector\mbox{[}i\mbox{]}} is the Eigenvector of the Eigenvalue {\ttfamily out\+Eigenvalue\mbox{[}i\mbox{]}}. This is a numeric implementation to find the Eigenvalues, using \textquotesingle{}QL decomposition\`{} (variant of QR decomposition\+: \href{https://en.wikipedia.org/wiki/QR_decomposition}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+QR\+\_\+decomposition}}). / /
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em covar\+Mat} & A symmetric, real-\/valued covariance matrix, e.\+g. computed from compute\+Covariance\+Matrix /\\
+\hline
+\mbox{\texttt{ out}}  & {\em out\+Eigenvalues} & Vector to receive the found eigenvalues /\\
+\hline
+\mbox{\texttt{ out}}  & {\em out\+Eigenvectors} & Matrix to receive the found eigenvectors corresponding to the found eigenvalues, as column vectors / \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of eigenvalues found, usually D if the precondition of the covariance matrix is met. template$<$length\+\_\+t D, typename T, qualifier Q$>$ GLM\+\_\+\+FUNC\+\_\+\+DECL unsigned int find\+Eigenvalues\+Sym\+Real ( \doxylink{structglm_1_1mat}{mat$<$\+D, D, T, Q$>$} const\& covar\+Mat, \doxylink{structglm_1_1vec}{vec$<$\+D, T, Q$>$}\& out\+Eigenvalues, \doxylink{structglm_1_1mat}{mat$<$\+D, D, T, Q$>$}\& out\+Eigenvectors );
+\end{DoxyReturn}
+/ Sorts a group of Eigenvalues\&Eigenvectors, for largest Eigenvalue to smallest Eigenvalue. / The data in {\ttfamily out\+Eigenvalues} and {\ttfamily out\+Eigenvectors} are assumed to be matching order, i.\+e. {\ttfamily out\+Eigenvector\mbox{[}i\mbox{]}} is the Eigenvector of the Eigenvalue {\ttfamily out\+Eigenvalue\mbox{[}i\mbox{]}}. template$<$typename T, qualifier Q$>$ GLM\+\_\+\+FUNC\+\_\+\+DISCARD\+\_\+\+DECL void sort\+Eigenvalues(vec$<$2, T, Q$>$\& eigenvalues, mat$<$2, 2, T, Q$>$\& eigenvectors);
+
+/ Sorts a group of Eigenvalues\&Eigenvectors, for largest Eigenvalue to smallest Eigenvalue. / The data in {\ttfamily out\+Eigenvalues} and {\ttfamily out\+Eigenvectors} are assumed to be matching order, i.\+e. {\ttfamily out\+Eigenvector\mbox{[}i\mbox{]}} is the Eigenvector of the Eigenvalue {\ttfamily out\+Eigenvalue\mbox{[}i\mbox{]}}. template$<$typename T, qualifier Q$>$ GLM\+\_\+\+FUNC\+\_\+\+DISCARD\+\_\+\+DECL void sort\+Eigenvalues(vec$<$3, T, Q$>$\& eigenvalues, mat$<$3, 3, T, Q$>$\& eigenvectors);
+
+/ Sorts a group of Eigenvalues\&Eigenvectors, for largest Eigenvalue to smallest Eigenvalue. / The data in {\ttfamily out\+Eigenvalues} and {\ttfamily out\+Eigenvectors} are assumed to be matching order, i.\+e. {\ttfamily out\+Eigenvector\mbox{[}i\mbox{]}} is the Eigenvector of the Eigenvalue {\ttfamily out\+Eigenvalue\mbox{[}i\mbox{]}}. 
