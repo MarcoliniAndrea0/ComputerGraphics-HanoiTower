@@ -257,22 +257,22 @@ void moveCamera(char direction) {
 
     switch (direction)
     {
-    case 'f':
+    case 'f': //f = farward 
         cameraPosition -= cameraFront * cameraSpeed;
         break;
-    case 'b':
+    case 'b': //b = backward
         cameraPosition += cameraFront * cameraSpeed;
         break;
-    case 'l':
+    case 'l': //l = left
         cameraPosition -= cameraRight * cameraSpeed;
         break;
-    case 'r':
+    case 'r': //r = right
         cameraPosition += cameraRight * cameraSpeed;
         break;
-    case 'u':
+    case 'u': // u = up
         cameraPosition = cameraPosition + (glm::vec3(0.0f,1.0f,0.0f) * cameraSpeed);
         break;
-    case 'd':
+    case 'd': // d = down
         cameraPosition = cameraPosition + (glm::vec3(0.0f, -1.0f, 0.0f) * cameraSpeed);
         break;
     default:
