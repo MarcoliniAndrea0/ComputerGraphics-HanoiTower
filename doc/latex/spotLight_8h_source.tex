@@ -1,0 +1,35 @@
+\doxysection{spot\+Light.\+h}
+\hypertarget{spotLight_8h_source}{}\label{spotLight_8h_source}\index{engine/spotLight.h@{engine/spotLight.h}}
+\mbox{\hyperlink{spotLight_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Common_8h}{Common.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{light_8h}{light.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\_API}}\ \mbox{\hyperlink{classSpotLight_ae4045cd7c8c6d18af39b57c9cf6f9ce6}{SpotLight}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classLight_aed628c6207ce1c0eeb8348fa28db64f5}{Light}}}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{classSpotLight_ae4045cd7c8c6d18af39b57c9cf6f9ce6}{SpotLight}}();}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classSpotLight_a880adc55fde871bb5409824ecb0b3a5d}{\string~SpotLight}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSpotLight_a213b54350347df01478e98a9b3accc84}{setCutoff}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ newCutoff);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSpotLight_a030bf5ab938979abdd7f9fb7dd10279f}{setRadius}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ newRadius);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSpotLight_a12cc866acc418dd3f65e156f1c5d7bb4}{setExponent}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ newExponent);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSpotLight_a8e28e5be89849b1c59ed69e91c840174}{setDirection}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm::vec3}}\ newDirection);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classNode_a032504f00a0bcad5fcbddc68f265cafd}{render}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm::mat4}}\ viewMatrix)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{float}\ \_cutoff;\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{float}\ \_radius;\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{float}\ \_exponent;\ }
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm::vec3}}\ \_direction;\ }
+\DoxyCodeLine{00077\ \};}
+
+\end{DoxyCode}

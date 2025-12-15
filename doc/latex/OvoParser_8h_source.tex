@@ -1,0 +1,39 @@
+\doxysection{Ovo\+Parser.\+h}
+\hypertarget{OvoParser_8h_source}{}\label{OvoParser_8h_source}\index{engine/OvoParser.h@{engine/OvoParser.h}}
+\mbox{\hyperlink{OvoParser_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <filesystem>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Common_8h}{Common.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mesh_8h}{mesh.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{node_8h}{node.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{light_8h}{light.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{material_8h}{material.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{MeshData_8h}{MeshData.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{texture_8h}{texture.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{directionalLight_8h}{directionalLight.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{pointLight_8h}{pointLight.h}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{spotLight_8h}{spotLight.h}}"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\_API}}\ \mbox{\hyperlink{classOVOParser}{OVOParser}}}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<Node>\ \mbox{\hyperlink{classOVOParser_ae74e7ab3c588853392216d32bd7cfc27}{fromFile}}(\textcolor{keyword}{const}\ std::string\ filePath);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{static}\ std::pair<std::shared\_ptr<Node>,\ uint32\_t>\ parseNodeChunk(\textcolor{keyword}{const}\ uint8\_t*\ chunkData,\ \textcolor{keyword}{const}\ uint32\_t\ chunkSize);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{static}\ std::pair<std::shared\_ptr<Mesh>,\ uint32\_t>\ parseMeshChunk(\textcolor{keyword}{const}\ uint8\_t*\ chunkData,\ \textcolor{keyword}{const}\ uint32\_t\ chunkSize);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{static}\ std::pair<std::shared\_ptr<Material>,\ std::string>\ parseMaterialChunk(\textcolor{keyword}{const}\ uint8\_t*\ chunkData,\ \textcolor{keyword}{const}\ uint32\_t\ chunkSize);}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{static}\ std::pair<std::shared\_ptr<Light>,\ uint32\_t>\ parseLightChunk(\textcolor{keyword}{const}\ uint8\_t*\ chunkData,\ \textcolor{keyword}{const}\ uint32\_t\ chunkSize);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ parseString(\textcolor{keyword}{const}\ uint8\_t*\ data);}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keyword}{static}\ std::unordered\_map<std::string,\ std::shared\_ptr<Material>>\ materials;}
+\DoxyCodeLine{00112\ \};}
+
+\end{DoxyCode}

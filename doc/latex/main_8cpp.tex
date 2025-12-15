@@ -1,0 +1,156 @@
+\doxysection{client/main.cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{client/main.cpp@{client/main.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include "{}engine.\+h"{}}\newline
+{\ttfamily \#include "{}hanoi.\+h"{}}\newline
+{\ttfamily \#include "{}Ovo\+Parser.\+h"{}}\newline
+{\ttfamily \#include "{}definitions.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{main_8cpp_ab02df6df15060402655b714c62c94d3e}{get\+Instructions}} ()
+\item 
+void \mbox{\hyperlink{main_8cpp_ac162f6267a6c4539e260c5d6a401c0e9}{intialize\+And\+Set\+Cameras}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ scene)
+\item 
+void \mbox{\hyperlink{main_8cpp_a1dc047d96926110b4a5601f629d3523f}{reset\+Scene}} ()
+\item 
+void \mbox{\hyperlink{main_8cpp_ac3b223b9df4246fd120cb7f42445c714}{switch\+Light}} ()
+\item 
+void \mbox{\hyperlink{main_8cpp_ac4f397ed808da200213cbed2e1e5ef40}{next\+Camera}} ()
+\item 
+void \mbox{\hyperlink{main_8cpp_ac68b3aae15bab1eb8b740e02811fe129}{move\+Light}} (\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} direction)
+\item 
+void \mbox{\hyperlink{main_8cpp_a6b29affc76bac1d71ece804af241aaef}{move\+Camera}} (char direction)
+\item 
+int \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \mbox{\hyperlink{main_8cpp_aed76e7b685674a06cdc07d2558c053d4}{root\+Node}} = nullptr
+\item 
+int \mbox{\hyperlink{main_8cpp_a3bf6f737f472dad7f01f18d21d9cd0dc}{last\+Time}} = 0
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classPerspectiveCamera}{Perspective\+Camera}} $>$ \mbox{\hyperlink{main_8cpp_aadae39e472fad61cec873cd5df2d7ccb}{white\+Camera}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classPerspectiveCamera}{Perspective\+Camera}} $>$ \mbox{\hyperlink{main_8cpp_ac87d206f342e25431be07c43deba5d27}{free\+Camera}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classPerspectiveCamera}{Perspective\+Camera}} $>$ \mbox{\hyperlink{main_8cpp_ae420d550256555d4ce01b3f21ea46787}{current\+Active\+Camera}} = \mbox{\hyperlink{main_8cpp_aadae39e472fad61cec873cd5df2d7ccb}{white\+Camera}}
+\item 
+float \mbox{\hyperlink{main_8cpp_a2796ee2ca565c064486bf6d02e305f21}{camera\+Speed}} = 150.\+0f
+\item 
+float \mbox{\hyperlink{main_8cpp_a1b69942c7daaf0b32b85afe70ee1b1d3}{light\+Speed}} = 500.\+0f
+\item 
+bool \mbox{\hyperlink{main_8cpp_ac39fb50374d670d0da376d76bdf6e311}{is\+Light\+Enabled}} = true
+\item 
+float \mbox{\hyperlink{main_8cpp_affdbae4ad2dccab7001521ce6bbfc310}{camera\+Rotation\+Speed}} = 5.\+0f
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8cpp_ab02df6df15060402655b714c62c94d3e}\index{main.cpp@{main.cpp}!getInstructions@{getInstructions}}
+\index{getInstructions@{getInstructions}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{getInstructions()}{getInstructions()}}
+{\footnotesize\ttfamily \label{main_8cpp_ab02df6df15060402655b714c62c94d3e} 
+std\+::string get\+Instructions (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{main_8cpp_ac162f6267a6c4539e260c5d6a401c0e9}\index{main.cpp@{main.cpp}!intializeAndSetCameras@{intializeAndSetCameras}}
+\index{intializeAndSetCameras@{intializeAndSetCameras}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{intializeAndSetCameras()}{intializeAndSetCameras()}}
+{\footnotesize\ttfamily \label{main_8cpp_ac162f6267a6c4539e260c5d6a401c0e9} 
+void intialize\+And\+Set\+Cameras (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$}]{scene}{}\end{DoxyParamCaption})}
+
+\Hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{main_8cpp_a6b29affc76bac1d71ece804af241aaef}\index{main.cpp@{main.cpp}!moveCamera@{moveCamera}}
+\index{moveCamera@{moveCamera}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{moveCamera()}{moveCamera()}}
+{\footnotesize\ttfamily \label{main_8cpp_a6b29affc76bac1d71ece804af241aaef} 
+void move\+Camera (\begin{DoxyParamCaption}\item[{char}]{direction}{}\end{DoxyParamCaption})}
+
+\Hypertarget{main_8cpp_ac68b3aae15bab1eb8b740e02811fe129}\index{main.cpp@{main.cpp}!moveLight@{moveLight}}
+\index{moveLight@{moveLight}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{moveLight()}{moveLight()}}
+{\footnotesize\ttfamily \label{main_8cpp_ac68b3aae15bab1eb8b740e02811fe129} 
+void move\+Light (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}}}]{direction}{}\end{DoxyParamCaption})}
+
+\Hypertarget{main_8cpp_ac4f397ed808da200213cbed2e1e5ef40}\index{main.cpp@{main.cpp}!nextCamera@{nextCamera}}
+\index{nextCamera@{nextCamera}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{nextCamera()}{nextCamera()}}
+{\footnotesize\ttfamily \label{main_8cpp_ac4f397ed808da200213cbed2e1e5ef40} 
+void next\+Camera (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{main_8cpp_a1dc047d96926110b4a5601f629d3523f}\index{main.cpp@{main.cpp}!resetScene@{resetScene}}
+\index{resetScene@{resetScene}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{resetScene()}{resetScene()}}
+{\footnotesize\ttfamily \label{main_8cpp_a1dc047d96926110b4a5601f629d3523f} 
+void reset\+Scene (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{main_8cpp_ac3b223b9df4246fd120cb7f42445c714}\index{main.cpp@{main.cpp}!switchLight@{switchLight}}
+\index{switchLight@{switchLight}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{switchLight()}{switchLight()}}
+{\footnotesize\ttfamily \label{main_8cpp_ac3b223b9df4246fd120cb7f42445c714} 
+void switch\+Light (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{main_8cpp_affdbae4ad2dccab7001521ce6bbfc310}\index{main.cpp@{main.cpp}!cameraRotationSpeed@{cameraRotationSpeed}}
+\index{cameraRotationSpeed@{cameraRotationSpeed}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{cameraRotationSpeed}{cameraRotationSpeed}}
+{\footnotesize\ttfamily \label{main_8cpp_affdbae4ad2dccab7001521ce6bbfc310} 
+float camera\+Rotation\+Speed = 5.\+0f}
+
+\Hypertarget{main_8cpp_a2796ee2ca565c064486bf6d02e305f21}\index{main.cpp@{main.cpp}!cameraSpeed@{cameraSpeed}}
+\index{cameraSpeed@{cameraSpeed}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{cameraSpeed}{cameraSpeed}}
+{\footnotesize\ttfamily \label{main_8cpp_a2796ee2ca565c064486bf6d02e305f21} 
+float camera\+Speed = 150.\+0f}
+
+\Hypertarget{main_8cpp_ae420d550256555d4ce01b3f21ea46787}\index{main.cpp@{main.cpp}!currentActiveCamera@{currentActiveCamera}}
+\index{currentActiveCamera@{currentActiveCamera}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{currentActiveCamera}{currentActiveCamera}}
+{\footnotesize\ttfamily \label{main_8cpp_ae420d550256555d4ce01b3f21ea46787} 
+std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classPerspectiveCamera}{Perspective\+Camera}}$>$ current\+Active\+Camera = \mbox{\hyperlink{main_8cpp_aadae39e472fad61cec873cd5df2d7ccb}{white\+Camera}}}
+
+\Hypertarget{main_8cpp_ac87d206f342e25431be07c43deba5d27}\index{main.cpp@{main.cpp}!freeCamera@{freeCamera}}
+\index{freeCamera@{freeCamera}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{freeCamera}{freeCamera}}
+{\footnotesize\ttfamily \label{main_8cpp_ac87d206f342e25431be07c43deba5d27} 
+std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classPerspectiveCamera}{Perspective\+Camera}}$>$ free\+Camera}
+
+\Hypertarget{main_8cpp_ac39fb50374d670d0da376d76bdf6e311}\index{main.cpp@{main.cpp}!isLightEnabled@{isLightEnabled}}
+\index{isLightEnabled@{isLightEnabled}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{isLightEnabled}{isLightEnabled}}
+{\footnotesize\ttfamily \label{main_8cpp_ac39fb50374d670d0da376d76bdf6e311} 
+bool is\+Light\+Enabled = true}
+
+\Hypertarget{main_8cpp_a3bf6f737f472dad7f01f18d21d9cd0dc}\index{main.cpp@{main.cpp}!lastTime@{lastTime}}
+\index{lastTime@{lastTime}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{lastTime}{lastTime}}
+{\footnotesize\ttfamily \label{main_8cpp_a3bf6f737f472dad7f01f18d21d9cd0dc} 
+int last\+Time = 0}
+
+\Hypertarget{main_8cpp_a1b69942c7daaf0b32b85afe70ee1b1d3}\index{main.cpp@{main.cpp}!lightSpeed@{lightSpeed}}
+\index{lightSpeed@{lightSpeed}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{lightSpeed}{lightSpeed}}
+{\footnotesize\ttfamily \label{main_8cpp_a1b69942c7daaf0b32b85afe70ee1b1d3} 
+float light\+Speed = 500.\+0f}
+
+\Hypertarget{main_8cpp_aed76e7b685674a06cdc07d2558c053d4}\index{main.cpp@{main.cpp}!rootNode@{rootNode}}
+\index{rootNode@{rootNode}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{rootNode}{rootNode}}
+{\footnotesize\ttfamily \label{main_8cpp_aed76e7b685674a06cdc07d2558c053d4} 
+std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classNode}{Node}}$>$ root\+Node = nullptr}
+
+\Hypertarget{main_8cpp_aadae39e472fad61cec873cd5df2d7ccb}\index{main.cpp@{main.cpp}!whiteCamera@{whiteCamera}}
+\index{whiteCamera@{whiteCamera}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{whiteCamera}{whiteCamera}}
+{\footnotesize\ttfamily \label{main_8cpp_aadae39e472fad61cec873cd5df2d7ccb} 
+std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classPerspectiveCamera}{Perspective\+Camera}}$>$ white\+Camera}
+

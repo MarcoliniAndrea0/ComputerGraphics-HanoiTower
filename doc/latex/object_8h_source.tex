@@ -1,0 +1,64 @@
+\doxysection{object.\+h}
+\hypertarget{object_8h_source}{}\label{object_8h_source}\index{engine/object.h@{engine/object.h}}
+\mbox{\hyperlink{object_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{glm_8hpp}{glm/glm.hpp}}>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Common_8h}{Common.h}}"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{class\ }\mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\_API}}\ \mbox{\hyperlink{classObject_afe9eeddd7068a37f62d3276a2fb49864}{Object}}}
+\DoxyCodeLine{00051\ \{}
+\DoxyCodeLine{00052\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{comment}{//\ COSTRUTTORI\ E\ DISTRUTTORE}}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{classObject_afe9eeddd7068a37f62d3276a2fb49864}{Object}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{classObject_afe9eeddd7068a37f62d3276a2fb49864}{Object}}(\textcolor{keyword}{const}\ std::string\ type);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classObject_afe9eeddd7068a37f62d3276a2fb49864}{\string~Object}}();}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{comment}{//\ GETTERS}}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classObject_a34a0b88c7f929c85ce92107ce7ba2e97}{getId}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00127\ \ \ \ \ std::string\ \mbox{\hyperlink{classObject_adf9436214bd361e0b85ac10ef2035916}{getName}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{classObject_a60159d15921c408e2a8f828053297a13}{getType}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{comment}{//\ SETTERS}}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classObject_adf1de6aa8f21d9b04eb700fec0700ebf}{setName}}(\textcolor{keyword}{const}\ std::string\ newName);}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classObject_a89624881fe30113db802b64bfeed517f}{setType}}(\textcolor{keyword}{const}\ std::string\&\ type);}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{comment}{//\ METODI\ VIRTUALI}}
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classObject_a641d85cb7641c16c0d8ff4cf81798d52}{render}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm::mat4}}\ viewMatrix)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{comment}{//\ METODI\ STATICI}}
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classObject_a65658e2cbce7cd75f9f0e5716c36082a}{resetIdGenerator}}();}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00243\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keywordtype}{int}\ \_id;\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00245\ \ \ \ \ std::string\ \_name;\ \ }
+\DoxyCodeLine{00246\ \ \ \ \ std::string\ \_type;\ \ }
+\DoxyCodeLine{00247\ }
+\DoxyCodeLine{00254\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ nextId;}
+\DoxyCodeLine{00255\ \};}
+
+\end{DoxyCode}

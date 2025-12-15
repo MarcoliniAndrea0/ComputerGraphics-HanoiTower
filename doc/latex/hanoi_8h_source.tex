@@ -1,0 +1,110 @@
+\doxysection{hanoi.\+h}
+\hypertarget{hanoi_8h_source}{}\label{hanoi_8h_source}\index{client/hanoi.h@{client/hanoi.h}}
+\mbox{\hyperlink{hanoi_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{engine_8h}{engine.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{node_8h}{node.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <stack>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{glm_8hpp}{glm/glm.hpp}}>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\_API}}\ \mbox{\hyperlink{classHanoiGame}{HanoiGame}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHanoiGame_ab50632670a9027f0e1a961836cd99600}{init}}(std::shared\_ptr<Node>\ \mbox{\hyperlink{main_8cpp_aed76e7b685674a06cdc07d2558c053d4}{rootNode}});}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHanoiGame_afd3c19568f819c2aae82d1d44a36a925}{reset}}();}
+\DoxyCodeLine{00024\ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//static\ void\ handleClick(int\ mouseX,\ int\ mouseY);}}
+\DoxyCodeLine{00031\ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHanoiGame_a083a905d7c2c0ec73b8c1c9c1b1d656e}{handleKey}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ key);}
+\DoxyCodeLine{00037\ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{classHanoiGame_a1a109d38be050a2a8c240dadc2836d6c}{getStatus}}();}
+\DoxyCodeLine{00043\ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHanoiGame_a78dd66e6ddd22b2d63e0ed18d9278d09}{update}}(\textcolor{comment}{/*float\ deltaTime*/});}
+\DoxyCodeLine{00049\ \ \ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classHanoiGame_a347446579da1999f0b40425861cf3318}{isGameWon}}();}
+\DoxyCodeLine{00055\ \ \ \ \ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classHanoiGame_a829ed20779405eb528483b4ec5714b9f}{getMoveCount}}();}
+\DoxyCodeLine{00061\ \ \ \ \ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classHanoiGame_a5610a25d2955dc121145b8fd553252d2}{getMinMoves}}();}
+\DoxyCodeLine{00067\ \ \ \ \ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHanoiGame_ab6d0fa0f417219f67fee038ef14d37d5}{showHelp}}();}
+\DoxyCodeLine{00072\ \ \ \ \ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHanoiGame_a65d505c1d72ecbac7bcc1cfb79e9d4ab}{autoSolve}}();}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHanoiGame_a3fbf2cee687a994a6e5897c0818cecf8}{undo}}();}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHanoiGame_a929d760453ef0f909ebd0a919ddad729}{redo}}();}
+\DoxyCodeLine{00080\ \ \ \ \ }
+\DoxyCodeLine{00081\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{comment}{//\ Game\ constants}}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ NUM\_DISKS;}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ NUM\_TOWERS;}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ DISK\_HEIGHT;}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ TOWER\_DISTANCE;}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ DISK\_SPACING;}
+\DoxyCodeLine{00088\ \ \ \ \ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{comment}{//\ Game\ state}}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{enum\ class}\ GameState\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ IDLE,}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ DISK\_SELECTED,}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ GAME\_WON}
+\DoxyCodeLine{00094\ \ \ \ \ \};}
+\DoxyCodeLine{00095\ \ \ \ \ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{comment}{//\ Disk\ structure}}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{struct\ }Disk\ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ std::shared\_ptr<Node>\ node;\ \textcolor{comment}{//\ Puntatore\ al\ nodo\ visuale\ reale}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ size;\ \ \textcolor{comment}{//\ 1\ (piccolo)\ a\ 7\ (grande)}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ currentTower;}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ std::string\ name;}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm::vec3}}\ originalPosition;\ \textcolor{comment}{//\ Per\ il\ reset}}
+\DoxyCodeLine{00103\ \ \ \ \ \};}
+\DoxyCodeLine{00104\ \ \ \ \ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{comment}{//\ Tower\ structure}}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keyword}{struct\ }Tower\ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ std::shared\_ptr<Node>\ node;\ \textcolor{comment}{//\ Puntatore\ al\ nodo\ visuale\ reale}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ std::vector<int>\ diskIndices;}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm::vec3}}\ position;\ \textcolor{comment}{//\ Posizione\ della\ base\ della\ torre}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ std::string\ name;}
+\DoxyCodeLine{00111\ \ \ \ \ \};}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keyword}{struct\ }MoveAction\ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ diskIndex;}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ sourceTowerIdx;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ destTowerIdx;}
+\DoxyCodeLine{00117\ \ \ \ \ \};}
+\DoxyCodeLine{00118\ \ \ \ \ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{comment}{//\ Private\ methods}}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ loadGameObjects(std::shared\_ptr<Node>\ \mbox{\hyperlink{main_8cpp_aed76e7b685674a06cdc07d2558c053d4}{rootNode}});}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ updateDiskPositions();}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ isValidMove(\textcolor{keywordtype}{int}\ diskIndex,\ \textcolor{keywordtype}{int}\ targetTower);}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ performMove(\textcolor{keywordtype}{int}\ diskIndex,\ \textcolor{keywordtype}{int}\ targetTower);}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ checkWinCondition();}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{comment}{//static\ int\ findDiskIndex(const\ std::string\&\ diskName);}}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{comment}{//static\ int\ findTowerIndex(const\ std::string\&\ towerName);}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{comment}{//\ Gestisce\ la\ logica\ di\ input\ per\ una\ specifica\ torre\ (sia\ da\ click\ che\ da\ tastiera)}}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ processTowerInput(\textcolor{keywordtype}{int}\ towerIndex);}
+\DoxyCodeLine{00130\ \ \ \ \ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{comment}{//\ Helper\ per\ trovare\ i\ nodi\ nella\ scena}}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<Node>\ findNode(std::shared\_ptr<Node>\ root,\ \textcolor{keyword}{const}\ std::string\&\ name);}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{comment}{//\ Static\ game\ variables}}
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keyword}{static}\ GameState\ gameState;}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keyword}{static}\ std::vector<Disk>\ disks;}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keyword}{static}\ std::vector<Tower>\ towers;}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ selectedDiskIndex;}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ moveCount;}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ minMovesRequired;}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ animationTime;}
+\DoxyCodeLine{00142\ \ \ \ \ }
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{comment}{//gestiscono\ il\ ripristina\ mossa/annulla\ mossa}}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keyword}{static}\ std::stack<MoveAction>\ undoStack;}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keyword}{static}\ std::stack<MoveAction>\ redoStack;}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{comment}{//\ Teniamo\ traccia\ del\ rootNode\ per\ i\ reset}}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<Node>\ sceneRoot;}
+\DoxyCodeLine{00149\ \};}
+
+\end{DoxyCode}

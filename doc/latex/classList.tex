@@ -1,0 +1,291 @@
+\doxysection{List Class Reference}
+\hypertarget{classList}{}\label{classList}\index{List@{List}}
+
+
+Gestisce una lista ordinata di nodi e le loro matrici di trasformazione per il rendering.  
+
+
+
+
+{\ttfamily \#include $<$list.\+h$>$}
+
+Inheritance diagram for List\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classList}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classList_a4a072165453b73d50cc7e68b881738e6}{List}} ()=default
+\begin{DoxyCompactList}\small\item\em Costruttore di default per la classe \doxylink{classList}{List}. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::pair$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$, \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} $>$ $>$ \& \mbox{\hyperlink{classList_afac4531d8f4e01e1c246540ed4f2a98e}{get\+List\+Rendering}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce la lista di nodi da renderizzare con le loro matrici globali. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classList_a0a6ac53265d9bfe7fc29241c16e0e3ee}{set\+List\+Rendering}} (std\+::vector$<$ std\+::pair$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$, \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} $>$ $>$ new\+List\+Rendering)
+\begin{DoxyCompactList}\small\item\em Sostituisce completamente la lista di rendering. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classList_af3e09f3787fa7cfce657f158b15305eb}{sort\+List\+Rendering}} ()
+\begin{DoxyCompactList}\small\item\em Riordina la lista degli oggetti secondo la priorità di rendering. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classList_a88bc9bad52374db6df5b46036a77bb47}{render}} (const \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} inversa\+Camera) const override
+\begin{DoxyCompactList}\small\item\em Renderizza tutti gli oggetti nella lista in ordine. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classObject}{Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classObject_afe9eeddd7068a37f62d3276a2fb49864}{Object}} ()=default
+\begin{DoxyCompactList}\small\item\em Costruttore di default. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classObject_a4fd75bb7fe75b569928245bb27fed07c}{Object}} (const std\+::string type)
+\begin{DoxyCompactList}\small\item\em Costruttore parametrico con tipo. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classObject_ae8f5483f459e46687bd01e6f9977afd3}{\texorpdfstring{$\sim$}{\string~}\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Distruttore virtuale. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classObject_a34a0b88c7f929c85ce92107ce7ba2e97}{get\+Id}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce l\textquotesingle{}identificativo univoco dell\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classObject_adf9436214bd361e0b85ac10ef2035916}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce il nome assegnato all\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+const std\+::string \mbox{\hyperlink{classObject_a60159d15921c408e2a8f828053297a13}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce il tipo dell\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classObject_adf1de6aa8f21d9b04eb700fec0700ebf}{set\+Name}} (const std\+::string new\+Name)
+\begin{DoxyCompactList}\small\item\em Assegna un nome leggibile all\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classObject_a89624881fe30113db802b64bfeed517f}{set\+Type}} (const std\+::string \&type)
+\begin{DoxyCompactList}\small\item\em Definisce il tipo/categoria dell\textquotesingle{}oggetto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::vector$<$ std\+::pair$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$, \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} $>$ $>$ \mbox{\hyperlink{classList_af69954fa434a31e038bc78e98ee6578a}{pass}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ scene\+Root, const \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} parent\+World\+Matrix)
+\begin{DoxyCompactList}\small\item\em Genera ricorsivamente una lista flat di tutti i nodi renderizzabili. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classObject}{Object}}}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classObject_a65658e2cbce7cd75f9f0e5716c36082a}{reset\+Id\+Generator}} ()
+\begin{DoxyCompactList}\small\item\em Resetta il contatore statico degli ID a zero. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gestisce una lista ordinata di nodi e le loro matrici di trasformazione per il rendering. 
+
+La classe \doxylink{classList}{List} è responsabile della creazione e gestione di una lista "{}flat"{} (appiattita) di tutti i nodi da renderizzare nella scena, insieme alle loro matrici di trasformazione globali precalcolate.
+
+Funzionalità principali\+:
+\begin{DoxyItemize}
+\item {\bfseries{Traversal del grafo}}\+: Attraversa ricorsivamente il grafo della scena per raccogliere tutti i nodi renderizzabili
+\item {\bfseries{Calcolo matrici globali}}\+: Precalcola le world matrices per ogni nodo moltiplicando le trasformazioni gerarchiche
+\item {\bfseries{Ordinamento per priorità}}\+: Riordina i nodi secondo la priorità di rendering (Camere → Luci → \doxylink{classMesh}{Mesh})
+\item {\bfseries{Ottimizzazione}}\+: Evita il ricalcolo delle trasformazioni durante il rendering
+\end{DoxyItemize}
+
+Il sistema di priorità garantisce che\+:
+\begin{DoxyEnumerate}
+\item Le telecamere vengano processate per prime
+\item Le luci vengano configurate prima di renderizzare gli oggetti
+\item Le mesh vengano renderizzate per ultime
+\end{DoxyEnumerate}
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classNode}{Node} 
+
+\doxylink{classCamera}{Camera} 
+
+\doxylink{classLight}{Light} 
+
+\doxylink{classMesh}{Mesh} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classList_a4a072165453b73d50cc7e68b881738e6}\index{List@{List}!List@{List}}
+\index{List@{List}!List@{List}}
+\doxysubsubsection{\texorpdfstring{List()}{List()}}
+{\footnotesize\ttfamily \label{classList_a4a072165453b73d50cc7e68b881738e6} 
+List\+::\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Costruttore di default per la classe \doxylink{classList}{List}. 
+
+Inizializza una lista vuota pronta per essere popolata con i nodi della scena. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classList_afac4531d8f4e01e1c246540ed4f2a98e}\index{List@{List}!getListRendering@{getListRendering}}
+\index{getListRendering@{getListRendering}!List@{List}}
+\doxysubsubsection{\texorpdfstring{getListRendering()}{getListRendering()}}
+{\footnotesize\ttfamily \label{classList_afac4531d8f4e01e1c246540ed4f2a98e} 
+\mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} std\+::vector$<$ std\+::pair$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$, \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} $>$ $>$ \& List\+::get\+List\+Rendering (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce la lista di nodi da renderizzare con le loro matrici globali. 
+
+Restituisce una referenza alla lista degli oggetti da renderizzare.
+
+Fornisce accesso diretto alla lista interna di coppie (nodo, matrice). Ogni coppia contiene\+:
+\begin{DoxyItemize}
+\item Un puntatore condiviso al nodo da renderizzare
+\item La matrice di trasformazione globale (world matrix) del nodo
+\end{DoxyItemize}
+
+\begin{DoxyReturn}{Returns}
+Riferimento modificabile al vettore di coppie (nodo, world matrix)
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+La lista potrebbe non essere ordinata se \doxylink{classList_af3e09f3787fa7cfce657f158b15305eb}{sort\+List\+Rendering()} non è stato chiamato.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Una referenza a {\ttfamily std\+::vector\texorpdfstring{$<$}{<}std\+::pair\texorpdfstring{$<$}{<}std\+::shared\+\_\+ptr\texorpdfstring{$<$}{<}\doxylink{classNode}{Node}\texorpdfstring{$>$}{>}, \doxylink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}}. 
+\end{DoxyReturn}
+\Hypertarget{classList_af69954fa434a31e038bc78e98ee6578a}\index{List@{List}!pass@{pass}}
+\index{pass@{pass}!List@{List}}
+\doxysubsubsection{\texorpdfstring{pass()}{pass()}}
+{\footnotesize\ttfamily \label{classList_af69954fa434a31e038bc78e98ee6578a} 
+std\+::vector$<$ std\+::pair$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$, \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} $>$ $>$ \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} List\+::pass (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$}]{scene\+Root}{, }\item[{const \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}}}]{parent\+World\+Matrix}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Genera ricorsivamente una lista flat di tutti i nodi renderizzabili. 
+
+Genera una lista di nodi e le loro matrici di trasformazione globale per il rendering.
+
+Attraversa l\textquotesingle{}intero grafo della scena a partire dal nodo radice, visitando ricorsivamente tutti i figli e calcolando le matrici di trasformazione globali (world matrices) per ciascun nodo.
+
+Il traversal è di tipo depth-\/first (profondità prima) e\+:
+\begin{DoxyItemize}
+\item Raccoglie ogni nodo visitato
+\item Calcola la world matrix moltiplicando la local matrix con quella del parent
+\item Continua ricorsivamente per tutti i figli
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene\+Root} & Puntatore condiviso al nodo radice della scena da attraversare \\
+\hline
+{\em parent\+World\+Matrix} & Matrice di trasformazione globale del nodo padre. Per il nodo radice, dovrebbe essere la matrice identità.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vettore di coppie (nodo, world matrix) contenente tutti i nodi renderizzabili e le loro trasformazioni globali
+\end{DoxyReturn}
+Esempio di utilizzo\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ renderList\ =\ \mbox{\hyperlink{classList_af69954fa434a31e038bc78e98ee6578a}{List::pass}}(sceneRoot,\ \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm::mat4}}(1.0f));}
+
+\end{DoxyCode}
+
+
+\begin{DoxyNote}{Note}
+Questo è un metodo statico che può essere chiamato senza un\textquotesingle{}istanza della classe \doxylink{classList}{List}.
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\doxylink{classList_af3e09f3787fa7cfce657f158b15305eb}{sort\+List\+Rendering()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em scene\+Root} & Il nodo radice della scena. \\
+\hline
+{\em parent\+World\+Matrix} & La matrice di trasformazione globale del nodo padre. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un vettore di coppie contenente nodi e matrici di trasformazione globale. 
+\end{DoxyReturn}
+\Hypertarget{classList_a88bc9bad52374db6df5b46036a77bb47}\index{List@{List}!render@{render}}
+\index{render@{render}!List@{List}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily \label{classList_a88bc9bad52374db6df5b46036a77bb47} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} List\+::render (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}}}]{inversa\+Camera}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Renderizza tutti gli oggetti nella lista in ordine. 
+
+Renderizza tutti gli oggetti nella lista di rendering.
+
+Itera attraverso la lista ordinata di nodi e invoca il metodo \doxylink{classList_a88bc9bad52374db6df5b46036a77bb47}{render()} di ciascuno, passando la view matrix calcolata dalla camera.
+
+Il processo di rendering\+:
+\begin{DoxyEnumerate}
+\item Per ogni nodo nella lista (già ordinata per priorità)
+\item Calcola la view matrix moltiplicando inversa\+Camera con la world matrix
+\item Chiama il metodo \doxylink{classList_a88bc9bad52374db6df5b46036a77bb47}{render()} del nodo con questa view matrix
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em inversa\+Camera} & Matrice inversa della camera attiva, utilizzata per trasformare gli oggetti dallo spazio world allo spazio della vista (view space)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Prima di chiamare questo metodo, assicurarsi che\+:
+\begin{DoxyItemize}
+\item La lista sia stata popolata con \doxylink{classList_af69954fa434a31e038bc78e98ee6578a}{pass()}
+\item La lista sia stata ordinata con \doxylink{classList_af3e09f3787fa7cfce657f158b15305eb}{sort\+List\+Rendering()}
+\item Open\+GL sia stato correttamente inizializzato
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\doxylink{classList_af69954fa434a31e038bc78e98ee6578a}{pass()} 
+
+\doxylink{classList_af3e09f3787fa7cfce657f158b15305eb}{sort\+List\+Rendering()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em inversa\+Camera} & La matrice inversa della camera. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classObject_a641d85cb7641c16c0d8ff4cf81798d52}{Object}}.
+
+\Hypertarget{classList_a0a6ac53265d9bfe7fc29241c16e0e3ee}\index{List@{List}!setListRendering@{setListRendering}}
+\index{setListRendering@{setListRendering}!List@{List}}
+\doxysubsubsection{\texorpdfstring{setListRendering()}{setListRendering()}}
+{\footnotesize\ttfamily \label{classList_a0a6ac53265d9bfe7fc29241c16e0e3ee} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} List\+::set\+List\+Rendering (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$, \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} $>$ $>$}]{new\+List\+Rendering}{}\end{DoxyParamCaption})}
+
+
+
+Sostituisce completamente la lista di rendering. 
+
+Imposta la lista degli oggetti da renderizzare.
+
+Imposta una nuova lista di nodi e matrici, scartando la precedente. Utile quando si vuole ricostruire completamente la lista da zero.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+List\+Rendering} & Nuovo vettore contenente coppie di nodi e le loro matrici di trasformazione globali\\
+\hline
+{\em new\+List\+Rendering} & Il nuovo vettore contenente nodi e matrici di trasformazione. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classList_af3e09f3787fa7cfce657f158b15305eb}\index{List@{List}!sortListRendering@{sortListRendering}}
+\index{sortListRendering@{sortListRendering}!List@{List}}
+\doxysubsubsection{\texorpdfstring{sortListRendering()}{sortListRendering()}}
+{\footnotesize\ttfamily \label{classList_af3e09f3787fa7cfce657f158b15305eb} 
+void List\+::sort\+List\+Rendering (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Riordina la lista degli oggetti secondo la priorità di rendering. 
+
+Riordina la lista degli oggetti da renderizzare in base alla priorit{\ucr}.
+
+Ordina i nodi nella lista in base alla loro priorità per garantire un ordine corretto di rendering. L\textquotesingle{}ordinamento segue questa gerarchia\+:
+
+
+\begin{DoxyEnumerate}
+\item {\bfseries{\doxylink{classCamera}{Camera}}} (priorità più alta)\+: Devono essere processate per prime per configurare la view matrix
+\item {\bfseries{\doxylink{classLight}{Light}}} (priorità media)\+: Devono essere configurate prima di renderizzare gli oggetti che verranno illuminati
+\item {\bfseries{Altri oggetti}} come \doxylink{classMesh}{Mesh} (priorità più bassa)\+: Vengono renderizzati per ultimi usando camera e luci già configurate
+\end{DoxyEnumerate}
+
+\begin{DoxyNote}{Note}
+Questo metodo modifica l\textquotesingle{}ordine interno della lista. Deve essere chiamato dopo aver popolato la lista con \doxylink{classList_af69954fa434a31e038bc78e98ee6578a}{pass()} e prima di chiamare \doxylink{classList_a88bc9bad52374db6df5b46036a77bb47}{render()}.
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\doxylink{classList_af69954fa434a31e038bc78e98ee6578a}{pass()} 
+
+\doxylink{classList_a88bc9bad52374db6df5b46036a77bb47}{render()} 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/\mbox{\hyperlink{list_8h}{list.\+h}}\item 
+engine/\mbox{\hyperlink{list_8cpp}{list.\+cpp}}\end{DoxyCompactItemize}

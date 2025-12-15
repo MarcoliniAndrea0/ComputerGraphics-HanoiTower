@@ -1,0 +1,392 @@
+\doxysection{Mesh Class Reference}
+\hypertarget{classMesh}{}\label{classMesh}\index{Mesh@{Mesh}}
+
+
+Rappresenta una mesh 3D renderizzabile nella scena.  
+
+
+
+
+{\ttfamily \#include $<$mesh.\+h$>$}
+
+Inheritance diagram for Mesh\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classMesh}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMesh_a2af137f1571af89172b9c102302c416b}{Mesh}} ()
+\begin{DoxyCompactList}\small\item\em Costruttore della classe \doxylink{classMesh}{Mesh}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMesh_a5efe4da1a4c0971cfb037bd70304c303}{\texorpdfstring{$\sim$}{\string~}\+Mesh}} ()
+\begin{DoxyCompactList}\small\item\em Distruttore della classe \doxylink{classMesh}{Mesh}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classMesh_a861677f12ca81726598bebfdb75132c4}{get\+Shadows}} () const
+\begin{DoxyCompactList}\small\item\em Verifica se la mesh proietta ombre. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classMaterial}{Material}} $>$ \mbox{\hyperlink{classMesh_a7224cb0b2a9683ca5f274a0ef0c81d0f}{get\+Material}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce il materiale associato alla mesh. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classMeshData}{Mesh\+Data}} \& \mbox{\hyperlink{classMesh_af19940214c5d9f10074de6cb21bd30b1}{get\+Mesh\+Data}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce i dati geometrici della mesh. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMesh_ab9e2df0d86ada4789bba65e127bd188d}{set\+Material}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classMaterial}{Material}} $>$ new\+Material)
+\begin{DoxyCompactList}\small\item\em Imposta un nuovo materiale per la mesh. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMesh_a85cfd126074fa13f5004df03287855da}{set\+Shadows}} (const bool new\+Cast\+Shadows)
+\begin{DoxyCompactList}\small\item\em Imposta se la mesh deve proiettare ombre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMesh_a28aa0da08728f9c3b0ab49daa7f05d2d}{set\+Mesh\+Data}} (const \mbox{\hyperlink{classMeshData}{Mesh\+Data}} \&data)
+\begin{DoxyCompactList}\small\item\em Imposta i dati geometrici della mesh. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMesh_a504a3612c1a375dbef46bc27d543dfae}{render}} (const \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} view\+Matrix) const override
+\begin{DoxyCompactList}\small\item\em Renderizza la mesh nella scena. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNode}{Node}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNode_ad7a34779cad45d997bfd6d3d8043c75f}{Node}} ()
+\begin{DoxyCompactList}\small\item\em Costruttore di default. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classNode_a4cf57077e6f91a2d11d291fd89611c24}{Node}} (std\+::string type)
+\begin{DoxyCompactList}\small\item\em Costruttore parametrico con tipo. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classNode_abce703f211f6a577085b4b8ad68cbb19}{\texorpdfstring{$\sim$}{\string~}\+Node}} ()=default
+\begin{DoxyCompactList}\small\item\em Distruttore virtuale di default. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{classNode_a71b865938f0837226fa09693fe5c5a7b}{get\+Position}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la posizione locale del nodo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{classNode_ae0c77ac36b03dd14ba60e6a6940896bf}{get\+Rotation}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la rotazione locale del nodo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{classNode_a27b296b26b28f83db2f762bdebf45b1e}{get\+Scale}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la scala locale del nodo. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classNode_a2416baf7ba60d0572ce8f2e4ac31452b}{get\+Priority}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la priorità di rendering del nodo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} \mbox{\hyperlink{classNode_a6c12ab3a4d670e40078e9d9c9000ede6}{get\+Local\+Matrix}} () const
+\begin{DoxyCompactList}\small\item\em Calcola e restituisce la matrice di trasformazione locale del nodo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} \mbox{\hyperlink{classNode_a31f8763ea8659b0485ded3cfb0821e05}{get\+Transform}} () const
+\begin{DoxyCompactList}\small\item\em Alias di \doxylink{classNode_a6c12ab3a4d670e40078e9d9c9000ede6}{get\+Local\+Matrix()}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} \mbox{\hyperlink{classNode_a74c1cff684648fcb90fd4197172a5ccd}{get\+World\+Matrix}} (const \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} \&parent\+Matrix=\mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}}(1.\+0f)) const
+\begin{DoxyCompactList}\small\item\em Calcola la matrice di trasformazione globale (world matrix) del nodo. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \mbox{\hyperlink{classNode_a698fcd9fd071b622af7190219deaa167}{get\+Parent}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce un puntatore al nodo padre. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ $>$ \mbox{\hyperlink{classNode_a7775c2f0410dee3c9e5a3bb82b2ec7bf}{get\+Children}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la lista dei nodi figli (versione const). \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ $>$ \& \mbox{\hyperlink{classNode_a285f46ec311658150cf27bdecfb15dd6}{get\+Children}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce un riferimento modificabile alla lista dei nodi figli. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a9c023d00bc503ff6ddba5e4f0bc62df3}{set\+Position}} (const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} new\+Position)
+\begin{DoxyCompactList}\small\item\em Imposta la posizione locale del nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a0791be977d7b7721f70eb501f17009a7}{set\+Rotation}} (const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} new\+Position)
+\begin{DoxyCompactList}\small\item\em Imposta la rotazione locale del nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_ad4140835a781e69e37399ea4a71e4e5d}{set\+Scale}} (const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} new\+Position)
+\begin{DoxyCompactList}\small\item\em Imposta la scala locale del nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a3efd0b06c91356594f8224de9ac56c59}{set\+Base\+Matrix}} (const \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} new\+Base\+Matrix)
+\begin{DoxyCompactList}\small\item\em Imposta la matrice di trasformazione di base del nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_ad7361dd4b1cd6b0e854a815a2d59b1c6}{set\+Priority}} (int p)
+\begin{DoxyCompactList}\small\item\em Imposta la priorità di rendering del nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a61f3a29258c87c5354ff2dcf47a0cdde}{add\+Child}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ new\+Child)
+\begin{DoxyCompactList}\small\item\em Aggiunge un nodo figlio a questo nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a77c02d511582a1ab3e8436eb90c7c5e4}{remove\+All\+Children}} ()
+\begin{DoxyCompactList}\small\item\em Rimuove tutti i nodi figli da questo nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a032504f00a0bcad5fcbddc68f265cafd}{render}} (const \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} view\+Matrix) const override
+\begin{DoxyCompactList}\small\item\em Renderizza il nodo e tutti i suoi figli. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classObject}{Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classObject_afe9eeddd7068a37f62d3276a2fb49864}{Object}} ()=default
+\begin{DoxyCompactList}\small\item\em Costruttore di default. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classObject_a4fd75bb7fe75b569928245bb27fed07c}{Object}} (const std\+::string type)
+\begin{DoxyCompactList}\small\item\em Costruttore parametrico con tipo. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classObject_ae8f5483f459e46687bd01e6f9977afd3}{\texorpdfstring{$\sim$}{\string~}\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Distruttore virtuale. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classObject_a34a0b88c7f929c85ce92107ce7ba2e97}{get\+Id}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce l\textquotesingle{}identificativo univoco dell\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classObject_adf9436214bd361e0b85ac10ef2035916}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce il nome assegnato all\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+const std\+::string \mbox{\hyperlink{classObject_a60159d15921c408e2a8f828053297a13}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce il tipo dell\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classObject_adf1de6aa8f21d9b04eb700fec0700ebf}{set\+Name}} (const std\+::string new\+Name)
+\begin{DoxyCompactList}\small\item\em Assegna un nome leggibile all\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classObject_a89624881fe30113db802b64bfeed517f}{set\+Type}} (const std\+::string \&type)
+\begin{DoxyCompactList}\small\item\em Definisce il tipo/categoria dell\textquotesingle{}oggetto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classMesh_adb0fab2ce17516550fa3402277803c54}{is\+Color\+Picking\+Mode}} = false
+\begin{DoxyCompactList}\small\item\em Flag statico per la modalità color picking. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classObject}{Object}}}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classObject_a65658e2cbce7cd75f9f0e5716c36082a}{reset\+Id\+Generator}} ()
+\begin{DoxyCompactList}\small\item\em Resetta il contatore statico degli ID a zero. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Rappresenta una mesh 3D renderizzabile nella scena. 
+
+Una \doxylink{classMesh}{Mesh} è la rappresentazione di un oggetto tridimensionale composto da\+:
+\begin{DoxyItemize}
+\item {\bfseries{Geometria}} (\doxylink{classMeshData}{Mesh\+Data})\+: Vertici, facce, normali e coordinate UV
+\item {\bfseries{Materiale}}\+: Aspetto visivo della superficie (colori, texture, proprietà)
+\item {\bfseries{Proprietà di rendering}}\+: Come la capacità di proiettare ombre
+\end{DoxyItemize}
+
+La classe \doxylink{classMesh}{Mesh} eredita da \doxylink{classNode}{Node}, quindi supporta\+:
+\begin{DoxyItemize}
+\item Trasformazioni gerarchiche (posizione, rotazione, scala)
+\item Relazioni parent-\/child nel grafo della scena
+\item Priorità di rendering
+\end{DoxyItemize}
+
+Caratteristiche principali\+:
+\begin{DoxyItemize}
+\item Gestione di geometrie complesse attraverso \doxylink{classMeshData}{Mesh\+Data}
+\item Supporto per materiali con texture
+\item Capacità di proiettare ombre (shadow casting)
+\item Modalità di rendering speciale per il color picking
+\end{DoxyItemize}
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classNode}{Node} 
+
+\doxylink{classMeshData}{Mesh\+Data} 
+
+\doxylink{classMaterial}{Material} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classMesh_a2af137f1571af89172b9c102302c416b}\index{Mesh@{Mesh}!Mesh@{Mesh}}
+\index{Mesh@{Mesh}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{Mesh()}{Mesh()}}
+{\footnotesize\ttfamily \label{classMesh_a2af137f1571af89172b9c102302c416b} 
+Mesh\+::\+Mesh (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Costruttore della classe \doxylink{classMesh}{Mesh}. 
+
+Inizializza una nuova mesh con\+:
+\begin{DoxyItemize}
+\item Un materiale di default (grigio opaco)
+\item Shadow casting abilitato (proietta ombre)
+\item Geometria vuota (da impostare successivamente)
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+Dopo la costruzione, è necessario impostare i dati geometrici con \doxylink{classMesh_a28aa0da08728f9c3b0ab49daa7f05d2d}{set\+Mesh\+Data()} e opzionalmente un materiale personalizzato con \doxylink{classMesh_ab9e2df0d86ada4789bba65e127bd188d}{set\+Material()}.
+\end{DoxyNote}
+Inizializza una mesh con un materiale di default e abilita le ombre. \Hypertarget{classMesh_a5efe4da1a4c0971cfb037bd70304c303}\index{Mesh@{Mesh}!````~Mesh@{\texorpdfstring{$\sim$}{\string~}Mesh}}
+\index{````~Mesh@{\texorpdfstring{$\sim$}{\string~}Mesh}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Mesh()}{\string~Mesh()}}
+{\footnotesize\ttfamily \label{classMesh_a5efe4da1a4c0971cfb037bd70304c303} 
+Mesh\+::\texorpdfstring{$\sim$}{\string~}\+Mesh (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Distruttore della classe \doxylink{classMesh}{Mesh}. 
+
+Libera tutte le risorse associate alla mesh, inclusi\+:
+\begin{DoxyItemize}
+\item I dati geometrici (\doxylink{classMeshData}{Mesh\+Data})
+\item Il materiale associato (tramite shared\+\_\+ptr)
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+La pulizia delle risorse Open\+GL (VBO, texture) viene gestita automaticamente dai rispettivi distruttori.
+\end{DoxyNote}
+Libera le risorse associate alla mesh, incluso il materiale. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMesh_a7224cb0b2a9683ca5f274a0ef0c81d0f}\index{Mesh@{Mesh}!getMaterial@{getMaterial}}
+\index{getMaterial@{getMaterial}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{getMaterial()}{getMaterial()}}
+{\footnotesize\ttfamily \label{classMesh_a7224cb0b2a9683ca5f274a0ef0c81d0f} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classMaterial}{Material}} $>$ \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Mesh\+::get\+Material (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Restituisce il materiale associato alla mesh. 
+
+Il materiale definisce l\textquotesingle{}aspetto visivo della superficie della mesh, inclusi colori, texture e proprietà di illuminazione.
+
+\begin{DoxyReturn}{Returns}
+Puntatore condiviso al materiale corrente
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Il puntatore non sarà mai nullptr -\/ ogni mesh ha sempre almeno un materiale di default. 
+\end{DoxyNote}
+\Hypertarget{classMesh_af19940214c5d9f10074de6cb21bd30b1}\index{Mesh@{Mesh}!getMeshData@{getMeshData}}
+\index{getMeshData@{getMeshData}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{getMeshData()}{getMeshData()}}
+{\footnotesize\ttfamily \label{classMesh_af19940214c5d9f10074de6cb21bd30b1} 
+const \mbox{\hyperlink{classMeshData}{Mesh\+Data}} \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} \& Mesh\+::get\+Mesh\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Restituisce i dati geometrici della mesh. 
+
+Fornisce accesso in sola lettura alla geometria della mesh (vertici, facce, normali, coordinate UV).
+
+\begin{DoxyReturn}{Returns}
+Riferimento costante ai dati geometrici (\doxylink{classMeshData}{Mesh\+Data})
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxylink{classMeshData}{Mesh\+Data} 
+\end{DoxySeeAlso}
+\Hypertarget{classMesh_a861677f12ca81726598bebfdb75132c4}\index{Mesh@{Mesh}!getShadows@{getShadows}}
+\index{getShadows@{getShadows}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{getShadows()}{getShadows()}}
+{\footnotesize\ttfamily \label{classMesh_a861677f12ca81726598bebfdb75132c4} 
+bool \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Mesh\+::get\+Shadows (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Verifica se la mesh proietta ombre. 
+
+Determina se questa mesh contribuisce alla generazione di ombre nella scena quando è presente una sorgente di luce che proietta ombre.
+
+\begin{DoxyReturn}{Returns}
+true se la mesh proietta ombre, false altrimenti 
+\end{DoxyReturn}
+\Hypertarget{classMesh_a504a3612c1a375dbef46bc27d543dfae}\index{Mesh@{Mesh}!render@{render}}
+\index{render@{render}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily \label{classMesh_a504a3612c1a375dbef46bc27d543dfae} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Mesh\+::render (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}}}]{view\+Matrix}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Renderizza la mesh nella scena. 
+
+Questo metodo esegue il rendering completo della mesh\+:
+\begin{DoxyEnumerate}
+\item Applica il materiale (colori, texture)
+\item Applica le trasformazioni (model matrix)
+\item Disegna la geometria (vertici e facce)
+\end{DoxyEnumerate}
+
+Il comportamento cambia in base alla modalità di rendering\+:
+\begin{DoxyItemize}
+\item {\bfseries{Modalità normale}}\+: Rendering completo con materiale e illuminazione
+\item {\bfseries{Modalità color picking}}\+: Rendering con colori solidi per la selezione
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em view\+Matrix} & La matrice di vista della camera corrente, utilizzata per trasformare la mesh nello spazio della vista\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Questo metodo è chiamato automaticamente dal sistema di rendering. Non dovrebbe essere necessario chiamarlo manualmente.
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\doxylink{classMesh_adb0fab2ce17516550fa3402277803c54}{is\+Color\+Picking\+Mode} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classObject_a641d85cb7641c16c0d8ff4cf81798d52}{Object}}.
+
+\Hypertarget{classMesh_ab9e2df0d86ada4789bba65e127bd188d}\index{Mesh@{Mesh}!setMaterial@{setMaterial}}
+\index{setMaterial@{setMaterial}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{setMaterial()}{setMaterial()}}
+{\footnotesize\ttfamily \label{classMesh_ab9e2df0d86ada4789bba65e127bd188d} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Mesh\+::set\+Material (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classMaterial}{Material}} $>$}]{new\+Material}{}\end{DoxyParamCaption})}
+
+
+
+Imposta un nuovo materiale per la mesh. 
+
+Sostituisce il materiale corrente con uno nuovo, cambiando così l\textquotesingle{}aspetto visivo della mesh quando viene renderizzata.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Material} & Puntatore condiviso al nuovo materiale da applicare\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Il materiale precedente viene automaticamente rilasciato se non ci sono altri riferimenti ad esso.
+\end{DoxyNote}
+Esempio di utilizzo\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ redMaterial\ =\ std::make\_shared<Material>();}
+\DoxyCodeLine{redMaterial-\/>setDiffuseColor(\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm::vec3}}(1.0f,\ 0.0f,\ 0.0f));}
+\DoxyCodeLine{mesh-\/>setMaterial(redMaterial);}
+
+\end{DoxyCode}
+ \Hypertarget{classMesh_a28aa0da08728f9c3b0ab49daa7f05d2d}\index{Mesh@{Mesh}!setMeshData@{setMeshData}}
+\index{setMeshData@{setMeshData}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{setMeshData()}{setMeshData()}}
+{\footnotesize\ttfamily \label{classMesh_a28aa0da08728f9c3b0ab49daa7f05d2d} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Mesh\+::set\+Mesh\+Data (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classMeshData}{Mesh\+Data}} \&}]{data}{}\end{DoxyParamCaption})}
+
+
+
+Imposta i dati geometrici della mesh. 
+
+Carica nella mesh una nuova geometria definita da vertici, facce, normali e coordinate UV. Questo metodo sostituisce completamente la geometria precedente.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Struttura \doxylink{classMeshData}{Mesh\+Data} contenente\+:
+\begin{DoxyItemize}
+\item Vertici (posizioni 3D)
+\item Facce (triangoli definiti da indici di vertici)
+\item Normali (per l\textquotesingle{}illuminazione)
+\item Coordinate UV (per il texture mapping)
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+Esempio di utilizzo\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MeshData\ cubeData;}
+\DoxyCodeLine{\textcolor{comment}{//\ ...\ popolare\ cubeData\ con\ dati\ del\ cubo\ ...}}
+\DoxyCodeLine{mesh-\/>setMeshData(cubeData);}
+
+\end{DoxyCode}
+
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classMeshData}{Mesh\+Data} 
+\end{DoxySeeAlso}
+\Hypertarget{classMesh_a85cfd126074fa13f5004df03287855da}\index{Mesh@{Mesh}!setShadows@{setShadows}}
+\index{setShadows@{setShadows}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{setShadows()}{setShadows()}}
+{\footnotesize\ttfamily \label{classMesh_a85cfd126074fa13f5004df03287855da} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Mesh\+::set\+Shadows (\begin{DoxyParamCaption}\item[{const bool}]{new\+Cast\+Shadows}{}\end{DoxyParamCaption})}
+
+
+
+Imposta se la mesh deve proiettare ombre. 
+
+Abilita o disabilita la proiezione di ombre da parte di questa mesh. Disabilitare le ombre può migliorare le performance per oggetti che non necessitano di proiettare ombre (es. oggetti distanti).
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Cast\+Shadows} & true per abilitare le ombre, false per disabilitarle\\
+\hline
+\end{DoxyParams}
+Esempio di utilizzo\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mesh-\/>setShadows(\textcolor{keyword}{false});\ \textcolor{comment}{//\ Disabilita\ le\ ombre\ per\ questa\ mesh}}
+
+\end{DoxyCode}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classMesh_adb0fab2ce17516550fa3402277803c54}\index{Mesh@{Mesh}!isColorPickingMode@{isColorPickingMode}}
+\index{isColorPickingMode@{isColorPickingMode}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{isColorPickingMode}{isColorPickingMode}}
+{\footnotesize\ttfamily \label{classMesh_adb0fab2ce17516550fa3402277803c54} 
+bool Mesh\+::is\+Color\+Picking\+Mode = false\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Flag statico per la modalità color picking. 
+
+Quando true, le mesh vengono renderizzate con colori solidi univoci basati sul loro ID, permettendo la selezione degli oggetti tramite il colore del pixel. Utilizzato dal sistema di picking con il mouse.
+
+\begin{DoxyNote}{Note}
+Questo è un flag globale che influenza tutte le mesh. Viene impostato temporaneamente a true durante il color picking, poi ripristinato a false per il rendering normale.
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\doxylink{classEngine_a6dd9ae23179fc54b106b06cd15b50635}{Engine\+::get\+Node\+By\+Click()} 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/\mbox{\hyperlink{mesh_8h}{mesh.\+h}}\item 
+engine/\mbox{\hyperlink{mesh_8cpp}{mesh.\+cpp}}\end{DoxyCompactItemize}

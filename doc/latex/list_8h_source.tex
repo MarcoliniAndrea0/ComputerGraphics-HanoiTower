@@ -1,0 +1,51 @@
+\doxysection{list.\+h}
+\hypertarget{list_8h_source}{}\label{list_8h_source}\index{engine/list.h@{engine/list.h}}
+\mbox{\hyperlink{list_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{node_8h}{node.h}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Common_8h}{Common.h}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{glm_8hpp}{glm/glm.hpp}}>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{class\ }\mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\_API}}\ \mbox{\hyperlink{classList_a4a072165453b73d50cc7e68b881738e6}{List}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classObject_afe9eeddd7068a37f62d3276a2fb49864}{Object}}\ \{}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{classList_a4a072165453b73d50cc7e68b881738e6}{List}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ GETTER\ METHODS}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00075\ \ \ \ \ std::vector<std::pair<std::shared\_ptr<Node>,\ \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm::mat4}}>>\&\ \mbox{\hyperlink{classList_afac4531d8f4e01e1c246540ed4f2a98e}{getListRendering}}();}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{comment}{//\ SETTER\ METHODS}}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classList_a0a6ac53265d9bfe7fc29241c16e0e3ee}{setListRendering}}(std::vector<std::pair<std::shared\_ptr<Node>,\ \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm::mat4}}>>\ newListRendering);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{comment}{//\ METODI\ DI\ GESTIONE\ E\ ORDINAMENTO}}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classList_af3e09f3787fa7cfce657f158b15305eb}{sortListRendering}}();}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keyword}{static}\ std::vector<std::pair<std::shared\_ptr<Node>,\ \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm::mat4}}>>\ \mbox{\hyperlink{classList_af69954fa434a31e038bc78e98ee6578a}{pass}}(\textcolor{keyword}{const}\ std::shared\_ptr<Node>\ sceneRoot,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm::mat4}}\ parentWorldMatrix);}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{comment}{//\ RENDERING}}
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classObject_a641d85cb7641c16c0d8ff4cf81798d52}{render}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm::mat4}}\ inversaCamera)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00189\ \ \ \ \ std::vector<std::pair<std::shared\_ptr<Node>,\ \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm::mat4}}>>\ \_listRendering;}
+\DoxyCodeLine{00190\ \};}
+
+\end{DoxyCode}

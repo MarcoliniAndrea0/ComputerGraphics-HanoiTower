@@ -1,0 +1,669 @@
+\doxysection{Engine Class Reference}
+\hypertarget{classEngine}{}\label{classEngine}\index{Engine@{Engine}}
+
+
+La classe principale (Singleton statico) del motore grafico.  
+
+
+
+
+{\ttfamily \#include $<$engine.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classEngine_ad3013f725bbe836836877f7b2a14d6c1}{init}} (const std\+::string window\+Title, const int window\+Width, const int window\+Height)
+\begin{DoxyCompactList}\small\item\em Inizializza il motore grafico e crea la finestra principale. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classEngine_a949c9fb1ca964cfcc9d29ed553c559ff}{is\+Running}} ()
+\begin{DoxyCompactList}\small\item\em Avvia il ciclo principale del motore o verifica se {\ucr} in esecuzione. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classEngine_ab48f7c79b39ed583b0568c381d444944}{render}} ()
+\begin{DoxyCompactList}\small\item\em Esegue il rendering di un singolo frame della scena. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classEngine_afe172a61e10e2e38f828c97e331daefc}{update}} ()
+\begin{DoxyCompactList}\small\item\em Aggiorna la logica del motore (fisica, animazioni, input). \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classEngine_a67db714e6bda9c5e3bc560b983143598}{stop}} ()
+\begin{DoxyCompactList}\small\item\em Interrompe il ciclo di rendering. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classEngine_a5202cfb0deae87327c54c235243a3fd6}{quit}} ()
+\begin{DoxyCompactList}\small\item\em Termina l\textquotesingle{}esecuzione del motore e libera le risorse. \end{DoxyCompactList}\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCamera}{Camera}} $>$ \mbox{\hyperlink{classEngine_ae370d328d86197fa84c088ab271c8c17}{get\+Active\+Camera}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce la telecamera attualmente attiva. \end{DoxyCompactList}\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \mbox{\hyperlink{classEngine_a2f60b6338f650e9f9cde562c64a2592b}{get\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce la radice della scena attuale. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classEngine_acc17944b94331d52121cb0fd75ada84e}{set\+Back\+Ground}} (const float red, const float green, const float blue)
+\begin{DoxyCompactList}\small\item\em Imposta il colore di sfondo della finestra (Clear Color). \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classEngine_a0f3d3559d072c83beed37f9c75403d03}{set\+Scene}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ new\+Scene)
+\begin{DoxyCompactList}\small\item\em Sostituisce la scena corrente con una nuova. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classEngine_aa00f90454156172df8def33d3be470c3}{set\+Active\+Camera}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCamera}{Camera}} $>$ new\+Active\+Camera)
+\begin{DoxyCompactList}\small\item\em Imposta la telecamera attiva per il rendering. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classEngine_a3354b8e3d6e72203beded7d8bd819026}{set\+Screen\+Text}} (const std\+::string new\+Text)
+\begin{DoxyCompactList}\small\item\em Imposta una stringa di testo da visualizzare in overlay sullo schermo. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classEngine_afbaf390ada2c495b872ec4a4dcce2a82}{set\+Keyboard\+Callback}} (void(\texorpdfstring{$\ast$}{*}new\+Keyboard\+Callback)(const unsigned char key, const int mouseX, const int mouseY))
+\begin{DoxyCompactList}\small\item\em Imposta la funzione di callback per la gestione della tastiera (tasti ASCII). \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classEngine_aa1cf69eaf2a9bb1ca61dbe262e8ffd39}{set\+Blinking\+Callback}} (void(\texorpdfstring{$\ast$}{*}callback)())
+\begin{DoxyCompactList}\small\item\em Imposta la funzione di callback per gestire un effetto di lampeggiamento personalizzato. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classEngine_a9a12abe06cb8b0da35b30c073a3461d1}{set\+Mouse\+Callback}} (void(\texorpdfstring{$\ast$}{*}new\+Mouse\+Callback)(int button, int state, int mouseX, int mouseY))
+\begin{DoxyCompactList}\small\item\em Imposta la funzione di callback per la gestione dei click del mouse. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classEngine_a9da3185d98e3c2fcb790aba6c49222cc}{set\+Method\+Special\+Callback}} (void(\texorpdfstring{$\ast$}{*}new\+Special\+Callback)(int key, int mouseX, int mouseY))
+\begin{DoxyCompactList}\small\item\em Imposta la funzione di callback per i tasti speciali (frecce, F1-\/\+F12, ecc.). \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classEngine_a5388718ae566ad3c3ad6ffbe0b6107b6}{timer\+Callback}} (int value)
+\begin{DoxyCompactList}\small\item\em Funzione interna di callback per il timer di Free\+GLUT. Gestisce il framerate e richiama l\textquotesingle{}aggiornamento. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classEngine_ae180999064cb19346c3eadc6a6738e0d}{clear\+Screen}} ()
+\begin{DoxyCompactList}\small\item\em Pulisce i buffer dello schermo (Colore e Profondit{\ucr}). \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classEngine_a0544e301002dd8af6958796fee18430e}{swap\+Buffers}} ()
+\begin{DoxyCompactList}\small\item\em Scambia i buffer anteriore e posteriore (Double Buffering). Da chiamare alla fine del rendering del frame. \end{DoxyCompactList}\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \mbox{\hyperlink{classEngine_a71b757d2d64e7e86b7ba539ff4a6d6df}{find\+Object\+By\+Name}} (const std\+::string name\+To\+Find)
+\begin{DoxyCompactList}\small\item\em Cerca un oggetto nella scena tramite il suo nome. \end{DoxyCompactList}\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \mbox{\hyperlink{classEngine_af7bd2d827bcd03f05e7b7e0ec0541ed0}{find\+Object\+By\+ID}} (int id\+To\+Find)
+\begin{DoxyCompactList}\small\item\em Cerca un oggetto nella scena tramite il suo ID univoco. \end{DoxyCompactList}\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \mbox{\hyperlink{classEngine_a6dd9ae23179fc54b106b06cd15b50635}{get\+Node\+By\+Click}} (int mouseX, int mouseY)
+\begin{DoxyCompactList}\small\item\em Esegue il "{}\+Picking"{}\+: trova il nodo visualizzato alle coordinate del mouse. Utilizza un rendering con codifica colore per identificare l\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classEngine_a65351525feb7ffe4f21e02856100cb3a}{remove\+Object}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \&node\+To\+Remove, const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \&root)
+\begin{DoxyCompactList}\small\item\em Rimuove ricorsivamente un oggetto da un sotto-\/albero specifico. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classEngine_a428585251686b0eca437fcada7448b1c}{remove\+Object}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \&node\+To\+Remove)
+\begin{DoxyCompactList}\small\item\em Rimuove un oggetto cercandolo nell\textquotesingle{}intera scena corrente. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classEngine_ae2a81d325f6b102601504304b7ef55f8}{remove\+All\+Objects}} ()
+\begin{DoxyCompactList}\small\item\em Rimuove tutti gli oggetti dalla scena corrente, lasciando la radice vuota. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} \mbox{\hyperlink{classEngine_a4353ea2f334e679452d92ba3c03e47f0}{get\+Global\+Transform}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \&node)
+\begin{DoxyCompactList}\small\item\em Calcola la matrice di trasformazione globale (World Matrix) di un nodo. Risale la gerarchia dei padri moltiplicando le matrici locali. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{classEngine_a7b4a498044f77c4a6628ee378e4f095c}{get\+Global\+Position}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \&node)
+\begin{DoxyCompactList}\small\item\em Calcola la posizione globale (World Position) di un nodo nello spazio 3D. Estrae la posizione dalla matrice di trasformazione globale. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+La classe principale (Singleton statico) del motore grafico. 
+
+Questa classe gestisce l\textquotesingle{}intero ciclo di vita dell\textquotesingle{}applicazione grafica. Essendo puramente statica, funge da punto di accesso globale per\+:
+\begin{DoxyItemize}
+\item L\textquotesingle{}inizializzazione del contesto Open\+GL e GLUT.
+\item La gestione del grafo della scena (Scene Graph).
+\item La gestione della camera attiva e delle interazioni (Input).
+\item Il ciclo di rendering (Game Loop).
+\end{DoxyItemize}
+
+\begin{DoxyAuthor}{Author}
+\mbox{[}Gruppo6\mbox{]} 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classEngine_ae180999064cb19346c3eadc6a6738e0d}\index{Engine@{Engine}!clearScreen@{clearScreen}}
+\index{clearScreen@{clearScreen}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{clearScreen()}{clearScreen()}}
+{\footnotesize\ttfamily \label{classEngine_ae180999064cb19346c3eadc6a6738e0d} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Engine\+::clear\+Screen (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Pulisce i buffer dello schermo (Colore e Profondit{\ucr}). 
+
+Pulisce il contenuto della finestra di rendering.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily GL\+\_\+\+COLOR\+\_\+\+BUFFER\+\_\+\+BIT} specifica che il buffer del colore deve essere azzerato.
+\item {\ttfamily GL\+\_\+\+DEPTH\+\_\+\+BUFFER\+\_\+\+BIT} specifica che il buffer di profondit deve essere azzerato. 
+\end{DoxyItemize}\Hypertarget{classEngine_af7bd2d827bcd03f05e7b7e0ec0541ed0}\index{Engine@{Engine}!findObjectByID@{findObjectByID}}
+\index{findObjectByID@{findObjectByID}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{findObjectByID()}{findObjectByID()}}
+{\footnotesize\ttfamily \label{classEngine_af7bd2d827bcd03f05e7b7e0ec0541ed0} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Engine\+::find\+Object\+By\+ID (\begin{DoxyParamCaption}\item[{int}]{id\+To\+Find}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Cerca un oggetto nella scena tramite il suo ID univoco. 
+
+Trova un oggetto nella scena corrente per ID.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id\+To\+Find} & ID numerico dell\textquotesingle{}oggetto. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Puntatore condiviso all\textquotesingle{}oggetto se trovato, {\ttfamily nullptr} altrimenti.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em id\+To\+Find} & L\textquotesingle{}ID dell\textquotesingle{}oggetto da trovare. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un puntatore condiviso all\textquotesingle{}oggetto trovato, oppure nullptr se nessun oggetto con l\textquotesingle{}ID specificato stato trovato. 
+\end{DoxyReturn}
+\Hypertarget{classEngine_a71b757d2d64e7e86b7ba539ff4a6d6df}\index{Engine@{Engine}!findObjectByName@{findObjectByName}}
+\index{findObjectByName@{findObjectByName}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{findObjectByName()}{findObjectByName()}}
+{\footnotesize\ttfamily \label{classEngine_a71b757d2d64e7e86b7ba539ff4a6d6df} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Engine\+::find\+Object\+By\+Name (\begin{DoxyParamCaption}\item[{const std\+::string}]{name\+To\+Find}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Cerca un oggetto nella scena tramite il suo nome. 
+
+Trova un oggetto nella scena corrente per nome.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name\+To\+Find} & Nome dell\textquotesingle{}oggetto da cercare. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Puntatore condiviso all\textquotesingle{}oggetto se trovato, {\ttfamily nullptr} altrimenti.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em name\+To\+Find} & Il nome dell\textquotesingle{}oggetto da trovare. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un puntatore condiviso all\textquotesingle{}oggetto trovato, oppure nullptr se nessun oggetto con il nome specificato stato trovato. 
+\end{DoxyReturn}
+\Hypertarget{classEngine_ae370d328d86197fa84c088ab271c8c17}\index{Engine@{Engine}!getActiveCamera@{getActiveCamera}}
+\index{getActiveCamera@{getActiveCamera}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{getActiveCamera()}{getActiveCamera()}}
+{\footnotesize\ttfamily \label{classEngine_ae370d328d86197fa84c088ab271c8c17} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCamera}{Camera}} $>$ \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Engine\+::get\+Active\+Camera (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Restituisce la telecamera attualmente attiva. 
+
+Restituisce il puntatore alla telecamera attiva.
+
+\begin{DoxyReturn}{Returns}
+Puntatore condiviso (std\+::shared\+\_\+ptr) alla telecamera attiva.
+
+Un puntatore condiviso alla telecamera attiva. 
+\end{DoxyReturn}
+\Hypertarget{classEngine_a7b4a498044f77c4a6628ee378e4f095c}\index{Engine@{Engine}!getGlobalPosition@{getGlobalPosition}}
+\index{getGlobalPosition@{getGlobalPosition}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{getGlobalPosition()}{getGlobalPosition()}}
+{\footnotesize\ttfamily \label{classEngine_a7b4a498044f77c4a6628ee378e4f095c} 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} Engine\+::get\+Global\+Position (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \&}]{node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Calcola la posizione globale (World Position) di un nodo nello spazio 3D. Estrae la posizione dalla matrice di trasformazione globale. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & Il nodo di cui calcolare la posizione. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vettore 3D \doxylink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3} contenente le coordinate (x, y, z). 
+\end{DoxyReturn}
+\Hypertarget{classEngine_a4353ea2f334e679452d92ba3c03e47f0}\index{Engine@{Engine}!getGlobalTransform@{getGlobalTransform}}
+\index{getGlobalTransform@{getGlobalTransform}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{getGlobalTransform()}{getGlobalTransform()}}
+{\footnotesize\ttfamily \label{classEngine_a4353ea2f334e679452d92ba3c03e47f0} 
+\mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} Engine\+::get\+Global\+Transform (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \&}]{node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Calcola la matrice di trasformazione globale (World Matrix) di un nodo. Risale la gerarchia dei padri moltiplicando le matrici locali. 
+
+Restituisce la matrice di trasformazione globale di un nodo.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & Il nodo di cui calcolare la trasformazione. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Matrice 4x4 \doxylink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4} risultante.
+\end{DoxyReturn}
+Calcola ricorsivamente la trasformazione globale combinata di un nodo sommando le trasformazioni di tutti i suoi genitori nella gerarchia della scena.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & Il nodo di cui calcolare la matrice globale. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La matrice di trasformazione globale. 
+\end{DoxyReturn}
+\Hypertarget{classEngine_a6dd9ae23179fc54b106b06cd15b50635}\index{Engine@{Engine}!getNodeByClick@{getNodeByClick}}
+\index{getNodeByClick@{getNodeByClick}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{getNodeByClick()}{getNodeByClick()}}
+{\footnotesize\ttfamily \label{classEngine_a6dd9ae23179fc54b106b06cd15b50635} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Engine\+::get\+Node\+By\+Click (\begin{DoxyParamCaption}\item[{int}]{mouseX}{, }\item[{int}]{mouseY}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Esegue il "{}\+Picking"{}\+: trova il nodo visualizzato alle coordinate del mouse. Utilizza un rendering con codifica colore per identificare l\textquotesingle{}oggetto. 
+
+Recupera un nodo selezionato cliccando con il mouse.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mouseX} & Coordinata X del mouse nella finestra. \\
+\hline
+{\em mouseY} & Coordinata Y del mouse nella finestra. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Puntatore condiviso al nodo selezionato, o {\ttfamily nullptr} se si clicca sullo sfondo.
+\end{DoxyReturn}
+Questa funzione esegue il rendering della scena in modalit color picking per determinare quale oggetto stato selezionato con un clic del mouse. Utilizza la lettura del colore del pixel sotto il cursore per identificare l\textquotesingle{}oggetto.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mouseX} & La coordinata X del clic del mouse nella finestra. \\
+\hline
+{\em mouseY} & La coordinata Y del clic del mouse nella finestra.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un puntatore condiviso al nodo selezionato, oppure {\ttfamily nullptr} se nessun nodo corrisponde al clic del mouse.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+La modalit di color picking viene abilitata durante il rendering per associare un colore unico a ciascun oggetto. Dopo il rendering, viene letto il colore del pixel sotto il cursore per determinare l\textquotesingle{}ID dell\textquotesingle{}oggetto. La modalit di color picking viene disabilitata una volta completata l\textquotesingle{}operazione. 
+\end{DoxyNote}
+\Hypertarget{classEngine_a2f60b6338f650e9f9cde562c64a2592b}\index{Engine@{Engine}!getScene@{getScene}}
+\index{getScene@{getScene}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{getScene()}{getScene()}}
+{\footnotesize\ttfamily \label{classEngine_a2f60b6338f650e9f9cde562c64a2592b} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Engine\+::get\+Scene (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Restituisce la radice della scena attuale. 
+
+Restituisce l\textquotesingle{}oggetto root della scena corrente.
+
+\begin{DoxyReturn}{Returns}
+Puntatore condiviso (std\+::shared\+\_\+ptr) al nodo radice della scena.
+
+Un puntatore condiviso all\textquotesingle{}oggetto root della scena corrente. 
+\end{DoxyReturn}
+\Hypertarget{classEngine_ad3013f725bbe836836877f7b2a14d6c1}\index{Engine@{Engine}!init@{init}}
+\index{init@{init}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily \label{classEngine_ad3013f725bbe836836877f7b2a14d6c1} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Engine\+::init (\begin{DoxyParamCaption}\item[{const std\+::string}]{window\+Title}{, }\item[{const int}]{window\+Width}{, }\item[{const int}]{window\+Height}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Inizializza il motore grafico e crea la finestra principale. 
+
+Inizializza il motore grafico e crea una finestra con le specifiche fornite.
+
+Configura le librerie sottostanti (Free\+GLUT, Free\+Image), imposta le callback di sistema e prepara il contesto Open\+GL (Depth Test, Lighting, Culling).
+
+\begin{DoxyWarning}{Warning}
+Questo metodo deve essere chiamato prima di qualsiasi altra funzione dell\textquotesingle{}\doxylink{classEngine}{Engine}.
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parameters}
+{\em window\+Title} & Il titolo da assegnare alla finestra. \\
+\hline
+{\em window\+Width} & La larghezza iniziale della finestra in pixel. \\
+\hline
+{\em window\+Height} & L\textquotesingle{}altezza iniziale della finestra in pixel.\\
+\hline
+\end{DoxyParams}
+Questa funzione configura e inizializza il motore grafico, inclusi i parametri della finestra, il sistema di rendering Open\+GL, e la libreria Free\+Image per la manipolazione delle immagini. Verifica anche se l\textquotesingle{}engine gi stato inizializzato per evitare inizializzazioni multiple.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window\+Title} & Il titolo da assegnare alla finestra creata. \\
+\hline
+{\em window\+Width} & La larghezza della finestra in pixel. \\
+\hline
+{\em window\+Height} & L\textquotesingle{}altezza della finestra in pixel.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Se l\textquotesingle{}engine gi stato inizializzato, questa funzione emette un errore e termina senza fare nulla.
+\end{DoxyNote}
+\begin{DoxyWarning}{Warning}
+Assicurati di chiamare questa funzione prima di qualsiasi altro metodo dell\textquotesingle{}engine. 
+\end{DoxyWarning}
+\Hypertarget{classEngine_a949c9fb1ca964cfcc9d29ed553c559ff}\index{Engine@{Engine}!isRunning@{isRunning}}
+\index{isRunning@{isRunning}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{isRunning()}{isRunning()}}
+{\footnotesize\ttfamily \label{classEngine_a949c9fb1ca964cfcc9d29ed553c559ff} 
+bool \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Engine\+::is\+Running (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Avvia il ciclo principale del motore o verifica se {\ucr} in esecuzione. 
+
+Restituisce lo stato del flag di esecuzione.
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} se il motore {\ucr} inizializzato e in esecuzione, altrimenti {\ttfamily false}.
+
+{\ttfamily true} se l\textquotesingle{}engine ancora in esecuzione, {\ttfamily false} se stato fermato. 
+\end{DoxyReturn}
+\Hypertarget{classEngine_a5202cfb0deae87327c54c235243a3fd6}\index{Engine@{Engine}!quit@{quit}}
+\index{quit@{quit}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{quit()}{quit()}}
+{\footnotesize\ttfamily \label{classEngine_a5202cfb0deae87327c54c235243a3fd6} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Engine\+::quit (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Termina l\textquotesingle{}esecuzione del motore e libera le risorse. 
+
+De-\/inizializza l\textquotesingle{}engine.
+
+Chiude la finestra, pulisce la memoria della scena e termina il programma.
+
+Questa funzione libera le risorse utilizzate dall\textquotesingle{}engine e chiude il ciclo principale di GLUT. Dovrebbe essere chiamata solo una volta alla fine dell\textquotesingle{}uso dell\textquotesingle{}engine e nessun\textquotesingle{}altra funzione dell\textquotesingle{}engine dovrebbe essere chiamata dopo questa. \Hypertarget{classEngine_ae2a81d325f6b102601504304b7ef55f8}\index{Engine@{Engine}!removeAllObjects@{removeAllObjects}}
+\index{removeAllObjects@{removeAllObjects}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{removeAllObjects()}{removeAllObjects()}}
+{\footnotesize\ttfamily \label{classEngine_ae2a81d325f6b102601504304b7ef55f8} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Engine\+::remove\+All\+Objects (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Rimuove tutti gli oggetti dalla scena corrente, lasciando la radice vuota. 
+
+Rimuove tutti i nodi figli dalla scena corrente. \Hypertarget{classEngine_a428585251686b0eca437fcada7448b1c}\index{Engine@{Engine}!removeObject@{removeObject}}
+\index{removeObject@{removeObject}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{removeObject()}{removeObject()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classEngine_a428585251686b0eca437fcada7448b1c} 
+bool \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Engine\+::remove\+Object (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \&}]{node\+To\+Remove}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Rimuove un oggetto cercandolo nell\textquotesingle{}intera scena corrente. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node\+To\+Remove} & L\textquotesingle{}oggetto da rimuovere. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} se l\textquotesingle{}oggetto {\ucr} stato rimosso, {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+\Hypertarget{classEngine_a65351525feb7ffe4f21e02856100cb3a}\index{Engine@{Engine}!removeObject@{removeObject}}
+\index{removeObject@{removeObject}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{removeObject()}{removeObject()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classEngine_a65351525feb7ffe4f21e02856100cb3a} 
+bool \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Engine\+::remove\+Object (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \&}]{node\+To\+Remove}{, }\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \&}]{root}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Rimuove ricorsivamente un oggetto da un sotto-\/albero specifico. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node\+To\+Remove} & L\textquotesingle{}oggetto da rimuovere. \\
+\hline
+{\em root} & Il nodo radice da cui iniziare la ricerca. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} se l\textquotesingle{}oggetto {\ucr} stato trovato e rimosso, {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+\Hypertarget{classEngine_ab48f7c79b39ed583b0568c381d444944}\index{Engine@{Engine}!render@{render}}
+\index{render@{render}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily \label{classEngine_ab48f7c79b39ed583b0568c381d444944} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Engine\+::render (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Esegue il rendering di un singolo frame della scena. 
+
+Renderizza la scena corrente.
+
+Questa funzione viene chiamata automaticamente dal ciclo GLUT, ma pu{\ucr} essere invocata manualmente per forzare un ridisegno.
+
+Questa funzione gestisce il rendering dell\textquotesingle{}intera scena, inclusi gli oggetti 3D, le ombre, e il testo visualizzato sullo schermo.
+
+Se la scena o la telecamera non sono impostate, la funzione non esegue alcun rendering. \Hypertarget{classEngine_aa00f90454156172df8def33d3be470c3}\index{Engine@{Engine}!setActiveCamera@{setActiveCamera}}
+\index{setActiveCamera@{setActiveCamera}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{setActiveCamera()}{setActiveCamera()}}
+{\footnotesize\ttfamily \label{classEngine_aa00f90454156172df8def33d3be470c3} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Engine\+::set\+Active\+Camera (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCamera}{Camera}} $>$}]{new\+Active\+Camera}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Imposta la telecamera attiva per il rendering. 
+
+Imposta la camera attiva per il rendering della scena.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Active\+Camera} & Puntatore condiviso alla nuova telecamera.\\
+\hline
+{\em new\+Active\+Camera} & Puntatore condiviso alla nuova camera da impostare. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classEngine_acc17944b94331d52121cb0fd75ada84e}\index{Engine@{Engine}!setBackGround@{setBackGround}}
+\index{setBackGround@{setBackGround}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{setBackGround()}{setBackGround()}}
+{\footnotesize\ttfamily \label{classEngine_acc17944b94331d52121cb0fd75ada84e} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Engine\+::set\+Back\+Ground (\begin{DoxyParamCaption}\item[{const float}]{red}{, }\item[{const float}]{green}{, }\item[{const float}]{blue}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Imposta il colore di sfondo della finestra (Clear Color). 
+
+Imposta il colore di sfondo della scena.
+
+
+\begin{DoxyParams}{Parameters}
+{\em red} & Componente rossa (0.\+0 -\/ 1.\+0). \\
+\hline
+{\em green} & Componente verde (0.\+0 -\/ 1.\+0). \\
+\hline
+{\em blue} & Componente blu (0.\+0 -\/ 1.\+0).\\
+\hline
+{\em red} & La quantit di rosso nel colore di sfondo, compresa tra 0.\+0f e 1.\+0f. \\
+\hline
+{\em green} & La quantit di verde nel colore di sfondo, compresa tra 0.\+0f e 1.\+0f. \\
+\hline
+{\em blue} & La quantit di blu nel colore di sfondo, compresa tra 0.\+0f e 1.\+0f. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classEngine_aa1cf69eaf2a9bb1ca61dbe262e8ffd39}\index{Engine@{Engine}!setBlinkingCallback@{setBlinkingCallback}}
+\index{setBlinkingCallback@{setBlinkingCallback}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{setBlinkingCallback()}{setBlinkingCallback()}}
+{\footnotesize\ttfamily \label{classEngine_aa1cf69eaf2a9bb1ca61dbe262e8ffd39} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Engine\+::set\+Blinking\+Callback (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)()}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Imposta la funzione di callback per gestire un effetto di lampeggiamento personalizzato. 
+
+Imposta un callback per gestire il lampeggiamento.
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & Puntatore a funzione void func().\\
+\hline
+{\em callback} & Puntatore alla funzione di callback da chiamare per aggiornare il lampeggiamento. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classEngine_afbaf390ada2c495b872ec4a4dcce2a82}\index{Engine@{Engine}!setKeyboardCallback@{setKeyboardCallback}}
+\index{setKeyboardCallback@{setKeyboardCallback}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{setKeyboardCallback()}{setKeyboardCallback()}}
+{\footnotesize\ttfamily \label{classEngine_afbaf390ada2c495b872ec4a4dcce2a82} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Engine\+::set\+Keyboard\+Callback (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{new\+Keyboard\+Callback~}{)(const unsigned char key, const int mouseX, const int mouseY)}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Imposta la funzione di callback per la gestione della tastiera (tasti ASCII). 
+
+Imposta un callback personalizzato per la gestione della pressione dei tasti.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Keyboard\+Callback} & Puntatore a funzione\+: void func(unsigned char key, int mouse\+X, int mouse\+Y).\\
+\hline
+{\em -\/} & new\+Keyboard\+Callback Puntatore alla funzione di callback che gestir gli eventi di pressione dei tasti.
+\begin{DoxyItemize}
+\item key il codice del tasto premuto.
+\item mouseX e mouseY sono le coordinate del mouse al momento della pressione (non usate). 
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classEngine_a9da3185d98e3c2fcb790aba6c49222cc}\index{Engine@{Engine}!setMethodSpecialCallback@{setMethodSpecialCallback}}
+\index{setMethodSpecialCallback@{setMethodSpecialCallback}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{setMethodSpecialCallback()}{setMethodSpecialCallback()}}
+{\footnotesize\ttfamily \label{classEngine_a9da3185d98e3c2fcb790aba6c49222cc} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Engine\+::set\+Method\+Special\+Callback (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{new\+Special\+Callback~}{)(int key, int mouseX, int mouseY)}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Imposta la funzione di callback per i tasti speciali (frecce, F1-\/\+F12, ecc.). 
+
+Imposta una funzione di callback per gestire le pressioni di tasti speciali.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Special\+Callback} & Puntatore a funzione\+: void func(int key, int mouse\+X, int mouse\+Y).\\
+\hline
+\end{DoxyParams}
+Questa funzione registra un callback che viene chiamato ogni volta che un tasto speciale (come le frecce direzionali) viene premuto.
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/} & new\+Special\+Callback Puntatore alla funzione di callback.
+\begin{DoxyItemize}
+\item key codice del tasto speciale premuto.
+\item mouseX e mouseY sono le coordinate del mouse al momento della pressione. 
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classEngine_a9a12abe06cb8b0da35b30c073a3461d1}\index{Engine@{Engine}!setMouseCallback@{setMouseCallback}}
+\index{setMouseCallback@{setMouseCallback}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{setMouseCallback()}{setMouseCallback()}}
+{\footnotesize\ttfamily \label{classEngine_a9a12abe06cb8b0da35b30c073a3461d1} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Engine\+::set\+Mouse\+Callback (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{new\+Mouse\+Callback~}{)(int button, int state, int mouseX, int mouseY)}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Imposta la funzione di callback per la gestione dei click del mouse. 
+
+Imposta un callback per gestire gli eventi del mouse.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Mouse\+Callback} & Puntatore a funzione\+: void func(int button, int state, int mouse\+X, int mouse\+Y).\\
+\hline
+{\em fnct} & Puntatore alla funzione di callback per gestire gli eventi del mouse. La funzione callback deve accettare quattro parametri\+:
+\begin{DoxyItemize}
+\item {\ttfamily int button}\+: Il pulsante del mouse che ha generato l\textquotesingle{}evento.
+\item {\ttfamily int state}\+: Lo stato del pulsante del mouse (premuto o rilasciato).
+\item {\ttfamily int mouseX}\+: La coordinata X del mouse al momento dell\textquotesingle{}evento.
+\item {\ttfamily int mouseY}\+: La coordinata Y del mouse al momento dell\textquotesingle{}evento. 
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classEngine_a0f3d3559d072c83beed37f9c75403d03}\index{Engine@{Engine}!setScene@{setScene}}
+\index{setScene@{setScene}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{setScene()}{setScene()}}
+{\footnotesize\ttfamily \label{classEngine_a0f3d3559d072c83beed37f9c75403d03} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Engine\+::set\+Scene (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$}]{new\+Scene}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Sostituisce la scena corrente con una nuova. 
+
+Imposta la scena da renderizzare.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Scene} & Puntatore condiviso al nodo radice della nuova scena.\\
+\hline
+{\em new\+Scene} & Puntatore condiviso alla nuova scena da impostare.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+La camera attiva viene impostata su {\ttfamily nullptr}, il che significa che la nuova scena non avr una camera attiva fino a quando non verr impostata tramite {\ttfamily set\+Active\+Camera}. 
+\end{DoxyNote}
+\Hypertarget{classEngine_a3354b8e3d6e72203beded7d8bd819026}\index{Engine@{Engine}!setScreenText@{setScreenText}}
+\index{setScreenText@{setScreenText}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{setScreenText()}{setScreenText()}}
+{\footnotesize\ttfamily \label{classEngine_a3354b8e3d6e72203beded7d8bd819026} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Engine\+::set\+Screen\+Text (\begin{DoxyParamCaption}\item[{const std\+::string}]{new\+Text}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Imposta una stringa di testo da visualizzare in overlay sullo schermo. 
+
+Imposta il testo da visualizzare sullo schermo.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Text} & Il testo da visualizzare.\\
+\hline
+{\em new\+Text} & Il testo da visualizzare sullo schermo. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classEngine_a67db714e6bda9c5e3bc560b983143598}\index{Engine@{Engine}!stop@{stop}}
+\index{stop@{stop}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily \label{classEngine_a67db714e6bda9c5e3bc560b983143598} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Engine\+::stop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Interrompe il ciclo di rendering. 
+
+Invia una direttiva di arresto all\textquotesingle{}engine.
+
+Ferma il loop ma non distrugge il contesto o la finestra. \Hypertarget{classEngine_a0544e301002dd8af6958796fee18430e}\index{Engine@{Engine}!swapBuffers@{swapBuffers}}
+\index{swapBuffers@{swapBuffers}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{swapBuffers()}{swapBuffers()}}
+{\footnotesize\ttfamily \label{classEngine_a0544e301002dd8af6958796fee18430e} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Engine\+::swap\+Buffers (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Scambia i buffer anteriore e posteriore (Double Buffering). Da chiamare alla fine del rendering del frame. 
+
+Scambia i buffer back e front.
+
+Questa funzione utilizza {\ttfamily glut\+Swap\+Buffers} per scambiare il buffer anteriore con quello posteriore in un\textquotesingle{}applicazione che utilizza il doppio buffering. Il buffer front contiene il frame attualmente visualizzato, mentre il buffer back contiene il prossimo frame da visualizzare. \Hypertarget{classEngine_a5388718ae566ad3c3ad6ffbe0b6107b6}\index{Engine@{Engine}!timerCallback@{timerCallback}}
+\index{timerCallback@{timerCallback}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{timerCallback()}{timerCallback()}}
+{\footnotesize\ttfamily \label{classEngine_a5388718ae566ad3c3ad6ffbe0b6107b6} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Engine\+::timer\+Callback (\begin{DoxyParamCaption}\item[{int}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Funzione interna di callback per il timer di Free\+GLUT. Gestisce il framerate e richiama l\textquotesingle{}aggiornamento. 
+
+Callback del tempo (timer)
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Valore intero passato dal timer precedente.\\
+\hline
+\end{DoxyParams}
+Questa funzione viene chiamata periodicamente tramite {\ttfamily glut\+Timer\+Func} per aggiornare il conteggio dei frames e calcolare il tempo trascorso per il blinking.
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Il parametro utilizzato da {\ttfamily \doxylink{freeglut__std_8h_a1620e1ab4791020e7c08d4ab70447675}{glut\+Timer\+Func()}}. Non utilizzato nella funzione. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classEngine_afe172a61e10e2e38f828c97e331daefc}\index{Engine@{Engine}!update@{update}}
+\index{update@{update}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{classEngine_afe172a61e10e2e38f828c97e331daefc} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Engine\+::update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Aggiorna la logica del motore (fisica, animazioni, input). 
+
+Vengono eseguite le callback.
+
+Da chiamare all\textquotesingle{}interno della {\ttfamily idle} function o del timer loop.
+
+Questa funzione chiama {\ttfamily glut\+Main\+Loop\+Event} per elaborare eventi come input da tastiera, mouse o eventi di ridimensionamento della finestra. Serve a garantire che tutte le callback registrate per questi eventi siano eseguite. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/\mbox{\hyperlink{engine_8h}{engine.\+h}}\item 
+engine/\mbox{\hyperlink{engine_8cpp}{engine.\+cpp}}\end{DoxyCompactItemize}

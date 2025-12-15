@@ -1,0 +1,234 @@
+\doxysection{Point\+Light Class Reference}
+\hypertarget{classPointLight}{}\label{classPointLight}\index{PointLight@{PointLight}}
+
+
+Rappresenta una luce puntiforme.  
+
+
+
+
+{\ttfamily \#include $<$point\+Light.\+h$>$}
+
+Inheritance diagram for Point\+Light\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classPointLight}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPointLight_abbfdf5f05b559c49016f8bb97b0ca414}{Point\+Light}} ()
+\begin{DoxyCompactList}\small\item\em Costruttore di default. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classPointLight_a8965081e292ec53fddeae614165800d6}{\texorpdfstring{$\sim$}{\string~}\+Point\+Light}} ()=default
+\item 
+void \mbox{\hyperlink{classPointLight_ae089ad04ce476df6f4676431a838984e}{set\+Radius}} (const float new\+Radius)
+\begin{DoxyCompactList}\small\item\em Imposta il raggio della luce puntiforme. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPointLight_af05d8f6efaa899a4574788944a6ffa3d}{render}} (const \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} view\+Matrix) const override
+\begin{DoxyCompactList}\small\item\em Renderizza la luce puntiforme. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classLight}{Light}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLight_aed628c6207ce1c0eeb8348fa28db64f5}{Light}} (const std\+::string \&type)
+\begin{DoxyCompactList}\small\item\em Costruttore della classe \doxylink{classLight}{Light}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLight_ad0e59fad13bb6cfadc25b2c477e9ddc7}{\texorpdfstring{$\sim$}{\string~}\+Light}} ()
+\begin{DoxyCompactList}\small\item\em Distruttore della classe \doxylink{classLight}{Light}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classLight_a3d07bc6915e198cf43625e626b36da9f}{get\+Current\+Light}} (const int light\+Id) const
+\begin{DoxyCompactList}\small\item\em Restituisce l\textquotesingle{}identificatore Open\+GL della luce. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{classLight_a1a8752a9e2c3a23f13f3c56c16f2dd98}{get\+Ambient\+Color}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce il colore ambientale della luce. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{classLight_a9c02defa4d38e4562d3c3cc21a3f5fd1}{get\+Diffuse\+Color}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce il colore diffuso della luce. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{classLight_a3191cccf5933fdb8057413684dfd7aa7}{get\+Specular\+Color}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce il colore speculare della luce. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLight_a8caf773965d15f4998b94f25cc97af71}{set\+Ambient\+Color}} (const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} new\+Color)
+\begin{DoxyCompactList}\small\item\em Imposta il colore ambientale della luce. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLight_a516bd4aa237ed2578421cec47755a75d}{set\+Diffuse\+Color}} (const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} new\+Color)
+\begin{DoxyCompactList}\small\item\em Imposta il colore diffuso della luce. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLight_a2dd41c014e207b66389efd53f593f9e4}{set\+Specular\+Color}} (const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} new\+Color)
+\begin{DoxyCompactList}\small\item\em Imposta il colore speculare della luce. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNode}{Node}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNode_ad7a34779cad45d997bfd6d3d8043c75f}{Node}} ()
+\begin{DoxyCompactList}\small\item\em Costruttore di default. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classNode_a4cf57077e6f91a2d11d291fd89611c24}{Node}} (std\+::string type)
+\begin{DoxyCompactList}\small\item\em Costruttore parametrico con tipo. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classNode_abce703f211f6a577085b4b8ad68cbb19}{\texorpdfstring{$\sim$}{\string~}\+Node}} ()=default
+\begin{DoxyCompactList}\small\item\em Distruttore virtuale di default. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{classNode_a71b865938f0837226fa09693fe5c5a7b}{get\+Position}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la posizione locale del nodo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{classNode_ae0c77ac36b03dd14ba60e6a6940896bf}{get\+Rotation}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la rotazione locale del nodo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{classNode_a27b296b26b28f83db2f762bdebf45b1e}{get\+Scale}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la scala locale del nodo. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classNode_a2416baf7ba60d0572ce8f2e4ac31452b}{get\+Priority}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la priorità di rendering del nodo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} \mbox{\hyperlink{classNode_a6c12ab3a4d670e40078e9d9c9000ede6}{get\+Local\+Matrix}} () const
+\begin{DoxyCompactList}\small\item\em Calcola e restituisce la matrice di trasformazione locale del nodo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} \mbox{\hyperlink{classNode_a31f8763ea8659b0485ded3cfb0821e05}{get\+Transform}} () const
+\begin{DoxyCompactList}\small\item\em Alias di \doxylink{classNode_a6c12ab3a4d670e40078e9d9c9000ede6}{get\+Local\+Matrix()}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} \mbox{\hyperlink{classNode_a74c1cff684648fcb90fd4197172a5ccd}{get\+World\+Matrix}} (const \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} \&parent\+Matrix=\mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}}(1.\+0f)) const
+\begin{DoxyCompactList}\small\item\em Calcola la matrice di trasformazione globale (world matrix) del nodo. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \mbox{\hyperlink{classNode_a698fcd9fd071b622af7190219deaa167}{get\+Parent}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce un puntatore al nodo padre. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ $>$ \mbox{\hyperlink{classNode_a7775c2f0410dee3c9e5a3bb82b2ec7bf}{get\+Children}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la lista dei nodi figli (versione const). \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ $>$ \& \mbox{\hyperlink{classNode_a285f46ec311658150cf27bdecfb15dd6}{get\+Children}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce un riferimento modificabile alla lista dei nodi figli. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a9c023d00bc503ff6ddba5e4f0bc62df3}{set\+Position}} (const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} new\+Position)
+\begin{DoxyCompactList}\small\item\em Imposta la posizione locale del nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a0791be977d7b7721f70eb501f17009a7}{set\+Rotation}} (const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} new\+Position)
+\begin{DoxyCompactList}\small\item\em Imposta la rotazione locale del nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_ad4140835a781e69e37399ea4a71e4e5d}{set\+Scale}} (const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} new\+Position)
+\begin{DoxyCompactList}\small\item\em Imposta la scala locale del nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a3efd0b06c91356594f8224de9ac56c59}{set\+Base\+Matrix}} (const \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} new\+Base\+Matrix)
+\begin{DoxyCompactList}\small\item\em Imposta la matrice di trasformazione di base del nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_ad7361dd4b1cd6b0e854a815a2d59b1c6}{set\+Priority}} (int p)
+\begin{DoxyCompactList}\small\item\em Imposta la priorità di rendering del nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a61f3a29258c87c5354ff2dcf47a0cdde}{add\+Child}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ new\+Child)
+\begin{DoxyCompactList}\small\item\em Aggiunge un nodo figlio a questo nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a77c02d511582a1ab3e8436eb90c7c5e4}{remove\+All\+Children}} ()
+\begin{DoxyCompactList}\small\item\em Rimuove tutti i nodi figli da questo nodo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classObject}{Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classObject_afe9eeddd7068a37f62d3276a2fb49864}{Object}} ()=default
+\begin{DoxyCompactList}\small\item\em Costruttore di default. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classObject_a4fd75bb7fe75b569928245bb27fed07c}{Object}} (const std\+::string type)
+\begin{DoxyCompactList}\small\item\em Costruttore parametrico con tipo. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classObject_ae8f5483f459e46687bd01e6f9977afd3}{\texorpdfstring{$\sim$}{\string~}\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Distruttore virtuale. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classObject_a34a0b88c7f929c85ce92107ce7ba2e97}{get\+Id}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce l\textquotesingle{}identificativo univoco dell\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classObject_adf9436214bd361e0b85ac10ef2035916}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce il nome assegnato all\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+const std\+::string \mbox{\hyperlink{classObject_a60159d15921c408e2a8f828053297a13}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce il tipo dell\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classObject_adf1de6aa8f21d9b04eb700fec0700ebf}{set\+Name}} (const std\+::string new\+Name)
+\begin{DoxyCompactList}\small\item\em Assegna un nome leggibile all\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classObject_a89624881fe30113db802b64bfeed517f}{set\+Type}} (const std\+::string \&type)
+\begin{DoxyCompactList}\small\item\em Definisce il tipo/categoria dell\textquotesingle{}oggetto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classLight}{Light}}}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classLight_a378f8d1d0dd0fab9a116a4b8afb8100d}{reset\+Next\+Light\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Resetta il contatore degli ID delle luci a zero. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classObject}{Object}}}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classObject_a65658e2cbce7cd75f9f0e5716c36082a}{reset\+Id\+Generator}} ()
+\begin{DoxyCompactList}\small\item\em Resetta il contatore statico degli ID a zero. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classLight}{Light}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{classLight_aef2a6aaf68fb97e8cfc7d107e61201d3}{\+\_\+ambient\+Color}}
+\begin{DoxyCompactList}\small\item\em Colore della componente ambientale (0.\+0-\/1.\+0 per canale) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{classLight_a8dc9b9e2dc90773d8dbe9dc837730715}{\+\_\+diffuse\+Color}}
+\begin{DoxyCompactList}\small\item\em Colore della componente diffusa (0.\+0-\/1.\+0 per canale) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{classLight_a044ecea92c9113e0cedd3cef452beae3}{\+\_\+specular\+Color}}
+\begin{DoxyCompactList}\small\item\em Colore della componente speculare (0.\+0-\/1.\+0 per canale) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classLight_a4e559389ee71aeded0a241449c3ca390}{\+\_\+light\+Id}}
+\begin{DoxyCompactList}\small\item\em ID interno della luce (0-\/7 per Open\+GL tradizionale) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{classLight}{Light}}}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{classLight_a2ac3142f14fb8b28a47cc0a34fa6b616}{next\+Light\+Id}} = 0
+\begin{DoxyCompactList}\small\item\em Contatore statico per il prossimo ID luce disponibile. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Rappresenta una luce puntiforme. 
+
+Una {\ttfamily \doxylink{classPointLight}{Point\+Light}} emette luce in tutte le direzioni da una posizione specifica ed {\ucr} utilizzata per simulare sorgenti di luce come una lampadina o una candela.
+
+La luce puntiforme ha un effetto visibile fino a una certa distanza, definita dal raggio. Oltre questa distanza, la luce si attenua gradualmente. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classPointLight_abbfdf5f05b559c49016f8bb97b0ca414}\index{PointLight@{PointLight}!PointLight@{PointLight}}
+\index{PointLight@{PointLight}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{PointLight()}{PointLight()}}
+{\footnotesize\ttfamily \label{classPointLight_abbfdf5f05b559c49016f8bb97b0ca414} 
+Point\+Light\+::\+Point\+Light (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Costruttore di default. 
+
+Costruttore della classe \doxylink{classPointLight}{Point\+Light}.
+
+Inizializza una {\ttfamily \doxylink{classPointLight}{Point\+Light}} con un raggio predefinito di {\ttfamily 1.\+0f}.
+
+Crea una nuova istanza di \doxylink{classPointLight}{Point\+Light} con i seguenti parametri di default\+:
+\begin{DoxyItemize}
+\item Raggio\+: {\ttfamily 1.\+0f}.
+\end{DoxyItemize}
+
+La luce puntiforme emette luce in tutte le direzioni da una posizione specifica con un effetto visibile fino a una distanza definita dal raggio. \Hypertarget{classPointLight_a8965081e292ec53fddeae614165800d6}\index{PointLight@{PointLight}!````~PointLight@{\texorpdfstring{$\sim$}{\string~}PointLight}}
+\index{````~PointLight@{\texorpdfstring{$\sim$}{\string~}PointLight}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}PointLight()}{\string~PointLight()}}
+{\footnotesize\ttfamily \label{classPointLight_a8965081e292ec53fddeae614165800d6} 
+virtual Point\+Light\+::\texorpdfstring{$\sim$}{\string~}\+Point\+Light (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPointLight_af05d8f6efaa899a4574788944a6ffa3d}\index{PointLight@{PointLight}!render@{render}}
+\index{render@{render}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily \label{classPointLight_af05d8f6efaa899a4574788944a6ffa3d} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Point\+Light\+::render (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}}}]{view\+Matrix}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Renderizza la luce puntiforme. 
+
+Configura i parametri della luce puntiforme in Open\+GL per la scena corrente.
+
+
+\begin{DoxyParams}{Parameters}
+{\em view\+Matrix} & La matrice di visualizzazione da utilizzare.\\
+\hline
+\end{DoxyParams}
+Questa funzione configura i parametri della luce puntiforme in Open\+GL, inclusa la posizione e i colori della luce. Viene chiamata automaticamente da My\+Engine.
+
+
+\begin{DoxyParams}{Parameters}
+{\em view\+Matrix} & La matrice di visualizzazione da utilizzare per renderizzare questo oggetto. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classNode_a032504f00a0bcad5fcbddc68f265cafd}{Node}}.
+
+\Hypertarget{classPointLight_ae089ad04ce476df6f4676431a838984e}\index{PointLight@{PointLight}!setRadius@{setRadius}}
+\index{setRadius@{setRadius}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{setRadius()}{setRadius()}}
+{\footnotesize\ttfamily \label{classPointLight_ae089ad04ce476df6f4676431a838984e} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Point\+Light\+::set\+Radius (\begin{DoxyParamCaption}\item[{const float}]{new\+Radius}{}\end{DoxyParamCaption})}
+
+
+
+Imposta il raggio della luce puntiforme. 
+
+Imposta il raggio della luce {\ttfamily \doxylink{classPointLight}{Point\+Light}}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Radius} & La distanza massima di influenza della luce.\\
+\hline
+\end{DoxyParams}
+Il raggio determina la distanza massima fino alla quale la luce ha effetto. Un raggio maggiore aumenta l\textquotesingle{}area illuminata dalla luce.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Radius} & Il nuovo raggio della luce {\ttfamily \doxylink{classPointLight}{Point\+Light}}. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/\mbox{\hyperlink{pointLight_8h}{point\+Light.\+h}}\item 
+engine/\mbox{\hyperlink{pointLight_8cpp}{point\+Light.\+cpp}}\end{DoxyCompactItemize}

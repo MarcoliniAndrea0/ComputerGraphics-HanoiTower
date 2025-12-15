@@ -1,0 +1,151 @@
+\doxysection{Texture Class Reference}
+\hypertarget{classTexture}{}\label{classTexture}\index{Texture@{Texture}}
+
+
+Rappresenta una texture che consente di applicare immagini su un modello 3D.  
+
+
+
+
+{\ttfamily \#include $<$texture.\+h$>$}
+
+Inheritance diagram for Texture\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classTexture}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTexture_a3f2ecddcac0f3e19f4736f8c4db95f75}{Texture}} (const std\+::string path)
+\begin{DoxyCompactList}\small\item\em Costruttore della classe \doxylink{classTexture}{Texture}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTexture_a09c4bcb7462f64c1d20fa69dba3cee8a}{\texorpdfstring{$\sim$}{\string~}\+Texture}} ()
+\begin{DoxyCompactList}\small\item\em Distruttore della classe \doxylink{classTexture}{Texture}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classTexture_a30973591a8af3c3d565a5b19a744c1e8}{is\+Loaded}} () const
+\begin{DoxyCompactList}\small\item\em Verifica se la texture {\ucr} stata caricata correttamente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTexture_a3ad17f243dc41d6aedf56c5e13e9c492}{render}} (const \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} view\+Matrix) const override
+\begin{DoxyCompactList}\small\item\em Renderizza la texture. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classObject}{Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classObject_afe9eeddd7068a37f62d3276a2fb49864}{Object}} ()=default
+\begin{DoxyCompactList}\small\item\em Costruttore di default. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classObject_a4fd75bb7fe75b569928245bb27fed07c}{Object}} (const std\+::string type)
+\begin{DoxyCompactList}\small\item\em Costruttore parametrico con tipo. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classObject_ae8f5483f459e46687bd01e6f9977afd3}{\texorpdfstring{$\sim$}{\string~}\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Distruttore virtuale. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classObject_a34a0b88c7f929c85ce92107ce7ba2e97}{get\+Id}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce l\textquotesingle{}identificativo univoco dell\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classObject_adf9436214bd361e0b85ac10ef2035916}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce il nome assegnato all\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+const std\+::string \mbox{\hyperlink{classObject_a60159d15921c408e2a8f828053297a13}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce il tipo dell\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classObject_adf1de6aa8f21d9b04eb700fec0700ebf}{set\+Name}} (const std\+::string new\+Name)
+\begin{DoxyCompactList}\small\item\em Assegna un nome leggibile all\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classObject_a89624881fe30113db802b64bfeed517f}{set\+Type}} (const std\+::string \&type)
+\begin{DoxyCompactList}\small\item\em Definisce il tipo/categoria dell\textquotesingle{}oggetto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classObject}{Object}}}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classObject_a65658e2cbce7cd75f9f0e5716c36082a}{reset\+Id\+Generator}} ()
+\begin{DoxyCompactList}\small\item\em Resetta il contatore statico degli ID a zero. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Rappresenta una texture che consente di applicare immagini su un modello 3D. 
+
+La classe {\ttfamily \doxylink{classTexture}{Texture}} rappresenta una texture che viene applicata sui modelli 3D, permettendo di visualizzare immagini sulle superfici delle mesh. Gestisce il caricamento di un\textquotesingle{}immagine da un percorso specificato e la renderizzazione della texture sugli oggetti 3D. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classTexture_a3f2ecddcac0f3e19f4736f8c4db95f75}\index{Texture@{Texture}!Texture@{Texture}}
+\index{Texture@{Texture}!Texture@{Texture}}
+\doxysubsubsection{\texorpdfstring{Texture()}{Texture()}}
+{\footnotesize\ttfamily \label{classTexture_a3f2ecddcac0f3e19f4736f8c4db95f75} 
+Texture\+::\+Texture (\begin{DoxyParamCaption}\item[{const std\+::string}]{path}{}\end{DoxyParamCaption})}
+
+
+
+Costruttore della classe \doxylink{classTexture}{Texture}. 
+
+Crea una nuova istanza di {\ttfamily \doxylink{classTexture}{Texture}} caricando un file immagine dal percorso specificato.
+
+Questo costruttore carica un\textquotesingle{}immagine da un percorso specificato utilizzando la libreria Free\+Image e configura la texture in Open\+GL. Se il caricamento fallisce, la texture non {\ucr} valida.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Il percorso dell\textquotesingle{}immagine da caricare come texture.\\
+\hline
+\end{DoxyParams}
+Il costruttore carica un\textquotesingle{}immagine da un file utilizzando Free\+Image e crea una texture Open\+GL. Se il caricamento dell\textquotesingle{}immagine fallisce, il puntatore {\ttfamily bitmap} viene impostato a {\ttfamily nullptr}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Il percorso del file dell\textquotesingle{}immagine da caricare come texture.\\
+\hline
+\end{DoxyParams}
+Se l\textquotesingle{}immagine viene caricata correttamente, viene convertita in un formato a 32 bit (RGBA) e configurata come texture Open\+GL. Se il caricamento fallisce, viene semplicemente impostato a {\ttfamily nullptr} e non viene creata alcuna texture. \Hypertarget{classTexture_a09c4bcb7462f64c1d20fa69dba3cee8a}\index{Texture@{Texture}!````~Texture@{\texorpdfstring{$\sim$}{\string~}Texture}}
+\index{````~Texture@{\texorpdfstring{$\sim$}{\string~}Texture}!Texture@{Texture}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Texture()}{\string~Texture()}}
+{\footnotesize\ttfamily \label{classTexture_a09c4bcb7462f64c1d20fa69dba3cee8a} 
+Texture\+::\texorpdfstring{$\sim$}{\string~}\+Texture (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Distruttore della classe \doxylink{classTexture}{Texture}. 
+
+Libera la memoria utilizzata da questa texture.
+
+Libera tutte le risorse allocate, incluse le texture Open\+GL e i dati dell\textquotesingle{}immagine caricata.
+
+Questo distruttore elimina la texture associata all\textquotesingle{}ID specificato in Open\+GL e scarica l\textquotesingle{}immagine caricata per liberare la memoria. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classTexture_a30973591a8af3c3d565a5b19a744c1e8}\index{Texture@{Texture}!isLoaded@{isLoaded}}
+\index{isLoaded@{isLoaded}!Texture@{Texture}}
+\doxysubsubsection{\texorpdfstring{isLoaded()}{isLoaded()}}
+{\footnotesize\ttfamily \label{classTexture_a30973591a8af3c3d565a5b19a744c1e8} 
+bool Texture\+::is\+Loaded (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Verifica se la texture {\ucr} stata caricata correttamente. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} se la texture {\ucr} stata caricata con successo, {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+\Hypertarget{classTexture_a3ad17f243dc41d6aedf56c5e13e9c492}\index{Texture@{Texture}!render@{render}}
+\index{render@{render}!Texture@{Texture}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily \label{classTexture_a3ad17f243dc41d6aedf56c5e13e9c492} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Texture\+::render (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}}}]{view\+Matrix}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Renderizza la texture. 
+
+Associa la texture corrente al target di texture 2D in Open\+GL e abilita l\textquotesingle{}uso delle texture 2D per il rendering.
+
+
+\begin{DoxyParams}{Parameters}
+{\em view\+Matrix} & La matrice di vista da utilizzare per il rendering.\\
+\hline
+\end{DoxyParams}
+Questa funzione viene chiamata automaticamente da My\+Engine non bisogna chiamarla manualmente.
+
+
+\begin{DoxyParams}{Parameters}
+{\em view\+Matrix} & matrice da utilizzare per il rendering di questo oggetto.\\
+\hline
+\end{DoxyParams}
+Associa la texture corrente al target di texture 2D in Open\+GL e abilita l\textquotesingle{}uso delle texture 2D. La texture identificata da {\ttfamily this-\/\texorpdfstring{$>$}{>}texture\+Id} viene utilizzata per il mapping su oggetti 3D. 
+
+Implements \mbox{\hyperlink{classObject_a641d85cb7641c16c0d8ff4cf81798d52}{Object}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/\mbox{\hyperlink{texture_8h}{texture.\+h}}\item 
+engine/\mbox{\hyperlink{texture_8cpp}{texture.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,314 @@
+\doxysection{dependencies/freeglut/include/\+GL/freeglut\+\_\+ucall.h File Reference}
+\hypertarget{freeglut__ucall_8h}{}\label{freeglut__ucall_8h}\index{dependencies/freeglut/include/GL/freeglut\_ucall.h@{dependencies/freeglut/include/GL/freeglut\_ucall.h}}
+{\ttfamily \#include $<$stdarg.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} int \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_ab98c26c8e8201a1e40a4c9f12e93d9d7}{glut\+Create\+Menu\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(int menu, void \texorpdfstring{$\ast$}{*}user\+\_\+data), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_a275e8e5ca24139ead3d207884ac153b7}{glut\+Timer\+Func\+Ucall}} (unsigned int time, void(\texorpdfstring{$\ast$}{*}callback)(int, void \texorpdfstring{$\ast$}{*}), int value, void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_a0c6f249cf4507e41902f11cbe0af6948}{glut\+Idle\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_a3c8effe7264bb3e906b0be2995895e79}{glut\+Keyboard\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(unsigned char, int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_aa757bdb5052b8f2393d5bc0723d4eefe}{glut\+Special\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(int, int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_a4f76841b77cb264076562c03cbf48c96}{glut\+Reshape\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_a384d65d296f1895a4214e4630fa07ef2}{glut\+Visibility\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_aabb0c924cdf5298a882af8cb97264eed}{glut\+Display\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_a4a763ad67727f13b8e1196cb1318dd88}{glut\+Mouse\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(int, int, int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_a26751a0ccc73a545df1673bd7cf9939b}{glut\+Motion\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_af3dfe675bbfc77065cc8eea34ffcb384}{glut\+Passive\+Motion\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_a7d4232830c08ca7fd4417076e989410a}{glut\+Entry\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_a42df4041cbf83e41d0927f1b4ede7f31}{glut\+Keyboard\+Up\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(unsigned char, int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_a8259fa8d4e5ff062c9ecf1ac5780e471}{glut\+Special\+Up\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(int, int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_abeee592c69682175fe741383a1555376}{glut\+Joystick\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(unsigned int, int, int, int, void \texorpdfstring{$\ast$}{*}), int poll\+Interval, void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_aed72bc96046ae0b396698974447e7662}{glut\+Menu\+Status\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(int, int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_a754c3b54ed8c4c5a55a2a8ba5d751b62}{glut\+Overlay\+Display\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_a849e7affe07427e3ecf867da5cebfbb3}{glut\+Window\+Status\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_a11f31b5f71cd8fd2c6a57cfffdbd76c2}{glut\+Spaceball\+Motion\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(int, int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_ac810a8e4a1734e6393e4dd0fffe11f63}{glut\+Spaceball\+Rotate\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(int, int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_afbbc6ec8c9ccf6adabba84f58af29cdc}{glut\+Spaceball\+Button\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_ab0b3fe8bbbf5ebcca9ba0b7f9add2a57}{glut\+Button\+Box\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_a6829612ad671658b00219453c42c6781}{glut\+Dials\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_a202075f71e0f94168cdea09293da5059}{glut\+Tablet\+Motion\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_ade64df15ad05246950c8fa9b02553855}{glut\+Tablet\+Button\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(int, int, int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_a7b3061680a62f18c5908f5c66087a1e0}{glut\+Mouse\+Wheel\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(int, int, int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_a143d5abde9fad160bc0e2dea9b176420}{glut\+Position\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_a956a8ef23cfcb40a2376935310250fad}{glut\+Close\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_ad578c0a628b6236c08aab35715eb15ce}{glut\+WMClose\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_aa2e49006c4524389a3428ff2a87b84a9}{glut\+Menu\+Destroy\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_ab48e167e57bd741566c8cb9732d8b075}{glut\+Multi\+Entry\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_ad48e332a4c02f2210dfdcb85ffc7e10f}{glut\+Multi\+Button\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(int, int, int, int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_a6b58d7e881d2902627df364d59af8759}{glut\+Multi\+Motion\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(int, int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_aba60e2b76951330c0c14b6ef47daa2da}{glut\+Multi\+Passive\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(int, int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_a3a73efb2baf49988c8782c18df28eba4}{glut\+Init\+Error\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(const char \texorpdfstring{$\ast$}{*}fmt, va\+\_\+list ap, void \texorpdfstring{$\ast$}{*}user\+\_\+data), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_a58f51bb80dc0bf30b7325f9b0c98e0c6}{glut\+Init\+Warning\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(const char \texorpdfstring{$\ast$}{*}fmt, va\+\_\+list ap, void \texorpdfstring{$\ast$}{*}user\+\_\+data), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_a2025d78f77e78e5ebd59db98eab77c3e}{glut\+Init\+Context\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} \mbox{\hyperlink{freeglut__ucall_8h_a58b1deefc70f61252e6037242f6fb2a8}{glut\+App\+Status\+Func\+Ucall}} (void(\texorpdfstring{$\ast$}{*}callback)(int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{freeglut__ucall_8h_a58b1deefc70f61252e6037242f6fb2a8}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutAppStatusFuncUcall@{glutAppStatusFuncUcall}}
+\index{glutAppStatusFuncUcall@{glutAppStatusFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutAppStatusFuncUcall()}{glutAppStatusFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_a58b1deefc70f61252e6037242f6fb2a8} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+App\+Status\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_ab0b3fe8bbbf5ebcca9ba0b7f9add2a57}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutButtonBoxFuncUcall@{glutButtonBoxFuncUcall}}
+\index{glutButtonBoxFuncUcall@{glutButtonBoxFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutButtonBoxFuncUcall()}{glutButtonBoxFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_ab0b3fe8bbbf5ebcca9ba0b7f9add2a57} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Button\+Box\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int, int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_a956a8ef23cfcb40a2376935310250fad}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutCloseFuncUcall@{glutCloseFuncUcall}}
+\index{glutCloseFuncUcall@{glutCloseFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutCloseFuncUcall()}{glutCloseFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_a956a8ef23cfcb40a2376935310250fad} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Close\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_ab98c26c8e8201a1e40a4c9f12e93d9d7}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutCreateMenuUcall@{glutCreateMenuUcall}}
+\index{glutCreateMenuUcall@{glutCreateMenuUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutCreateMenuUcall()}{glutCreateMenuUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_ab98c26c8e8201a1e40a4c9f12e93d9d7} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} int \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Create\+Menu\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int menu, void \texorpdfstring{$\ast$}{*}user\+\_\+data), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_a6829612ad671658b00219453c42c6781}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutDialsFuncUcall@{glutDialsFuncUcall}}
+\index{glutDialsFuncUcall@{glutDialsFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutDialsFuncUcall()}{glutDialsFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_a6829612ad671658b00219453c42c6781} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Dials\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int, int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_aabb0c924cdf5298a882af8cb97264eed}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutDisplayFuncUcall@{glutDisplayFuncUcall}}
+\index{glutDisplayFuncUcall@{glutDisplayFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutDisplayFuncUcall()}{glutDisplayFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_aabb0c924cdf5298a882af8cb97264eed} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Display\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_a7d4232830c08ca7fd4417076e989410a}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutEntryFuncUcall@{glutEntryFuncUcall}}
+\index{glutEntryFuncUcall@{glutEntryFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutEntryFuncUcall()}{glutEntryFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_a7d4232830c08ca7fd4417076e989410a} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Entry\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_a0c6f249cf4507e41902f11cbe0af6948}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutIdleFuncUcall@{glutIdleFuncUcall}}
+\index{glutIdleFuncUcall@{glutIdleFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutIdleFuncUcall()}{glutIdleFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_a0c6f249cf4507e41902f11cbe0af6948} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Idle\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_a2025d78f77e78e5ebd59db98eab77c3e}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutInitContextFuncUcall@{glutInitContextFuncUcall}}
+\index{glutInitContextFuncUcall@{glutInitContextFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutInitContextFuncUcall()}{glutInitContextFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_a2025d78f77e78e5ebd59db98eab77c3e} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Init\+Context\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_a3a73efb2baf49988c8782c18df28eba4}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutInitErrorFuncUcall@{glutInitErrorFuncUcall}}
+\index{glutInitErrorFuncUcall@{glutInitErrorFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutInitErrorFuncUcall()}{glutInitErrorFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_a3a73efb2baf49988c8782c18df28eba4} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Init\+Error\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(const char \texorpdfstring{$\ast$}{*}fmt, va\+\_\+list ap, void \texorpdfstring{$\ast$}{*}user\+\_\+data), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_a58f51bb80dc0bf30b7325f9b0c98e0c6}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutInitWarningFuncUcall@{glutInitWarningFuncUcall}}
+\index{glutInitWarningFuncUcall@{glutInitWarningFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutInitWarningFuncUcall()}{glutInitWarningFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_a58f51bb80dc0bf30b7325f9b0c98e0c6} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Init\+Warning\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(const char \texorpdfstring{$\ast$}{*}fmt, va\+\_\+list ap, void \texorpdfstring{$\ast$}{*}user\+\_\+data), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_abeee592c69682175fe741383a1555376}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutJoystickFuncUcall@{glutJoystickFuncUcall}}
+\index{glutJoystickFuncUcall@{glutJoystickFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutJoystickFuncUcall()}{glutJoystickFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_abeee592c69682175fe741383a1555376} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Joystick\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(unsigned int, int, int, int, void \texorpdfstring{$\ast$}{*}), }\item[{int}]{poll\+Interval}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_a3c8effe7264bb3e906b0be2995895e79}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutKeyboardFuncUcall@{glutKeyboardFuncUcall}}
+\index{glutKeyboardFuncUcall@{glutKeyboardFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutKeyboardFuncUcall()}{glutKeyboardFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_a3c8effe7264bb3e906b0be2995895e79} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Keyboard\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(unsigned char, int, int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_a42df4041cbf83e41d0927f1b4ede7f31}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutKeyboardUpFuncUcall@{glutKeyboardUpFuncUcall}}
+\index{glutKeyboardUpFuncUcall@{glutKeyboardUpFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutKeyboardUpFuncUcall()}{glutKeyboardUpFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_a42df4041cbf83e41d0927f1b4ede7f31} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Keyboard\+Up\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(unsigned char, int, int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_aa2e49006c4524389a3428ff2a87b84a9}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutMenuDestroyFuncUcall@{glutMenuDestroyFuncUcall}}
+\index{glutMenuDestroyFuncUcall@{glutMenuDestroyFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutMenuDestroyFuncUcall()}{glutMenuDestroyFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_aa2e49006c4524389a3428ff2a87b84a9} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Menu\+Destroy\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_aed72bc96046ae0b396698974447e7662}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutMenuStatusFuncUcall@{glutMenuStatusFuncUcall}}
+\index{glutMenuStatusFuncUcall@{glutMenuStatusFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutMenuStatusFuncUcall()}{glutMenuStatusFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_aed72bc96046ae0b396698974447e7662} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Menu\+Status\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int, int, int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_a26751a0ccc73a545df1673bd7cf9939b}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutMotionFuncUcall@{glutMotionFuncUcall}}
+\index{glutMotionFuncUcall@{glutMotionFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutMotionFuncUcall()}{glutMotionFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_a26751a0ccc73a545df1673bd7cf9939b} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Motion\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int, int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_a4a763ad67727f13b8e1196cb1318dd88}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutMouseFuncUcall@{glutMouseFuncUcall}}
+\index{glutMouseFuncUcall@{glutMouseFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutMouseFuncUcall()}{glutMouseFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_a4a763ad67727f13b8e1196cb1318dd88} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Mouse\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int, int, int, int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_a7b3061680a62f18c5908f5c66087a1e0}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutMouseWheelFuncUcall@{glutMouseWheelFuncUcall}}
+\index{glutMouseWheelFuncUcall@{glutMouseWheelFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutMouseWheelFuncUcall()}{glutMouseWheelFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_a7b3061680a62f18c5908f5c66087a1e0} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Mouse\+Wheel\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int, int, int, int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_ad48e332a4c02f2210dfdcb85ffc7e10f}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutMultiButtonFuncUcall@{glutMultiButtonFuncUcall}}
+\index{glutMultiButtonFuncUcall@{glutMultiButtonFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutMultiButtonFuncUcall()}{glutMultiButtonFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_ad48e332a4c02f2210dfdcb85ffc7e10f} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Multi\+Button\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int, int, int, int, int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_ab48e167e57bd741566c8cb9732d8b075}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutMultiEntryFuncUcall@{glutMultiEntryFuncUcall}}
+\index{glutMultiEntryFuncUcall@{glutMultiEntryFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutMultiEntryFuncUcall()}{glutMultiEntryFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_ab48e167e57bd741566c8cb9732d8b075} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Multi\+Entry\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int, int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_a6b58d7e881d2902627df364d59af8759}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutMultiMotionFuncUcall@{glutMultiMotionFuncUcall}}
+\index{glutMultiMotionFuncUcall@{glutMultiMotionFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutMultiMotionFuncUcall()}{glutMultiMotionFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_a6b58d7e881d2902627df364d59af8759} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Multi\+Motion\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int, int, int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_aba60e2b76951330c0c14b6ef47daa2da}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutMultiPassiveFuncUcall@{glutMultiPassiveFuncUcall}}
+\index{glutMultiPassiveFuncUcall@{glutMultiPassiveFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutMultiPassiveFuncUcall()}{glutMultiPassiveFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_aba60e2b76951330c0c14b6ef47daa2da} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Multi\+Passive\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int, int, int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_a754c3b54ed8c4c5a55a2a8ba5d751b62}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutOverlayDisplayFuncUcall@{glutOverlayDisplayFuncUcall}}
+\index{glutOverlayDisplayFuncUcall@{glutOverlayDisplayFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutOverlayDisplayFuncUcall()}{glutOverlayDisplayFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_a754c3b54ed8c4c5a55a2a8ba5d751b62} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Overlay\+Display\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_af3dfe675bbfc77065cc8eea34ffcb384}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutPassiveMotionFuncUcall@{glutPassiveMotionFuncUcall}}
+\index{glutPassiveMotionFuncUcall@{glutPassiveMotionFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutPassiveMotionFuncUcall()}{glutPassiveMotionFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_af3dfe675bbfc77065cc8eea34ffcb384} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Passive\+Motion\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int, int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_a143d5abde9fad160bc0e2dea9b176420}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutPositionFuncUcall@{glutPositionFuncUcall}}
+\index{glutPositionFuncUcall@{glutPositionFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutPositionFuncUcall()}{glutPositionFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_a143d5abde9fad160bc0e2dea9b176420} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Position\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int, int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_a4f76841b77cb264076562c03cbf48c96}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutReshapeFuncUcall@{glutReshapeFuncUcall}}
+\index{glutReshapeFuncUcall@{glutReshapeFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutReshapeFuncUcall()}{glutReshapeFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_a4f76841b77cb264076562c03cbf48c96} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Reshape\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int, int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_afbbc6ec8c9ccf6adabba84f58af29cdc}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutSpaceballButtonFuncUcall@{glutSpaceballButtonFuncUcall}}
+\index{glutSpaceballButtonFuncUcall@{glutSpaceballButtonFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutSpaceballButtonFuncUcall()}{glutSpaceballButtonFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_afbbc6ec8c9ccf6adabba84f58af29cdc} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Spaceball\+Button\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int, int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_a11f31b5f71cd8fd2c6a57cfffdbd76c2}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutSpaceballMotionFuncUcall@{glutSpaceballMotionFuncUcall}}
+\index{glutSpaceballMotionFuncUcall@{glutSpaceballMotionFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutSpaceballMotionFuncUcall()}{glutSpaceballMotionFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_a11f31b5f71cd8fd2c6a57cfffdbd76c2} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Spaceball\+Motion\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int, int, int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_ac810a8e4a1734e6393e4dd0fffe11f63}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutSpaceballRotateFuncUcall@{glutSpaceballRotateFuncUcall}}
+\index{glutSpaceballRotateFuncUcall@{glutSpaceballRotateFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutSpaceballRotateFuncUcall()}{glutSpaceballRotateFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_ac810a8e4a1734e6393e4dd0fffe11f63} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Spaceball\+Rotate\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int, int, int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_aa757bdb5052b8f2393d5bc0723d4eefe}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutSpecialFuncUcall@{glutSpecialFuncUcall}}
+\index{glutSpecialFuncUcall@{glutSpecialFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutSpecialFuncUcall()}{glutSpecialFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_aa757bdb5052b8f2393d5bc0723d4eefe} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Special\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int, int, int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_a8259fa8d4e5ff062c9ecf1ac5780e471}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutSpecialUpFuncUcall@{glutSpecialUpFuncUcall}}
+\index{glutSpecialUpFuncUcall@{glutSpecialUpFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutSpecialUpFuncUcall()}{glutSpecialUpFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_a8259fa8d4e5ff062c9ecf1ac5780e471} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Special\+Up\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int, int, int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_ade64df15ad05246950c8fa9b02553855}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutTabletButtonFuncUcall@{glutTabletButtonFuncUcall}}
+\index{glutTabletButtonFuncUcall@{glutTabletButtonFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutTabletButtonFuncUcall()}{glutTabletButtonFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_ade64df15ad05246950c8fa9b02553855} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Tablet\+Button\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int, int, int, int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_a202075f71e0f94168cdea09293da5059}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutTabletMotionFuncUcall@{glutTabletMotionFuncUcall}}
+\index{glutTabletMotionFuncUcall@{glutTabletMotionFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutTabletMotionFuncUcall()}{glutTabletMotionFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_a202075f71e0f94168cdea09293da5059} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Tablet\+Motion\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int, int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_a275e8e5ca24139ead3d207884ac153b7}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutTimerFuncUcall@{glutTimerFuncUcall}}
+\index{glutTimerFuncUcall@{glutTimerFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutTimerFuncUcall()}{glutTimerFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_a275e8e5ca24139ead3d207884ac153b7} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Timer\+Func\+Ucall (\begin{DoxyParamCaption}\item[{unsigned int}]{time}{, }\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int, void \texorpdfstring{$\ast$}{*}), }\item[{int}]{value}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_a384d65d296f1895a4214e4630fa07ef2}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutVisibilityFuncUcall@{glutVisibilityFuncUcall}}
+\index{glutVisibilityFuncUcall@{glutVisibilityFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutVisibilityFuncUcall()}{glutVisibilityFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_a384d65d296f1895a4214e4630fa07ef2} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Visibility\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_a849e7affe07427e3ecf867da5cebfbb3}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutWindowStatusFuncUcall@{glutWindowStatusFuncUcall}}
+\index{glutWindowStatusFuncUcall@{glutWindowStatusFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutWindowStatusFuncUcall()}{glutWindowStatusFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_a849e7affe07427e3ecf867da5cebfbb3} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+Window\+Status\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{freeglut__ucall_8h_ad578c0a628b6236c08aab35715eb15ce}\index{freeglut\_ucall.h@{freeglut\_ucall.h}!glutWMCloseFuncUcall@{glutWMCloseFuncUcall}}
+\index{glutWMCloseFuncUcall@{glutWMCloseFuncUcall}!freeglut\_ucall.h@{freeglut\_ucall.h}}
+\doxysubsubsection{\texorpdfstring{glutWMCloseFuncUcall()}{glutWMCloseFuncUcall()}}
+{\footnotesize\ttfamily \label{freeglut__ucall_8h_ad578c0a628b6236c08aab35715eb15ce} 
+\mbox{\hyperlink{freeglut__std_8h_a0c13890087e4c32266826db56c710098}{FGAPI}} void \mbox{\hyperlink{freeglut__std_8h_acfe8e7260770f0d6471764f95864489c}{FGAPIENTRY}} glut\+WMClose\+Func\+Ucall (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+

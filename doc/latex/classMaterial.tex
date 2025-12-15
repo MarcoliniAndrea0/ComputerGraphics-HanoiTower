@@ -1,0 +1,380 @@
+\doxysection{Material Class Reference}
+\hypertarget{classMaterial}{}\label{classMaterial}\index{Material@{Material}}
+
+
+Rappresenta un materiale che definisce l\textquotesingle{}aspetto visivo di una mesh.  
+
+
+
+
+{\ttfamily \#include $<$material.\+h$>$}
+
+Inheritance diagram for Material\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMaterial}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMaterial_a137e987401b63eb7c6c27c3e38bc74b5}{Material}} ()
+\begin{DoxyCompactList}\small\item\em Costruttore di default per la classe \doxylink{classMaterial}{Material}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classMaterial_a255ba20d0325e6b78ff68ac739df40de}{\texorpdfstring{$\sim$}{\string~}\+Material}} ()=default
+\begin{DoxyCompactList}\small\item\em Distruttore virtuale di default. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{classMaterial_ad1b2d5fd7da5215d45548d2ea36680cf}{get\+Emission\+Color}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce il colore di emissione del materiale. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMaterial_a8f85d4f74c1e3a9f3e32c652a0918f85}{set\+Emission\+Color}} (const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} new\+Color)
+\begin{DoxyCompactList}\small\item\em Imposta il colore di emissione del materiale. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMaterial_a837857b125483f5ea2b86dbec237b83c}{set\+Ambient\+Color}} (const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} new\+Color)
+\begin{DoxyCompactList}\small\item\em Imposta il colore ambientale del materiale. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMaterial_ab5be3dd6946a874dd04cd146cd34e307}{set\+Diffuse\+Color}} (const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} new\+Color)
+\begin{DoxyCompactList}\small\item\em Imposta il colore diffuso del materiale. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMaterial_a59e0fad6423dd1b686e032d71805e540}{set\+Specular\+Color}} (const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} new\+Color)
+\begin{DoxyCompactList}\small\item\em Imposta il colore speculare del materiale. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMaterial_a56ae6b177088174bb12c580555d4e9d2}{set\+Shininess}} (const float new\+Shininess)
+\begin{DoxyCompactList}\small\item\em Imposta il valore di shininess (lucidità) del materiale. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMaterial_aea6f6de888b3267f0e86835f38f765de}{set\+Alpha}} (const float new\+Alpha)
+\begin{DoxyCompactList}\small\item\em Imposta il valore alpha (trasparenza) del materiale. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMaterial_a1b509bc6548276f44fc078381320bf00}{set\+Texture}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTexture}{Texture}} $>$ new\+Texture)
+\begin{DoxyCompactList}\small\item\em Imposta la texture da applicare al materiale. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMaterial_a4322ffa64cbdcc1bc6667e8808dd5af1}{render}} (const \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} view\+Matrix) const override
+\begin{DoxyCompactList}\small\item\em Applica il materiale al contesto Open\+GL per il rendering. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classObject}{Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classObject_afe9eeddd7068a37f62d3276a2fb49864}{Object}} ()=default
+\begin{DoxyCompactList}\small\item\em Costruttore di default. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classObject_a4fd75bb7fe75b569928245bb27fed07c}{Object}} (const std\+::string type)
+\begin{DoxyCompactList}\small\item\em Costruttore parametrico con tipo. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classObject_ae8f5483f459e46687bd01e6f9977afd3}{\texorpdfstring{$\sim$}{\string~}\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Distruttore virtuale. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classObject_a34a0b88c7f929c85ce92107ce7ba2e97}{get\+Id}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce l\textquotesingle{}identificativo univoco dell\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classObject_adf9436214bd361e0b85ac10ef2035916}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce il nome assegnato all\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+const std\+::string \mbox{\hyperlink{classObject_a60159d15921c408e2a8f828053297a13}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce il tipo dell\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classObject_adf1de6aa8f21d9b04eb700fec0700ebf}{set\+Name}} (const std\+::string new\+Name)
+\begin{DoxyCompactList}\small\item\em Assegna un nome leggibile all\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classObject_a89624881fe30113db802b64bfeed517f}{set\+Type}} (const std\+::string \&type)
+\begin{DoxyCompactList}\small\item\em Definisce il tipo/categoria dell\textquotesingle{}oggetto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classObject}{Object}}}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classObject_a65658e2cbce7cd75f9f0e5716c36082a}{reset\+Id\+Generator}} ()
+\begin{DoxyCompactList}\small\item\em Resetta il contatore statico degli ID a zero. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Rappresenta un materiale che definisce l\textquotesingle{}aspetto visivo di una mesh. 
+
+La classe \doxylink{classMaterial}{Material} gestisce tutti gli attributi che determinano come una superficie 3D appare quando viene illuminata e renderizzata. Implementa il modello di illuminazione di Phong con supporto per texture.
+
+Componenti del materiale (Modello di Phong)\+:
+\begin{DoxyItemize}
+\item {\bfseries{Emissione}}\+: Luce emessa direttamente dalla superficie (auto-\/luminosità)
+\item {\bfseries{Ambiente}}\+: Come la superficie riflette la luce ambientale diffusa
+\item {\bfseries{Diffuso}}\+: Come la superficie riflette la luce diretta (colore principale)
+\item {\bfseries{Speculare}}\+: Come la superficie riflette i punti di luce brillanti
+\item {\bfseries{Shininess}}\+: Quanto concentrati sono i riflessi speculari (lucidità)
+\item {\bfseries{Alpha}}\+: Trasparenza del materiale (0.\+0 = trasparente, 1.\+0 = opaco)
+\item {\bfseries{\doxylink{classTexture}{Texture}}}\+: Immagine applicata sulla superficie (opzionale)
+\end{DoxyItemize}
+
+Il materiale viene applicato alle mesh per determinare\+:
+\begin{DoxyItemize}
+\item Il colore della superficie sotto diverse condizioni di illuminazione
+\item La risposta ai vari tipi di luce nella scena
+\item L\textquotesingle{}eventuale mappatura di texture
+\end{DoxyItemize}
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classMesh}{Mesh} 
+
+\doxylink{classTexture}{Texture} 
+
+\doxylink{classLight}{Light} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classMaterial_a137e987401b63eb7c6c27c3e38bc74b5}\index{Material@{Material}!Material@{Material}}
+\index{Material@{Material}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{Material()}{Material()}}
+{\footnotesize\ttfamily \label{classMaterial_a137e987401b63eb7c6c27c3e38bc74b5} 
+Material\+::\+Material (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Costruttore di default per la classe \doxylink{classMaterial}{Material}. 
+
+Costruttore di default per la classe {\ttfamily \doxylink{classMaterial}{Material}}.
+
+Inizializza un materiale con valori predefiniti appropriati\+:
+\begin{DoxyItemize}
+\item Emissione\+: nero (0.\+0, 0.\+0, 0.\+0) -\/ nessuna auto-\/luminosità
+\item Ambiente\+: grigio scuro (0.\+2, 0.\+2, 0.\+2)
+\item Diffuso\+: grigio medio (0.\+8, 0.\+8, 0.\+8) -\/ colore principale
+\item Speculare\+: bianco (1.\+0, 1.\+0, 1.\+0) -\/ riflessi bianchi
+\item Shininess\+: 32.\+0 -\/ moderatamente lucido
+\item Alpha\+: 1.\+0 -\/ completamente opaco
+\item \doxylink{classTexture}{Texture}\+: nullptr -\/ nessuna texture
+\end{DoxyItemize}
+
+Crea una nuova istanza di {\ttfamily \doxylink{classMaterial}{Material}} con i seguenti parametri di default\+:
+\begin{DoxyItemize}
+\item Colore di emissione\+: (0.\+0f, 0.\+0f, 0.\+0f)
+\item Colore ambientale\+: (0.\+75f, 0.\+75f, 0.\+75f)
+\item Colore diffuso\+: (0.\+75f, 0.\+75f, 0.\+75f)
+\item Colore speculare\+: (0.\+75f, 0.\+75f, 0.\+75f)
+\item Lucentezza\+: 64.\+0f
+\item Valore alpha\+: 1.\+0f
+\item \doxylink{classTexture}{Texture}\+: Nessuna texture applicata. 
+\end{DoxyItemize}\Hypertarget{classMaterial_a255ba20d0325e6b78ff68ac739df40de}\index{Material@{Material}!````~Material@{\texorpdfstring{$\sim$}{\string~}Material}}
+\index{````~Material@{\texorpdfstring{$\sim$}{\string~}Material}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Material()}{\string~Material()}}
+{\footnotesize\ttfamily \label{classMaterial_a255ba20d0325e6b78ff68ac739df40de} 
+virtual Material\+::\texorpdfstring{$\sim$}{\string~}\+Material (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+Distruttore virtuale di default. 
+
+Libera automaticamente la texture associata se presente (tramite std\+::shared\+\_\+ptr). 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMaterial_ad1b2d5fd7da5215d45548d2ea36680cf}\index{Material@{Material}!getEmissionColor@{getEmissionColor}}
+\index{getEmissionColor@{getEmissionColor}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{getEmissionColor()}{getEmissionColor()}}
+{\footnotesize\ttfamily \label{classMaterial_ad1b2d5fd7da5215d45548d2ea36680cf} 
+\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Material\+::get\+Emission\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Restituisce il colore di emissione del materiale. 
+
+Il colore di emissione rappresenta la luce che la superficie emette autonomamente, indipendentemente dall\textquotesingle{}illuminazione esterna. Utile per simulare oggetti che emettono luce come LED, schermi, ecc.
+
+\begin{DoxyReturn}{Returns}
+Vettore RGB del colore di emissione (0.\+0-\/1.\+0 per canale)
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Un valore di (0, 0, 0) significa nessuna emissione (default). 
+\end{DoxyNote}
+\Hypertarget{classMaterial_a4322ffa64cbdcc1bc6667e8808dd5af1}\index{Material@{Material}!render@{render}}
+\index{render@{render}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily \label{classMaterial_a4322ffa64cbdcc1bc6667e8808dd5af1} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Material\+::render (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}}}]{view\+Matrix}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Applica il materiale al contesto Open\+GL per il rendering. 
+
+Configura tutti i parametri del materiale in Open\+GL, inclusi\+:
+\begin{DoxyItemize}
+\item I colori di emissione, ambiente, diffuso e speculare
+\item Il valore di shininess
+\item Il valore alpha (trasparenza)
+\item La texture (se presente)
+\end{DoxyItemize}
+
+Questo metodo deve essere chiamato prima di renderizzare la geometria a cui si vuole applicare questo materiale.
+
+
+\begin{DoxyParams}{Parameters}
+{\em view\+Matrix} & La matrice di vista corrente (non utilizzata direttamente dal materiale ma richiesta dall\textquotesingle{}interfaccia \doxylink{classObject}{Object})\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Questo metodo è chiamato automaticamente dal sistema di rendering. Non dovrebbe essere necessario chiamarlo manualmente. 
+\end{DoxyNote}
+
+
+Implements \mbox{\hyperlink{classObject_a641d85cb7641c16c0d8ff4cf81798d52}{Object}}.
+
+\Hypertarget{classMaterial_aea6f6de888b3267f0e86835f38f765de}\index{Material@{Material}!setAlpha@{setAlpha}}
+\index{setAlpha@{setAlpha}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{setAlpha()}{setAlpha()}}
+{\footnotesize\ttfamily \label{classMaterial_aea6f6de888b3267f0e86835f38f765de} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Material\+::set\+Alpha (\begin{DoxyParamCaption}\item[{const float}]{new\+Alpha}{}\end{DoxyParamCaption})}
+
+
+
+Imposta il valore alpha (trasparenza) del materiale. 
+
+L\textquotesingle{}alpha determina l\textquotesingle{}opacità della superficie\+:
+\begin{DoxyItemize}
+\item 0.\+0\+: Completamente trasparente (invisibile)
+\item 1.\+0\+: Completamente opaco (default)
+\item Valori intermedi\+: Semi-\/trasparente
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Alpha} & Nuovo valore alpha nel range \mbox{[}0.\+0, 1.\+0\mbox{]}\\
+\hline
+\end{DoxyParams}
+Esempio di utilizzo\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{material-\/>setAlpha(0.5f);\ \textcolor{comment}{//\ 50\%\ trasparente\ (vetro)}}
+\DoxyCodeLine{material-\/>setAlpha(0.2f);\ \textcolor{comment}{//\ Molto\ trasparente}}
+
+\end{DoxyCode}
+
+
+\begin{DoxyNote}{Note}
+Per rendering corretto della trasparenza, gli oggetti semi-\/trasparenti devono essere renderizzati in ordine back-\/to-\/front. 
+\end{DoxyNote}
+\Hypertarget{classMaterial_a837857b125483f5ea2b86dbec237b83c}\index{Material@{Material}!setAmbientColor@{setAmbientColor}}
+\index{setAmbientColor@{setAmbientColor}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{setAmbientColor()}{setAmbientColor()}}
+{\footnotesize\ttfamily \label{classMaterial_a837857b125483f5ea2b86dbec237b83c} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Material\+::set\+Ambient\+Color (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}}}]{new\+Color}{}\end{DoxyParamCaption})}
+
+
+
+Imposta il colore ambientale del materiale. 
+
+Definisce come la superficie riflette la luce ambientale diffusa presente nella scena. Tipicamente un colore a bassa intensità.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Color} & Nuovo colore ambientale come vettore RGB (0.\+0-\/1.\+0)\\
+\hline
+\end{DoxyParams}
+Esempio di utilizzo\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{material-\/>setAmbientColor(\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm::vec3}}(0.1f,\ 0.1f,\ 0.2f));\ \textcolor{comment}{//\ Tinta\ bluastra}}
+
+\end{DoxyCode}
+ \Hypertarget{classMaterial_ab5be3dd6946a874dd04cd146cd34e307}\index{Material@{Material}!setDiffuseColor@{setDiffuseColor}}
+\index{setDiffuseColor@{setDiffuseColor}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{setDiffuseColor()}{setDiffuseColor()}}
+{\footnotesize\ttfamily \label{classMaterial_ab5be3dd6946a874dd04cd146cd34e307} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Material\+::set\+Diffuse\+Color (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}}}]{new\+Color}{}\end{DoxyParamCaption})}
+
+
+
+Imposta il colore diffuso del materiale. 
+
+Il colore diffuso è il colore principale della superficie, quello che percepiamo sotto illuminazione normale. Determina come la superficie riflette la luce diretta.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Color} & Nuovo colore diffuso come vettore RGB (0.\+0-\/1.\+0)\\
+\hline
+\end{DoxyParams}
+Esempio di utilizzo\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{material-\/>setDiffuseColor(\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm::vec3}}(0.8f,\ 0.2f,\ 0.2f));\ \textcolor{comment}{//\ Rosso}}
+
+\end{DoxyCode}
+ \Hypertarget{classMaterial_a8f85d4f74c1e3a9f3e32c652a0918f85}\index{Material@{Material}!setEmissionColor@{setEmissionColor}}
+\index{setEmissionColor@{setEmissionColor}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{setEmissionColor()}{setEmissionColor()}}
+{\footnotesize\ttfamily \label{classMaterial_a8f85d4f74c1e3a9f3e32c652a0918f85} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Material\+::set\+Emission\+Color (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}}}]{new\+Color}{}\end{DoxyParamCaption})}
+
+
+
+Imposta il colore di emissione del materiale. 
+
+Modifica la quantità di luce che la superficie emette autonomamente. Valori non-\/zero renderanno l\textquotesingle{}oggetto visibile anche senza illuminazione.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Color} & Nuovo colore di emissione come vettore RGB (0.\+0-\/1.\+0)\\
+\hline
+\end{DoxyParams}
+Esempio di utilizzo\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{material-\/>setEmissionColor(\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm::vec3}}(1.0f,\ 0.0f,\ 0.0f));\ \textcolor{comment}{//\ Rosso\ brillante}}
+
+\end{DoxyCode}
+ \Hypertarget{classMaterial_a56ae6b177088174bb12c580555d4e9d2}\index{Material@{Material}!setShininess@{setShininess}}
+\index{setShininess@{setShininess}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{setShininess()}{setShininess()}}
+{\footnotesize\ttfamily \label{classMaterial_a56ae6b177088174bb12c580555d4e9d2} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Material\+::set\+Shininess (\begin{DoxyParamCaption}\item[{const float}]{new\+Shininess}{}\end{DoxyParamCaption})}
+
+
+
+Imposta il valore di shininess (lucidità) del materiale. 
+
+La shininess controlla quanto sono concentrati i riflessi speculari\+:
+\begin{DoxyItemize}
+\item Valori bassi (1-\/10)\+: Riflessi ampi e diffusi (superfici opache)
+\item Valori medi (10-\/100)\+: Riflessi moderatamente concentrati (plastica, legno)
+\item Valori alti (100+)\+: Riflessi molto concentrati (metallo lucido, specchi)
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Shininess} & Nuovo valore di shininess (tipicamente 1-\/128)\\
+\hline
+\end{DoxyParams}
+Esempio di utilizzo\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{material-\/>setShininess(128.0f);\ \textcolor{comment}{//\ Superficie\ molto\ lucida\ (metallo)}}
+\DoxyCodeLine{material-\/>setShininess(10.0f);\ \ \textcolor{comment}{//\ Superficie\ opaca\ (gomma)}}
+
+\end{DoxyCode}
+ \Hypertarget{classMaterial_a59e0fad6423dd1b686e032d71805e540}\index{Material@{Material}!setSpecularColor@{setSpecularColor}}
+\index{setSpecularColor@{setSpecularColor}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{setSpecularColor()}{setSpecularColor()}}
+{\footnotesize\ttfamily \label{classMaterial_a59e0fad6423dd1b686e032d71805e540} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Material\+::set\+Specular\+Color (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}}}]{new\+Color}{}\end{DoxyParamCaption})}
+
+
+
+Imposta il colore speculare del materiale. 
+
+Definisce il colore dei riflessi brillanti sulla superficie. Solitamente bianco o simile al colore della luce per materiali realistici.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Color} & Nuovo colore speculare come vettore RGB (0.\+0-\/1.\+0)\\
+\hline
+\end{DoxyParams}
+Esempio di utilizzo\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{material-\/>setSpecularColor(\mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm::vec3}}(1.0f,\ 1.0f,\ 1.0f));\ \textcolor{comment}{//\ Riflessi\ bianchi}}
+
+\end{DoxyCode}
+ \Hypertarget{classMaterial_a1b509bc6548276f44fc078381320bf00}\index{Material@{Material}!setTexture@{setTexture}}
+\index{setTexture@{setTexture}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{setTexture()}{setTexture()}}
+{\footnotesize\ttfamily \label{classMaterial_a1b509bc6548276f44fc078381320bf00} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Material\+::set\+Texture (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTexture}{Texture}} $>$}]{new\+Texture}{}\end{DoxyParamCaption})}
+
+
+
+Imposta la texture da applicare al materiale. 
+
+Associa un\textquotesingle{}immagine texture che verrà mappata sulla superficie della mesh. La texture sostituisce o modula il colore diffuso del materiale.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Texture} & Puntatore condiviso alla texture da applicare, o nullptr per rimuovere la texture corrente\\
+\hline
+\end{DoxyParams}
+Esempio di utilizzo\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ tex\ =\ std::make\_shared<Texture>(\textcolor{stringliteral}{"{}textures/brick.jpg"{}});}
+\DoxyCodeLine{material-\/>setTexture(tex);}
+
+\end{DoxyCode}
+
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classTexture}{Texture} 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/\mbox{\hyperlink{material_8h}{material.\+h}}\item 
+engine/\mbox{\hyperlink{material_8cpp}{material.\+cpp}}\end{DoxyCompactItemize}

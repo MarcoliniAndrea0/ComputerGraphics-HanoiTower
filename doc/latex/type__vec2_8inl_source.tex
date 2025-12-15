@@ -1,0 +1,921 @@
+\doxysection{type\+\_\+vec2.\+inl}
+\hypertarget{type__vec2_8inl_source}{}\label{type__vec2_8inl_source}\index{dependencies/glm/include/glm/detail/type\_vec2.inl@{dependencies/glm/include/glm/detail/type\_vec2.inl}}
+\mbox{\hyperlink{type__vec2_8inl}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{compute__vector__relational_8hpp}{./compute\_vector\_relational.hpp}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceglm}{glm}}}
+\DoxyCodeLine{00006\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{comment}{//\ -\/-\/\ Implicit\ basic\ constructors\ -\/-\/}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#\ \ \ if\ GLM\_CONFIG\_DEFAULTED\_DEFAULT\_CTOR\ ==\ GLM\_DISABLE}}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{setup_8hpp_acd03be6e794a7a93af332b1785c9c84b}{GLM\_DEFAULTED\_DEFAULT\_CTOR\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>::vec}}()}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ \ \ \ \ if\ GLM\_CONFIG\_CTOR\_INIT\ !=\ GLM\_CTOR\_INIT\_DISABLE}}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ x(0),\ y(0)}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ \ \ \ \ endif}}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \{\}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#\ \ \ endif}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#\ \ \ if\ GLM\_CONFIG\_DEFAULTED\_FUNCTIONS\ ==\ GLM\_DISABLE}}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a8d46131aebdec5adbbb66521c86d3afe}{GLM\_DEFAULTED\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>::vec}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ :\ x(v.x),\ y(v.y)}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \{\}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#\ \ \ endif}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ P>}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>::vec(vec<2,\ T,\ P>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ :\ x(v.x),\ y(v.y)}
+\DoxyCodeLine{00029\ \ \ \ \ \{\}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ -\/-\/\ Explicit\ basic\ constructors\ -\/-\/}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>::vec(T\ scalar)}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ :\ x(scalar),\ y(scalar)}
+\DoxyCodeLine{00036\ \ \ \ \ \{\}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>::vec(T\ \_x,\ T\ \_y)}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ :\ x(\_x),\ y(\_y)}
+\DoxyCodeLine{00041\ \ \ \ \ \{\}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//\ -\/-\/\ Conversion\ scalar\ constructors\ -\/-\/}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U,\ qualifier\ P>}
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>::vec(vec<1,\ U,\ P>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ :\ x(static\_cast<T>(v.x))}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ ,\ y(static\_cast<T>(v.x))}
+\DoxyCodeLine{00050\ \ \ \ \ \{\}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ A,\ \textcolor{keyword}{typename}\ B>}
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>::vec(A\ \_x,\ B\ \_y)}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ :\ x(static\_cast<T>(\_x))}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ ,\ y(static\_cast<T>(\_y))}
+\DoxyCodeLine{00057\ \ \ \ \ \{\}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ A,\ \textcolor{keyword}{typename}\ B>}
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>::vec(vec<1,\ A,\ Q>\ \textcolor{keyword}{const}\&\ \_x,\ B\ \_y)}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ :\ x(static\_cast<T>(\_x.x))}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ ,\ y(static\_cast<T>(\_y))}
+\DoxyCodeLine{00064\ \ \ \ \ \{\}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ A,\ \textcolor{keyword}{typename}\ B>}
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>::vec(A\ \_x,\ vec<1,\ B,\ Q>\ \textcolor{keyword}{const}\&\ \_y)}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ :\ x(static\_cast<T>(\_x))}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ ,\ y(static\_cast<T>(\_y.x))}
+\DoxyCodeLine{00071\ \ \ \ \ \{\}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ A,\ \textcolor{keyword}{typename}\ B>}
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>::vec(vec<1,\ A,\ Q>\ \textcolor{keyword}{const}\&\ \_x,\ vec<1,\ B,\ Q>\ \textcolor{keyword}{const}\&\ \_y)}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ :\ x(static\_cast<T>(\_x.x))}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ ,\ y(static\_cast<T>(\_y.x))}
+\DoxyCodeLine{00078\ \ \ \ \ \{\}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//\ -\/-\/\ Conversion\ vector\ constructors\ -\/-\/}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U,\ qualifier\ P>}
+\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>::vec(vec<2,\ U,\ P>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ :\ x(static\_cast<T>(v.x))}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ ,\ y(static\_cast<T>(v.y))}
+\DoxyCodeLine{00087\ \ \ \ \ \{\}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U,\ qualifier\ P>}
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>::vec(vec<3,\ U,\ P>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ :\ x(static\_cast<T>(v.x))}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ ,\ y(static\_cast<T>(v.y))}
+\DoxyCodeLine{00094\ \ \ \ \ \{\}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U,\ qualifier\ P>}
+\DoxyCodeLine{00098\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>::vec(vec<4,\ U,\ P>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ :\ x(static\_cast<T>(v.x))}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ ,\ y(static\_cast<T>(v.y))}
+\DoxyCodeLine{00101\ \ \ \ \ \{\}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{comment}{//\ -\/-\/\ Component\ accesses\ -\/-\/}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00106\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ T\ \&\ vec<2,\ T,\ Q>::operator[](\textcolor{keyword}{typename}\ vec<2,\ T,\ Q>::length\_type\ i)}
+\DoxyCodeLine{00107\ \ \ \ \ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ae83cabe58cd27cdd6170fcb1db626626}{GLM\_ASSERT\_LENGTH}}(i,\ this-\/>\mbox{\hyperlink{namespaceglm_abcd8538aa95a8963803ec42c2fd654cd}{length}}());}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(i)}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0:}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ x;}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ y;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00117\ \ \ \ \ \}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00120\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ T\ \textcolor{keyword}{const}\&\ vec<2,\ T,\ Q>::operator[](\textcolor{keyword}{typename}\ vec<2,\ T,\ Q>::length\_type\ i)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00121\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ae83cabe58cd27cdd6170fcb1db626626}{GLM\_ASSERT\_LENGTH}}(i,\ this-\/>\mbox{\hyperlink{namespaceglm_abcd8538aa95a8963803ec42c2fd654cd}{length}}());}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(i)}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0:}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ x;}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ y;}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00131\ \ \ \ \ \}}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{comment}{//\ -\/-\/\ Unary\ arithmetic\ operators\ -\/-\/}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\#\ \ \ if\ GLM\_CONFIG\_DEFAULTED\_FUNCTIONS\ ==\ GLM\_DISABLE}}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a8d46131aebdec5adbbb66521c86d3afe}{GLM\_DEFAULTED\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator=(vec<2,\ T,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>x\ =\ v.x;}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>y\ =\ v.y;}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\#\ \ \ endif}}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00147\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator=(vec<2,\ U,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00148\ \ \ \ \ \{}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ this-\/>x\ =\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ this-\/>y\ =\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.y);}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00152\ \ \ \ \ \}}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00156\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator+=(U\ scalar)}
+\DoxyCodeLine{00157\ \ \ \ \ \{}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ this-\/>x\ +=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(scalar);}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ this-\/>y\ +=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(scalar);}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00161\ \ \ \ \ \}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00165\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator+=(vec<1,\ U,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00166\ \ \ \ \ \{}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ this-\/>x\ +=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ this-\/>y\ +=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00170\ \ \ \ \ \}}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00174\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator+=(vec<2,\ U,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00175\ \ \ \ \ \{}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ this-\/>x\ +=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ this-\/>y\ +=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.y);}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00179\ \ \ \ \ \}}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00183\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator-\/=(U\ scalar)}
+\DoxyCodeLine{00184\ \ \ \ \ \{}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ this-\/>x\ -\/=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(scalar);}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ this-\/>y\ -\/=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(scalar);}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00188\ \ \ \ \ \}}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00190\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00192\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator-\/=(vec<1,\ U,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00193\ \ \ \ \ \{}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ this-\/>x\ -\/=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ this-\/>y\ -\/=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00197\ \ \ \ \ \}}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00200\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00201\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator-\/=(vec<2,\ U,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00202\ \ \ \ \ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ this-\/>x\ -\/=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ this-\/>y\ -\/=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.y);}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00206\ \ \ \ \ \}}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00210\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator*=(U\ scalar)}
+\DoxyCodeLine{00211\ \ \ \ \ \{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ this-\/>x\ *=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(scalar);}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ this-\/>y\ *=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(scalar);}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00215\ \ \ \ \ \}}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00218\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00219\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator*=(vec<1,\ U,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00220\ \ \ \ \ \{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ this-\/>x\ *=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ this-\/>y\ *=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00224\ \ \ \ \ \}}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00226\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00228\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator*=(vec<2,\ U,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00229\ \ \ \ \ \{}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ this-\/>x\ *=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ this-\/>y\ *=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.y);}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00233\ \ \ \ \ \}}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00235\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00237\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator/=(U\ scalar)}
+\DoxyCodeLine{00238\ \ \ \ \ \{}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ this-\/>x\ /=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(scalar);}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ this-\/>y\ /=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(scalar);}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00242\ \ \ \ \ \}}
+\DoxyCodeLine{00243\ }
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00246\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator/=(vec<1,\ U,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00247\ \ \ \ \ \{}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ this-\/>x\ /=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ this-\/>y\ /=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00251\ \ \ \ \ \}}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00253\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00254\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00255\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator/=(vec<2,\ U,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00256\ \ \ \ \ \{}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ this-\/>x\ /=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ this-\/>y\ /=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.y);}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00260\ \ \ \ \ \}}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00262\ \ \ \ \ \textcolor{comment}{//\ -\/-\/\ Increment\ and\ decrement\ operators\ -\/-\/}}
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00264\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00265\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator++()}
+\DoxyCodeLine{00266\ \ \ \ \ \{}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ ++this-\/>x;}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ ++this-\/>y;}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00270\ \ \ \ \ \}}
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00272\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00273\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator-\/-\/()}
+\DoxyCodeLine{00274\ \ \ \ \ \{}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ -\/-\/this-\/>x;}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ -\/-\/this-\/>y;}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00278\ \ \ \ \ \}}
+\DoxyCodeLine{00279\ }
+\DoxyCodeLine{00280\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00281\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ vec<2,\ T,\ Q>::operator++(\textcolor{keywordtype}{int})}
+\DoxyCodeLine{00282\ \ \ \ \ \{}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ vec<2,\ T,\ Q>\ Result(*\textcolor{keyword}{this});}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ ++*\textcolor{keyword}{this};}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Result;}
+\DoxyCodeLine{00286\ \ \ \ \ \}}
+\DoxyCodeLine{00287\ }
+\DoxyCodeLine{00288\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00289\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ vec<2,\ T,\ Q>::operator-\/-\/(\textcolor{keywordtype}{int})}
+\DoxyCodeLine{00290\ \ \ \ \ \{}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ vec<2,\ T,\ Q>\ Result(*\textcolor{keyword}{this});}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ -\/-\/*\textcolor{keyword}{this};}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Result;}
+\DoxyCodeLine{00294\ \ \ \ \ \}}
+\DoxyCodeLine{00295\ }
+\DoxyCodeLine{00296\ \ \ \ \ \textcolor{comment}{//\ -\/-\/\ Unary\ bit\ operators\ -\/-\/}}
+\DoxyCodeLine{00297\ }
+\DoxyCodeLine{00298\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00299\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00300\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator\%=(U\ scalar)}
+\DoxyCodeLine{00301\ \ \ \ \ \{}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ this-\/>x\ \%=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(scalar);}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ this-\/>y\ \%=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(scalar);}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00305\ \ \ \ \ \}}
+\DoxyCodeLine{00306\ }
+\DoxyCodeLine{00307\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00308\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00309\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator\%=(vec<1,\ U,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00310\ \ \ \ \ \{}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ this-\/>x\ \%=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ this-\/>y\ \%=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00314\ \ \ \ \ \}}
+\DoxyCodeLine{00315\ }
+\DoxyCodeLine{00316\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00317\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00318\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator\%=(vec<2,\ U,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00319\ \ \ \ \ \{}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ this-\/>x\ \%=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ this-\/>y\ \%=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.y);}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00323\ \ \ \ \ \}}
+\DoxyCodeLine{00324\ }
+\DoxyCodeLine{00325\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00326\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00327\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator\&=(U\ scalar)}
+\DoxyCodeLine{00328\ \ \ \ \ \{}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ this-\/>x\ \&=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(scalar);}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ this-\/>y\ \&=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(scalar);}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00332\ \ \ \ \ \}}
+\DoxyCodeLine{00333\ }
+\DoxyCodeLine{00334\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00335\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00336\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator\&=(vec<1,\ U,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00337\ \ \ \ \ \{}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ this-\/>x\ \&=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ this-\/>y\ \&=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00341\ \ \ \ \ \}}
+\DoxyCodeLine{00342\ }
+\DoxyCodeLine{00343\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00344\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00345\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator\&=(vec<2,\ U,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00346\ \ \ \ \ \{}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ this-\/>x\ \&=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ this-\/>y\ \&=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.y);}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00350\ \ \ \ \ \}}
+\DoxyCodeLine{00351\ }
+\DoxyCodeLine{00352\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00353\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00354\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator|=(U\ scalar)}
+\DoxyCodeLine{00355\ \ \ \ \ \{}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ this-\/>x\ |=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(scalar);}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ this-\/>y\ |=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(scalar);}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00359\ \ \ \ \ \}}
+\DoxyCodeLine{00360\ }
+\DoxyCodeLine{00361\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00362\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00363\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator|=(vec<1,\ U,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00364\ \ \ \ \ \{}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ this-\/>x\ |=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ this-\/>y\ |=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00368\ \ \ \ \ \}}
+\DoxyCodeLine{00369\ }
+\DoxyCodeLine{00370\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00371\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00372\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator|=(vec<2,\ U,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00373\ \ \ \ \ \{}
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ this-\/>x\ |=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ this-\/>y\ |=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.y);}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00377\ \ \ \ \ \}}
+\DoxyCodeLine{00378\ }
+\DoxyCodeLine{00379\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00380\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00381\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator\string^=(U\ scalar)}
+\DoxyCodeLine{00382\ \ \ \ \ \{}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ this-\/>x\ \string^=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(scalar);}
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ this-\/>y\ \string^=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(scalar);}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00386\ \ \ \ \ \}}
+\DoxyCodeLine{00387\ }
+\DoxyCodeLine{00388\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00389\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00390\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator\string^=(vec<1,\ U,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00391\ \ \ \ \ \{}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ this-\/>x\ \string^=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ this-\/>y\ \string^=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00395\ \ \ \ \ \}}
+\DoxyCodeLine{00396\ }
+\DoxyCodeLine{00397\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00398\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00399\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator\string^=(vec<2,\ U,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00400\ \ \ \ \ \{}
+\DoxyCodeLine{00401\ \ \ \ \ \ \ \ \ this-\/>x\ \string^=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ this-\/>y\ \string^=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.y);}
+\DoxyCodeLine{00403\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00404\ \ \ \ \ \}}
+\DoxyCodeLine{00405\ }
+\DoxyCodeLine{00406\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00407\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00408\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator<<=(U\ scalar)}
+\DoxyCodeLine{00409\ \ \ \ \ \{}
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ this-\/>x\ <<=\ static\_cast<T>(scalar);}
+\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ this-\/>y\ <<=\ static\_cast<T>(scalar);}
+\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00413\ \ \ \ \ \}}
+\DoxyCodeLine{00414\ }
+\DoxyCodeLine{00415\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00416\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00417\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator<<=(vec<1,\ U,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00418\ \ \ \ \ \{}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ this-\/>x\ <<=\ static\_cast<T>(v.x);}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ this-\/>y\ <<=\ static\_cast<T>(v.x);}
+\DoxyCodeLine{00421\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00422\ \ \ \ \ \}}
+\DoxyCodeLine{00423\ }
+\DoxyCodeLine{00424\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00425\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00426\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator<<=(vec<2,\ U,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00427\ \ \ \ \ \{}
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ this-\/>x\ <<=\ static\_cast<T>(v.x);}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ this-\/>y\ <<=\ static\_cast<T>(v.y);}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00431\ \ \ \ \ \}}
+\DoxyCodeLine{00432\ }
+\DoxyCodeLine{00433\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00434\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00435\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator>>=(U\ scalar)}
+\DoxyCodeLine{00436\ \ \ \ \ \{}
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ this-\/>x\ >>=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(scalar);}
+\DoxyCodeLine{00438\ \ \ \ \ \ \ \ \ this-\/>y\ >>=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(scalar);}
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00440\ \ \ \ \ \}}
+\DoxyCodeLine{00441\ }
+\DoxyCodeLine{00442\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00443\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00444\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator>>=(vec<1,\ U,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00445\ \ \ \ \ \{}
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ this-\/>x\ >>=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \ \ this-\/>y\ >>=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00449\ \ \ \ \ \}}
+\DoxyCodeLine{00450\ }
+\DoxyCodeLine{00451\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00452\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00453\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ vec<2,\ T,\ Q>\ \&\ vec<2,\ T,\ Q>::operator>>=(vec<2,\ U,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00454\ \ \ \ \ \{}
+\DoxyCodeLine{00455\ \ \ \ \ \ \ \ \ this-\/>x\ >>=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.x);}
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \ \ this-\/>y\ >>=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(v.y);}
+\DoxyCodeLine{00457\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00458\ \ \ \ \ \}}
+\DoxyCodeLine{00459\ }
+\DoxyCodeLine{00460\ \ \ \ \ \textcolor{comment}{//\ -\/-\/\ Unary\ arithmetic\ operators\ -\/-\/}}
+\DoxyCodeLine{00461\ }
+\DoxyCodeLine{00462\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00463\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a809ba0dcacd43e527e0e61df2f5d1a30}{operator+}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00464\ \ \ \ \ \{}
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ v;}
+\DoxyCodeLine{00466\ \ \ \ \ \}}
+\DoxyCodeLine{00467\ }
+\DoxyCodeLine{00468\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00469\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a1dfbbd88a1a43e04673684ab46d94534}{operator-\/}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00470\ \ \ \ \ \{}
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \ \ \ \ \ \ -\/v.x,}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \ \ \ \ -\/v.y);}
+\DoxyCodeLine{00474\ \ \ \ \ \}}
+\DoxyCodeLine{00475\ }
+\DoxyCodeLine{00476\ \ \ \ \ \textcolor{comment}{//\ -\/-\/\ Binary\ arithmetic\ operators\ -\/-\/}}
+\DoxyCodeLine{00477\ }
+\DoxyCodeLine{00478\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00479\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a809ba0dcacd43e527e0e61df2f5d1a30}{operator+}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v,\ T\ scalar)}
+\DoxyCodeLine{00480\ \ \ \ \ \{}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \ \ \ \ v.x\ +\ scalar,}
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ \ \ \ \ v.y\ +\ scalar);}
+\DoxyCodeLine{00484\ \ \ \ \ \}}
+\DoxyCodeLine{00485\ }
+\DoxyCodeLine{00486\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00487\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a809ba0dcacd43e527e0e61df2f5d1a30}{operator+}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<1,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00488\ \ \ \ \ \{}
+\DoxyCodeLine{00489\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ +\ v2.x,}
+\DoxyCodeLine{00491\ \ \ \ \ \ \ \ \ \ \ \ \ v1.y\ +\ v2.x);}
+\DoxyCodeLine{00492\ \ \ \ \ \}}
+\DoxyCodeLine{00493\ }
+\DoxyCodeLine{00494\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00495\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a809ba0dcacd43e527e0e61df2f5d1a30}{operator+}}(T\ scalar,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00496\ \ \ \ \ \{}
+\DoxyCodeLine{00497\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00498\ \ \ \ \ \ \ \ \ \ \ \ \ scalar\ +\ v.x,}
+\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ \ \ \ \ scalar\ +\ v.y);}
+\DoxyCodeLine{00500\ \ \ \ \ \}}
+\DoxyCodeLine{00501\ }
+\DoxyCodeLine{00502\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00503\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a809ba0dcacd43e527e0e61df2f5d1a30}{operator+}}(\mbox{\hyperlink{structglm_1_1vec}{vec<1,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00504\ \ \ \ \ \{}
+\DoxyCodeLine{00505\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00506\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ +\ v2.x,}
+\DoxyCodeLine{00507\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ +\ v2.y);}
+\DoxyCodeLine{00508\ \ \ \ \ \}}
+\DoxyCodeLine{00509\ }
+\DoxyCodeLine{00510\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00511\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a809ba0dcacd43e527e0e61df2f5d1a30}{operator+}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00512\ \ \ \ \ \{}
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00514\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ +\ v2.x,}
+\DoxyCodeLine{00515\ \ \ \ \ \ \ \ \ \ \ \ \ v1.y\ +\ v2.y);}
+\DoxyCodeLine{00516\ \ \ \ \ \}}
+\DoxyCodeLine{00517\ }
+\DoxyCodeLine{00518\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00519\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a1dfbbd88a1a43e04673684ab46d94534}{operator-\/}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v,\ T\ scalar)}
+\DoxyCodeLine{00520\ \ \ \ \ \{}
+\DoxyCodeLine{00521\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00522\ \ \ \ \ \ \ \ \ \ \ \ \ v.x\ -\/\ scalar,}
+\DoxyCodeLine{00523\ \ \ \ \ \ \ \ \ \ \ \ \ v.y\ -\/\ scalar);}
+\DoxyCodeLine{00524\ \ \ \ \ \}}
+\DoxyCodeLine{00525\ }
+\DoxyCodeLine{00526\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00527\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a1dfbbd88a1a43e04673684ab46d94534}{operator-\/}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<1,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00528\ \ \ \ \ \{}
+\DoxyCodeLine{00529\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00530\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ -\/\ v2.x,}
+\DoxyCodeLine{00531\ \ \ \ \ \ \ \ \ \ \ \ \ v1.y\ -\/\ v2.x);}
+\DoxyCodeLine{00532\ \ \ \ \ \}}
+\DoxyCodeLine{00533\ }
+\DoxyCodeLine{00534\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00535\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a1dfbbd88a1a43e04673684ab46d94534}{operator-\/}}(T\ scalar,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00536\ \ \ \ \ \{}
+\DoxyCodeLine{00537\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00538\ \ \ \ \ \ \ \ \ \ \ \ \ scalar\ -\/\ v.x,}
+\DoxyCodeLine{00539\ \ \ \ \ \ \ \ \ \ \ \ \ scalar\ -\/\ v.y);}
+\DoxyCodeLine{00540\ \ \ \ \ \}}
+\DoxyCodeLine{00541\ }
+\DoxyCodeLine{00542\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00543\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a1dfbbd88a1a43e04673684ab46d94534}{operator-\/}}(\mbox{\hyperlink{structglm_1_1vec}{vec<1,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00544\ \ \ \ \ \{}
+\DoxyCodeLine{00545\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00546\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ -\/\ v2.x,}
+\DoxyCodeLine{00547\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ -\/\ v2.y);}
+\DoxyCodeLine{00548\ \ \ \ \ \}}
+\DoxyCodeLine{00549\ }
+\DoxyCodeLine{00550\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00551\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a1dfbbd88a1a43e04673684ab46d94534}{operator-\/}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00552\ \ \ \ \ \{}
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ -\/\ v2.x,}
+\DoxyCodeLine{00555\ \ \ \ \ \ \ \ \ \ \ \ \ v1.y\ -\/\ v2.y);}
+\DoxyCodeLine{00556\ \ \ \ \ \}}
+\DoxyCodeLine{00557\ }
+\DoxyCodeLine{00558\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00559\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a059eb05d5d67f9f3482d905a80899bc6}{operator*}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v,\ T\ scalar)}
+\DoxyCodeLine{00560\ \ \ \ \ \{}
+\DoxyCodeLine{00561\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00562\ \ \ \ \ \ \ \ \ \ \ \ \ v.x\ *\ scalar,}
+\DoxyCodeLine{00563\ \ \ \ \ \ \ \ \ \ \ \ \ v.y\ *\ scalar);}
+\DoxyCodeLine{00564\ \ \ \ \ \}}
+\DoxyCodeLine{00565\ }
+\DoxyCodeLine{00566\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00567\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a059eb05d5d67f9f3482d905a80899bc6}{operator*}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<1,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00568\ \ \ \ \ \{}
+\DoxyCodeLine{00569\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00570\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ *\ v2.x,}
+\DoxyCodeLine{00571\ \ \ \ \ \ \ \ \ \ \ \ \ v1.y\ *\ v2.x);}
+\DoxyCodeLine{00572\ \ \ \ \ \}}
+\DoxyCodeLine{00573\ }
+\DoxyCodeLine{00574\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00575\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a059eb05d5d67f9f3482d905a80899bc6}{operator*}}(T\ scalar,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00576\ \ \ \ \ \{}
+\DoxyCodeLine{00577\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00578\ \ \ \ \ \ \ \ \ \ \ \ \ scalar\ *\ v.x,}
+\DoxyCodeLine{00579\ \ \ \ \ \ \ \ \ \ \ \ \ scalar\ *\ v.y);}
+\DoxyCodeLine{00580\ \ \ \ \ \}}
+\DoxyCodeLine{00581\ }
+\DoxyCodeLine{00582\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00583\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a059eb05d5d67f9f3482d905a80899bc6}{operator*}}(\mbox{\hyperlink{structglm_1_1vec}{vec<1,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00584\ \ \ \ \ \{}
+\DoxyCodeLine{00585\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00586\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ *\ v2.x,}
+\DoxyCodeLine{00587\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ *\ v2.y);}
+\DoxyCodeLine{00588\ \ \ \ \ \}}
+\DoxyCodeLine{00589\ }
+\DoxyCodeLine{00590\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00591\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a059eb05d5d67f9f3482d905a80899bc6}{operator*}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00592\ \ \ \ \ \{}
+\DoxyCodeLine{00593\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00594\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ *\ v2.x,}
+\DoxyCodeLine{00595\ \ \ \ \ \ \ \ \ \ \ \ \ v1.y\ *\ v2.y);}
+\DoxyCodeLine{00596\ \ \ \ \ \}}
+\DoxyCodeLine{00597\ }
+\DoxyCodeLine{00598\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00599\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_ac9b148d6f97e69b28cad6be0cb041915}{operator/}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v,\ T\ scalar)}
+\DoxyCodeLine{00600\ \ \ \ \ \{}
+\DoxyCodeLine{00601\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00602\ \ \ \ \ \ \ \ \ \ \ \ \ v.x\ /\ scalar,}
+\DoxyCodeLine{00603\ \ \ \ \ \ \ \ \ \ \ \ \ v.y\ /\ scalar);}
+\DoxyCodeLine{00604\ \ \ \ \ \}}
+\DoxyCodeLine{00605\ }
+\DoxyCodeLine{00606\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00607\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_ac9b148d6f97e69b28cad6be0cb041915}{operator/}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<1,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00608\ \ \ \ \ \{}
+\DoxyCodeLine{00609\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00610\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ /\ v2.x,}
+\DoxyCodeLine{00611\ \ \ \ \ \ \ \ \ \ \ \ \ v1.y\ /\ v2.x);}
+\DoxyCodeLine{00612\ \ \ \ \ \}}
+\DoxyCodeLine{00613\ }
+\DoxyCodeLine{00614\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00615\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_ac9b148d6f97e69b28cad6be0cb041915}{operator/}}(T\ scalar,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00616\ \ \ \ \ \{}
+\DoxyCodeLine{00617\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00618\ \ \ \ \ \ \ \ \ \ \ \ \ scalar\ /\ v.x,}
+\DoxyCodeLine{00619\ \ \ \ \ \ \ \ \ \ \ \ \ scalar\ /\ v.y);}
+\DoxyCodeLine{00620\ \ \ \ \ \}}
+\DoxyCodeLine{00621\ }
+\DoxyCodeLine{00622\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00623\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_ac9b148d6f97e69b28cad6be0cb041915}{operator/}}(\mbox{\hyperlink{structglm_1_1vec}{vec<1,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00624\ \ \ \ \ \{}
+\DoxyCodeLine{00625\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00626\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ /\ v2.x,}
+\DoxyCodeLine{00627\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ /\ v2.y);}
+\DoxyCodeLine{00628\ \ \ \ \ \}}
+\DoxyCodeLine{00629\ }
+\DoxyCodeLine{00630\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00631\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_ac9b148d6f97e69b28cad6be0cb041915}{operator/}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00632\ \ \ \ \ \{}
+\DoxyCodeLine{00633\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00634\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ /\ v2.x,}
+\DoxyCodeLine{00635\ \ \ \ \ \ \ \ \ \ \ \ \ v1.y\ /\ v2.y);}
+\DoxyCodeLine{00636\ \ \ \ \ \}}
+\DoxyCodeLine{00637\ }
+\DoxyCodeLine{00638\ \ \ \ \ \textcolor{comment}{//\ -\/-\/\ Binary\ bit\ operators\ -\/-\/}}
+\DoxyCodeLine{00639\ }
+\DoxyCodeLine{00640\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00641\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_ad13992bdf0dd6f817de965e28f4ae2bf}{operator\%}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v,\ T\ scalar)}
+\DoxyCodeLine{00642\ \ \ \ \ \{}
+\DoxyCodeLine{00643\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00644\ \ \ \ \ \ \ \ \ \ \ \ \ v.x\ \%\ scalar,}
+\DoxyCodeLine{00645\ \ \ \ \ \ \ \ \ \ \ \ \ v.y\ \%\ scalar);}
+\DoxyCodeLine{00646\ \ \ \ \ \}}
+\DoxyCodeLine{00647\ }
+\DoxyCodeLine{00648\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00649\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_ad13992bdf0dd6f817de965e28f4ae2bf}{operator\%}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<1,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00650\ \ \ \ \ \{}
+\DoxyCodeLine{00651\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00652\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ \%\ v2.x,}
+\DoxyCodeLine{00653\ \ \ \ \ \ \ \ \ \ \ \ \ v1.y\ \%\ v2.x);}
+\DoxyCodeLine{00654\ \ \ \ \ \}}
+\DoxyCodeLine{00655\ }
+\DoxyCodeLine{00656\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00657\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_ad13992bdf0dd6f817de965e28f4ae2bf}{operator\%}}(T\ scalar,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00658\ \ \ \ \ \{}
+\DoxyCodeLine{00659\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00660\ \ \ \ \ \ \ \ \ \ \ \ \ scalar\ \%\ v.x,}
+\DoxyCodeLine{00661\ \ \ \ \ \ \ \ \ \ \ \ \ scalar\ \%\ v.y);}
+\DoxyCodeLine{00662\ \ \ \ \ \}}
+\DoxyCodeLine{00663\ }
+\DoxyCodeLine{00664\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00665\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_ad13992bdf0dd6f817de965e28f4ae2bf}{operator\%}}(\mbox{\hyperlink{structglm_1_1vec}{vec<1,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00666\ \ \ \ \ \{}
+\DoxyCodeLine{00667\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00668\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ \%\ v2.x,}
+\DoxyCodeLine{00669\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ \%\ v2.y);}
+\DoxyCodeLine{00670\ \ \ \ \ \}}
+\DoxyCodeLine{00671\ }
+\DoxyCodeLine{00672\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00673\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_ad13992bdf0dd6f817de965e28f4ae2bf}{operator\%}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00674\ \ \ \ \ \{}
+\DoxyCodeLine{00675\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00676\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ \%\ v2.x,}
+\DoxyCodeLine{00677\ \ \ \ \ \ \ \ \ \ \ \ \ v1.y\ \%\ v2.y);}
+\DoxyCodeLine{00678\ \ \ \ \ \}}
+\DoxyCodeLine{00679\ }
+\DoxyCodeLine{00680\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00681\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_aabdf68ef3b7be9c9b37d01227fa55a36}{operator\&}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v,\ T\ scalar)}
+\DoxyCodeLine{00682\ \ \ \ \ \{}
+\DoxyCodeLine{00683\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00684\ \ \ \ \ \ \ \ \ \ \ \ \ v.x\ \&\ scalar,}
+\DoxyCodeLine{00685\ \ \ \ \ \ \ \ \ \ \ \ \ v.y\ \&\ scalar);}
+\DoxyCodeLine{00686\ \ \ \ \ \}}
+\DoxyCodeLine{00687\ }
+\DoxyCodeLine{00688\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00689\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_aabdf68ef3b7be9c9b37d01227fa55a36}{operator\&}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<1,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00690\ \ \ \ \ \{}
+\DoxyCodeLine{00691\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00692\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ \&\ v2.x,}
+\DoxyCodeLine{00693\ \ \ \ \ \ \ \ \ \ \ \ \ v1.y\ \&\ v2.x);}
+\DoxyCodeLine{00694\ \ \ \ \ \}}
+\DoxyCodeLine{00695\ }
+\DoxyCodeLine{00696\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00697\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_aabdf68ef3b7be9c9b37d01227fa55a36}{operator\&}}(T\ scalar,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00698\ \ \ \ \ \{}
+\DoxyCodeLine{00699\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00700\ \ \ \ \ \ \ \ \ \ \ \ \ scalar\ \&\ v.x,}
+\DoxyCodeLine{00701\ \ \ \ \ \ \ \ \ \ \ \ \ scalar\ \&\ v.y);}
+\DoxyCodeLine{00702\ \ \ \ \ \}}
+\DoxyCodeLine{00703\ }
+\DoxyCodeLine{00704\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00705\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_aabdf68ef3b7be9c9b37d01227fa55a36}{operator\&}}(\mbox{\hyperlink{structglm_1_1vec}{vec<1,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00706\ \ \ \ \ \{}
+\DoxyCodeLine{00707\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00708\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ \&\ v2.x,}
+\DoxyCodeLine{00709\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ \&\ v2.y);}
+\DoxyCodeLine{00710\ \ \ \ \ \}}
+\DoxyCodeLine{00711\ }
+\DoxyCodeLine{00712\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00713\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_aabdf68ef3b7be9c9b37d01227fa55a36}{operator\&}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00714\ \ \ \ \ \{}
+\DoxyCodeLine{00715\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00716\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ \&\ v2.x,}
+\DoxyCodeLine{00717\ \ \ \ \ \ \ \ \ \ \ \ \ v1.y\ \&\ v2.y);}
+\DoxyCodeLine{00718\ \ \ \ \ \}}
+\DoxyCodeLine{00719\ }
+\DoxyCodeLine{00720\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00721\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a44ed37433f55f3f3247959ae7c5dd19d}{operator|}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v,\ T\ scalar)}
+\DoxyCodeLine{00722\ \ \ \ \ \{}
+\DoxyCodeLine{00723\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00724\ \ \ \ \ \ \ \ \ \ \ \ \ v.x\ |\ scalar,}
+\DoxyCodeLine{00725\ \ \ \ \ \ \ \ \ \ \ \ \ v.y\ |\ scalar);}
+\DoxyCodeLine{00726\ \ \ \ \ \}}
+\DoxyCodeLine{00727\ }
+\DoxyCodeLine{00728\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00729\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a44ed37433f55f3f3247959ae7c5dd19d}{operator|}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<1,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00730\ \ \ \ \ \{}
+\DoxyCodeLine{00731\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00732\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ |\ v2.x,}
+\DoxyCodeLine{00733\ \ \ \ \ \ \ \ \ \ \ \ \ v1.y\ |\ v2.x);}
+\DoxyCodeLine{00734\ \ \ \ \ \}}
+\DoxyCodeLine{00735\ }
+\DoxyCodeLine{00736\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00737\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a44ed37433f55f3f3247959ae7c5dd19d}{operator|}}(T\ scalar,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00738\ \ \ \ \ \{}
+\DoxyCodeLine{00739\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00740\ \ \ \ \ \ \ \ \ \ \ \ \ scalar\ |\ v.x,}
+\DoxyCodeLine{00741\ \ \ \ \ \ \ \ \ \ \ \ \ scalar\ |\ v.y);}
+\DoxyCodeLine{00742\ \ \ \ \ \}}
+\DoxyCodeLine{00743\ }
+\DoxyCodeLine{00744\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00745\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a44ed37433f55f3f3247959ae7c5dd19d}{operator|}}(\mbox{\hyperlink{structglm_1_1vec}{vec<1,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00746\ \ \ \ \ \{}
+\DoxyCodeLine{00747\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00748\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ |\ v2.x,}
+\DoxyCodeLine{00749\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ |\ v2.y);}
+\DoxyCodeLine{00750\ \ \ \ \ \}}
+\DoxyCodeLine{00751\ }
+\DoxyCodeLine{00752\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00753\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a44ed37433f55f3f3247959ae7c5dd19d}{operator|}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00754\ \ \ \ \ \{}
+\DoxyCodeLine{00755\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00756\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ |\ v2.x,}
+\DoxyCodeLine{00757\ \ \ \ \ \ \ \ \ \ \ \ \ v1.y\ |\ v2.y);}
+\DoxyCodeLine{00758\ \ \ \ \ \}}
+\DoxyCodeLine{00759\ }
+\DoxyCodeLine{00760\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00761\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a0bb25372483459213269be733f871e18}{operator\string^}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v,\ T\ scalar)}
+\DoxyCodeLine{00762\ \ \ \ \ \{}
+\DoxyCodeLine{00763\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00764\ \ \ \ \ \ \ \ \ \ \ \ \ v.x\ \string^\ scalar,}
+\DoxyCodeLine{00765\ \ \ \ \ \ \ \ \ \ \ \ \ v.y\ \string^\ scalar);}
+\DoxyCodeLine{00766\ \ \ \ \ \}}
+\DoxyCodeLine{00767\ }
+\DoxyCodeLine{00768\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00769\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a0bb25372483459213269be733f871e18}{operator\string^}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<1,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00770\ \ \ \ \ \{}
+\DoxyCodeLine{00771\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00772\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ \string^\ v2.x,}
+\DoxyCodeLine{00773\ \ \ \ \ \ \ \ \ \ \ \ \ v1.y\ \string^\ v2.x);}
+\DoxyCodeLine{00774\ \ \ \ \ \}}
+\DoxyCodeLine{00775\ }
+\DoxyCodeLine{00776\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00777\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a0bb25372483459213269be733f871e18}{operator\string^}}(T\ scalar,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00778\ \ \ \ \ \{}
+\DoxyCodeLine{00779\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00780\ \ \ \ \ \ \ \ \ \ \ \ \ scalar\ \string^\ v.x,}
+\DoxyCodeLine{00781\ \ \ \ \ \ \ \ \ \ \ \ \ scalar\ \string^\ v.y);}
+\DoxyCodeLine{00782\ \ \ \ \ \}}
+\DoxyCodeLine{00783\ }
+\DoxyCodeLine{00784\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00785\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a0bb25372483459213269be733f871e18}{operator\string^}}(\mbox{\hyperlink{structglm_1_1vec}{vec<1,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00786\ \ \ \ \ \{}
+\DoxyCodeLine{00787\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00788\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ \string^\ v2.x,}
+\DoxyCodeLine{00789\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ \string^\ v2.y);}
+\DoxyCodeLine{00790\ \ \ \ \ \}}
+\DoxyCodeLine{00791\ }
+\DoxyCodeLine{00792\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00793\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a0bb25372483459213269be733f871e18}{operator\string^}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00794\ \ \ \ \ \{}
+\DoxyCodeLine{00795\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00796\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ \string^\ v2.x,}
+\DoxyCodeLine{00797\ \ \ \ \ \ \ \ \ \ \ \ \ v1.y\ \string^\ v2.y);}
+\DoxyCodeLine{00798\ \ \ \ \ \}}
+\DoxyCodeLine{00799\ }
+\DoxyCodeLine{00800\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00801\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_ad3cf7f0e123c67c39004344fe600e345}{operator<<}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v,\ T\ scalar)}
+\DoxyCodeLine{00802\ \ \ \ \ \{}
+\DoxyCodeLine{00803\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00804\ \ \ \ \ \ \ \ \ \ \ \ \ v.x\ <<\ scalar,}
+\DoxyCodeLine{00805\ \ \ \ \ \ \ \ \ \ \ \ \ v.y\ <<\ scalar);}
+\DoxyCodeLine{00806\ \ \ \ \ \}}
+\DoxyCodeLine{00807\ }
+\DoxyCodeLine{00808\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00809\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_ad3cf7f0e123c67c39004344fe600e345}{operator<<}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<1,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00810\ \ \ \ \ \{}
+\DoxyCodeLine{00811\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00812\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ <<\ v2.x,}
+\DoxyCodeLine{00813\ \ \ \ \ \ \ \ \ \ \ \ \ v1.y\ <<\ v2.x);}
+\DoxyCodeLine{00814\ \ \ \ \ \}}
+\DoxyCodeLine{00815\ }
+\DoxyCodeLine{00816\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00817\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_ad3cf7f0e123c67c39004344fe600e345}{operator<<}}(T\ scalar,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00818\ \ \ \ \ \{}
+\DoxyCodeLine{00819\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00820\ \ \ \ \ \ \ \ \ \ \ \ \ scalar\ <<\ v.x,}
+\DoxyCodeLine{00821\ \ \ \ \ \ \ \ \ \ \ \ \ scalar\ <<\ v.y);}
+\DoxyCodeLine{00822\ \ \ \ \ \}}
+\DoxyCodeLine{00823\ }
+\DoxyCodeLine{00824\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00825\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_ad3cf7f0e123c67c39004344fe600e345}{operator<<}}(\mbox{\hyperlink{structglm_1_1vec}{vec<1,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00826\ \ \ \ \ \{}
+\DoxyCodeLine{00827\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00828\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ <<\ v2.x,}
+\DoxyCodeLine{00829\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ <<\ v2.y);}
+\DoxyCodeLine{00830\ \ \ \ \ \}}
+\DoxyCodeLine{00831\ }
+\DoxyCodeLine{00832\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00833\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_ad3cf7f0e123c67c39004344fe600e345}{operator<<}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00834\ \ \ \ \ \{}
+\DoxyCodeLine{00835\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00836\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ <<\ v2.x,}
+\DoxyCodeLine{00837\ \ \ \ \ \ \ \ \ \ \ \ \ v1.y\ <<\ v2.y);}
+\DoxyCodeLine{00838\ \ \ \ \ \}}
+\DoxyCodeLine{00839\ }
+\DoxyCodeLine{00840\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00841\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a4560e59cc4f5ddaf0ec23d1a7050b611}{operator>>}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v,\ T\ scalar)}
+\DoxyCodeLine{00842\ \ \ \ \ \{}
+\DoxyCodeLine{00843\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00844\ \ \ \ \ \ \ \ \ \ \ \ \ v.x\ >>\ scalar,}
+\DoxyCodeLine{00845\ \ \ \ \ \ \ \ \ \ \ \ \ v.y\ >>\ scalar);}
+\DoxyCodeLine{00846\ \ \ \ \ \}}
+\DoxyCodeLine{00847\ }
+\DoxyCodeLine{00848\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00849\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a4560e59cc4f5ddaf0ec23d1a7050b611}{operator>>}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<1,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00850\ \ \ \ \ \{}
+\DoxyCodeLine{00851\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00852\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ >>\ v2.x,}
+\DoxyCodeLine{00853\ \ \ \ \ \ \ \ \ \ \ \ \ v1.y\ >>\ v2.x);}
+\DoxyCodeLine{00854\ \ \ \ \ \}}
+\DoxyCodeLine{00855\ }
+\DoxyCodeLine{00856\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00857\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a4560e59cc4f5ddaf0ec23d1a7050b611}{operator>>}}(T\ scalar,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00858\ \ \ \ \ \{}
+\DoxyCodeLine{00859\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00860\ \ \ \ \ \ \ \ \ \ \ \ \ scalar\ >>\ v.x,}
+\DoxyCodeLine{00861\ \ \ \ \ \ \ \ \ \ \ \ \ scalar\ >>\ v.y);}
+\DoxyCodeLine{00862\ \ \ \ \ \}}
+\DoxyCodeLine{00863\ }
+\DoxyCodeLine{00864\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00865\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a4560e59cc4f5ddaf0ec23d1a7050b611}{operator>>}}(\mbox{\hyperlink{structglm_1_1vec}{vec<1,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00866\ \ \ \ \ \{}
+\DoxyCodeLine{00867\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00868\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ >>\ v2.x,}
+\DoxyCodeLine{00869\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ >>\ v2.y);}
+\DoxyCodeLine{00870\ \ \ \ \ \}}
+\DoxyCodeLine{00871\ }
+\DoxyCodeLine{00872\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00873\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_a4560e59cc4f5ddaf0ec23d1a7050b611}{operator>>}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00874\ \ \ \ \ \{}
+\DoxyCodeLine{00875\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00876\ \ \ \ \ \ \ \ \ \ \ \ \ v1.x\ >>\ v2.x,}
+\DoxyCodeLine{00877\ \ \ \ \ \ \ \ \ \ \ \ \ v1.y\ >>\ v2.y);}
+\DoxyCodeLine{00878\ \ \ \ \ \}}
+\DoxyCodeLine{00879\ }
+\DoxyCodeLine{00880\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00881\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_afdc1f70af7c16826e06fb41664f0808b}{operator\string~}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{00882\ \ \ \ \ \{}
+\DoxyCodeLine{00883\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}(}
+\DoxyCodeLine{00884\ \ \ \ \ \ \ \ \ \ \ \ \ \string~v.x,}
+\DoxyCodeLine{00885\ \ \ \ \ \ \ \ \ \ \ \ \ \string~v.y);}
+\DoxyCodeLine{00886\ \ \ \ \ \}}
+\DoxyCodeLine{00887\ }
+\DoxyCodeLine{00888\ \ \ \ \ \textcolor{comment}{//\ -\/-\/\ Boolean\ operators\ -\/-\/}}
+\DoxyCodeLine{00889\ }
+\DoxyCodeLine{00890\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00891\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespaceglm_a3a1034521aa2b584602552cfde969df4}{operator==}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00892\ \ \ \ \ \{}
+\DoxyCodeLine{00893\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
+\DoxyCodeLine{00894\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1detail_1_1compute__equal}{detail::compute\_equal<T,\ std::numeric\_limits<T>::is\_iec559}}>::call(v1.x,\ v2.x)\ \&\&}
+\DoxyCodeLine{00895\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1detail_1_1compute__equal}{detail::compute\_equal<T,\ std::numeric\_limits<T>::is\_iec559}}>::call(v1.y,\ v2.y);}
+\DoxyCodeLine{00896\ \ \ \ \ \}}
+\DoxyCodeLine{00897\ }
+\DoxyCodeLine{00898\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00899\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespaceglm_a48b18d1e2196ce32172d4ee26f02a502}{operator!=}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00900\ \ \ \ \ \{}
+\DoxyCodeLine{00901\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !(v1\ ==\ v2);}
+\DoxyCodeLine{00902\ \ \ \ \ \}}
+\DoxyCodeLine{00903\ }
+\DoxyCodeLine{00904\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{00905\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ bool,\ Q>}}\ \mbox{\hyperlink{namespaceglm_af994b530007e136104cca54e96984114}{operator\&\&}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ bool,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ bool,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00906\ \ \ \ \ \{}
+\DoxyCodeLine{00907\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ bool,\ Q>}}(v1.x\ \&\&\ v2.x,\ v1.y\ \&\&\ v2.y);}
+\DoxyCodeLine{00908\ \ \ \ \ \}}
+\DoxyCodeLine{00909\ }
+\DoxyCodeLine{00910\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{00911\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ bool,\ Q>}}\ \mbox{\hyperlink{namespaceglm_aa1f2d6c2374ccc45b1a937bd752ce42e}{operator||}}(\mbox{\hyperlink{structglm_1_1vec}{vec<2,\ bool,\ Q>}}\ \textcolor{keyword}{const}\&\ v1,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ bool,\ Q>}}\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{00912\ \ \ \ \ \{}
+\DoxyCodeLine{00913\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ bool,\ Q>}}(v1.x\ ||\ v2.x,\ v1.y\ ||\ v2.y);}
+\DoxyCodeLine{00914\ \ \ \ \ \}}
+\DoxyCodeLine{00915\ \}\textcolor{comment}{//namespace\ glm}}
+
+\end{DoxyCode}

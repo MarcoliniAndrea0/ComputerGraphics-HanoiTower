@@ -1,0 +1,142 @@
+\doxysection{hash.\+hpp}
+\hypertarget{hash_8hpp_source}{}\label{hash_8hpp_source}\index{dependencies/glm/include/glm/gtx/hash.hpp@{dependencies/glm/include/glm/gtx/hash.hpp}}
+\mbox{\hyperlink{hash_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#if\ defined(GLM\_FORCE\_MESSAGES)\ \&\&\ !defined(GLM\_EXT\_INCLUDED)}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#\ \ \ ifndef\ GLM\_ENABLE\_EXPERIMENTAL}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ pragma\ message("{}GLM:\ GLM\_GTX\_hash\ is\ an\ experimental\ extension\ and\ may\ change\ in\ the\ future.\ Use\ \#define\ GLM\_ENABLE\_EXPERIMENTAL\ before\ including\ it,\ if\ you\ really\ want\ to\ use\ it."{})}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#\ \ \ else}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ pragma\ message("{}GLM:\ GLM\_GTX\_hash\ extension\ included"{})}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#\ \ \ endif}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{vec2_8hpp}{../vec2.hpp}}"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{vec3_8hpp}{../vec3.hpp}}"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{vec4_8hpp}{../vec4.hpp}}"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{vec1_8hpp}{../gtc/vec1.hpp}}"{}}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{gtc_2quaternion_8hpp}{../gtc/quaternion.hpp}}"{}}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{dual__quaternion_8hpp}{../gtx/dual\_quaternion.hpp}}"{}}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mat2x2_8hpp}{../mat2x2.hpp}}"{}}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mat2x3_8hpp}{../mat2x3.hpp}}"{}}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mat2x4_8hpp}{../mat2x4.hpp}}"{}}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mat3x2_8hpp}{../mat3x2.hpp}}"{}}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mat3x3_8hpp}{../mat3x3.hpp}}"{}}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mat3x4_8hpp}{../mat3x4.hpp}}"{}}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mat4x2_8hpp}{../mat4x2.hpp}}"{}}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mat4x3_8hpp}{../mat4x3.hpp}}"{}}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mat4x4_8hpp}{../mat4x4.hpp}}"{}}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#if\ \_\_cplusplus\ <\ 201103L}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#pragma\ message("{}GLM\_GTX\_hash\ requires\ C++11\ standard\ library\ support"{})}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#if\ GLM\_LANG\ \&\ GLM\_LANG\_CXX11}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ GLM\_GTX\_hash\ 1}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacestd}{std}}}
+\DoxyCodeLine{00052\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ glm::qualifier\ Q>}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{struct\ }hash<glm::vec<1,\ T,\ Q>\ >}
+\DoxyCodeLine{00055\ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \textcolor{keywordtype}{size\_t}\ operator()(glm::vec<1,\ T,\ Q>\ \textcolor{keyword}{const}\&\ v)\ \textcolor{keyword}{const}\ \mbox{\hyperlink{setup_8hpp_a3da2160c4020143ff80a3ee6f9483b34}{GLM\_NOEXCEPT}};}
+\DoxyCodeLine{00057\ \ \ \ \ \};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ glm::qualifier\ Q>}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{struct\ }hash<glm::vec<2,\ T,\ Q>\ >}
+\DoxyCodeLine{00061\ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \textcolor{keywordtype}{size\_t}\ operator()(glm::vec<2,\ T,\ Q>\ \textcolor{keyword}{const}\&\ v)\ \textcolor{keyword}{const}\ \mbox{\hyperlink{setup_8hpp_a3da2160c4020143ff80a3ee6f9483b34}{GLM\_NOEXCEPT}};}
+\DoxyCodeLine{00063\ \ \ \ \ \};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ glm::qualifier\ Q>}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{struct\ }hash<glm::vec<3,\ T,\ Q>\ >}
+\DoxyCodeLine{00067\ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \textcolor{keywordtype}{size\_t}\ operator()(glm::vec<3,\ T,\ Q>\ \textcolor{keyword}{const}\&\ v)\ \textcolor{keyword}{const}\ \mbox{\hyperlink{setup_8hpp_a3da2160c4020143ff80a3ee6f9483b34}{GLM\_NOEXCEPT}};}
+\DoxyCodeLine{00069\ \ \ \ \ \};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ glm::qualifier\ Q>}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{struct\ }hash<glm::vec<4,\ T,\ Q>\ >}
+\DoxyCodeLine{00073\ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \textcolor{keywordtype}{size\_t}\ operator()(glm::vec<4,\ T,\ Q>\ \textcolor{keyword}{const}\&\ v)\ \textcolor{keyword}{const}\ \mbox{\hyperlink{setup_8hpp_a3da2160c4020143ff80a3ee6f9483b34}{GLM\_NOEXCEPT}};}
+\DoxyCodeLine{00075\ \ \ \ \ \};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ glm::qualifier\ Q>}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{struct\ }hash<glm::qua<T,\ Q>\ >}
+\DoxyCodeLine{00079\ \ \ \ \ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \textcolor{keywordtype}{size\_t}\ operator()(glm::qua<T,\ Q>\ \textcolor{keyword}{const}\&\ q)\ \textcolor{keyword}{const}\ \mbox{\hyperlink{setup_8hpp_a3da2160c4020143ff80a3ee6f9483b34}{GLM\_NOEXCEPT}};}
+\DoxyCodeLine{00081\ \ \ \ \ \};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ glm::qualifier\ Q>}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{struct\ }hash<glm::tdualquat<T,\ Q>\ >}
+\DoxyCodeLine{00085\ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \textcolor{keywordtype}{size\_t}\ operator()(glm::tdualquat<T,Q>\ \textcolor{keyword}{const}\&\ q)\ \textcolor{keyword}{const}\ \mbox{\hyperlink{setup_8hpp_a3da2160c4020143ff80a3ee6f9483b34}{GLM\_NOEXCEPT}};}
+\DoxyCodeLine{00087\ \ \ \ \ \};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ glm::qualifier\ Q>}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{struct\ }hash<glm::mat<2,\ 2,\ T,\ Q>\ >}
+\DoxyCodeLine{00091\ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \textcolor{keywordtype}{size\_t}\ operator()(glm::mat<2,\ 2,\ T,Q>\ \textcolor{keyword}{const}\&\ m)\ \textcolor{keyword}{const}\ \mbox{\hyperlink{setup_8hpp_a3da2160c4020143ff80a3ee6f9483b34}{GLM\_NOEXCEPT}};}
+\DoxyCodeLine{00093\ \ \ \ \ \};}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ glm::qualifier\ Q>}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{struct\ }hash<glm::mat<2,\ 3,\ T,\ Q>\ >}
+\DoxyCodeLine{00097\ \ \ \ \ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \textcolor{keywordtype}{size\_t}\ operator()(glm::mat<2,\ 3,\ T,Q>\ \textcolor{keyword}{const}\&\ m)\ \textcolor{keyword}{const}\ \mbox{\hyperlink{setup_8hpp_a3da2160c4020143ff80a3ee6f9483b34}{GLM\_NOEXCEPT}};}
+\DoxyCodeLine{00099\ \ \ \ \ \};}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ glm::qualifier\ Q>}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keyword}{struct\ }hash<glm::mat<2,\ 4,\ T,\ Q>\ >}
+\DoxyCodeLine{00103\ \ \ \ \ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \textcolor{keywordtype}{size\_t}\ operator()(glm::mat<2,\ 4,\ T,Q>\ \textcolor{keyword}{const}\&\ m)\ \textcolor{keyword}{const}\ \mbox{\hyperlink{setup_8hpp_a3da2160c4020143ff80a3ee6f9483b34}{GLM\_NOEXCEPT}};}
+\DoxyCodeLine{00105\ \ \ \ \ \};}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ glm::qualifier\ Q>}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keyword}{struct\ }hash<glm::mat<3,\ 2,\ T,\ Q>\ >}
+\DoxyCodeLine{00109\ \ \ \ \ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \textcolor{keywordtype}{size\_t}\ operator()(glm::mat<3,\ 2,\ T,Q>\ \textcolor{keyword}{const}\&\ m)\ \textcolor{keyword}{const}\ \mbox{\hyperlink{setup_8hpp_a3da2160c4020143ff80a3ee6f9483b34}{GLM\_NOEXCEPT}};}
+\DoxyCodeLine{00111\ \ \ \ \ \};}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ glm::qualifier\ Q>}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keyword}{struct\ }hash<glm::mat<3,\ 3,\ T,\ Q>\ >}
+\DoxyCodeLine{00115\ \ \ \ \ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \textcolor{keywordtype}{size\_t}\ operator()(glm::mat<3,\ 3,\ T,Q>\ \textcolor{keyword}{const}\&\ m)\ \textcolor{keyword}{const}\ \mbox{\hyperlink{setup_8hpp_a3da2160c4020143ff80a3ee6f9483b34}{GLM\_NOEXCEPT}};}
+\DoxyCodeLine{00117\ \ \ \ \ \};}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ glm::qualifier\ Q>}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keyword}{struct\ }hash<glm::mat<3,\ 4,\ T,\ Q>\ >}
+\DoxyCodeLine{00121\ \ \ \ \ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \textcolor{keywordtype}{size\_t}\ operator()(glm::mat<3,\ 4,\ T,Q>\ \textcolor{keyword}{const}\&\ m)\ \textcolor{keyword}{const}\ \mbox{\hyperlink{setup_8hpp_a3da2160c4020143ff80a3ee6f9483b34}{GLM\_NOEXCEPT}};}
+\DoxyCodeLine{00123\ \ \ \ \ \};}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ glm::qualifier\ Q>}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keyword}{struct\ }hash<glm::mat<4,\ 2,\ T,\ Q>\ >}
+\DoxyCodeLine{00127\ \ \ \ \ \{}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \textcolor{keywordtype}{size\_t}\ operator()(glm::mat<4,\ 2,\ T,Q>\ \textcolor{keyword}{const}\&\ m)\ \textcolor{keyword}{const}\ \mbox{\hyperlink{setup_8hpp_a3da2160c4020143ff80a3ee6f9483b34}{GLM\_NOEXCEPT}};}
+\DoxyCodeLine{00129\ \ \ \ \ \};}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ glm::qualifier\ Q>}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keyword}{struct\ }hash<glm::mat<4,\ 3,\ T,\ Q>\ >}
+\DoxyCodeLine{00133\ \ \ \ \ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \textcolor{keywordtype}{size\_t}\ operator()(glm::mat<4,\ 3,\ T,Q>\ \textcolor{keyword}{const}\&\ m)\ \textcolor{keyword}{const}\ \mbox{\hyperlink{setup_8hpp_a3da2160c4020143ff80a3ee6f9483b34}{GLM\_NOEXCEPT}};}
+\DoxyCodeLine{00135\ \ \ \ \ \};}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ glm::qualifier\ Q>}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keyword}{struct\ }hash<glm::mat<4,\ 4,\ T,\ Q>\ >}
+\DoxyCodeLine{00139\ \ \ \ \ \{}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \textcolor{keywordtype}{size\_t}\ operator()(glm::mat<4,\ 4,\ T,Q>\ \textcolor{keyword}{const}\&\ m)\ \textcolor{keyword}{const}\ \mbox{\hyperlink{setup_8hpp_a3da2160c4020143ff80a3ee6f9483b34}{GLM\_NOEXCEPT}};}
+\DoxyCodeLine{00141\ \ \ \ \ \};}
+\DoxyCodeLine{00142\ \}\ \textcolor{comment}{//\ namespace\ std}}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{hash_8inl}{hash.inl}}"{}}}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//GLM\_LANG\ \&\ GLM\_LANG\_CXX11}}
+
+\end{DoxyCode}

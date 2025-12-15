@@ -1,0 +1,36 @@
+\doxysection{directional\+Light.\+h}
+\hypertarget{directionalLight_8h_source}{}\label{directionalLight_8h_source}\index{engine/directionalLight.h@{engine/directionalLight.h}}
+\mbox{\hyperlink{directionalLight_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{light_8h}{light.h}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Common_8h}{Common.h}}"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{class\ }\mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\_API}}\ \mbox{\hyperlink{classDirectionalLight_a949b877ae041b9818f47eb812d80fa1b}{DirectionalLight}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classLight_aed628c6207ce1c0eeb8348fa28db64f5}{Light}}}
+\DoxyCodeLine{00037\ \{}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{classDirectionalLight_a949b877ae041b9818f47eb812d80fa1b}{DirectionalLight}}();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classDirectionalLight_a4396a3cf8b8de0b0bd097588fdcd77c2}{\string~DirectionalLight}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//\ SETTER\ METHODS}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDirectionalLight_a0d90d393a0f2144a3fd1a8c90b045afb}{setDirection}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm::vec3}}\ newDirection);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{comment}{//\ RENDERING}}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{comment}{//\ ========================================================================}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classNode_a032504f00a0bcad5fcbddc68f265cafd}{render}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm::mat4}}\ viewMatrix)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm::vec3}}\ \_direction;\ }
+\DoxyCodeLine{00112\ \};}
+
+\end{DoxyCode}

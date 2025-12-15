@@ -1,0 +1,380 @@
+\doxysection{Object Class Reference}
+\hypertarget{classObject}{}\label{classObject}\index{Object@{Object}}
+
+
+Classe base astratta per tutte le entità del motore grafico.  
+
+
+
+
+{\ttfamily \#include $<$object.\+h$>$}
+
+Inheritance diagram for Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.419847cm]{classObject}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classObject_afe9eeddd7068a37f62d3276a2fb49864}{Object}} ()=default
+\begin{DoxyCompactList}\small\item\em Costruttore di default. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classObject_a4fd75bb7fe75b569928245bb27fed07c}{Object}} (const std\+::string type)
+\begin{DoxyCompactList}\small\item\em Costruttore parametrico con tipo. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classObject_ae8f5483f459e46687bd01e6f9977afd3}{\texorpdfstring{$\sim$}{\string~}\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Distruttore virtuale. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classObject_a34a0b88c7f929c85ce92107ce7ba2e97}{get\+Id}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce l\textquotesingle{}identificativo univoco dell\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classObject_adf9436214bd361e0b85ac10ef2035916}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce il nome assegnato all\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+const std\+::string \mbox{\hyperlink{classObject_a60159d15921c408e2a8f828053297a13}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce il tipo dell\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classObject_adf1de6aa8f21d9b04eb700fec0700ebf}{set\+Name}} (const std\+::string new\+Name)
+\begin{DoxyCompactList}\small\item\em Assegna un nome leggibile all\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classObject_a89624881fe30113db802b64bfeed517f}{set\+Type}} (const std\+::string \&type)
+\begin{DoxyCompactList}\small\item\em Definisce il tipo/categoria dell\textquotesingle{}oggetto. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classObject_a641d85cb7641c16c0d8ff4cf81798d52}{render}} (const \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}} view\+Matrix) const =0
+\begin{DoxyCompactList}\small\item\em Metodo virtuale puro per il rendering dell\textquotesingle{}oggetto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classObject_a65658e2cbce7cd75f9f0e5716c36082a}{reset\+Id\+Generator}} ()
+\begin{DoxyCompactList}\small\item\em Resetta il contatore statico degli ID a zero. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe base astratta per tutte le entità del motore grafico. 
+
+La classe \doxylink{classObject}{Object} definisce l\textquotesingle{}interfaccia comune e le proprietà di base per tutti gli oggetti gestiti dal sistema. È una classe astratta che non può essere istanziata direttamente, ma deve essere derivata.
+
+Caratteristiche principali\+:
+\begin{DoxyItemize}
+\item {\bfseries{Identificazione univoca}}\+: Ogni oggetto riceve automaticamente un ID unico generato tramite un contatore statico
+\item {\bfseries{Naming}}\+: Ogni oggetto può avere un nome leggibile per facilitare il debugging e la ricerca nella scena
+\item {\bfseries{Tipizzazione}}\+: Un campo tipo permette di identificare la categoria dell\textquotesingle{}oggetto
+\item {\bfseries{Interfaccia di rendering}}\+: Definisce il metodo virtuale puro \doxylink{classObject_a641d85cb7641c16c0d8ff4cf81798d52}{render()} che tutte le classi derivate devono implementare
+\end{DoxyItemize}
+
+La classe gestisce automaticamente la generazione di ID univoci attraverso un contatore statico incrementale, garantendo che ogni istanza abbia un identificatore unico all\textquotesingle{}interno della sessione.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classNode}{Node} 
+
+\doxylink{classMesh}{Mesh} 
+
+\doxylink{classLight}{Light} 
+
+\doxylink{classCamera}{Camera} 
+
+\doxylink{classMaterial}{Material} 
+
+\doxylink{classTexture}{Texture}
+\end{DoxySeeAlso}
+\begin{DoxyAuthor}{Author}
+Gruppo6 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classObject_afe9eeddd7068a37f62d3276a2fb49864}\index{Object@{Object}!Object@{Object}}
+\index{Object@{Object}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{Object()}{Object()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classObject_afe9eeddd7068a37f62d3276a2fb49864} 
+Object\+::\+Object (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Costruttore di default. 
+
+Inizializza un nuovo oggetto con\+:
+\begin{DoxyItemize}
+\item ID univoco generato automaticamente dal contatore statico
+\item Nome vuoto
+\item Tipo vuoto
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+L\textquotesingle{}ID viene assegnato automaticamente incrementando il contatore statico next\+Id. 
+\end{DoxyNote}
+\Hypertarget{classObject_a4fd75bb7fe75b569928245bb27fed07c}\index{Object@{Object}!Object@{Object}}
+\index{Object@{Object}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{Object()}{Object()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classObject_a4fd75bb7fe75b569928245bb27fed07c} 
+Object\+::\+Object (\begin{DoxyParamCaption}\item[{const std\+::string}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Costruttore parametrico con tipo. 
+
+Costruttore della classe \doxylink{classObject}{Object}.
+
+Inizializza un nuovo oggetto specificando il suo tipo. L\textquotesingle{}ID viene assegnato automaticamente.
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Stringa che rappresenta il tipo/categoria dell\textquotesingle{}oggetto (es. "{}\+MESH"{}, "{}\+LIGHT"{}, "{}\+CAMERA"{}, "{}\+MATERIAL"{})\\
+\hline
+\end{DoxyParams}
+Esempio di utilizzo\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{class\ }Mesh\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classObject_afe9eeddd7068a37f62d3276a2fb49864}{Object}}\ \{}
+\DoxyCodeLine{\ \ \ \ Mesh()\ :\ Object(\textcolor{stringliteral}{"{}MESH"{}})\ \{\ \}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Il tipo dell\textquotesingle{}oggetto.\\
+\hline
+\end{DoxyParams}
+Il costruttore assegna automaticamente un ID univoco all\textquotesingle{}oggetto e imposta il nome dell\textquotesingle{}oggetto nel formato "{}\mbox{[}$<$id$>$\mbox{]}"{}. \Hypertarget{classObject_ae8f5483f459e46687bd01e6f9977afd3}\index{Object@{Object}!````~Object@{\texorpdfstring{$\sim$}{\string~}Object}}
+\index{````~Object@{\texorpdfstring{$\sim$}{\string~}Object}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Object()}{\string~Object()}}
+{\footnotesize\ttfamily \label{classObject_ae8f5483f459e46687bd01e6f9977afd3} 
+Object\+::\texorpdfstring{$\sim$}{\string~}\+Object (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Distruttore virtuale. 
+
+Distruttore della classe {\ttfamily \doxylink{classObject}{Object}}.
+
+Garantisce la corretta distruzione degli oggetti derivati quando vengono eliminati attraverso un puntatore alla classe base.
+
+\begin{DoxyNote}{Note}
+Il distruttore è virtuale per permettere il polimorfismo corretto e assicurare che i distruttori delle classi derivate vengano chiamati. 
+\end{DoxyNote}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classObject_a34a0b88c7f929c85ce92107ce7ba2e97}\index{Object@{Object}!getId@{getId}}
+\index{getId@{getId}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily \label{classObject_a34a0b88c7f929c85ce92107ce7ba2e97} 
+int \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Object\+::get\+Id (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Restituisce l\textquotesingle{}identificativo univoco dell\textquotesingle{}oggetto. 
+
+Restituisce l\textquotesingle{}ID univoco assegnato a questo oggetto.
+
+L\textquotesingle{}ID è un numero intero generato automaticamente alla creazione dell\textquotesingle{}oggetto e rimane costante per tutta la sua vita. Gli ID sono sequenziali e univoci all\textquotesingle{}interno di una sessione del programma.
+
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}ID intero univoco dell\textquotesingle{}oggetto
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Gli ID iniziano da 0 e vengono incrementati per ogni nuovo oggetto creato.
+\end{DoxyNote}
+Questo metodo restituisce l\textquotesingle{}ID che viene auto-\/generato per l\textquotesingle{}oggetto al momento della sua creazione. L\textquotesingle{}ID identifica in modo univoco ogni istanza della classe {\ttfamily \doxylink{classObject}{Object}}.
+
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}ID dell\textquotesingle{}oggetto. 
+\end{DoxyReturn}
+\Hypertarget{classObject_adf9436214bd361e0b85ac10ef2035916}\index{Object@{Object}!getName@{getName}}
+\index{getName@{getName}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{classObject_adf9436214bd361e0b85ac10ef2035916} 
+std\+::string \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Object\+::get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Restituisce il nome assegnato all\textquotesingle{}oggetto. 
+
+Restituisce il nome di questo oggetto.
+
+Il nome è una stringa leggibile dall\textquotesingle{}utente che può essere utilizzata per\+:
+\begin{DoxyItemize}
+\item Identificare l\textquotesingle{}oggetto durante il debugging
+\item Cercare oggetti specifici nel grafo della scena
+\item Visualizzare informazioni all\textquotesingle{}utente
+\end{DoxyItemize}
+
+\begin{DoxyReturn}{Returns}
+Stringa contenente il nome dell\textquotesingle{}oggetto (può essere vuota)
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxylink{classObject_adf1de6aa8f21d9b04eb700fec0700ebf}{set\+Name()}
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+Il nome dell\textquotesingle{}oggetto come stringa. 
+\end{DoxyReturn}
+\Hypertarget{classObject_a60159d15921c408e2a8f828053297a13}\index{Object@{Object}!getType@{getType}}
+\index{getType@{getType}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{classObject_a60159d15921c408e2a8f828053297a13} 
+const std\+::string \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Object\+::get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Restituisce il tipo dell\textquotesingle{}oggetto. 
+
+Restituisce il tipo di questo oggetto.
+
+Il tipo identifica la categoria o classe dell\textquotesingle{}oggetto (es. "{}\+MESH"{}, "{}\+LIGHT"{}). Utile per il casting sicuro, il filtering e l\textquotesingle{}organizzazione degli oggetti.
+
+\begin{DoxyReturn}{Returns}
+Stringa costante che identifica la categoria dell\textquotesingle{}oggetto
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxylink{classObject_a89624881fe30113db802b64bfeed517f}{set\+Type()}
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+Il tipo dell\textquotesingle{}oggetto come stringa. 
+\end{DoxyReturn}
+\Hypertarget{classObject_a641d85cb7641c16c0d8ff4cf81798d52}\index{Object@{Object}!render@{render}}
+\index{render@{render}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily \label{classObject_a641d85cb7641c16c0d8ff4cf81798d52} 
+virtual void Object\+::render (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm\+::mat4}}}]{view\+Matrix}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Metodo virtuale puro per il rendering dell\textquotesingle{}oggetto. 
+
+Ogni classe derivata DEVE implementare questo metodo per definire come l\textquotesingle{}oggetto viene disegnato sullo schermo. Questo è il cuore del sistema di rendering polimorfic del motore.
+
+Il metodo riceve la view matrix corrente, che è necessaria per\+:
+\begin{DoxyItemize}
+\item Trasformare gli oggetti dallo spazio world allo spazio della vista
+\item Calcolare l\textquotesingle{}illuminazione
+\item Applicare le trasformazioni della camera
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em view\+Matrix} & La matrice di vista (View Matrix) corrente della camera, che trasforma le coordinate dallo spazio world allo spazio della camera\\
+\hline
+\end{DoxyParams}
+Esempio di implementazione\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMesh_a504a3612c1a375dbef46bc27d543dfae}{Mesh::render}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{group__core__matrix_gac54cbc572f1349a255fe476ca6a42a7b}{glm::mat4}}\ viewMatrix)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Applica\ materiale}}
+\DoxyCodeLine{\ \ \ \ material-\/>render(viewMatrix);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Disegna\ la\ geometria}}
+\DoxyCodeLine{\ \ \ \ glBegin(GL\_TRIANGLES);}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ ...\ rendering\ code\ ...}}
+\DoxyCodeLine{\ \ \ \ glEnd();}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\begin{DoxyNote}{Note}
+Questo metodo deve essere dichiarato const perché il rendering non dovrebbe modificare lo stato logico dell\textquotesingle{}oggetto. 
+\end{DoxyNote}
+
+
+Implemented in \mbox{\hyperlink{classDirectionalLight_a02669f1656462bfb621b273da01158dd}{Directional\+Light}}, \mbox{\hyperlink{classList_a88bc9bad52374db6df5b46036a77bb47}{List}}, \mbox{\hyperlink{classMaterial_a4322ffa64cbdcc1bc6667e8808dd5af1}{Material}}, \mbox{\hyperlink{classMesh_a504a3612c1a375dbef46bc27d543dfae}{Mesh}}, \mbox{\hyperlink{classNode_a032504f00a0bcad5fcbddc68f265cafd}{Node}}, \mbox{\hyperlink{classPerspectiveCamera_adc71538738760cee9262508b56cfb68c}{Perspective\+Camera}}, \mbox{\hyperlink{classPointLight_af05d8f6efaa899a4574788944a6ffa3d}{Point\+Light}}, \mbox{\hyperlink{classSpotLight_a13ffd592806fb720fc68055b5aecd5aa}{Spot\+Light}}, and \mbox{\hyperlink{classTexture_a3ad17f243dc41d6aedf56c5e13e9c492}{Texture}}.
+
+\Hypertarget{classObject_a65658e2cbce7cd75f9f0e5716c36082a}\index{Object@{Object}!resetIdGenerator@{resetIdGenerator}}
+\index{resetIdGenerator@{resetIdGenerator}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{resetIdGenerator()}{resetIdGenerator()}}
+{\footnotesize\ttfamily \label{classObject_a65658e2cbce7cd75f9f0e5716c36082a} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Object\+::reset\+Id\+Generator (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Resetta il contatore statico degli ID a zero. 
+
+Resetta il generatore di ID a zero.
+
+Riporta il generatore di ID al suo stato iniziale. Questo significa che i prossimi oggetti creati riceveranno ID a partire da 0.
+
+\begin{DoxyWarning}{Warning}
+Da utilizzare con estrema cautela! Resettare il contatore mentre esistono oggetti con ID già assegnati può causare conflitti di ID e comportamenti indefiniti.
+\end{DoxyWarning}
+Casi d\textquotesingle{}uso appropriati\+:
+\begin{DoxyItemize}
+\item All\textquotesingle{}inizio del programma per inizializzazione pulita
+\item Dopo aver svuotato completamente la scena e distrutto tutti gli oggetti
+\item Durante il caricamento di un nuovo livello quando si vuole ripartire da zero
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Scenario\ sicuro:}}
+\DoxyCodeLine{scene-\/>removeAllObjects();\ \ \textcolor{comment}{//\ Rimuove\ tutti\ gli\ oggetti}}
+\DoxyCodeLine{scene.reset();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Distrugge\ la\ scena}}
+\DoxyCodeLine{\mbox{\hyperlink{classObject_a65658e2cbce7cd75f9f0e5716c36082a}{Object::resetIdGenerator}}();\ \textcolor{comment}{//\ Ora\ è sicuro\ resettare}}
+\DoxyCodeLine{scene\ =\ std::make\_shared<Node>();\ \textcolor{comment}{//\ Nuova\ scena\ pulita}}
+
+\end{DoxyCode}
+
+
+Questo metodo ripristina il contatore degli ID a zero. \Hypertarget{classObject_adf1de6aa8f21d9b04eb700fec0700ebf}\index{Object@{Object}!setName@{setName}}
+\index{setName@{setName}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily \label{classObject_adf1de6aa8f21d9b04eb700fec0700ebf} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Object\+::set\+Name (\begin{DoxyParamCaption}\item[{const std\+::string}]{new\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Assegna un nome leggibile all\textquotesingle{}oggetto. 
+
+Imposta un nuovo nome per questo oggetto.
+
+Il nome è utile per identificare l\textquotesingle{}oggetto nel grafo della scena, durante il debugging o per implementare sistemi di ricerca.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Name} & Il nuovo nome da assegnare all\textquotesingle{}oggetto\\
+\hline
+\end{DoxyParams}
+Esempio di utilizzo\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ mesh\ =\ std::make\_shared<Mesh>();}
+\DoxyCodeLine{mesh-\/>setName(\textcolor{stringliteral}{"{}PlayerCharacter"{}});}
+
+\end{DoxyCode}
+
+
+\begin{DoxyNote}{Note}
+Il nome non deve essere univoco -\/ più oggetti possono avere lo stesso nome.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Name} & Il nuovo nome da assegnare all\textquotesingle{}oggetto. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classObject_a89624881fe30113db802b64bfeed517f}\index{Object@{Object}!setType@{setType}}
+\index{setType@{setType}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setType()}{setType()}}
+{\footnotesize\ttfamily \label{classObject_a89624881fe30113db802b64bfeed517f} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Object\+::set\+Type (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Definisce il tipo/categoria dell\textquotesingle{}oggetto. 
+
+Imposta un nuovo tipo per questo oggetto.
+
+Imposta una stringa che identifica la categoria dell\textquotesingle{}oggetto. Normalmente viene chiamato dal costruttore delle classi derivate.
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Il nuovo tipo da assegnare (es. "{}\+MESH"{}, "{}\+POINT\+\_\+\+LIGHT"{}, "{}\+CAMERA"{})\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Convenzionalmente, i tipi sono espressi in MAIUSCOLO per convenzione, ma non è un requisito tecnico.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Il nuovo tipo da assegnare all\textquotesingle{}oggetto. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/\mbox{\hyperlink{object_8h}{object.\+h}}\item 
+engine/\mbox{\hyperlink{object_8cpp}{object.\+cpp}}\end{DoxyCompactItemize}

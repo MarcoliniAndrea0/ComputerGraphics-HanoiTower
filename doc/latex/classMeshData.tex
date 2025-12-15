@@ -1,0 +1,259 @@
+\doxysection{Mesh\+Data Class Reference}
+\hypertarget{classMeshData}{}\label{classMeshData}\index{MeshData@{MeshData}}
+
+
+Rappresenta i dati geometrici di una mesh 3D.  
+
+
+
+
+{\ttfamily \#include $<$Mesh\+Data.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::vector$<$ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} $>$ \& \mbox{\hyperlink{classMeshData_ae00b34c4b34eefdd941f996eb00f4a00}{get\+Vertices}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la lista dei vertici della mesh. \end{DoxyCompactList}\item 
+const std\+::vector$<$ std\+::tuple$<$ uint32\+\_\+t, uint32\+\_\+t, uint32\+\_\+t $>$ $>$ \& \mbox{\hyperlink{classMeshData_a00af178a96151081a47f683b1a16bd05}{get\+Faces}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la lista delle facce della mesh. \end{DoxyCompactList}\item 
+const std\+::vector$<$ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} $>$ \& \mbox{\hyperlink{classMeshData_a7e8276389b60d4e98b9d041aee9eafb7}{get\+Normals}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la lista delle normali della mesh. \end{DoxyCompactList}\item 
+const std\+::vector$<$ \mbox{\hyperlink{group__core__vector_ga6ebf1ff1f152ff34c800b6997d5f311f}{glm\+::vec2}} $>$ \& \mbox{\hyperlink{classMeshData_a8c8a8d54bfcc6763beb8e1980dd482e9}{get\+UVs}} () const
+\begin{DoxyCompactList}\small\item\em Restituisce la lista delle coordinate UV della mesh. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMeshData_a4db3cb9b6a124cfed107c2c958cc58ac}{set\+\_\+mesh\+\_\+data}} (const std\+::vector$<$ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} $>$ new\+\_\+vertices, const std\+::vector$<$ std\+::tuple$<$ uint32\+\_\+t, uint32\+\_\+t, uint32\+\_\+t $>$ $>$ new\+\_\+faces, const std\+::vector$<$ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} $>$ new\+\_\+normals, const std\+::vector$<$ \mbox{\hyperlink{group__core__vector_ga6ebf1ff1f152ff34c800b6997d5f311f}{glm\+::vec2}} $>$ new\+\_\+uvs)
+\begin{DoxyCompactList}\small\item\em Imposta tutti i dati geometrici della mesh in un\textquotesingle{}unica chiamata. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Rappresenta i dati geometrici di una mesh 3D. 
+
+La classe \doxylink{classMeshData}{Mesh\+Data} gestisce tutti i dati geometrici necessari per definire e renderizzare una mesh tridimensionale. Fornisce una struttura organizzata per memorizzare\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Vertici}}\+: Posizioni dei punti nello spazio 3D
+\item {\bfseries{Facce}}\+: Definizione dei triangoli attraverso indici di vertici
+\item {\bfseries{Normali}}\+: Vettori perpendicolari alle superfici per illuminazione e shading
+\item {\bfseries{Coordinate UV}}\+: Mappatura 2D per l\textquotesingle{}applicazione delle texture
+\end{DoxyItemize}
+
+Caratteristiche del sistema\+:
+\begin{DoxyItemize}
+\item Geometria basata su triangoli (ogni faccia ha esattamente 3 vertici)
+\item Supporto per normal mapping (una normale per vertice)
+\item Supporto per texture mapping (coordinate UV per vertice)
+\item Organizzazione efficiente dei dati per il rendering
+\end{DoxyItemize}
+
+I dati sono organizzati in modo che\+:
+\begin{DoxyItemize}
+\item Ogni vertice abbia un indice univoco (0, 1, 2, ...)
+\item Ogni faccia faccia riferimento a 3 indici di vertici
+\item Ogni vertice possa avere una normale e coordinate UV associate
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+La classe non gestisce direttamente VBO (Vertex Buffer Objects) Open\+GL, ma fornisce i dati in un formato facilmente utilizzabile per crearli.
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\doxylink{classMesh}{Mesh} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMeshData_a00af178a96151081a47f683b1a16bd05}\index{MeshData@{MeshData}!getFaces@{getFaces}}
+\index{getFaces@{getFaces}!MeshData@{MeshData}}
+\doxysubsubsection{\texorpdfstring{getFaces()}{getFaces()}}
+{\footnotesize\ttfamily \label{classMeshData_a00af178a96151081a47f683b1a16bd05} 
+\mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} const std\+::vector$<$ std\+::tuple$<$ uint32\+\_\+t, uint32\+\_\+t, uint32\+\_\+t $>$ $>$ \& Mesh\+Data\+::get\+Faces (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Restituisce la lista delle facce della mesh. 
+
+Restituisce la lista delle facce per questa mesh.
+
+Le facce definiscono i triangoli che compongono la superficie della mesh. Ogni faccia è rappresentata come una tupla di tre indici interi (uint32\+\_\+t) che fanno riferimento ai vertici nel vettore dei vertici.
+
+Esempio\+: La faccia (0, 1, 2) crea un triangolo che connette il vertice 0, il vertice 1 e il vertice 2.
+
+\begin{DoxyReturn}{Returns}
+Riferimento costante al vettore di facce (tuple di 3 indici)
+\end{DoxyReturn}
+Esempio di accesso\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ faces\ =\ meshData.getFaces();}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [i0,\ i1,\ i2]\ :\ faces)\ \{}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Triangle:\ "{}}\ <<\ i0\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ i1\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ i2\ <<\ std::endl;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\begin{DoxyNote}{Note}
+Gli indici devono essere validi (\texorpdfstring{$<$}{<} vertices.\+size()). Indici non validi causano comportamento indefinito.
+\end{DoxyNote}
+Le facce sono rappresentate come tuple di indici, ciascuna contenente tre indici che formano un triangolo. \begin{DoxyReturn}{Returns}
+Un riferimento costante al vettore delle facce. 
+\end{DoxyReturn}
+\Hypertarget{classMeshData_a7e8276389b60d4e98b9d041aee9eafb7}\index{MeshData@{MeshData}!getNormals@{getNormals}}
+\index{getNormals@{getNormals}!MeshData@{MeshData}}
+\doxysubsubsection{\texorpdfstring{getNormals()}{getNormals()}}
+{\footnotesize\ttfamily \label{classMeshData_a7e8276389b60d4e98b9d041aee9eafb7} 
+\mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} const std\+::vector$<$ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} $>$ \& Mesh\+Data\+::get\+Normals (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Restituisce la lista delle normali della mesh. 
+
+Restituisce la lista delle normali per questa mesh.
+
+Le normali sono vettori perpendicolari alle superfici, utilizzati per\+:
+\begin{DoxyItemize}
+\item Calcolare l\textquotesingle{}illuminazione (Phong shading, Lambert shading)
+\item Determinare l\textquotesingle{}orientamento delle superfici
+\item Implementare effetti di smooth shading
+\end{DoxyItemize}
+
+Tipicamente c\textquotesingle{}è una normale per ogni vertice, permettendo interpolazione smooth delle normali tra i vertici di un triangolo.
+
+\begin{DoxyReturn}{Returns}
+Riferimento costante al vettore di normali
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Le normali dovrebbero essere normalizzate (lunghezza = 1.\+0) per un calcolo corretto dell\textquotesingle{}illuminazione.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Un riferimento costante al vettore delle normali. 
+\end{DoxyReturn}
+\Hypertarget{classMeshData_a8c8a8d54bfcc6763beb8e1980dd482e9}\index{MeshData@{MeshData}!getUVs@{getUVs}}
+\index{getUVs@{getUVs}!MeshData@{MeshData}}
+\doxysubsubsection{\texorpdfstring{getUVs()}{getUVs()}}
+{\footnotesize\ttfamily \label{classMeshData_a8c8a8d54bfcc6763beb8e1980dd482e9} 
+\mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} const std\+::vector$<$ \mbox{\hyperlink{group__core__vector_ga6ebf1ff1f152ff34c800b6997d5f311f}{glm\+::vec2}} $>$ \& Mesh\+Data\+::get\+UVs (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Restituisce la lista delle coordinate UV della mesh. 
+
+Restituisce la lista delle coordinate UV per questa mesh.
+
+Le coordinate UV definiscono come una texture 2D viene mappata sulla superficie 3D della mesh. Ogni coordinata UV è un vettore 2D\+:
+\begin{DoxyItemize}
+\item U (x)\+: Coordinata orizzontale sulla texture (0.\+0 -\/ 1.\+0)
+\item V (y)\+: Coordinata verticale sulla texture (0.\+0 -\/ 1.\+0)
+\end{DoxyItemize}
+
+Tipicamente c\textquotesingle{}è una coppia di coordinate UV per ogni vertice, permettendo al rendering engine di determinare quale pixel della texture corrisponde a quale punto sulla superficie.
+
+\begin{DoxyReturn}{Returns}
+Riferimento costante al vettore di coordinate UV
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Le coordinate UV sono tipicamente nel range \mbox{[}0.\+0, 1.\+0\mbox{]}, ma valori fuori da questo range sono validi e causano il wrapping o clamping della texture.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Un riferimento costante al vettore delle coordinate UV. 
+\end{DoxyReturn}
+\Hypertarget{classMeshData_ae00b34c4b34eefdd941f996eb00f4a00}\index{MeshData@{MeshData}!getVertices@{getVertices}}
+\index{getVertices@{getVertices}!MeshData@{MeshData}}
+\doxysubsubsection{\texorpdfstring{getVertices()}{getVertices()}}
+{\footnotesize\ttfamily \label{classMeshData_ae00b34c4b34eefdd941f996eb00f4a00} 
+\mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} const std\+::vector$<$ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} $>$ \& Mesh\+Data\+::get\+Vertices (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Restituisce la lista dei vertici della mesh. 
+
+Restituisce la lista dei vertici per questa mesh.
+
+I vertici sono i punti fondamentali che definiscono la forma della mesh nello spazio 3D. Ogni vertice è rappresentato da un vettore \doxylink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3} contenente le coordinate (x, y, z).
+
+\begin{DoxyReturn}{Returns}
+Riferimento costante al vettore di vertici
+\end{DoxyReturn}
+Esempio di accesso\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ vertices\ =\ meshData.getVertices();}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ vertex\ :\ vertices)\ \{}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Vertex:\ "{}}\ <<\ vertex.x\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ vertex.y\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ vertex.z\ <<\ std::endl;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+Un riferimento costante al vettore dei vertici. 
+\end{DoxyReturn}
+\Hypertarget{classMeshData_a4db3cb9b6a124cfed107c2c958cc58ac}\index{MeshData@{MeshData}!set\_mesh\_data@{set\_mesh\_data}}
+\index{set\_mesh\_data@{set\_mesh\_data}!MeshData@{MeshData}}
+\doxysubsubsection{\texorpdfstring{set\_mesh\_data()}{set\_mesh\_data()}}
+{\footnotesize\ttfamily \label{classMeshData_a4db3cb9b6a124cfed107c2c958cc58ac} 
+void \mbox{\hyperlink{Common_8h_a77278c8cc96e39fb27b5d0a347c8fb3d}{LIB\+\_\+\+API}} Mesh\+Data\+::set\+\_\+mesh\+\_\+data (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} $>$}]{new\+Vertices}{, }\item[{const std\+::vector$<$ std\+::tuple$<$ uint32\+\_\+t, uint32\+\_\+t, uint32\+\_\+t $>$ $>$}]{new\+Faces}{, }\item[{const std\+::vector$<$ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{glm\+::vec3}} $>$}]{new\+Normals}{, }\item[{const std\+::vector$<$ \mbox{\hyperlink{group__core__vector_ga6ebf1ff1f152ff34c800b6997d5f311f}{glm\+::vec2}} $>$}]{new\+Uvs}{}\end{DoxyParamCaption})}
+
+
+
+Imposta tutti i dati geometrici della mesh in un\textquotesingle{}unica chiamata. 
+
+Imposta i dati della mesh, inclusi vertici, facce, normali e coordinate UV.
+
+Questo metodo configura completamente la geometria della mesh fornendo tutti i dati necessari\+: vertici, facce, normali e coordinate UV. Sostituisce completamente eventuali dati precedenti.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+vertices} & Vettore di posizioni 3D dei vertici \\
+\hline
+{\em new\+\_\+faces} & Vettore di tuple di 3 indici che definiscono i triangoli \\
+\hline
+{\em new\+\_\+normals} & Vettore di normali 3D (una per vertice tipicamente) \\
+\hline
+{\em new\+\_\+uvs} & Vettore di coordinate 2D per il texture mapping\\
+\hline
+\end{DoxyParams}
+Esempio di utilizzo\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MeshData\ cubeData;}
+\DoxyCodeLine{}
+\DoxyCodeLine{std::vector<glm::vec3>\ vertices\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \{-\/1,\ -\/1,\ -\/1\},\ \{1,\ -\/1,\ -\/1\},\ \{1,\ 1,\ -\/1\},\ \{-\/1,\ 1,\ -\/1\},}
+\DoxyCodeLine{\ \ \ \ \{-\/1,\ -\/1,\ 1\},\ \ \{1,\ -\/1,\ 1\},\ \ \{1,\ 1,\ 1\},\ \ \{-\/1,\ 1,\ 1\}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{std::vector<std::tuple<uint32\_t,\ uint32\_t,\ uint32\_t>>\ faces\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \{0,\ 1,\ 2\},\ \{0,\ 2,\ 3\},\ \textcolor{comment}{//\ Front\ face}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ ...\ altre\ facce\ ...}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{std::vector<glm::vec3>\ normals\ =\ \{\ \ ...\ \ \};}
+\DoxyCodeLine{std::vector<glm::vec2>\ uvs\ =\ \{\ \ ...\ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{cubeData.\mbox{\hyperlink{classMeshData_a4db3cb9b6a124cfed107c2c958cc58ac}{set\_mesh\_data}}(vertices,\ faces,\ normals,\ uvs);}
+
+\end{DoxyCode}
+
+
+\begin{DoxyNote}{Note}
+È importante che\+:
+\begin{DoxyItemize}
+\item Le dimensioni dei vettori siano coerenti
+\item Gli indici nelle facce siano validi (\texorpdfstring{$<$}{<} vertices.\+size())
+\item Le normali siano normalizzate per un\textquotesingle{}illuminazione corretta
+\end{DoxyItemize}
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Vertices} & I nuovi vertici per la mesh. \\
+\hline
+{\em new\+Faces} & Le nuove facce per la mesh, rappresentate come tuple di indici dei vertici. \\
+\hline
+{\em new\+Normals} & Le nuove normali per la mesh. \\
+\hline
+{\em new\+Uvs} & Le nuove coordinate UV per la mesh. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/\mbox{\hyperlink{MeshData_8h}{Mesh\+Data.\+h}}\item 
+engine/\mbox{\hyperlink{MeshData_8cpp}{Mesh\+Data.\+cpp}}\end{DoxyCompactItemize}

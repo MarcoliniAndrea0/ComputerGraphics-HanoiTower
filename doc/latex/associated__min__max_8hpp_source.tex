@@ -1,0 +1,153 @@
+\doxysection{associated\+\_\+min\+\_\+max.\+hpp}
+\hypertarget{associated__min__max_8hpp_source}{}\label{associated__min__max_8hpp_source}\index{dependencies/glm/include/glm/gtx/associated\_min\_max.hpp@{dependencies/glm/include/glm/gtx/associated\_min\_max.hpp}}
+\mbox{\hyperlink{associated__min__max_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ Dependency:}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{glm_8hpp}{../glm.hpp}}"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#ifndef\ GLM\_ENABLE\_EXPERIMENTAL}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#\ \ \ error\ "{}GLM:\ GLM\_GTX\_associated\_min\_max\ is\ an\ experimental\ extension\ and\ may\ change\ in\ the\ future.\ Use\ \#define\ GLM\_ENABLE\_EXPERIMENTAL\ before\ including\ it,\ if\ you\ really\ want\ to\ use\ it."{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#elif\ GLM\_MESSAGES\ ==\ GLM\_ENABLE\ \&\&\ !defined(GLM\_EXT\_INCLUDED)}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#\ \ \ pragma\ message("{}GLM:\ GLM\_GTX\_associated\_min\_max\ extension\ included"{})}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceglm}{glm}}}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ U\ \mbox{\hyperlink{namespaceglm_1_1gtx_a3c550a0ac2d615bf90ab26ebc2c680f6}{associatedMin}}(T\ x,\ U\ a,\ T\ y,\ U\ b);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ U,\ qualifier\ Q>}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \mbox{\hyperlink{namespaceglm_1_1gtx_a3c550a0ac2d615bf90ab26ebc2c680f6}{associatedMin}}(}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ x,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ a,}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ y,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ b);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ U,\ qualifier\ Q>}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \mbox{\hyperlink{namespaceglm_1_1gtx_a3c550a0ac2d615bf90ab26ebc2c680f6}{associatedMin}}(}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ T\ x,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\&\ a,}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ T\ y,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\&\ b);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ U,\ qualifier\ Q>}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \mbox{\hyperlink{namespaceglm_1_1gtx_a3c550a0ac2d615bf90ab26ebc2c680f6}{associatedMin}}(}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ x,\ U\ a,}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ y,\ U\ b);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ U\ \mbox{\hyperlink{namespaceglm_1_1gtx_a3c550a0ac2d615bf90ab26ebc2c680f6}{associatedMin}}(}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ T\ x,\ U\ a,}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ T\ y,\ U\ b,}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ T\ z,\ U\ c);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ U,\ qualifier\ Q>}
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \mbox{\hyperlink{namespaceglm_1_1gtx_a3c550a0ac2d615bf90ab26ebc2c680f6}{associatedMin}}(}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ x,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ a,}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ y,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ b,}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ z,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ c);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ U\ \mbox{\hyperlink{namespaceglm_1_1gtx_a3c550a0ac2d615bf90ab26ebc2c680f6}{associatedMin}}(}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ T\ x,\ U\ a,}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ T\ y,\ U\ b,}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ T\ z,\ U\ c,}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ T\ w,\ U\ d);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ U,\ qualifier\ Q>}
+\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \mbox{\hyperlink{namespaceglm_1_1gtx_a3c550a0ac2d615bf90ab26ebc2c680f6}{associatedMin}}(}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ x,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ a,}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ y,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ b,}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ z,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ c,}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ w,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ d);}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ U,\ qualifier\ Q>}
+\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \mbox{\hyperlink{namespaceglm_1_1gtx_a3c550a0ac2d615bf90ab26ebc2c680f6}{associatedMin}}(}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ T\ x,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ a,}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ T\ y,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ b,}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ T\ z,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ c,}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ T\ w,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ d);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ U,\ qualifier\ Q>}
+\DoxyCodeLine{00102\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \mbox{\hyperlink{namespaceglm_1_1gtx_a3c550a0ac2d615bf90ab26ebc2c680f6}{associatedMin}}(}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ x,\ U\ a,}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ y,\ U\ b,}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ z,\ U\ c,}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ w,\ U\ d);}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00111\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ U\ \mbox{\hyperlink{namespaceglm_1_1gtx_a7d9c8785230c8db60f72ec8975f1ba45}{associatedMax}}(T\ x,\ U\ a,\ T\ y,\ U\ b);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ U,\ qualifier\ Q>}
+\DoxyCodeLine{00116\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \mbox{\hyperlink{namespaceglm_1_1gtx_a7d9c8785230c8db60f72ec8975f1ba45}{associatedMax}}(}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ x,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ a,}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ y,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ b);}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ U,\ qualifier\ Q>}
+\DoxyCodeLine{00123\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_1_1gtx_a7d9c8785230c8db60f72ec8975f1ba45}{associatedMax}}(}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ T\ x,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ a,}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ T\ y,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ b);}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ U,\ qualifier\ Q>}
+\DoxyCodeLine{00130\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \mbox{\hyperlink{namespaceglm_1_1gtx_a7d9c8785230c8db60f72ec8975f1ba45}{associatedMax}}(}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ x,\ U\ a,}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ y,\ U\ b);}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00137\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ U\ \mbox{\hyperlink{namespaceglm_1_1gtx_a7d9c8785230c8db60f72ec8975f1ba45}{associatedMax}}(}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ T\ x,\ U\ a,}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ T\ y,\ U\ b,}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ T\ z,\ U\ c);}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ U,\ qualifier\ Q>}
+\DoxyCodeLine{00145\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \mbox{\hyperlink{namespaceglm_1_1gtx_a7d9c8785230c8db60f72ec8975f1ba45}{associatedMax}}(}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ x,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ a,}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ y,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ b,}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ z,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ c);}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ U,\ qualifier\ Q>}
+\DoxyCodeLine{00153\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_1_1gtx_a7d9c8785230c8db60f72ec8975f1ba45}{associatedMax}}(}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ T\ x,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ a,}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ T\ y,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ b,}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ T\ z,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ c);}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ U,\ qualifier\ Q>}
+\DoxyCodeLine{00161\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \mbox{\hyperlink{namespaceglm_1_1gtx_a7d9c8785230c8db60f72ec8975f1ba45}{associatedMax}}(}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ x,\ U\ a,}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ y,\ U\ b,}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ z,\ U\ c);}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00169\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ U\ \mbox{\hyperlink{namespaceglm_1_1gtx_a7d9c8785230c8db60f72ec8975f1ba45}{associatedMax}}(}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ T\ x,\ U\ a,}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ T\ y,\ U\ b,}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ T\ z,\ U\ c,}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ T\ w,\ U\ d);}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ U,\ qualifier\ Q>}
+\DoxyCodeLine{00178\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \mbox{\hyperlink{namespaceglm_1_1gtx_a7d9c8785230c8db60f72ec8975f1ba45}{associatedMax}}(}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ x,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ a,}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ y,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ b,}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ z,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ c,}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ w,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ d);}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ U,\ qualifier\ Q>}
+\DoxyCodeLine{00187\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \mbox{\hyperlink{namespaceglm_1_1gtx_a7d9c8785230c8db60f72ec8975f1ba45}{associatedMax}}(}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ T\ x,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ a,}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ T\ y,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ b,}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ T\ z,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ c,}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ T\ w,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \textcolor{keyword}{const}\&\ d);}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ U,\ qualifier\ Q>}
+\DoxyCodeLine{00196\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ U,\ Q>}}\ \mbox{\hyperlink{namespaceglm_1_1gtx_a7d9c8785230c8db60f72ec8975f1ba45}{associatedMax}}(}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ x,\ U\ a,}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ y,\ U\ b,}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ z,\ U\ c,}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ w,\ U\ d);}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00203\ \}\ \textcolor{comment}{//namespace\ glm}}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{associated__min__max_8inl}{associated\_min\_max.inl}}"{}}}
+
+\end{DoxyCode}

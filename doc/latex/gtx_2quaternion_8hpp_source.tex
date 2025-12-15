@@ -1,0 +1,110 @@
+\doxysection{quaternion.\+hpp}
+\hypertarget{gtx_2quaternion_8hpp_source}{}\label{gtx_2quaternion_8hpp_source}\index{dependencies/glm/include/glm/gtx/quaternion.hpp@{dependencies/glm/include/glm/gtx/quaternion.hpp}}
+\mbox{\hyperlink{gtx_2quaternion_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ Dependency:}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{glm_8hpp}{../glm.hpp}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{constants_8hpp}{../gtc/constants.hpp}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{gtc_2quaternion_8hpp}{../gtc/quaternion.hpp}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{quaternion__exponential_8hpp}{../ext/quaternion\_exponential.hpp}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{norm_8hpp}{../gtx/norm.hpp}}"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#ifndef\ GLM\_ENABLE\_EXPERIMENTAL}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#\ \ \ error\ "{}GLM:\ GLM\_GTX\_quaternion\ is\ an\ experimental\ extension\ and\ may\ change\ in\ the\ future.\ Use\ \#define\ GLM\_ENABLE\_EXPERIMENTAL\ before\ including\ it,\ if\ you\ really\ want\ to\ use\ it."{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#elif\ GLM\_MESSAGES\ ==\ GLM\_ENABLE\ \&\&\ !defined(GLM\_EXT\_INCLUDED)}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#\ \ \ pragma\ message("{}GLM:\ GLM\_GTX\_quaternion\ extension\ included"{})}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceglm}{glm}}}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_1_1gtx_a96a6304e423f605c2dedd5b09d50e382}{quat\_identity}}();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_1_1gtx_a664d7b8c9c83b4109620e43984f15d70}{cross}}(}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \textcolor{keyword}{const}\&\ q,}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_1_1gtx_a664d7b8c9c83b4109620e43984f15d70}{cross}}(}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v,}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \textcolor{keyword}{const}\&\ q);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_1_1gtx_a77f8e42a93c02b56d5dd6f7ca2c904bd}{squad}}(}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \textcolor{keyword}{const}\&\ q1,}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \textcolor{keyword}{const}\&\ q2,}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \textcolor{keyword}{const}\&\ s1,}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \textcolor{keyword}{const}\&\ s2,}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ T\ \textcolor{keyword}{const}\&\ h);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_1_1gtx_a674f3a481bf37d397e81787c5d4d873f}{intermediate}}(}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \textcolor{keyword}{const}\&\ prev,}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \textcolor{keyword}{const}\&\ curr,}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \textcolor{keyword}{const}\&\ next);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//template<typename\ T,\ qualifier\ Q>}}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{comment}{//qua<T,\ Q>\ sqrt(}}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{comment}{//\ \ qua<T,\ Q>\ const\&\ q);}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00088\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_1_1gtx_a42613eb0c7deb5f5188fc159df6c8950}{rotate}}(}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \textcolor{keyword}{const}\&\ q,}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00096\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{structglm_1_1vec}{vec<4,\ T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_1_1gtx_a42613eb0c7deb5f5188fc159df6c8950}{rotate}}(}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \textcolor{keyword}{const}\&\ q,}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<4,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ v);}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00104\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ T\ \mbox{\hyperlink{namespaceglm_1_1gtx_a321953c1b2e7befe6f5dcfddbfc6b76b}{extractRealComponent}}(}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \textcolor{keyword}{const}\&\ q);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00111\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{structglm_1_1mat}{mat<3,\ 3,\ T,\ Q>}}\ \mbox{\hyperlink{group__gtx__quaternion_ga0fe2a2355374afba87709cd3a6e51609}{toMat3}}(}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \textcolor{keyword}{const}\&\ x)\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__gtc__quaternion_ga485b4423fd52c3ae1ff1051bda614c93}{mat3\_cast}}(x);\}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00118\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{structglm_1_1mat}{mat<4,\ 4,\ T,\ Q>}}\ \mbox{\hyperlink{group__gtx__quaternion_gae59147ed08331ca99604771184b306d5}{toMat4}}(}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \textcolor{keyword}{const}\&\ x)\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__gtc__quaternion_gaa6dc632fb953f612d07ad5b533d0390f}{mat4\_cast}}(x);\}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00125\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \mbox{\hyperlink{group__gtx__quaternion_ga973bf798d3b334ae56b46463ac8a6fb5}{toQuat}}(}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1mat}{mat<3,\ 3,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ x)\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__gtc__quaternion_ga3d350068ce0d14e4496cb844eb79a05f}{quat\_cast}}(x);\}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00132\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \mbox{\hyperlink{group__gtx__quaternion_ga973bf798d3b334ae56b46463ac8a6fb5}{toQuat}}(}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1mat}{mat<4,\ 4,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ x)\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__gtc__quaternion_ga3d350068ce0d14e4496cb844eb79a05f}{quat\_cast}}(x);\}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00139\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_1_1gtx_aa67d8a157c0c4df05354aafd2e40aa72}{shortMix}}(}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \textcolor{keyword}{const}\&\ x,}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \textcolor{keyword}{const}\&\ y,}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ T\ \textcolor{keyword}{const}\&\ a);}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00148\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_1_1gtx_a43a95b70cd08ed3471e09d6c117e3464}{fastMix}}(}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \textcolor{keyword}{const}\&\ x,}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \textcolor{keyword}{const}\&\ y,}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ T\ \textcolor{keyword}{const}\&\ a);}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00159\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \mbox{\hyperlink{namespaceglm_1_1gtx_adbb992b52cef49dd3b11966e34260d17}{rotation}}(}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ orig,}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ dest);}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00167\ \ \ \ \ \mbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\_FUNC\_DECL}}\ \mbox{\hyperlink{setup_8hpp_a08b807947b47031d3a511f03f89645ad}{GLM\_CONSTEXPR}}\ T\ \mbox{\hyperlink{namespaceglm_1_1gtx_a8d1789651050adb7024917984b41c3de}{length2}}(\mbox{\hyperlink{structglm_1_1qua}{qua<T,\ Q>}}\ \textcolor{keyword}{const}\&\ q);}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00170\ \}\textcolor{comment}{//namespace\ glm}}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{gtx_2quaternion_8inl}{quaternion.inl}}"{}}}
+
+\end{DoxyCode}
