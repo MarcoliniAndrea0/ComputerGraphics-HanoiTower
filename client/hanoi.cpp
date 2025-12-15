@@ -5,7 +5,9 @@
 // Costanti
 const int HanoiGame::NUM_DISKS = 7;
 const int HanoiGame::NUM_TOWERS = 3;
-const float HanoiGame::DISK_HEIGHT = 8.0f;
+const float HanoiGame::DISK_HEIGHT = 25.0f;
+const float HanoiGame::TOWER_DISTANCE = 300.0f;
+const float HanoiGame::DISK_SPACING = 5.0f;
 
 // Variabili statiche
 HanoiGame::GameState HanoiGame::gameState = GameState::IDLE;
@@ -66,7 +68,6 @@ void HanoiGame::loadGameObjects(std::shared_ptr<Node> rootNode) {
     }
 
     // --- 2. CREIAMO LE TORRI ---
-    float spacing = 300.0f;
 
     for (int i = 1; i <= NUM_TOWERS; i++) {
         Tower tower;
@@ -77,11 +78,11 @@ void HanoiGame::loadGameObjects(std::shared_ptr<Node> rootNode) {
             // Calcoliamo la posizione LOGICA dove andranno i dischi
             glm::vec3 logicPos = anchorPos;
 
-            logicPos.z += (i - 1) * spacing;
+            logicPos.z += (i - 1) * TOWER_DISTANCE;
 
             tower.position = logicPos;
 
-            std::cout << "Logica " << tower.name << " impostata a " << logicPos.x << std::endl;
+            std::cout << "Logica " << tower.name << " impostata a " << logicPos.z << std::endl;
             tower.diskIndices.clear();
         }
         towers.push_back(tower);
@@ -343,16 +344,31 @@ void HanoiGame::updateDiskPositions() {
         auto& tower = towers[towerIdx];
 
         // Altezza di partenza: la posizione Y della torre + un piccolo offset se necessario
+        
         float currentY = tower.position.y;
+        std::cout << "TOWER POSITION : " << currentY << std::endl;
 
+        
+        //float currentY = 8750.0f;
+
+        int index = tower.diskIndices.size();
         // Iteriamo sui dischi di questa torre
         for (int diskIdx : tower.diskIndices) {
             auto& disk = disks[diskIdx];
+            
+
+
+            int numberOfPresentDisk = disks.size();
+            int diskSize = disk.size;
 
             if (disk.node) {
                 // Calcoliamo la nuova posizione assoluta
                 // Manteniamo X e Z della torre, cambiamo solo Y
-                glm::vec3 newPos = glm::vec3(tower.position.x, currentY, tower.position.z);
+                glm::vec3 newPos;
+                
+                newPos = glm::vec3(tower.position.x, (float)(((diskSize - 1.0f) - (tower.diskIndices.size()-index)) * (-DISK_HEIGHT)), tower.position.z);
+                
+                
 
                 // Se c'è un disco selezionato (in aria), lo alziamo visivamente
                 if (gameState == GameState::DISK_SELECTED && selectedDiskIndex == diskIdx) {
@@ -360,10 +376,13 @@ void HanoiGame::updateDiskPositions() {
                 }
 
                 disk.node->setPosition(newPos);
+                std::cout << "disk POSITION : " << newPos.y << std::endl;
+                std::cout << "disks SIZE : " << tower.diskIndices.size() << std::endl;
+                std::cout << "disks SIZE : " << diskSize << std::endl;
             }
 
-            // Incrementiamo l'altezza per il prossimo disco
-            currentY += DISK_HEIGHT;
+            index--;
+            
         }
     }
 }
