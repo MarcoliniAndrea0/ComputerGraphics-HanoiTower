@@ -325,8 +325,8 @@ void HanoiGame::showHelp() {
     std::cout << "2. Only the top disk of a tower can be moved" << std::endl;
     std::cout << "3. A larger disk cannot be placed on a smaller disk" << std::endl;
     std::cout << "Controls:" << std::endl;
-    std::cout << "- Click a disk to select it" << std::endl;
-    std::cout << "- Click a tower to move selected disk there" << std::endl;
+    std::cout << "- Select a disk with 1 - 2 - 3" << std::endl;
+    std::cout << "- Select a tower to position the disk with 1 - 2 - 3" << std::endl;
     std::cout << "- R: Reset game" << std::endl;
     std::cout << "- P: Show this help" << std::endl;
     std::cout << "- ESC: Exit game" << std::endl;
